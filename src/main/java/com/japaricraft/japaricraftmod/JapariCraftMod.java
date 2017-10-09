@@ -5,9 +5,9 @@ import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
-import com.japaricraft.japaricraftmod.world.structure.ComponentHumanHouse1;
-import com.japaricraft.japaricraftmod.world.structure.HumanHouseEventHandler;
-import com.japaricraft.japaricraftmod.world.structure.StructureHumanHouseStart;
+import com.japaricraft.japaricraftmod.world.structure.ComponentBlueDragonDungeon;
+import com.japaricraft.japaricraftmod.world.structure.BlueDragonDungeonEventHandler;
+import com.japaricraft.japaricraftmod.world.structure.StructureBlueDragonDungeonStart;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -116,9 +116,9 @@ public class JapariCraftMod {
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
-        MinecraftForge.EVENT_BUS.register(new HumanHouseEventHandler());
-        MapGenStructureIO.registerStructure(StructureHumanHouseStart.class,"SandStarDungeon");
-        MapGenStructureIO.registerStructureComponent(ComponentHumanHouse1.class, "SSD1");
+        MinecraftForge.EVENT_BUS.register(new BlueDragonDungeonEventHandler());
+        MapGenStructureIO.registerStructure(StructureBlueDragonDungeonStart.class,"SandStarDungeon");
+        MapGenStructureIO.registerStructureComponent(ComponentBlueDragonDungeon.class, "SSD1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");

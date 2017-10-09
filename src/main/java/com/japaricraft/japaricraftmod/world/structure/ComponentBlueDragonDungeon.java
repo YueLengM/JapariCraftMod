@@ -21,16 +21,16 @@ import java.util.List;
 import java.util.Random;
 
 
-public class ComponentHumanHouse1 extends StructureComponent {
+public class ComponentBlueDragonDungeon extends StructureComponent {
     private EnumFacing facing;
 
     int par1;
     // 構成パーツリストを記憶するためのリスト
     public List<StructureComponent> structureComponents = new ArrayList<>();
 
-    public ComponentHumanHouse1() {}
+    public ComponentBlueDragonDungeon() {}
 
-    public ComponentHumanHouse1(int par1, Random par2Random, int par3, int par4) {
+    public ComponentBlueDragonDungeon(int par1, Random par2Random, int par3, int par4) {
         super();
         this.facing = EnumFacing.NORTH;
         this.setCoordBaseMode(facing);
@@ -52,7 +52,6 @@ public class ComponentHumanHouse1 extends StructureComponent {
         IBlockState iblockstate= Blocks.STONEBRICK.getDefaultState();
         IBlockState iblockstate2= JapariBlocks.BLOCK_WOODEN_BOX.getDefaultState();
         IBlockState iblockstate3=Blocks.LADDER.getDefaultState();
-        IBlockState iblockstate4=Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH);;
         //本体
         this.fillWithBlocks(world, structureboundingbox, 0, 0, 0, 12, 40, 12, iblockstate,iblockstate, false);
         this.fillWithAir(world, structureboundingbox, 1, 35, 1, 11, 39, 11);
@@ -64,9 +63,11 @@ public class ComponentHumanHouse1 extends StructureComponent {
         this.fillWithAir(world, structureboundingbox, 6, 35, 7, 6, 36, 7);
         this.fillWithBlocks(world, structureboundingbox, 6, 35, 6, 6, 45, 6, iblockstate3,iblockstate3, false);
         //地下一階の松明
-        this.setBlockState(world, iblockstate4, 5, 35, 8, structureboundingbox);
-        this.setBlockState(world, iblockstate4, 7, 35, 8, structureboundingbox);
+        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 5, 35, 8, structureboundingbox);
+        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 7, 35, 8, structureboundingbox);
 
+        this.spawnSnaiperIllager(world, structureboundingbox, 3, 40, 3);
+        this.spawnSnaiperIllager(world, structureboundingbox, 3, 40, 3);
         this.spawnHandler(world, structureboundingbox, 3, 35, 3);
         return true;
     }

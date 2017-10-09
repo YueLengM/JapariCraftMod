@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Random;
 
 
-public class StructureHumanHouseStart extends StructureStart {
+public class StructureBlueDragonDungeonStart extends StructureStart {
 
-    public StructureHumanHouseStart(World par1World, Random par2Random, int par3, int par4) {
+    public StructureBlueDragonDungeonStart(World par1World, Random par2Random, int par3, int par4) {
         super(par3, par4);
 
         // 構造物の構成パーツを決定する
-        ComponentHumanHouse1 componentHumanHouse1 = new ComponentHumanHouse1(0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2);
+        ComponentBlueDragonDungeon componentHumanHouse1 = new ComponentBlueDragonDungeon(0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2);
         this.components.add(componentHumanHouse1);
         // 次のパーツを得る
         componentHumanHouse1.buildComponent(componentHumanHouse1, components, par2Random);

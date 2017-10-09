@@ -13,11 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class MapGenHumanHouse extends MapGenStructure {
+public class MapGenBlueDragonDungeon extends MapGenStructure {
 
     private int distance;
     private static List<Biome> SPAWN_BIOMES = Arrays.asList(Biomes.OCEAN,Biomes.DEEP_OCEAN);
-    public MapGenHumanHouse(){
+    public MapGenBlueDragonDungeon(){
         this.distance = 32;
     }
     @Override
@@ -69,7 +69,7 @@ public class MapGenHumanHouse extends MapGenStructure {
 
     @Override
     protected StructureStart getStructureStart(int i, int j) {
-        return new StructureHumanHouseStart(this.world,this.rand, i, j);
+        return new StructureBlueDragonDungeonStart(this.world,this.rand, i, j);
     }
 
 }

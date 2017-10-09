@@ -4,9 +4,9 @@ package com.japaricraft.japaricraftmod.world.structure;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HumanHouseEventHandler {
+public class BlueDragonDungeonEventHandler {
 
-    private MapGenHumanHouse mapGenSandStarDungeon = new MapGenHumanHouse();
+    private MapGenBlueDragonDungeon mapGenSandStarDungeon = new MapGenBlueDragonDungeon();
 
 
     @SubscribeEvent
