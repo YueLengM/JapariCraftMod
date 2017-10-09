@@ -41,12 +41,12 @@ public class InventoryFriend extends InventoryBasic
     {
         this.clear();
 
-        for (int slot = 0; slot < nbtList.tagCount(); ++slot)
+        for (int i = 0; i < nbtList.tagCount(); ++i)
         {
-            NBTTagCompound nbt = nbtList.getCompoundTagAt(slot);
-            slot = nbt.getByte("Slot") & 255;
+            NBTTagCompound nbt = nbtList.getCompoundTagAt(i);
+            int slot = nbt.getByte("Slot") & 255;
 
-            if (slot < this.getSizeInventory())
+            if ((0 <= slot) && (slot < this.getSizeInventory()))
             {
                 this.setInventorySlotContents(slot, new ItemStack(nbt));
             }

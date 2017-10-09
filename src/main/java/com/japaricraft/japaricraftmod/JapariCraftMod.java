@@ -40,7 +40,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.0.3";
+    public static final String VERSION = "3.0.4";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -116,9 +116,9 @@ public class JapariCraftMod {
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
-        MinecraftForge.EVENT_BUS.register(new BlueDragonDungeonEventHandler());
-        MapGenStructureIO.registerStructure(StructureBlueDragonDungeonStart.class,"SandStarDungeon");
-        MapGenStructureIO.registerStructureComponent(ComponentBlueDragonDungeon.class, "SSD1");
+        //MinecraftForge.EVENT_BUS.register(new BlueDragonDungeonEventHandler());
+        //MapGenStructureIO.registerStructure(StructureBlueDragonDungeonStart.class,"SandStarDungeon");
+        //MapGenStructureIO.registerStructureComponent(ComponentBlueDragonDungeon.class, "SSD1");
         //Villagerのレンダー
 
         japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
