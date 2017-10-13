@@ -1,7 +1,7 @@
 #
 tile.BlockWoodenFrame.name=Wooden Frame
 tile.SandStarBlock.name=SandStarBlock
-tile.SandStarOre.name=SandStarOre
+tile.sandstar_ore.name=SandStarOre
 tile.sandstarwater.name=SandStarWater
 
 item.Japariman.name=Japariman
@@ -65,6 +65,8 @@ advancements.japaricraftmod.sandstartool.title=Upgrade further
 advancements.japaricraftmod.sandstartool.description=Get SandStar Pickaxe
 advancement.japariman_dinner=I want eat Japariman
 advancement.japariman_dinner.desc=Eat all Type of Japariman
+advancements.japaricraftmod.sandstarminer.title=SandStarMiner
+advancements.japaricraftmod.sandstarminer.description=Get SandStar
 
 entity.Villager.japaricraftmod.zookeeper=ZooKeeper
 

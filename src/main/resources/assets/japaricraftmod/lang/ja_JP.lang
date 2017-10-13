@@ -1,7 +1,7 @@
 #
 tile.BlockWoodenFrame.name=木の枠
 tile.SandStarBlock.name=サンドスター
-tile.SandStarOre.name=サンドスター鉱石
+tile.sandstar_ore.name=サンドスター鉱石
 tile.sandstarwater.name=サンドスターの温泉
 
 item.Japariman.name=じゃぱりまん
@@ -63,6 +63,8 @@ advancements.japaricraftmod.sandstartool.title=さらにアップグレード
 advancements.japaricraftmod.sandstartool.description=サンドスターピッケルを手に入れる
 advancement.japariman_dinner=じゃぱりまんがどうしても食べたい
 advancement.japariman_dinner.desc=じゃぱりまんを全種類食べる
+advancements.japaricraftmod.sandstarminer.title=サンドスター採掘家
+advancements.japaricraftmod.sandstarminer.description=サンドスターを手に入れる
 
 entity.Villager.japaricraftmod.zookeeper=飼育員
 

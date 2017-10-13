@@ -5,6 +5,7 @@ import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
+import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -27,6 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -37,7 +39,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.0.5";
+    public static final String VERSION = "3.0.6";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -95,6 +97,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 2);
         if (event.getSide().isClient())
         {
             JapariRenderingRegistry.registerRenderers();
