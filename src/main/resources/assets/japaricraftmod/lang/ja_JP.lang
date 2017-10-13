@@ -51,7 +51,7 @@ entity.active=じゃりうまはアクティブです
 entity.Fennec.name=フェネック
 entity.SandStarHandler.name=サンドスターハンドラー
 
-advancements.japaricraftmod.root.title=友達用
+advancements.japaricraftmod.root.title=じゃぱりくらふともっど
 advancements.japaricraftmod.root.description=じゃぱりまんを作る
 advancements.japaricraftmod.sandstarhandler.title=サンドスターの使い手
 advancements.japaricraftmod.sandstarhandler.description=サンドスターハンドラーを倒す
@@ -61,6 +61,8 @@ advancements.japaricraftmod.wildpotion.title=エネルギードリンク
 advancements.japaricraftmod.wildpotion.description=野生解放のポーションを作る
 advancements.japaricraftmod.sandstartool.title=さらにアップグレード
 advancements.japaricraftmod.sandstartool.description=サンドスターピッケルを手に入れる
+advancement.japariman_dinner=じゃぱりまんがどうしても食べたい
+advancement.japariman_dinner.desc=じゃぱりまんを全種類食べる
 
 entity.Villager.japaricraftmod.zookeeper=飼育員
 

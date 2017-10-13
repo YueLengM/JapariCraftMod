@@ -17,7 +17,7 @@ public class ServalEntityRender extends RenderLiving<Serval>
     private static final ResourceLocation SERVAL_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval.png");
     public ServalEntityRender(RenderManager renderManager)
     {
-            super(renderManager, new ModelServal(), 0.6F);
+            super(renderManager, new ModelServal(), 0.5F);
     }
 
 

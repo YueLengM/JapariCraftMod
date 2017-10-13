@@ -11,7 +11,7 @@
     },
     "frame": "challenge"
   },
-  "parent": "japaricraftmod:japaricraftmod/root",
+  "parent": "japaricraftmod:japaricraftmod/wildpotion",
   "rewards": {
     "experience": 160
   },

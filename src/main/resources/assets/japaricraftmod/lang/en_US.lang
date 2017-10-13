@@ -53,7 +53,7 @@ entity.arai.friend=Thank`s!!
 entity.weitting=Weitting
 entity.active=Active
 
-advancements.japaricraftmod.root.title=For friends
+advancements.japaricraftmod.root.title=JapariCraftMod
 advancements.japaricraftmod.root.description=Make Japariman
 advancements.japaricraftmod.sandstarhandler.title=SandStarHandler
 advancements.japaricraftmod.sandstarhandler.description=Kill SandStar Handler
@@ -63,6 +63,8 @@ advancements.japaricraftmod.wildpotion.title=Energy drink
 advancements.japaricraftmod.wildpotion.description=Make Potion of Liberation of Wildness
 advancements.japaricraftmod.sandstartool.title=Upgrade further
 advancements.japaricraftmod.sandstartool.description=Get SandStar Pickaxe
+advancement.japariman_dinner=I want eat Japariman
+advancement.japariman_dinner.desc=Eat all Type of Japariman
 
 entity.Villager.japaricraftmod.zookeeper=ZooKeeper
 
