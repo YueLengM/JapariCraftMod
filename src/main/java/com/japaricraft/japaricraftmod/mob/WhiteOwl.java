@@ -41,10 +41,10 @@ public class WhiteOwl extends EntityFriend {
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
     private EntityPlayerSP player;
-    private float wingRotation;
-    private float destPos;
-    private float oFlapSpeed;
-    private float oFlap;
+    public float wingRotation;
+    public float destPos;
+    public float oFlapSpeed;
+    public float oFlap;
     private float wingRotDelta = 1.0F;
 
     public WhiteOwl(World worldIn)

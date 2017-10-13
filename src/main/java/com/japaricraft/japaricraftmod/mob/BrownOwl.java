@@ -36,10 +36,10 @@ public class BrownOwl extends EntityFriend {
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry,Items.RABBIT_STEW,Items.MUSHROOM_STEW);
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
-    private float wingRotation;
-    private float destPos;
-    private float oFlapSpeed;
-    private float oFlap;
+    public float wingRotation;
+    public float destPos;
+    public float oFlapSpeed;
+    public float oFlap;
     private float wingRotDelta = 1.0F;
 
     public BrownOwl(World worldIn)

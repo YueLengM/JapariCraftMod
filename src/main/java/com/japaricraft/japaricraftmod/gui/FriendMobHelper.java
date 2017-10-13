@@ -13,18 +13,10 @@ public class FriendMobHelper {
     {
         boolean hasEmptySlot = (getFirstEmptySlot(inventory) != -1);
 
-        if (isNotEmptyItemStack(stack))
-        {
+        if (isNotEmptyItemStack(stack)) {
             boolean hasCanStoreSlot = (getCanStoreSlot(inventory, stack) != -1);
 
-            if (hasEmptySlot)
-            {
-                return true;
-            }
-            else
-            {
-                return hasCanStoreSlot;
-            }
+            return hasEmptySlot || hasCanStoreSlot;
         }
         else
         {

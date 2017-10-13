@@ -19,6 +19,7 @@ public class ModelBrownOwl extends ModelBase {
     private ModelRenderer legL;
     private ModelRenderer wing2;
     private ModelRenderer wing1;
+    ModelRenderer hairA_L;
 
     public ModelBrownOwl() {
         this.textureWidth = 128;
@@ -93,7 +94,7 @@ public class ModelBrownOwl extends ModelBase {
         this.handA_L.setRotationPoint(2.1F, 1.2F, -0.5F);
         this.handA_L.addBox(0.0F, -0.8F, -1.0F, 3, 8, 3, 0.0F);
         this.setRotateAngle(handA_L, 0.0F, 0.0F, -0.15707963267948966F);
-        ModelRenderer hairA_L = new ModelRenderer(this, 28, 32);
+        hairA_L = new ModelRenderer(this, 28, 32);
         hairA_L.setRotationPoint(-4.2F, 3.1F, -2.0F);
         hairA_L.addBox(-0.2F, -2.5F, 0.0F, 1, 5, 3, 0.0F);
         this.setRotateAngle(hairA_L, 0.0F, 0.0F, 0.1668534764906579F);
@@ -205,6 +206,8 @@ public class ModelBrownOwl extends ModelBase {
         this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         GL11.glTranslatef(0F, 0.3F, 0F);
+        this.wing1.rotateAngleZ = -ageInTicks;
+        this.wing2.rotateAngleZ = ageInTicks;
     }
     public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;

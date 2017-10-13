@@ -20,14 +20,9 @@ public class InventoryFriend extends InventoryBasic
     }
 
     @Override
-    public boolean isUsableByPlayer(EntityPlayer player)
-    {
-        if (this.entityfriends.isEntityAlive())
-        {
-            return (player.getDistanceSqToEntity(this.entityfriends) < 64.0D);
-        }
+    public boolean isUsableByPlayer(EntityPlayer player) {
+        return this.entityfriends.isEntityAlive() && (player.getDistanceSqToEntity(this.entityfriends) < 64.0D);
 
-        return false;
     }
 
     // TODO /* ======================================== MOD START =====================================*/
