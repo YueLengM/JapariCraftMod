@@ -11,6 +11,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
@@ -21,10 +22,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -45,7 +43,7 @@ public class BrownOwl extends EntityFriend {
     public BrownOwl(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.88F);
+        this.setSize(0.6F, 1.8F);
         this.setTamed(false);
     }
 
@@ -124,7 +122,38 @@ public class BrownOwl extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
+    @Override
+    public void onUpdate()
+    {
 
+        super.onUpdate();
+
+        if (this.isRiding())
+        {
+            final Entity entity = this.getRidingEntity();
+
+            if (entity.isSneaking() && entity.onGround)
+            {
+                this.dismountRidingEntity();
+            }
+
+            if (entity.motionY < 0)
+            {
+                entity.motionY *= entity.isSneaking() ? 0.9D : 0.7D;
+
+                entity.fallDistance = 0;
+            }
+
+            this.setRotation(entity.rotationYaw, entity.rotationPitch);
+        }
+
+        if (this.motionY < -0.1D)
+        {
+            this.motionY = -0.1D;
+        }
+
+        this.fallDistance = 0.0F;
+    }
     @Override
     public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn)
     {
@@ -192,6 +221,16 @@ public class BrownOwl extends EntityFriend {
 
         if (this.isTamed())
         {
+            if (!this.isRiding() && ItemStack.areItemsEqual(new ItemStack(Blocks.CARPET), stack))
+            {
+                this.world.playSound(player, player.getPosition(), SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, SoundCategory.NEUTRAL, 1.0F,
+                        0.8F + (this.rand.nextFloat() * 0.5F));
+
+
+                this.startRiding(player, true);
+
+                return true;
+            }
             if(player.isSneaking()&&!this.isSitting()){
                 player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
@@ -267,6 +306,11 @@ public class BrownOwl extends EntityFriend {
         }
 
         return super.processInteract(player, hand);
+    }
+    @Override
+    public boolean canRiderInteract()
+    {
+        return true;
     }
 
 

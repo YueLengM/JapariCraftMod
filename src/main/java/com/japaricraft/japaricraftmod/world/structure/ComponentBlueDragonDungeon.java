@@ -52,6 +52,7 @@ public class ComponentBlueDragonDungeon extends StructureComponent {
         IBlockState iblockstate= Blocks.STONEBRICK.getDefaultState();
         IBlockState iblockstate2= JapariBlocks.BLOCK_WOODEN_BOX.getDefaultState();
         IBlockState iblockstate3=Blocks.LADDER.getDefaultState();
+        IBlockState iblockstate4=Blocks.IRON_BARS.getDefaultState();
         //本体
         this.fillWithBlocks(world, structureboundingbox, 0, 0, 0, 12, 40, 12, iblockstate,iblockstate, false);
         this.fillWithAir(world, structureboundingbox, 1, 35, 1, 11, 39, 11);
@@ -65,9 +66,16 @@ public class ComponentBlueDragonDungeon extends StructureComponent {
         //地下一階の松明
         this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 5, 35, 8, structureboundingbox);
         this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 7, 35, 8, structureboundingbox);
+        //窓
+        this.fillWithBlocks(world, structureboundingbox, 3, 36, 3, 9, 38, 9, iblockstate4,iblockstate4, false);
+        //下への階段と空間
+        this.fillWithBlocks(world, structureboundingbox, 11, 30, 11, 11, 35, 11, iblockstate3,iblockstate3, false);
+        this.fillWithAir(world, structureboundingbox, 1, 30, 1, 11, 34, 11);
+        this.fillWithBlocks(world, structureboundingbox, 2, 30, 11, 11, 35, 11, iblockstate3,iblockstate3, false);
+
 
         this.spawnSnaiperIllager(world, structureboundingbox, 3, 40, 3);
-        this.spawnSnaiperIllager(world, structureboundingbox, 3, 40, 3);
+        this.spawnSnaiperIllager(world, structureboundingbox, 10, 40, 4);
         this.spawnHandler(world, structureboundingbox, 3, 35, 3);
         return true;
     }

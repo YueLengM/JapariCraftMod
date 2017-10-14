@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 
-public class Serval extends EntityFriend {
+public class Serval extends EntityFriend{
 
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
