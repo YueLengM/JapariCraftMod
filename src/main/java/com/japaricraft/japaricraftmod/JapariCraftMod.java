@@ -3,7 +3,8 @@ package com.japaricraft.japaricraftmod;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.mob.JapariEntityRegistry;
+import com.japaricraft.japaricraftmod.mob.JapariRenderingRegistry;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
 import net.minecraft.block.Block;
@@ -39,7 +40,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.0.6";
+    public static final String VERSION = "3.0.7";
     public static final String MODNAME = "JapariCraftMod";
 
 

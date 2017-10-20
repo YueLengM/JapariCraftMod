@@ -180,7 +180,7 @@ public class JapariItems {
                 new ItemStack(sandstarpickaxe),JapariItems.sandstarfragment));
         registry.register(RecipeHelper.getShovelRecipe("sandstarshovel",
                 new ItemStack(sandstarshovel),JapariItems.sandstarfragment));
-        addOredictRecipe(new ItemStack(JapariItems.kabanhat, 1, 0), "sms", "m m", 's', Items.FEATHER, 'm', Items.LEATHER);
+        addOredictRecipe(new ItemStack(JapariItems.kabanhat, 1, 0), "sms", "m m", 's', Items.FEATHER, 'm', Blocks.WOOL);
         registry.register(RecipeHelper.getShapelessRecipe("wildliberationpotion",
                 new ItemStack(wildliberationpotion), Items.GOLDEN_APPLE,Items.POTIONITEM,JapariItems.wildliberationsource));
         registry.register(RecipeHelper.getSquareRecipe("sandstarblock",new ItemStack(JapariBlocks.SANDSTAR_BLOCK),JapariItems.sandstarfragment));
