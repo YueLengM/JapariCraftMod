@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.block;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

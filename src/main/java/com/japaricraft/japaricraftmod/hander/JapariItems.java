@@ -26,6 +26,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -186,6 +187,7 @@ public class JapariItems {
         registry.register(RecipeHelper.getSquareRecipe("sandstarblock",new ItemStack(JapariBlocks.SANDSTAR_BLOCK),JapariItems.sandstarfragment));
         registry.register(RecipeHelper.getShapelessRecipe("sandstar_fragment",
                 new ItemStack(sandstarfragment,9), JapariBlocks.SANDSTAR_BLOCK));
+        OreDictionary.registerOre("sandstar", sandstarfragment);
     }
     public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
         final ShapedOreRecipe sor = new ShapedOreRecipe(getRecipeGroup(output), output, recipe);

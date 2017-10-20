@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.gui;
 
-import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.item.ItemStack;
 

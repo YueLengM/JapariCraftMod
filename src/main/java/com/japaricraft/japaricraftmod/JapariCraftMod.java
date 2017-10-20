@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,7 +55,6 @@ public class JapariCraftMod {
     public static final int ID_JAPARI_INVENTORY = 1;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static VillagerRegistry.VillagerProfession japariProfession;
-    public static Biome sandstarbiome;
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {

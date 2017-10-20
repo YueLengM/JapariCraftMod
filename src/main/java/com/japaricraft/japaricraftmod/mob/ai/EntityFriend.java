@@ -45,7 +45,8 @@ public class EntityFriend extends EntityTameable{
 
         return condition;
     }
-    public static enum Condition
+
+    public enum Condition
     {
 
         FINE,

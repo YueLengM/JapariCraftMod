@@ -4,7 +4,6 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
