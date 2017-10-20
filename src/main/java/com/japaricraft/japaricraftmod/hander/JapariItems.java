@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.hander;
 
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.*;
@@ -9,6 +10,7 @@ import com.japaricraft.japaricraftmod.item.summon.SummonLucky;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -27,7 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
-
 
 import java.util.Collections;
 import java.util.List;
@@ -67,6 +68,23 @@ public class JapariItems {
     public static List<Item> getItems()
     {
         return Collections.unmodifiableList(ITEMS);
+    }
+
+    public static Item registerItem(Item item, String name) {
+        return registerItem(item, name, JapariCraftMod.tabJapariCraft);
+    }
+
+    public static Item registerItem(Item item, String name, CreativeTabs tab) {
+        item.setUnlocalizedName(name);
+        if (tab != null) {
+            item.setCreativeTab(JapariCraftMod.tabJapariCraft);
+        }
+
+        item.setRegistryName(new ResourceLocation(JapariCraftMod.MODID, name));
+        ForgeRegistries.ITEMS.register(item);
+        JapariCraftMod.proxy.registerItemSided(item);
+
+        return item;
     }
 
     public static void register(IForgeRegistry<Item> registry, Item item)

@@ -68,7 +68,7 @@ advancements.japaricraftmod.sandstarminer.description=サンドスターを手�
 
 entity.Villager.japaricraftmod.zookeeper=飼育員
 
-fluid.sandstarwater=サンドスターの水
+fluid.sandstar=サンドスターの水
 
 page.0.name=この本について
 page.0.desc=この本は俺が研究用ノートとしてるものだ

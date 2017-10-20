@@ -1,10 +1,9 @@
 package com.japaricraft.japaricraftmod.world.structure;
 
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
-import com.japaricraft.japaricraftmod.hander.JapariTreasure;
 import com.japaricraft.japaricraftmod.mob.Cerulean;
 import com.japaricraft.japaricraftmod.mob.SandStarHandler;
-import net.minecraft.block.*;
+import net.minecraft.block.BlockTorch;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityIllusionIllager;
 import net.minecraft.init.Blocks;
@@ -64,16 +63,17 @@ public class ComponentBlueDragonDungeon extends StructureComponent {
         this.fillWithAir(world, structureboundingbox, 6, 35, 7, 6, 36, 7);
         this.fillWithBlocks(world, structureboundingbox, 6, 35, 6, 6, 45, 6, iblockstate3,iblockstate3, false);
         //地下一階の松明
-        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 5, 35, 8, structureboundingbox);
-        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.SOUTH), 7, 35, 8, structureboundingbox);
+        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.SOUTH), 5, 35, 8, structureboundingbox);
+        this.setBlockState(world, Blocks.TORCH.getDefaultState().withProperty(BlockTorch.FACING, EnumFacing.SOUTH), 7, 35, 8, structureboundingbox);
         //窓
         this.fillWithBlocks(world, structureboundingbox, 3, 36, 3, 9, 38, 9, iblockstate4,iblockstate4, false);
         //下への階段と空間
         this.fillWithBlocks(world, structureboundingbox, 11, 30, 11, 11, 35, 11, iblockstate3,iblockstate3, false);
         this.fillWithAir(world, structureboundingbox, 1, 30, 1, 11, 34, 11);
-        this.fillWithBlocks(world, structureboundingbox, 2, 30, 11, 11, 35, 11, iblockstate3,iblockstate3, false);
+        this.fillWithBlocks(world, structureboundingbox, 2, 30, 10, 10, 35, 10, iblockstate4, iblockstate4, false);
 
-
+        this.spawnCelurean(world, structureboundingbox, 3, 30, 10);
+        this.spawnCelurean(world, structureboundingbox, 10, 30, 10);
         this.spawnSnaiperIllager(world, structureboundingbox, 3, 40, 3);
         this.spawnSnaiperIllager(world, structureboundingbox, 10, 40, 4);
         this.spawnHandler(world, structureboundingbox, 3, 35, 3);

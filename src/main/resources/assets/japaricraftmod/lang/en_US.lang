@@ -70,7 +70,7 @@ advancements.japaricraftmod.sandstarminer.description=Get SandStar
 
 entity.Villager.japaricraftmod.zookeeper=ZooKeeper
 
-fluid.sandstarwater=SandStarWater
+fluid.sandstar=SandStarWater
 
 page.0.name=About this book
 page.0.desc=This book is what I use as a research note
