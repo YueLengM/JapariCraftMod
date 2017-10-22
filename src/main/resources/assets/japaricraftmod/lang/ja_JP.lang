@@ -49,7 +49,8 @@ entity.arai.friend=ありがとうなのだ！
 entity.weitting=じゃりうまは待機中です
 entity.active=じゃりうまはアクティブです
 entity.Fennec.name=フェネック
-entity.SandStarHandler.name=サンドスターハンドラー
+entity.SandStarHandler.name=サンドスターハンドラー(未使用)
+entity.RoyalPenguin.name=ロイヤルペンギン
 
 advancements.japaricraftmod.root.title=じゃぱりくらふともっど
 advancements.japaricraftmod.root.description=じゃぱりまんを作る
