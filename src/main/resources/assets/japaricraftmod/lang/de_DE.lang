@@ -14,23 +14,24 @@ item.SandStarAxe.name=Sandstern Axt
 item.SandStarPickaxe.name=Santstern Pickhacke
 item.StarJapariman.name=Stern Japarimann
 item.SugarStar.name=Zuckerstern
-item.WildLiberationSource.name=Wildheit befreiungs Quelle
+item.WildLiberationSource.name=Zähmungstrank Quelle
 item.PumpkinSoup.name=Kürbis Suppe
-item.WildLiberationPotion.name=Wildheit befreiungs Trank
+# Did you intent to call it "wild liberation" as style? Or did you actually mean "Tame Potion" ? I'll go by tame, sounds better in German.
+item.WildLiberationPotion.name=Zähmungstrank Trank
 item.LuckyBeastCore.name=Glücksbestien Kern (Unbenutzt)
 item.Summonluckybeast.name=Erschaffe Glücksbestie
 item.Kabanhat.name=Kaban's Hut
 item.JaparimanApple.name=Japarimann Apfel
 item.BearStick.name=Bären Stock
 item.Curry.name=Curry
-item.StarCaramel.name=Stern Karamel (Unbenutzt)
+item.StarCaramel.name=Stern Karamel (Ungenutzt)
 item.GoldenJapariman.name=Gold Japarimann
-item.SandStarLow.name=Sandstern tief (Unbenutzt)
+item.SandStarLow.name=Sandstern tief (Ungenutzt)
 item.sandstarbook.name=Ein bestimmtes Forschungstagebuch
 
 entity.AncientSkeleton.name=Urzeit Skelett
 entity.KouteiPenguin.name=Kaiserpinguin
-# Cerulean is a shade of blue "Skyblue"(himmelblau), it would sound weird to translate that in German and give it to a live-form.
+# Cerulean is a shade of blue "Skyblue"(Himmelblau), it would sound weird to translate that in German and give it to a live-form.
 entity.Cerulean.name=Cerulean
 entity.PoisonCerulean.name=Gift Cerulean
 entity.Serval.name=Serval
@@ -53,7 +54,7 @@ entity.arai.friend=Danke!!
 entity.weitting=Wartend
 entity.active=Bereit
 entity.Fennec.name=Fennek
-entity.SandStarHandler.name=Sandstern Händler (unbenutzt)
+entity.SandStarHandler.name=Sandstern Händler (ungenutzt)
 entity.RoyalPenguin.name=Haubenpinguin
 
 advancements.japaricraftmod.root.title=JapariCraftMod
@@ -74,7 +75,7 @@ advancements.japaricraftmod.sandstarminer.description=Besorge einen sandstern
 
 entity.Villager.japaricraftmod.zookeeper=Tierpfleger
 
-fluid.sandstar=Sandsternwasser
+fluid.sandstar=Sandstern Wasser
 
 page.0.name=Über das Buch
 page.0.desc=Ich nutze dieses Buch für meine Nachforschungen
