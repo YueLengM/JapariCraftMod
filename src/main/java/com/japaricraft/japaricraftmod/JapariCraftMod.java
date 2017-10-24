@@ -39,7 +39,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.1.0";
+    public static final String VERSION = "3.1.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -96,7 +96,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 2);
+        GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 1);
         if (event.getSide().isClient())
         {
             JapariRenderingRegistry.registerRenderers();
