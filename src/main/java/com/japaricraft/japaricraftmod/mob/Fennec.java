@@ -2,9 +2,6 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
-import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
-import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.*;
@@ -12,12 +9,9 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -30,8 +24,6 @@ import java.util.Set;
 
 public class Fennec extends EntityFriend {
 
-    private InventoryFriendMain inventoryFriendMain;
-    private InventoryFriendEquipment inventoryFriendEquipment;
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
     public Fennec(World worldIn) {
         super(worldIn);
@@ -80,27 +72,6 @@ public class Fennec extends EntityFriend {
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-        super.writeEntityToNBT(compound);
-
-        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
-
-        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
-
-    }
-
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-        super.readEntityFromNBT(compound);
-
-        this.getInventoryFriendMain().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, 10));
-
-        this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
-
-    }
 
     @Override
     protected SoundEvent getDeathSound() {
@@ -134,65 +105,6 @@ public class Fennec extends EntityFriend {
         return flag;
     }
 
-    @Override
-    public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn)
-    {
-        ItemStack itemStack;
-
-        switch (slotIn)
-        {
-            case CHEST :
-
-                itemStack = this.getInventoryFriendEquipment().getChestItem();
-                break;
-            case FEET:
-
-                itemStack = this.getInventoryFriendEquipment().getbootItem();
-                break;
-
-            default :
-
-                itemStack = ItemStack.EMPTY;
-                break;
-        }
-
-        return itemStack;
-    }
-
-    @Override
-    public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)
-    {
-        switch (slotIn)
-        {
-            case CHEST :
-
-                this.getInventoryFriendEquipment().setInventorySlotContents(0,stack);
-                break;
-            case FEET:
-
-                this.getInventoryFriendEquipment().setInventorySlotContents(1,stack);
-                break;
-
-            default :
-
-                // none
-                break;
-        }
-    }
-    @Override
-    public void onDeath(DamageSource cause)
-    {
-        World world = this.getEntityWorld();
-
-        if (!world.isRemote)
-        {
-            InventoryHelper.dropInventoryItems(world, this, this.getInventoryFriendMain());
-
-            InventoryHelper.dropInventoryItems(world, this, this.getInventoryFriendEquipment());
-        }
-
-        super.onDeath(cause);
-    }
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
@@ -266,25 +178,6 @@ public class Fennec extends EntityFriend {
         {
             this.heal(0.06F);
         }
-    }
-
-    public InventoryFriendMain getInventoryFriendMain()
-    {
-        if (this.inventoryFriendMain == null)
-        {
-            this.inventoryFriendMain = new InventoryFriendMain(this);
-        }
-
-        return this.inventoryFriendMain;
-    }
-    public InventoryFriendEquipment getInventoryFriendEquipment()
-    {
-        if (this.inventoryFriendEquipment == null)
-        {
-            this.inventoryFriendEquipment = new InventoryFriendEquipment(this);
-        }
-
-        return this.inventoryFriendEquipment;
     }
 
     @Override

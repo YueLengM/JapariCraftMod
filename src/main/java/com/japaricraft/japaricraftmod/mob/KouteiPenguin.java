@@ -3,8 +3,6 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
-import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
-import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.*;
@@ -14,8 +12,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -32,8 +28,6 @@ import java.util.Set;
 
 public class KouteiPenguin extends EntityFriend {
 
-    private InventoryFriendMain inventoryFriendMain;
-    private InventoryFriendEquipment inventoryFriendEquipment;
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH,Items.COOKED_FISH);
     public KouteiPenguin(World worldIn)
     {
@@ -119,68 +113,6 @@ public class KouteiPenguin extends EntityFriend {
     }
 
 
-
-
-
-    @Override
-    public ItemStack getItemStackFromSlot(EntityEquipmentSlot slotIn)
-    {
-        ItemStack itemStack;
-
-        switch (slotIn)
-        {
-            case CHEST :
-
-                itemStack = this.getInventoryFriendEquipment().getChestItem();
-                break;
-            case FEET:
-
-                itemStack = this.getInventoryFriendEquipment().getbootItem();
-                break;
-
-            default :
-
-                itemStack = ItemStack.EMPTY;
-                break;
-        }
-
-        return itemStack;
-    }
-
-    @Override
-    public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack)
-    {
-        switch (slotIn)
-        {
-            case CHEST :
-
-                this.getInventoryFriendEquipment().setInventorySlotContents(0,stack);
-                break;
-            case FEET:
-
-                this.getInventoryFriendEquipment().setInventorySlotContents(1,stack);
-                break;
-
-            default :
-
-                // none
-                break;
-        }
-    }
-    @Override
-    public void onDeath(DamageSource cause)
-    {
-        World world = this.getEntityWorld();
-
-        if (!world.isRemote)
-        {
-            InventoryHelper.dropInventoryItems(world, this, this.getInventoryFriendMain());
-
-            InventoryHelper.dropInventoryItems(world, this, this.getInventoryFriendEquipment());
-        }
-
-        super.onDeath(cause);
-    }
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
@@ -295,26 +227,6 @@ public class KouteiPenguin extends EntityFriend {
 
         }
     }
-    public InventoryFriendMain getInventoryFriendMain()
-    {
-        if (this.inventoryFriendMain == null)
-        {
-            this.inventoryFriendMain = new InventoryFriendMain(this);
-        }
-
-        return this.inventoryFriendMain;
-    }
-    public InventoryFriendEquipment getInventoryFriendEquipment()
-    {
-        if (this.inventoryFriendEquipment == null)
-        {
-            this.inventoryFriendEquipment = new InventoryFriendEquipment(this);
-        }
-
-        return this.inventoryFriendEquipment;
-    }
-
-
 
     public boolean canDespawn()
     {
