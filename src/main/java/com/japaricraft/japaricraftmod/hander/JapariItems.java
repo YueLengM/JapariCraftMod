@@ -187,6 +187,10 @@ public class JapariItems {
         registry.register(RecipeHelper.getSquareRecipe("sandstarblock",new ItemStack(JapariBlocks.SANDSTAR_BLOCK),JapariItems.sandstarfragment));
         registry.register(RecipeHelper.getShapelessRecipe("sandstar_fragment",
                 new ItemStack(sandstarfragment,9), JapariBlocks.SANDSTAR_BLOCK));
+        registry.register(RecipeHelper.getShapelessRecipe("sandstarsclean",
+                new ItemStack(sandstarfragment), Items.WATER_BUCKET, JapariItems.darksandstar));
+        registry.register(RecipeHelper.getShapelessRecipe("sandstars",
+                new ItemStack(sugarstar, 5), Items.WATER_BUCKET, JapariItems.sandstarfragment, Items.SUGAR, Items.SUGAR));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
     public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
