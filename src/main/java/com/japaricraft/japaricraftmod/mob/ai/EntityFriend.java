@@ -4,6 +4,7 @@ import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
@@ -11,15 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class EntityFriend extends EntityTameable{
-    private int[] JobLv = new int[32];
-    private int[] JobExp = new int[32];
+    private int exp;
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
 
@@ -40,14 +37,7 @@ public class EntityFriend extends EntityTameable{
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
 
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
-
-        for (int cnt = 0; cnt < 32; cnt++) {
-            compound.setInteger("JobLv_" + cnt, JobLv[cnt]);
-        }
-
-        for (int cnt = 0; cnt < 32; cnt++) {
-            compound.setInteger("JobExp_" + cnt, JobExp[cnt]);
-        }
+        compound.setInteger("Exp", this.exp);
     }
 
     @Override
@@ -58,21 +48,23 @@ public class EntityFriend extends EntityTameable{
 
         this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
 
-        for (int cnt = 0; cnt < 32; cnt++) {
-            JobLv[cnt] = compound.getInteger("JobLv_" + cnt);
-        }
+        this.exp = compound.getInteger("Exp");
+    }
 
-        for (int cnt = 0; cnt < 32; cnt++) {
-            JobExp[cnt] = compound.getInteger("JobExp_" + cnt);
+    public int addexp(int par1) {
+        return exp + par1;
+    }
+
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        if (exp >= 2) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(this.getMaxHealth() + 2);
+            exp = 0;
         }
     }
 
-    @SubscribeEvent
-    public void onLivingDeath(LivingDeathEvent event) {
 
-        Random rand = new Random();
-        
-    }
     public InventoryFriendMain getInventoryFriendMain()
     {
         if (this.inventoryFriendMain == null) {
