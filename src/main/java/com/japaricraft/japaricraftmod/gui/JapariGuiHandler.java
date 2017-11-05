@@ -11,9 +11,6 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class JapariGuiHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (ID == 0) {
-            return null;
-        }
         if (ID == JapariCraftMod.ID_JAPARI_INVENTORY) {
             Entity entity = world.getEntityByID(x);
 
@@ -27,9 +24,6 @@ public class JapariGuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (ID == 0) {
-            return new GuiJapariBook(player);
-        }
         if (ID == JapariCraftMod.ID_JAPARI_INVENTORY)
         {
             Entity entity = world.getEntityByID(x);
