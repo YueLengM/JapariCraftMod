@@ -6,7 +6,6 @@ import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
-import com.japaricraft.japaricraftmod.item.summon.SummonLucky;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -40,7 +39,6 @@ public class JapariItems {
     private static final NonNullList<Item> ITEMS = NonNullList.create();
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 800, 9F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
-    private static Item.ToolMaterial Bearstick = EnumHelper.addToolMaterial("Bearstick", 1, 100, 4F, 2F, 12).setRepairItem(new ItemStack(Blocks.PLANKS));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
 
 
@@ -60,10 +58,6 @@ public class JapariItems {
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
-    public static final Item japaribook = new JapariBook();
-    public static final Item bosscore = new BossCore();
-    public static final Item bearstick = new BearStick(Bearstick);
-    public static final Item summonlucky = new SummonLucky();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
 
     public static List<Item> getItems()
@@ -117,11 +111,8 @@ public class JapariItems {
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
-        register(registry, japaribook.setRegistryName("japaribook"));
-        register(registry, bosscore.setRegistryName("bosscore"));
-        register(registry, bearstick.setRegistryName("bearstick"));
-        register(registry, summonlucky.setRegistryName("summonlucky"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
+        registerItem(new Item(), "japaricoin", JapariCraftMod.tabJapariCraft);
     }
 
     @SideOnly(Side.CLIENT)
@@ -142,10 +133,6 @@ public class JapariItems {
         registerModel(sandstarshovel,"sandstar_shovel");
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
-        registerModel(japaribook,"japaribook");
-        registerModel(bosscore,"bosscore");
-        registerModel(bearstick,"bearstick");
-        registerModel(summonlucky,"summonlucky");
         registerModel(kabanhat,"kabanhat");
         registerModel(sandstarfragment,"sandstar_fragment");
     }

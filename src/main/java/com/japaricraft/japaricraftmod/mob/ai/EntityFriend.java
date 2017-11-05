@@ -4,7 +4,6 @@ import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
@@ -16,7 +15,6 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public class EntityFriend extends EntityTameable{
-    private int exp;
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
 
@@ -37,7 +35,6 @@ public class EntityFriend extends EntityTameable{
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
 
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
-        compound.setInteger("Exp", this.exp);
     }
 
     @Override
@@ -48,21 +45,8 @@ public class EntityFriend extends EntityTameable{
 
         this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
 
-        this.exp = compound.getInteger("Exp");
     }
 
-    public int addexp(int par1) {
-        return exp + par1;
-    }
-
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        if (exp >= 2) {
-            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(this.getMaxHealth() + 2);
-            exp = 0;
-        }
-    }
 
 
     public InventoryFriendMain getInventoryFriendMain()

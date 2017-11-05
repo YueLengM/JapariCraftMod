@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod;
 
 
 import com.japaricraft.japaricraftmod.hander.JapariItems;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.LootTableList;
@@ -31,14 +30,6 @@ public class LootTableEventHandler {
                 main.addEntry(new LootEntryItem(JapariItems.japariman, 5, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japariman"));
                 main.addEntry(new LootEntryItem(JapariItems.japarimanapple, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimanapple"));
                 main.addEntry(new LootEntryItem(JapariItems.japarimancocoa, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimancocoa"));
-            }
-        }
-        if (event.getName().equals(LootTableList.GAMEPLAY_FISHING_JUNK))
-        {
-            LootPool main = event.getTable().getPool("main");
-            if (main != null)
-            {
-                main.addEntry(new LootEntryItem(new ItemStack(JapariItems.summonlucky).getItem(), 3, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:summonlucky"));
             }
         }
         if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT))

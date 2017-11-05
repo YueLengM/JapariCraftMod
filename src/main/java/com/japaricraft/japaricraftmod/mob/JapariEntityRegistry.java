@@ -79,7 +79,6 @@ public class JapariEntityRegistry {
         }
         EntityRegistry.addSpawn(Fennec.class, 7, 1, 3, EnumCreatureType.CREATURE,sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(KouteiPenguin.class, 7, 1, 3, EnumCreatureType.CREATURE,snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(Cerulean.class, 6, 2, 4, EnumCreatureType.MONSTER, monsterplain_biomes.toArray(new Biome[monsterplain_biomes.size()]));
         EntityRegistry.addSpawn(Serval.class, 12, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
         EntityRegistry.addSpawn(Shoebill.class, 12, 2, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(Araisan.class, 12, 2, 3, EnumCreatureType.CREATURE,plain_biomes.toArray(new Biome[plain_biomes.size()]));
