@@ -3,7 +3,7 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendBeg;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIServalBeg;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -60,7 +60,7 @@ public class Serval extends EntityFriend{
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(9, new EntityAIFriendBeg(this, 8.0F));
+        this.tasks.addTask(9, new EntityAIServalBeg(this, 8.0F));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F,1.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));

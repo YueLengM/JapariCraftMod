@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob.ai;
 
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,14 +8,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
-public class EntityAIFriendBeg extends EntityAIBase {
+public class EntityAIServalBeg extends EntityAIBase {
     private final Serval serval;
     private EntityPlayer player;
     private final World world;
     private final float minPlayerDistance;
     private int timeoutCounter;
 
-    public EntityAIFriendBeg(Serval serval, float minDistance) {
+    public EntityAIServalBeg(Serval serval, float minDistance) {
         this.serval = serval;
         this.world = serval.world;
         this.minPlayerDistance = minDistance;
@@ -73,11 +74,17 @@ public class EntityAIFriendBeg extends EntityAIBase {
         for (EnumHand enumhand : EnumHand.values()) {
             ItemStack itemstack = player.getHeldItem(enumhand);
 
-
-            if (Serval.TAME_ITEMS.contains(itemstack.getItem())) ;
+            if (itemstack.getItem() == JapariItems.japariman)
             {
                 return true;
             }
+            if (itemstack.getItem() == JapariItems.japarimancocoa) {
+                return true;
+            }
+            if (itemstack.getItem() == JapariItems.japarimanapple) {
+                return true;
+            }
+
         }
 
         return false;
