@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 public class EntityFriend extends EntityTameable{
+
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
 
@@ -27,6 +28,7 @@ public class EntityFriend extends EntityTameable{
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
+
 
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {

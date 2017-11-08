@@ -27,6 +27,7 @@ item.Curry.name=Curry
 item.SandStarLow.name=SandStarLow
 item.StarCaramel.name=StarCaramel(Unuse)
 item.GoldenJapariman.name=GoldenJapariman
+item.japaricoin.name=JapariCoin
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins

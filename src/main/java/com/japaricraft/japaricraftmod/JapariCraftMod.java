@@ -96,6 +96,7 @@ public class JapariCraftMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+
         GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 0);
         if (event.getSide().isClient())
         {

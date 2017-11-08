@@ -218,6 +218,11 @@ public class ModelServal extends ModelBase {
         this.skirt_1.render(f5);
         this.body.render(f5);
     }
+
+    public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
+        Serval entityServal = (Serval) entitylivingbaseIn;
+        this.head.rotateAngleZ = entityServal.getInterestedAngle(partialTickTime);
+    }
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
@@ -238,6 +243,7 @@ public class ModelServal extends ModelBase {
         {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
+
 
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;

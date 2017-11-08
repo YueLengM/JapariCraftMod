@@ -37,9 +37,9 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.starjapariman, 11, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:starjapariman"));
                 main.addEntry(new LootEntryItem(JapariItems.sandstarpickaxe, 6, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarpickaxe"));
                 main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 8, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
+                main.addEntry(new LootEntryItem(JapariItems.japaricoin, 3, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaricoin"));
             }
         }
     }

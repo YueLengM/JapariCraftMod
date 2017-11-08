@@ -3,6 +3,7 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendBeg;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -13,22 +14,29 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.Set;
 
 
 public class Serval extends EntityFriend{
+    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(Serval.class, DataSerializers.BOOLEAN);
 
+    public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
-
+    private float headRotationCourse;
+    private float headRotationCourseOld;
     public Serval(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.75F);
@@ -52,6 +60,7 @@ public class Serval extends EntityFriend{
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(6, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(9, new EntityAIFriendBeg(this, 8.0F));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F,1.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
@@ -68,12 +77,35 @@ public class Serval extends EntityFriend{
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
     }
 
+    protected void entityInit() {
+        super.entityInit();
+        this.dataManager.register(BEGGING, Boolean.FALSE);
+    }
+
+
+
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+    }
+
+    public void onUpdate() {
+        super.onUpdate();
+        this.headRotationCourseOld = this.headRotationCourse;
+
+        if (this.isBegging()) {
+            this.headRotationCourse += (1.0F - this.headRotationCourse) * 0.4F;
+        } else {
+            this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getInterestedAngle(float p_70917_1_) {
+        return (this.headRotationCourseOld + (this.headRotationCourse - this.headRotationCourseOld) * p_70917_1_) * 0.15F * (float) Math.PI;
     }
 
     @Override
@@ -95,6 +127,7 @@ public class Serval extends EntityFriend{
         return null;//なにも落とさない
     }
 
+
     @Override
     public boolean attackEntityAsMob(Entity entityIn)
     {
@@ -108,6 +141,13 @@ public class Serval extends EntityFriend{
         return flag;
     }
 
+    private boolean isBegging() {
+        return this.dataManager.get(BEGGING);
+    }
+
+    public void setBegging(boolean beg) {
+        this.dataManager.set(BEGGING, beg);
+    }
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
