@@ -178,6 +178,8 @@ public class JapariItems {
                 new ItemStack(sandstarfragment,9), JapariBlocks.SANDSTAR_BLOCK));
         registry.register(RecipeHelper.getShapelessRecipe("sandstars",
                 new ItemStack(sugarstar, 5), Items.WATER_BUCKET, JapariItems.sandstarfragment, Items.SUGAR, Items.SUGAR));
+        registry.register(RecipeHelper.getShapelessRecipe("sandstarlow",
+                new ItemStack(sandstarfragment, 1), Items.WATER_BUCKET, JapariItems.darksandstar));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
     public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
