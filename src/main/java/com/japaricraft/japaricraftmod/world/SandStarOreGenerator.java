@@ -22,13 +22,13 @@ public class SandStarOreGenerator implements IWorldGenerator {
     private void generateOre(World world, Random random, int x, int z) {
         //1チャンクで生成したい回数だけ繰り返す。
         if (world.provider instanceof WorldProviderSurface) {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 2; i++) {
                 int genX = x + random.nextInt(16);
                 int genY = 1 + random.nextInt(32);
                 int genZ = z + random.nextInt(16);
                 new WorldGenMinable(random.nextInt(70) == 0 ?
                         JapariBlocks.SANDSTAR_ORE.getDefaultState() :
-                        JapariBlocks.SANDSTAR_ORE.getDefaultState(), 6).generate(world, random, new BlockPos(genX, genY, genZ));
+                        JapariBlocks.SANDSTAR_ORE.getDefaultState(), 5).generate(world, random, new BlockPos(genX, genY, genZ));
             }
         }
     }

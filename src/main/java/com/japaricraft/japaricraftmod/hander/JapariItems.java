@@ -6,6 +6,7 @@ import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
+import com.japaricraft.japaricraftmod.tool.SandStarAxe;
 import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -56,6 +57,7 @@ public class JapariItems {
     public static final Item sandstarsword = new SandStarSword(SandStar);
     public static final Item sandstarshovel = new SandStarShovel(SandStar);
     public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
+    public static final Item sandstaraxe = new SandStarAxe(SandStar, 8.0F, -2.9F);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
@@ -109,6 +111,7 @@ public class JapariItems {
         register(registry, sandstarsword.setRegistryName("sandstarsword"));
         register(registry, sandstarpickaxe.setRegistryName("sandstarpickaxe"));
         register(registry, sandstarshovel.setRegistryName("sandstarshovel"));
+        register(registry, sandstaraxe.setRegistryName("sandstaraxe"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
@@ -132,6 +135,7 @@ public class JapariItems {
         registerModel(sandstarsword,"sandstar_sword");
         registerModel(sandstarpickaxe,"sandstar_pickaxe");
         registerModel(sandstarshovel,"sandstar_shovel");
+        registerModel(sandstaraxe, "sandstar_axe");
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
         registerModel(kabanhat,"kabanhat");
