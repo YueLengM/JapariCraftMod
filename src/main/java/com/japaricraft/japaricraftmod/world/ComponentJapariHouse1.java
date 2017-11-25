@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.world;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.hander.JapariTreasure;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -132,6 +133,7 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         }
 
         this.spawnVillagers(worldIn, structureBoundingBoxIn, 4, 1, 2, 2);
+        this.generateChest(worldIn, structureBoundingBoxIn, randomIn, 7, 1, 1, JapariTreasure.humanhouse);
         return true;
     }
     @Override
