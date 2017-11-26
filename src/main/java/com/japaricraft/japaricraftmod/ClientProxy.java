@@ -3,7 +3,10 @@ package com.japaricraft.japaricraftmod;
 
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.hander.IColoredItem;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
@@ -39,6 +42,19 @@ public class ClientProxy extends CommonProxy{
         if (item instanceof IColoredItem && ((IColoredItem) item).getItemColor() != null) {
             this.itemsToColor.add(item);
         }
+    }
+
+    @Override
+    public void registerFluidBlockRendering(Block block, String name) {
+        final ModelResourceLocation fluidLocation = new ModelResourceLocation(JapariCraftMod.MODID.toLowerCase() + ":fluids", name);
+
+        // use a custom state mapper which will ignore the LEVEL property
+        ModelLoader.setCustomStateMapper(block, new StateMapperBase() {
+            @Override
+            protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+                return fluidLocation;
+            }
+        });
     }
     public void init(){
     }

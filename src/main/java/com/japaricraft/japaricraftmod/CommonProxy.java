@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod;
 
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 public class CommonProxy{
@@ -11,4 +12,6 @@ public class CommonProxy{
 
     }
 
+    public void registerFluidBlockRendering(Block fluidBlock, String name) {
+    }
 }
