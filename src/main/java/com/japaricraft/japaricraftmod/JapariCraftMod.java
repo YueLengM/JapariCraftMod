@@ -17,7 +17,6 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -60,7 +59,6 @@ public class JapariCraftMod {
     @EventHandler
     public void construct(FMLConstructionEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        FluidRegistry.enableUniversalBucket();
     }
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event)
