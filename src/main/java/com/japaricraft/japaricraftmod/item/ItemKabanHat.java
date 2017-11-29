@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 import static com.japaricraft.japaricraftmod.hander.JapariItems.KabanHatMaterial;
@@ -17,6 +18,6 @@ public class ItemKabanHat extends ItemArmor {
     }
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type)
     {
-        return MODID + ":" + "textures/armor/kabanhat_layer_1.png";
+        return MODID + ":" + "textures/armor/kaban_layer_1.png";
     }
 }
