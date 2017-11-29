@@ -26,7 +26,7 @@ public class Araisan extends EntityFriend {
 
     public Araisan(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.7F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
     }
 

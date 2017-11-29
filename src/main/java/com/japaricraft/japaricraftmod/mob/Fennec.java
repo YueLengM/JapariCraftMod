@@ -27,7 +27,7 @@ public class Fennec extends EntityFriend {
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
     public Fennec(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.8F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
     }
 

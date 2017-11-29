@@ -39,7 +39,7 @@ public class Serval extends EntityFriend{
     private float headRotationCourseOld;
     public Serval(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.75F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
     }
 
