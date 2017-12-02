@@ -84,7 +84,7 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(Araisan.class, 12, 2, 3, EnumCreatureType.CREATURE,plain_biomes.toArray(new Biome[plain_biomes.size()]));
         EntityRegistry.addSpawn(WhiteOwl.class, 10, 1, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(BrownOwl.class, 10, 1, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(Cerulean.class, 14, 2, 4, EnumCreatureType.MONSTER, Biomes.SAVANNA, Biomes.PLAINS, Biomes.ROOFED_FOREST);
-        EntityRegistry.addSpawn(PoisonCerulean.class, 14, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
+        EntityRegistry.addSpawn(Cerulean.class, 15, 2, 4, EnumCreatureType.MONSTER, Biomes.SAVANNA, Biomes.PLAINS, Biomes.ROOFED_FOREST);
+        EntityRegistry.addSpawn(PoisonCerulean.class, 15, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
     }
 }

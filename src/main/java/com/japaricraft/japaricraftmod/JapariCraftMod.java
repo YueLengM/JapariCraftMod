@@ -12,7 +12,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,7 +38,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.2.0";
+    public static final String VERSION = "3.2.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -87,12 +86,6 @@ public class JapariCraftMod {
         JapariEntityRegistry.registerEntities();
     }
 
-    @SubscribeEvent
-    public void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        IForgeRegistry<IRecipe> registry = event.getRegistry();
-
-        JapariItems.registerRecipes(registry);
-    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {

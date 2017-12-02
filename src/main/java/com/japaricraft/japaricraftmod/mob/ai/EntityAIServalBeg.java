@@ -36,7 +36,7 @@ public class EntityAIServalBeg extends EntityAIBase {
     public boolean shouldContinueExecuting() {
         if (!this.player.isEntityAlive()) {
             return false;
-        } else if (this.serval.getDistanceSqToEntity(this.player) > (double) (this.minPlayerDistance * this.minPlayerDistance)) {
+        } else if (this.serval.getDistanceSq(this.player) > (double) (this.minPlayerDistance * this.minPlayerDistance)) {
             return false;
         } else {
             return this.timeoutCounter > 0 && this.hasTemptationItemInHand(this.player);

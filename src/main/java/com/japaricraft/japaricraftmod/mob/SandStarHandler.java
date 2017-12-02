@@ -5,7 +5,6 @@ import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import com.japaricraft.japaricraftmod.mob.SandStarHandler;
 import net.minecraft.entity.monster.EntityIronGolem;
 import net.minecraft.entity.monster.EntitySpellcasterIllager;
 import net.minecraft.entity.monster.EntityVex;
@@ -164,7 +163,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             double d1 = Math.max(entitylivingbase.posY, SandStarHandler.this.posY) + 1.0D;
             float f = (float) MathHelper.atan2(entitylivingbase.posZ - SandStarHandler.this.posZ, entitylivingbase.posX - SandStarHandler.this.posX);
 
-            if (SandStarHandler.this.getDistanceSqToEntity(entitylivingbase) < 9.0D) {
+            if (SandStarHandler.this.getDistanceSq(entitylivingbase) < 9.0D) {
                 for (int i = 0; i < 5; ++i) {
                     float f1 = f + (float) i * (float) Math.PI * 0.4F;
                     this.spawnFangs(SandStarHandler.this.posX + (double) MathHelper.cos(f1) * 1.5D, SandStarHandler.this.posZ + (double) MathHelper.sin(f1) * 1.5D, d0, d1, f1, 0);

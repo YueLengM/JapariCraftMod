@@ -19,7 +19,7 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 6, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
                 main.addEntry(new LootEntryItem(JapariItems.sandstaraxe, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstaraxe"));
             }
         }
@@ -28,9 +28,9 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.japariman, 5, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japariman"));
-                main.addEntry(new LootEntryItem(JapariItems.japarimanapple, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimanapple"));
-                main.addEntry(new LootEntryItem(JapariItems.japarimancocoa, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimancocoa"));
+                main.addEntry(new LootEntryItem(JapariItems.japariman, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japariman"));
+                main.addEntry(new LootEntryItem(JapariItems.japarimanapple, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimanapple"));
+                main.addEntry(new LootEntryItem(JapariItems.japarimancocoa, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimancocoa"));
             }
         }
         if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT))
@@ -38,9 +38,9 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.sandstarpickaxe, 6, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarpickaxe"));
-                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 8, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
-                main.addEntry(new LootEntryItem(JapariItems.japaricoin, 3, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaricoin"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarpickaxe, 5, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarpickaxe"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
+                main.addEntry(new LootEntryItem(JapariItems.japaricoin, 1, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaricoin"));
             }
         }
     }

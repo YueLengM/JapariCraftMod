@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.hander;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.RecipeHelper;
 import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
@@ -11,14 +10,11 @@ import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
 import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -26,9 +22,6 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Collections;
@@ -153,56 +146,5 @@ public class JapariItems {
     public static void registerModel(Item item)
     {
         registerModel(item, item.getRegistryName().getResourcePath());
-    }
-    public static void registerRecipes(IForgeRegistry<IRecipe> registry)
-    {
-        registry.register(RecipeHelper.getShapelessRecipe("curry",
-                new ItemStack(curry),Items.WHEAT,Items.POTIONITEM,Items.POTATO,Items.CARROT));
-        registry.register(RecipeHelper.getShapelessRecipe("japariman_apple",
-                new ItemStack(japarimanapple),Items.WHEAT,Items.APPLE));
-        registry.register(RecipeHelper.getShapelessRecipe("japariman_goldenapple",
-                new ItemStack(goldenjapariman),Items.WHEAT,Items.GOLDEN_APPLE));
-        registry.register(RecipeHelper.getShapelessRecipe("japariman",
-                new ItemStack(japariman),Items.WHEAT,Items.SUGAR));
-        registry.register(RecipeHelper.getShapelessRecipe("starjapariman",
-                new ItemStack(starjapariman),Items.WHEAT,JapariItems.sugarstar));
-        registry.register(RecipeHelper.getShapelessRecipe("japariman_cocoa",
-                new ItemStack(japarimancocoa),Items.WHEAT,new ItemStack(Items.DYE,1,3)));
-        registry.register(RecipeHelper.getSwordRecipe("sandstarsword",
-                new ItemStack(sandstarsword),JapariItems.sandstarfragment));
-        registry.register(RecipeHelper.getPickaxeRecipe("sandstarpickaxe",
-                new ItemStack(sandstarpickaxe),JapariItems.sandstarfragment));
-        registry.register(RecipeHelper.getShovelRecipe("sandstarshovel",
-                new ItemStack(sandstarshovel),JapariItems.sandstarfragment));
-        registry.register(RecipeHelper.getAxeRecipe("sandstaraxe",
-                new ItemStack(sandstaraxe), JapariItems.sandstarfragment));
-        addOredictRecipe(new ItemStack(JapariItems.kabanhat, 1, 0), "sms", "m m", 's', Items.FEATHER, 'm', Blocks.WOOL);
-        registry.register(RecipeHelper.getShapelessRecipe("wildliberationpotion",
-                new ItemStack(wildliberationpotion), Items.GOLDEN_APPLE,Items.POTIONITEM,JapariItems.wildliberationsource));
-        registry.register(RecipeHelper.getSquareRecipe("sandstarblock",new ItemStack(JapariBlocks.SANDSTAR_BLOCK),JapariItems.sandstarfragment));
-        registry.register(RecipeHelper.getShapelessRecipe("sandstar_fragment",
-                new ItemStack(sandstarfragment,9), JapariBlocks.SANDSTAR_BLOCK));
-        registry.register(RecipeHelper.getShapelessRecipe("sandstars",
-                new ItemStack(sugarstar, 5), Items.WATER_BUCKET, JapariItems.sandstarfragment, Items.SUGAR, Items.SUGAR));
-        registry.register(RecipeHelper.getShapelessRecipe("sandstarlow",
-                new ItemStack(sandstarfragment, 1), Items.WATER_BUCKET, JapariItems.darksandstar));
-        OreDictionary.registerOre("sandstar", sandstarfragment);
-    }
-    public static ShapedOreRecipe addOredictRecipe(final ItemStack output, final Object... recipe) {
-        final ShapedOreRecipe sor = new ShapedOreRecipe(getRecipeGroup(output), output, recipe);
-        ForgeRegistries.RECIPES.register(sor.setRegistryName(sor.getGroup()));
-        return sor;
-    }
-
-    public static void addShapelessOredictRecipe(final ItemStack output, final Object... recipe) {
-        final ShapelessOreRecipe sor = new ShapelessOreRecipe(getRecipeGroup(output), output, recipe);
-        ForgeRegistries.RECIPES.register(sor.setRegistryName(sor.getGroup()));
-    }
-    public static ResourceLocation getRecipeGroup(final ItemStack stack) {
-        String s = stack.getUnlocalizedName();
-        final int idx = s.lastIndexOf(":");
-        if (idx>=0)
-            s = s.substring(idx+1);
-        return new ResourceLocation(MODID, s);
     }
 }
