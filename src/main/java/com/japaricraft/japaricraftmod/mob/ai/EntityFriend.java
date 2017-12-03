@@ -23,6 +23,9 @@ public class EntityFriend extends EntityTameable{
         super(worldIn);
     }
 
+    public boolean isBreedingItem(ItemStack stack) {
+        return false;
+    }
     @Nullable
     @Override
     public EntityAgeable createChild(EntityAgeable ageable) {

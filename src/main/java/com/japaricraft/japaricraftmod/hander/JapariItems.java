@@ -22,6 +22,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import java.util.Collections;
@@ -110,6 +111,7 @@ public class JapariItems {
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
+        OreDictionary.registerOre("sandstar", sandstarfragment);
     }
 
     @SideOnly(Side.CLIENT)

@@ -8,8 +8,10 @@ import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -35,6 +37,16 @@ public class JapariEntityRegistry {
     public static void addSpawns()
     {
         //Biomeの種類で湧くように
+        List<BiomeManager.BiomeEntry> biomeEntries = new ArrayList<BiomeManager.BiomeEntry>();
+        biomeEntries.addAll(BiomeManager.getBiomes(BiomeManager.BiomeType.COOL));
+        biomeEntries.addAll(BiomeManager.getBiomes(BiomeManager.BiomeType.DESERT));
+        biomeEntries.addAll(BiomeManager.getBiomes(BiomeManager.BiomeType.ICY));
+        biomeEntries.addAll(BiomeManager.getBiomes(BiomeManager.BiomeType.WARM));
+        List<Biome> biomes = new ArrayList<Biome>();
+        for (BiomeManager.BiomeEntry b : biomeEntries) {
+            biomes.add(b.biome);
+        }
+        biomes.addAll(BiomeManager.oceanBiomes);
         List<Biome> snow_biomes = Lists.newArrayList();
         for (Biome biome : Biome.REGISTRY) {
             Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
@@ -77,14 +89,14 @@ public class JapariEntityRegistry {
                 unstable_biomes.add(biome);
             }
         }
-        EntityRegistry.addSpawn(Fennec.class, 7, 1, 3, EnumCreatureType.CREATURE,sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
+        EntityRegistry.addSpawn(Fennec.class, 6, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(KouteiPenguin.class, 6, 1, 3, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(Serval.class, 11, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
-        EntityRegistry.addSpawn(Shoebill.class, 10, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(Araisan.class, 10, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
-        EntityRegistry.addSpawn(WhiteOwl.class, 9, 1, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(BrownOwl.class, 10, 1, 3, EnumCreatureType.CREATURE,forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(Cerulean.class, 15, 2, 4, EnumCreatureType.MONSTER, Biomes.SAVANNA, Biomes.PLAINS, Biomes.ROOFED_FOREST);
-        EntityRegistry.addSpawn(PoisonCerulean.class, 15, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
+        EntityRegistry.addSpawn(Serval.class, 10, 2, 2, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
+        EntityRegistry.addSpawn(Shoebill.class, 10, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(Araisan.class, 10, 2, 2, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
+        EntityRegistry.addSpawn(WhiteOwl.class, 9, 1, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(BrownOwl.class, 10, 1, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(Cerulean.class, 30, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
+        EntityRegistry.addSpawn(PoisonCerulean.class, 25, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
     }
 }

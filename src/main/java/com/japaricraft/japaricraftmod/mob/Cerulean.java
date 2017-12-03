@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -90,7 +91,10 @@ public class Cerulean extends EntityMob {
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         //ほんとは確率とかで落とすものが決めれるんだと思う
         {
-            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2, 0), 0.0F);
+            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2), 0.0F);
+        }
+        if (rand.nextInt(18) == 0) {
+            entityDropItem(new ItemStack(JapariItems.wildliberationsource), 0.5F);
         }
     }
 

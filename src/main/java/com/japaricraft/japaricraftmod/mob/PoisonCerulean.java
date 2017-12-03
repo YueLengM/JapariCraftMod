@@ -82,8 +82,8 @@ public class PoisonCerulean extends Cerulean  {
     protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
-        this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4, 0), 0.0F);
-        this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2, 0), 0.0F);
+        this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4), 0.0F);
+        this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2), 0.0F);
         if (rand.nextInt(10) == 0) {
             entityDropItem(new ItemStack(JapariItems.wildliberationsource), 0.5F);
         }
