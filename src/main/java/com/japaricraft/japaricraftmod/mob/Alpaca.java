@@ -20,11 +20,10 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class Araisan extends EntityFriend {
+public class Alpaca extends EntityFriend {
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
-
-    public Araisan(World worldIn) {
+    public Alpaca(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
@@ -42,7 +41,7 @@ public class Araisan extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this,Cerulean.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
@@ -76,19 +75,17 @@ public class Araisan extends EntityFriend {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
-        {
-            if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if(this.getHealth()<this.getMaxHealth()) {
+                    if (this.getHealth() < this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -104,32 +101,24 @@ public class Araisan extends EntityFriend {
                     }
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
-            {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        }
-        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                stack.setCount(stack.getCount()-1);
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
             }
 
-            if (!this.world.isRemote)
-            {
-                if (this.rand.nextInt(3) == 0)
-                {
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(3) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte)7);
-                }
-                else
-                {
+                    this.world.setEntityState(this, (byte) 7);
+                } else {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte)6);
+                    this.world.setEntityState(this, (byte) 6);
                 }
 
 
@@ -142,21 +131,15 @@ public class Araisan extends EntityFriend {
     }
 
 
-
-
-
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
 
 
     @Override
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 
