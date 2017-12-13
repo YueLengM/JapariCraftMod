@@ -8,7 +8,7 @@ public class InventoryFriendEquipment extends InventoryFriend
 
     public InventoryFriendEquipment(EntityFriend friend)
     {
-        super(friend, 2);
+        super(friend, 3);
     }
 
     // TODO /* ======================================== MOD START =====================================*/
@@ -19,6 +19,10 @@ public class InventoryFriendEquipment extends InventoryFriend
     public ItemStack getbootItem()
     {
         return this.getStackInSlot(1);
+    }
+
+    public ItemStack getheadItem() {
+        return this.getStackInSlot(2);
     }
 
 }

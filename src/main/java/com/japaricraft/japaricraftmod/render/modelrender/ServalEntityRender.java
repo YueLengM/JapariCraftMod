@@ -15,6 +15,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 public class ServalEntityRender extends RenderLiving<Serval>
 {
     private static final ResourceLocation SERVAL_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval.png");
+    private static final ResourceLocation BEG_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval_beg.png");
     public ServalEntityRender(RenderManager renderManager)
     {
             super(renderManager, new ModelServal(), 0.5F);
@@ -24,6 +25,10 @@ public class ServalEntityRender extends RenderLiving<Serval>
     @Override
     protected ResourceLocation getEntityTexture(Serval entity)
     {
-        return SERVAL_TEXTURES;
+        if (entity.isBegging()) {
+            return BEG_TEXTURES;
+        } else {
+            return SERVAL_TEXTURES;
+        }
     }
 }

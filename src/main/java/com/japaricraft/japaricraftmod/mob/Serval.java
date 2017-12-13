@@ -141,7 +141,7 @@ public class Serval extends EntityFriend{
         return flag;
     }
 
-    private boolean isBegging() {
+    public boolean isBegging() {
         return this.dataManager.get(BEGGING);
     }
 

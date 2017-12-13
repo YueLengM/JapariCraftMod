@@ -49,6 +49,7 @@ entity.Fennec.name=Fennec
 entity.SandStarHandler.name=SandStarHandler(Unuse)
 entity.RoyalPenguin.name=RoyalPenguin
 entity.Alpaca.name=Alpaca Suri
+entity.Squirre.name=Squirre
 
 itemGroup.JapariCraftTab=JapariCraft
 

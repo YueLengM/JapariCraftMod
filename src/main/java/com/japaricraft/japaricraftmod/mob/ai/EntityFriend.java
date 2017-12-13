@@ -84,6 +84,10 @@ public class EntityFriend extends EntityTameable{
 
                 itemStack = this.getInventoryFriendEquipment().getbootItem();
                 break;
+            case HEAD:
+
+                itemStack = this.getInventoryFriendEquipment().getheadItem();
+                break;
 
             default:
 
@@ -97,6 +101,7 @@ public class EntityFriend extends EntityTameable{
     @Override
     public void setItemStackToSlot(EntityEquipmentSlot slotIn, ItemStack stack) {
         switch (slotIn) {
+
             case CHEST:
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(0, stack);
@@ -105,10 +110,9 @@ public class EntityFriend extends EntityTameable{
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(1, stack);
                 break;
+            case HEAD:
 
-            default:
-
-                // none
+                this.getInventoryFriendEquipment().setInventorySlotContents(2, stack);
                 break;
         }
     }

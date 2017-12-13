@@ -16,6 +16,7 @@ public class ContainerFriendInventory extends Container
     //ここで先に装備できるアイテムを指定
     private static final Set<Item> Chest_ITEMS = Sets.newHashSet(Items.LEATHER_CHESTPLATE,Items.CHAINMAIL_CHESTPLATE,Items.GOLDEN_CHESTPLATE,Items.IRON_CHESTPLATE,Items.DIAMOND_CHESTPLATE);
     private static final Set<Item> Boot_ITEMS = Sets.newHashSet(Items.LEATHER_BOOTS,Items.CHAINMAIL_BOOTS,Items.GOLDEN_BOOTS,Items.IRON_BOOTS,Items.DIAMOND_BOOTS);
+    private static final Set<Item> Head_ITEMS = Sets.newHashSet(Items.LEATHER_HELMET, Items.CHAINMAIL_HELMET, Items.GOLDEN_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET);
     private EntityFriend entityFriend;
     private EntityPlayer entityPlayer;
 
@@ -28,7 +29,7 @@ public class ContainerFriendInventory extends Container
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 2; ++index)
+        for (index = 0; index < 3; ++index)
         {
             switch (index)
             {
@@ -45,12 +46,19 @@ public class ContainerFriendInventory extends Container
                     });
                     break;
                 case 1 :
-                    this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 8, 36)
-                    {
+                    this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 8, 36) {
                         @Override
-                        public boolean isItemValid(ItemStack stack)
-                        {
+                        public boolean isItemValid(ItemStack stack) {
                             return Boot_ITEMS.contains(stack.getItem());
+
+                        }
+                    });
+                    break;
+                case 2:
+                    this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 80, 36) {
+                        @Override
+                        public boolean isItemValid(ItemStack stack) {
+                            return Head_ITEMS.contains(stack.getItem());
 
                         }
                     });
