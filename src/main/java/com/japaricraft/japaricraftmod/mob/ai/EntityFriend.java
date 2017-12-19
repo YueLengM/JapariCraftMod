@@ -4,7 +4,9 @@ import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
@@ -52,6 +54,47 @@ public class EntityFriend extends EntityTameable{
 
     }
 
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        if (!world.isRemote) {
+            pickupItem();
+        }
+    }
+
+    private void pickupItem() {
+        if (ticksExisted % 10 != 0) {
+            return;
+        }
+
+        for (EntityItem entityItem : world.getEntitiesWithinAABB(EntityItem.class, getEntityBoundingBox().grow(0.65D))) {
+            if (entityItem.isEntityAlive() && entityItem.onGround) {
+                ItemStack stack = entityItem.getItem();
+
+                if (!stack.isEmpty()) {
+                    stack = onItemStackPickup(stack);
+
+                    if (stack.isEmpty()) {
+                        entityItem.setDead();
+
+                        playPickupSound();
+                    } else {
+                        entityItem.setItem(stack);
+                    }
+                }
+
+                break;
+            }
+        }
+    }
+
+    public ItemStack onItemStackPickup(ItemStack stack) {
+        return inventoryFriendMain.addItem(stack);
+    }
+
+    protected void playPickupSound() {
+        playSound(SoundEvents.ENTITY_ITEM_PICKUP, 0.25F, 0.85F);
+    }
 
 
     public InventoryFriendMain getInventoryFriendMain()
