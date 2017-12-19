@@ -1,11 +1,9 @@
 package com.japaricraft.japaricraftmod.item;
 
-import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySkeletonHorse;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,9 +31,8 @@ public class ItemSandStarFragment extends Item {
     public ItemSandStarFragment() {
         this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
-        addTwoWayTransformation(EntitySkeletonHorse.class, EntityHorse.class);
-        addTwoWayTransformation(EntityOcelot.class, Serval.class);
-        addTwoWayTransformation(EntityPigZombie.class, EntityPig.class);
+        addOnlyWayTransformation(EntitySkeletonHorse.class, EntityHorse.class);
+        addOnlyWayTransformation(EntityPigZombie.class, EntityPig.class);
     }
 
     public boolean hasEffect(ItemStack stack) {
@@ -45,7 +42,7 @@ public class ItemSandStarFragment extends Item {
         return EnumRarity.RARE;
     }
 
-    private void addTwoWayTransformation(Class<? extends EntityLivingBase> class1, Class<? extends EntityLivingBase> class2) {
+    private void addOnlyWayTransformation(Class<? extends EntityLivingBase> class1, Class<? extends EntityLivingBase> class2) {
         transformMap.put(class1, class2);
     }
 
