@@ -56,6 +56,8 @@ entity.active=Bereit
 entity.Fennec.name=Fennek
 entity.SandStarHandler.name=Sandstern Händler (ungenutzt)
 entity.RoyalPenguin.name=Haubenpinguin
+entity.Alpaca.name=Alpaka Suri
+entity.Squirre.name=Hörnchen
 
 advancements.japaricraftmod.root.title=JapariCraftMod
 advancements.japaricraftmod.root.description=Erschaffe Japarimänner
