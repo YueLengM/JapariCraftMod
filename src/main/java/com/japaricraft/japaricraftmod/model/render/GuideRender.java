@@ -1,7 +1,7 @@
-package com.japaricraft.japaricraftmod.render.modelrender;
+package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.Guide;
-import com.japaricraft.japaricraftmod.render.ModelGuide;
+import com.japaricraft.japaricraftmod.model.ModelGuide;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

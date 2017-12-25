@@ -1,6 +1,7 @@
-package com.japaricraft.japaricraftmod.mob;
+package com.japaricraft.japaricraftmod.hander;
 
-import com.japaricraft.japaricraftmod.render.modelrender.*;
+import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.model.render.*;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

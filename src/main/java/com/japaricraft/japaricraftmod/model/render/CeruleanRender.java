@@ -1,7 +1,7 @@
-package com.japaricraft.japaricraftmod.render.modelrender;
+package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.Cerulean;
-import com.japaricraft.japaricraftmod.render.ModelCerulean;
+import com.japaricraft.japaricraftmod.model.ModelCerulean;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

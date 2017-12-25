@@ -1,7 +1,7 @@
-package com.japaricraft.japaricraftmod.render.modelrender;
+package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.Squirre;
-import com.japaricraft.japaricraftmod.render.ModelSquirre;
+import com.japaricraft.japaricraftmod.model.ModelSquirre;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

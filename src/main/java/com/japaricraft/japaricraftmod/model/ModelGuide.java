@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.render;
+package com.japaricraft.japaricraftmod.model;
 
 
 import net.minecraft.client.model.ModelBiped;

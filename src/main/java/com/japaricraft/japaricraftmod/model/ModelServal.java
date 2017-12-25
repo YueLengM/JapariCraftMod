@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.render;
+package com.japaricraft.japaricraftmod.model;
 
 import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.client.model.ModelBase;

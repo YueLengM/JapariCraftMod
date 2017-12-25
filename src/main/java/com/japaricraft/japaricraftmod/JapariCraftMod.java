@@ -2,9 +2,9 @@ package com.japaricraft.japaricraftmod;
 
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
+import com.japaricraft.japaricraftmod.hander.JapariEntityRegistry;
 import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.JapariEntityRegistry;
-import com.japaricraft.japaricraftmod.mob.JapariRenderingRegistry;
+import com.japaricraft.japaricraftmod.hander.JapariRenderingRegistry;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
 import net.minecraft.block.Block;

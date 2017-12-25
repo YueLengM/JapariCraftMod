@@ -1,8 +1,9 @@
-package com.japaricraft.japaricraftmod.mob;
+package com.japaricraft.japaricraftmod.hander;
 
 
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.mob.*;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;

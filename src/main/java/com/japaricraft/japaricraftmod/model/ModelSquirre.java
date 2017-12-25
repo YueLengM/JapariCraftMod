@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.render;
+package com.japaricraft.japaricraftmod.model;
 
 import com.japaricraft.japaricraftmod.mob.Squirre;
 import net.minecraft.client.model.ModelBase;

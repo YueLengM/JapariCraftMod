@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.render.modelrender;
+package com.japaricraft.japaricraftmod.model.render;
 
 
 import net.minecraft.client.model.ModelIllager;
