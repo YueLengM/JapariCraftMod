@@ -74,7 +74,7 @@ public class Serval extends EntityFriend{
         });
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
     }
 
     protected void entityInit() {
@@ -108,6 +108,10 @@ public class Serval extends EntityFriend{
         return (this.headRotationCourseOld + (this.headRotationCourse - this.headRotationCourseOld) * p_70917_1_) * 0.15F * (float) Math.PI;
     }
 
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SoundEvents.ENTITY_CAT_HURT;
+    }
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_CAT_DEATH;

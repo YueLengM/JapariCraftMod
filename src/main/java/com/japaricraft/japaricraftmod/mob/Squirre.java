@@ -59,7 +59,7 @@ public class Squirre extends EntityFriend {
         });
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, PoisonCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
 
     }
 

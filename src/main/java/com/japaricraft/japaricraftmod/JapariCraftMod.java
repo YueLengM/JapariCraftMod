@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.event.EntityEventHandler;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.hander.JapariBlocks;
 import com.japaricraft.japaricraftmod.hander.JapariEntityRegistry;
@@ -38,7 +39,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.3.3";
+    public static final String VERSION = "3.4.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -95,6 +96,7 @@ public class JapariCraftMod {
         {
             JapariRenderingRegistry.registerRenderers();
         }
+        MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
         MinecraftForge.EVENT_BUS.register(new LootTableEventHandler());
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new JapariGuiHandler());
         //メタ情報の登録

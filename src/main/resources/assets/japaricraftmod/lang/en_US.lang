@@ -50,6 +50,7 @@ entity.SandStarHandler.name=SandStarHandler(Unuse)
 entity.RoyalPenguin.name=RoyalPenguin
 entity.Alpaca.name=Alpaca Suri
 entity.Squirre.name=Squirre
+entity.CeruleanBird.name=CeruleanBird
 
 itemGroup.JapariCraftTab=JapariCraft
 
