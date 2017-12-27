@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.4.1": "Model Update",
     "3.4.0": "Cerulean Update",
     "3.3.3": "Recipe fix",
     "3.3.2": "Lang Update",
@@ -13,7 +14,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.4.0",
-    "1.12-latest": "3.4.0"
+    "1.12-recommended": "3.4.1",
+    "1.12-latest": "3.4.1"
   }
 }

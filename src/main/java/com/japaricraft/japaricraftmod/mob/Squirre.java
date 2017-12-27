@@ -129,6 +129,7 @@ public class Squirre extends EntityFriend {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
+                    this.aiSit.setSitting(true);
                     this.world.setEntityState(this, (byte) 7);
                 } else {
                     this.playTameEffect(false);

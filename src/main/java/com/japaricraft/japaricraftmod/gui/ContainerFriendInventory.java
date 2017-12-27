@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.gui;
 
 import com.google.common.collect.Sets;
+import com.japaricraft.japaricraftmod.hander.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -16,7 +17,7 @@ public class ContainerFriendInventory extends Container
     //ここで先に装備できるアイテムを指定
     private static final Set<Item> Chest_ITEMS = Sets.newHashSet(Items.LEATHER_CHESTPLATE,Items.CHAINMAIL_CHESTPLATE,Items.GOLDEN_CHESTPLATE,Items.IRON_CHESTPLATE,Items.DIAMOND_CHESTPLATE);
     private static final Set<Item> Boot_ITEMS = Sets.newHashSet(Items.LEATHER_BOOTS,Items.CHAINMAIL_BOOTS,Items.GOLDEN_BOOTS,Items.IRON_BOOTS,Items.DIAMOND_BOOTS);
-    private static final Set<Item> Head_ITEMS = Sets.newHashSet(Items.LEATHER_HELMET, Items.CHAINMAIL_HELMET, Items.GOLDEN_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET);
+    private static final Set<Item> Head_ITEMS = Sets.newHashSet(Items.LEATHER_HELMET, Items.CHAINMAIL_HELMET, Items.GOLDEN_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET, JapariItems.kabanhat);
     private EntityFriend entityFriend;
     private EntityPlayer entityPlayer;
 

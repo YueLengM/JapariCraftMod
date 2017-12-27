@@ -49,20 +49,8 @@ public class ModelCeruleanBird extends ModelBase {
     @Override
     public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity) {
         super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-
-        float headspeed = 0.1F * (float) (entity.ticksExisted % 10);
-        head.rotateAngleX = MathHelper.sin(f2 * headspeed) * 2.5F * (float) Math.PI / 180.0F;
-        head.rotateAngleZ = MathHelper.cos(f2 * headspeed) * 1.5F * (float) Math.PI / 180.0F;
-
-        float thoraxspeed = 0.075F * (float) (entity.ticksExisted % 10);
-        body.rotateAngleX = MathHelper.sin(f2 * thoraxspeed) * 2.5F * (float) Math.PI / 180.0F;
-        body.rotateAngleZ = MathHelper.cos(f2 * thoraxspeed) * 1.5F * (float) Math.PI / 180.0F;
-
-        WingR.rotateAngleY = MathHelper.cos(f2 * 1.7F) * (float) Math.PI * 0.25F;
-        WingL.rotateAngleY = -WingR.rotateAngleY;
-        WingR.rotateAngleZ = WingR.rotateAngleY;
-        WingL.rotateAngleZ = -WingR.rotateAngleY;
-
+        WingR.rotateAngleZ = MathHelper.cos(f2 * 1.7F) * (float) Math.PI * 0.25F;
+        WingL.rotateAngleZ = -WingR.rotateAngleZ;
     }
 
     /**
