@@ -94,6 +94,5 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(Cerulean.class, JapariConfig.cerulean_wight, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(PoisonCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(Alpaca.class, 9, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(3), Biome.getBiome(34), Biome.getBiome(162));
-        EntityRegistry.addSpawn(CeruleanBird.class, JapariConfig.birdwight, 2, 3, EnumCreatureType.MONSTER, Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);
     }
 }
