@@ -20,7 +20,7 @@ public class LootTableEventHandler {
             if (main != null)
             {
                 main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 6, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
-                main.addEntry(new LootEntryItem(JapariItems.sandstaraxe, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstaraxe"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarcake_115, 8, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarcake_115"));
             }
         }
         if (event.getName().equals(LootTableList.CHESTS_SPAWN_BONUS_CHEST))
@@ -38,7 +38,6 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.sandstarpickaxe, 5, 1, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarpickaxe"));
                 main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
                 main.addEntry(new LootEntryItem(JapariItems.japaricoin, 1, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaricoin"));
             }

@@ -4,6 +4,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -15,32 +16,31 @@ import java.util.List;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
+public class SandStarCake115 extends ItemFood {
 
-public class WildLiberationSource extends ItemFood {
-    public WildLiberationSource() {
-        super(2,1,false);
+    public SandStarCake115() {
+        super(4, 1F, false);
         this.setCreativeTab(tabJapariCraft);
-        this.setUnlocalizedName("WildLiberationSource");
+        this.setUnlocalizedName("SandStarCake115");
         this.setAlwaysEdible();
-
     }
 
-    protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player)
-    {
-        if (!worldIn.isRemote)
-        {
-
-            {
-                player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 320, 1));
-                player.addPotionEffect(new PotionEffect(MobEffects.HUNGER,160,0));
-                player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS,160,0));
-            }
-        }
-    }
     public boolean hasEffect(ItemStack stack) {
         return true;
     }
 
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.RARE;
+    }
+
+    protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
+        if (!worldIn.isRemote) {
+
+            {
+                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 1200, 0));
+            }
+        }
+    }
 
     @Override
     @SideOnly(Side.CLIENT)

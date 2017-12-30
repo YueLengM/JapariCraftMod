@@ -35,11 +35,6 @@ public class BlockWoodenBox extends Block {
         else if (rand.nextInt(25) == 0){
             return JapariItems.sandstarfragment;
         }
-        else if (rand.nextInt(28) == 0){
-
-            return JapariItems.sandstarpickaxe;
-
-        }
         else{
             return Items.STICK;
         }

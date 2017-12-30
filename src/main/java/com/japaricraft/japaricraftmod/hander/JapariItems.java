@@ -2,12 +2,8 @@ package com.japaricraft.japaricraftmod.hander;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.SandStarSword;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
-import com.japaricraft.japaricraftmod.tool.SandStarAxe;
-import com.japaricraft.japaricraftmod.tool.SandStarPickaxe;
-import com.japaricraft.japaricraftmod.tool.SandStarShovel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -47,11 +43,8 @@ public class JapariItems {
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item darksandstar = new DarkSandStar();
     public static final Item sugarstar = new SugarStar();
+    public static final Item sandstarcake_115 = new SandStarCake115();
     public static final Item starcaramel = new StarCaramel();
-    public static final Item sandstarsword = new SandStarSword(SandStar);
-    public static final Item sandstarshovel = new SandStarShovel(SandStar);
-    public static final Item sandstarpickaxe = new SandStarPickaxe(SandStar);
-    public static final Item sandstaraxe = new SandStarAxe(SandStar, 8.0F, -2.9F);
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
@@ -101,11 +94,8 @@ public class JapariItems {
         register(registry, starjapariman.setRegistryName("starjapariman"));
         register(registry, darksandstar.setRegistryName("darksandstar"));
         register(registry, starcaramel.setRegistryName("starcaramel"));
+        register(registry, sandstarcake_115.setRegistryName("sandstarcake_115"));
         register(registry, sugarstar.setRegistryName("sugarstar"));
-        register(registry, sandstarsword.setRegistryName("sandstarsword"));
-        register(registry, sandstarpickaxe.setRegistryName("sandstarpickaxe"));
-        register(registry, sandstarshovel.setRegistryName("sandstarshovel"));
-        register(registry, sandstaraxe.setRegistryName("sandstaraxe"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
@@ -127,15 +117,12 @@ public class JapariItems {
         registerModel(darksandstar,"darksandstar");
         registerModel(starcaramel,"star_caramel");
         registerModel(sugarstar,"sugarstar");
-        registerModel(sandstarsword,"sandstar_sword");
-        registerModel(sandstarpickaxe,"sandstar_pickaxe");
-        registerModel(sandstarshovel,"sandstar_shovel");
-        registerModel(sandstaraxe, "sandstar_axe");
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
         registerModel(kabanhat,"kabanhat");
         registerModel(sandstarfragment,"sandstar_fragment");
         registerModel(japaricoin, "japaricoin");
+        registerModel(sandstarcake_115, "sandstarcake_115");
     }
 
     @SideOnly(Side.CLIENT)

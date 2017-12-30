@@ -28,6 +28,7 @@ item.SandStarLow.name=SandStarLow
 item.StarCaramel.name=StarCaramel(Unuse)
 item.GoldenJapariman.name=GoldenJapariman
 item.japaricoin.name=JapariCoin
+item.SandStarCake115.name=SandStarCake115
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -77,15 +78,6 @@ entity.Villager.japaricraftmod.zookeeper=ZooKeeper
 
 fluid.sandstar=SandStarWater
 
-page.0.name=About this book
-page.0.desc=This book is what I use as a research note
-page.1.name=About Sand Star Part1
-page.1.desc=It is designed to be able to build a completely decoupled individual environment and to save forever
-page.2.name=About Sand Star Part2
-page.2.desc=SandStar Low is still known only as a substance which produces a black cellian at this stage
-page.3.name=About humans
-page.3.desc=Cerulean became activated, people may have become on the verge of extinction
-page.4.name=Author
-page.4.desc=Steve
 
-commands.sandstarlocate.usage=/sandstarlocate SandStarDungeon
+item.WildLiberationSource.tooltip=It is not much to eat
+item.SandStarCake115.tooltip=It is surprisingly delicious

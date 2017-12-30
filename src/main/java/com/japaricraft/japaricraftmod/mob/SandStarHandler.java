@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.hander.JapariItems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -14,8 +13,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -275,7 +272,6 @@ public class SandStarHandler extends EntitySpellcasterIllager {
                 entityvex.onInitialSpawn(SandStarHandler.this.world.getDifficultyForLocation(blockpos), null);
                 entityvex.setOwner(SandStarHandler.this);
                 entityvex.setBoundOrigin(blockpos);
-                entityvex.setItemStackToSlot(EntityEquipmentSlot.MAINHAND,new ItemStack(JapariItems.sandstarshovel));
                 entityvex.setLimitedLife(20 * (30 + SandStarHandler.this.rand.nextInt(90)));
                 SandStarHandler.this.world.spawnEntity(entityvex);
             }
