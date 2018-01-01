@@ -27,6 +27,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 import javax.annotation.Nullable;
 
 public class Delphinus extends EntityFriend {
+    //ガーディアンのコードを参考にした
     //動くためのdatamanager
     private static final DataParameter<Boolean> MOVING = EntityDataManager.<Boolean>createKey(Delphinus.class, DataSerializers.BOOLEAN);
     protected EntityAIWander wander;
@@ -35,6 +36,7 @@ public class Delphinus extends EntityFriend {
         super(worldIn);
         this.experienceValue = 10;
         this.setSize(0.85F, 0.85F);
+        //地上にいる時と水の中にいる時の動きを分けたけど水中の動きがその場からぐるぐるしてる・・・
         if (isInWater()) {
             this.moveHelper = new Delphinus.DelphinusMoveHelper(this);
         } else {
@@ -83,6 +85,7 @@ public class Delphinus extends EntityFriend {
      * Returns new PathNavigateGround instance
      */
     protected PathNavigate createNavigator(World worldIn) {
+        //地上にいる時と水の中にいる時の動きを分けたけど水中の動きがその場からぐるぐるしてる・・・
         if (this.isInWater()) {
             return new PathNavigateSwimmer(this, worldIn);
         } else {
