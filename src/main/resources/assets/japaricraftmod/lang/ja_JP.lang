@@ -28,6 +28,7 @@ item.GoldenJapariman.name=金りんごいりじゃぱりまん
 item.SandStarLow.name=サンドスターロウ
 item.japaricoin.name=じゃぱりコイン
 item.SandStarCake115.name=サンドスターケーキ115
+item.DelphinusLifeFragment.name=マイルカの命がこもったサンドスター
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
@@ -55,6 +56,7 @@ entity.RoyalPenguin.name=ロイヤルペンギン
 entity.Alpaca.name=アルパカ・スリ
 entity.Squirre.name=りす
 entity.CeruleanBird.name=セルリアンバード(未使用)
+entity.Delphinus.name=マイルカ
 
 advancements.japaricraftmod.root.title=じゃぱりくらふともっど
 advancements.japaricraftmod.root.description=じゃぱりまんを作る

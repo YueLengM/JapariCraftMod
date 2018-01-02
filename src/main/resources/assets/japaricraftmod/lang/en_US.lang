@@ -29,6 +29,7 @@ item.StarCaramel.name=StarCaramel(Unuse)
 item.GoldenJapariman.name=GoldenJapariman
 item.japaricoin.name=JapariCoin
 item.SandStarCake115.name=SandStarCake115
+item.DelphinusLifeFragment.name=SandStar with Dolphin's life
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -52,6 +53,7 @@ entity.RoyalPenguin.name=RoyalPenguin
 entity.Alpaca.name=Alpaca Suri
 entity.Squirre.name=Squirre
 entity.CeruleanBird.name=CeruleanBird(Unuse)
+entity.Delphinus.name=Delphinus
 
 itemGroup.JapariCraftTab=JapariCraft
 

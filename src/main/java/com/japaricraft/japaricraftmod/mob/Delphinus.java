@@ -1,60 +1,65 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.google.common.collect.Sets;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
+import com.japaricraft.japaricraftmod.mob.ai.EntityWaterAIFollowOwner;
+import com.japaricraft.japaricraftmod.mob.ai.EntityWaterAISit;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigate;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootTableList;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 public class Delphinus extends EntityFriend {
-    //ガーディアンのコードを参考にした
-    //動くためのdatamanager
-    private static final DataParameter<Boolean> MOVING = EntityDataManager.<Boolean>createKey(Delphinus.class, DataSerializers.BOOLEAN);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH, Items.COOKED_FISH);
+
+    protected EntityWaterAISit aiWaterSit;
+
+    private static final DataParameter<Boolean> MOVING = EntityDataManager.createKey(Delphinus.class, DataSerializers.BOOLEAN);
     protected EntityAIWander wander;
 
     public Delphinus(World worldIn) {
         super(worldIn);
         this.experienceValue = 10;
-        this.setSize(0.85F, 0.85F);
-        //地上にいる時と水の中にいる時の動きを分けたけど水中の動きがその場からぐるぐるしてる・・・
-        if (isInWater()) {
-            this.moveHelper = new Delphinus.DelphinusMoveHelper(this);
-        } else {
-            this.moveHelper = new EntityMoveHelper(this);
-        }
+        this.setSize(0.6F, 1.4F);
+        this.moveHelper = new Delphinus.DelphinusMoveHelper(this);
     }
 
     protected void initEntityAI() {
-        this.aiSit = new EntityAISit(this);
+        this.aiWaterSit = new EntityWaterAISit(this);
         EntityAIMoveTowardsRestriction entityaimovetowardsrestriction = new EntityAIMoveTowardsRestriction(this, 1.0D);
         this.wander = new EntityAIWander(this, 1.0D, 80);
-        this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(1, this.aiWaterSit);
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(4, new EntityWaterAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, entityaimovetowardsrestriction);
-        this.tasks.addTask(6, this.wander);
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(7, this.wander);
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 12.0F, 0.01F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this) {
             public boolean apply(@Nullable EntityLiving p_apply_1_) {
@@ -62,8 +67,6 @@ public class Delphinus extends EntityFriend {
             }
         });
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
         this.wander.setMutexBits(3);
         entityaimovetowardsrestriction.setMutexBits(3);
     }
@@ -85,17 +88,12 @@ public class Delphinus extends EntityFriend {
      * Returns new PathNavigateGround instance
      */
     protected PathNavigate createNavigator(World worldIn) {
-        //地上にいる時と水の中にいる時の動きを分けたけど水中の動きがその場からぐるぐるしてる・・・
-        if (this.isInWater()) {
-            return new PathNavigateSwimmer(this, worldIn);
-        } else {
-            return new PathNavigateGround(this, worldIn);
-        }
+        return new PathNavigateSwimmer(this, worldIn);
     }
 
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register(MOVING, Boolean.valueOf(false));
+        this.dataManager.register(MOVING, Boolean.FALSE);
     }
 
     public boolean isMoving() {
@@ -103,13 +101,7 @@ public class Delphinus extends EntityFriend {
     }
 
     private void setMoving(boolean moving) {
-        this.dataManager.set(MOVING, Boolean.valueOf(moving));
-    }
-
-
-    public void notifyDataManagerChange(DataParameter<?> key) {
-        super.notifyDataManagerChange(key);
-
+        this.dataManager.set(MOVING, moving);
     }
 
     /**
@@ -119,32 +111,24 @@ public class Delphinus extends EntityFriend {
         return 160;
     }
 
-    protected SoundEvent getAmbientSound() {
-        return this.isInWater() ? SoundEvents.ENTITY_GUARDIAN_AMBIENT : SoundEvents.ENTITY_GUARDIAN_AMBIENT_LAND;
-    }
-
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return this.isInWater() ? SoundEvents.ENTITY_GUARDIAN_HURT : SoundEvents.ENTITY_GUARDIAN_HURT_LAND;
-    }
-
-    protected SoundEvent getDeathSound() {
-        return this.isInWater() ? SoundEvents.ENTITY_GUARDIAN_DEATH : SoundEvents.ENTITY_GUARDIAN_DEATH_LAND;
-    }
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
      */
     protected boolean canTriggerWalking() {
-        return true;
+        return false;
     }
 
-    public float getEyeHeight() {
-        return this.height * 0.5F;
-    }
 
     public float getBlockPathWeight(BlockPos pos) {
         return this.world.getBlockState(pos).getMaterial() == Material.WATER ? 10.0F + this.world.getLightBrightness(pos) - 0.5F : super.getBlockPathWeight(pos);
+    }
+
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
+            this.heal(0.06F);
+        }
     }
 
     public void onLivingUpdate() {
@@ -163,6 +147,13 @@ public class Delphinus extends EntityFriend {
         //水の中でも呼吸できるように
         if (this.inWater) {
             this.setAir(300);
+        } else if (this.onGround) {
+            this.motionY += 0.5D;
+            this.motionX += (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 0.4F);
+            this.motionZ += (double) ((this.rand.nextFloat() * 2.0F - 1.0F) * 0.4F);
+            this.rotationYaw = this.rand.nextFloat() * 360.0F;
+            this.onGround = false;
+            this.isAirBorne = true;
         }
         super.onLivingUpdate();
     }
@@ -171,10 +162,60 @@ public class Delphinus extends EntityFriend {
         return SoundEvents.ENTITY_GUARDIAN_FLOP;
     }
 
+    @Override
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+        ItemStack stack = player.getHeldItem(hand);
 
-    @Nullable
-    protected ResourceLocation getLootTable() {
-        return LootTableList.ENTITIES_GUARDIAN;
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+            }
+            if (!stack.isEmpty()) {
+                if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
+                    ItemFood itemfood = (ItemFood) stack.getItem();
+                    if (this.getHealth() < this.getMaxHealth()) {
+                        if (!player.capabilities.isCreativeMode) {
+                            stack.shrink(1);
+                        }
+
+                        this.heal((float) itemfood.getHealAmount(stack));
+                        for (int i = 0; i < 7; ++i) {
+                            double d0 = this.rand.nextGaussian() * 0.02D;
+                            double d1 = this.rand.nextGaussian() * 0.02D;
+                            double d2 = this.rand.nextGaussian() * 0.02D;
+                            this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                        }
+                        return true;
+                    }
+                }
+            }
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+                this.aiWaterSit.setSitting(!this.isSitting());
+                return true;
+            }
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
+            }
+
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(3) == 0) {
+                    this.setTamed(true);
+                    this.setOwnerId(player.getUniqueID());
+                    this.playTameEffect(true);
+                    this.world.setEntityState(this, (byte) 7);
+                } else {
+                    this.playTameEffect(false);
+                    this.world.setEntityState(this, (byte) 6);
+                }
+
+
+            }
+
+            return true;
+        }
+
+        return super.processInteract(player, hand);
     }
 
     /**
@@ -188,7 +229,7 @@ public class Delphinus extends EntityFriend {
      * Checks if the entity's current position is a valid location to spawn this entity.
      */
     public boolean getCanSpawnHere() {
-        return (this.rand.nextInt(20) == 0 || !this.world.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
+        return (!this.world.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
     }
 
     /**
