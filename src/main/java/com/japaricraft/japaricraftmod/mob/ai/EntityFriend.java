@@ -9,6 +9,7 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -52,6 +53,21 @@ public class EntityFriend extends EntityTameable{
 
         this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
 
+    }
+
+    @Override
+    public void damageArmor(float pDamage) {
+        pDamage = Math.max(pDamage / 4, 1);
+
+        if (inventoryFriendEquipment.getbootItem() != null && inventoryFriendEquipment.getbootItem().getItem() instanceof ItemArmor) {
+            inventoryFriendEquipment.getbootItem().damageItem((int) pDamage, this);
+        }
+        if (inventoryFriendEquipment.getChestItem() != null && inventoryFriendEquipment.getChestItem().getItem() instanceof ItemArmor) {
+            inventoryFriendEquipment.getChestItem().damageItem((int) pDamage, this);
+        }
+        if (inventoryFriendEquipment.getheadItem() != null && inventoryFriendEquipment.getheadItem().getItem() instanceof ItemArmor) {
+            inventoryFriendEquipment.getheadItem().damageItem((int) pDamage, this);
+        }
     }
 
     @Override

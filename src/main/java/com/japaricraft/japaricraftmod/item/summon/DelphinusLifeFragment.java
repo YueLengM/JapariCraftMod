@@ -12,11 +12,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
-
 public class DelphinusLifeFragment extends Item {
     public DelphinusLifeFragment() {
-        this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("DelphinusLifeFragment");
         this.setMaxStackSize(1);
     }

@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.4.5": "Fixed Can`t Damage When Friends equipped with Armor",
     "3.4.4": "Fix Chest LootTable",
     "3.4.3": "SandStarTool delete",
     "3.4.2": "SpawnFix",
@@ -17,7 +18,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.4.4",
-    "1.12-latest": "3.4.4"
+    "1.12-recommended": "3.4.5",
+    "1.12-latest": "3.4.5"
   }
 }
