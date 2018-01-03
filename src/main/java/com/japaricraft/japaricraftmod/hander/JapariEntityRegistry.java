@@ -29,7 +29,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.WhiteOwl"), WhiteOwl.class, "WhiteOwl", 6, instance, 60, 1, false, 7375001, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BrownOwl"), BrownOwl.class, "BrownOwl", 7, instance, 60, 1, false, 5243410, 5243405);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanBird"), CeruleanBird.class, "CeruleanBird", 8, instance, 60, 1, false, 0x00CCFF, 0x99CCFF);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Delphinus"), Delphinus.class, "Delphinus", 9, instance, 80, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Delphinus"), Delphinus.class, "Delphinus", 9, instance, 80, 1, false, 0x333333, 0x0066CC);
 
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Araisan"), Araisan.class, "Araisan", 12, instance, 60, 1, false, 0x666699, 0x969696);

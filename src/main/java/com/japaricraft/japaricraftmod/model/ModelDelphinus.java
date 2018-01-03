@@ -6,6 +6,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelDelphinus extends ModelBase {
     public ModelRenderer body;
@@ -36,7 +37,7 @@ public class ModelDelphinus extends ModelBase {
         this.body = new ModelRenderer(this, 32, 0);
         this.body.setRotationPoint(0.0F, 9.5F, 0.0F);
         this.body.addBox(-2.5F, 0.0F, -2.5F, 5, 8, 5, 0.0F);
-        this.setRotateAngle(body, 0.37314402793711257F, 0.0F, 0.0F);
+        this.setRotateAngle(body, 0.87314402793711257F, 0.0F, 0.0F);
         this.head = new ModelRenderer(this, 0, 0);
         this.head.setRotationPoint(0.0F, 1.0F, 0.0F);
         this.head.addBox(-4.0F, -9.0F, -4.0F, 8, 8, 8, 0.0F);
@@ -80,7 +81,7 @@ public class ModelDelphinus extends ModelBase {
             return;
         }
 
-        Delphinus entitysquirre = (Delphinus) entityIn;
+        Delphinus entitydelphinus = (Delphinus) entityIn;
         boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -115,13 +116,14 @@ public class ModelDelphinus extends ModelBase {
         this.legL.rotateAngleZ = 0.0F;
         this.tale.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
 
-        if (entitysquirre.isSitting() || this.isRiding) {
+        if (entitydelphinus.isSitting() || this.isRiding) {
             this.legR.rotateAngleX = -1.4137167F;
             this.legR.rotateAngleY = ((float) Math.PI / 10F);
             this.legR.rotateAngleZ = 0.07853982F;
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
+            this.body.rotateAngleX = 0F;
         } else {
             this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
             this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
@@ -129,6 +131,7 @@ public class ModelDelphinus extends ModelBase {
             this.legL.rotateAngleY = 0.0F;
             this.legR.rotateAngleZ = 0.0F;
             this.legL.rotateAngleZ = 0.0F;
+            this.body.rotateAngleX = 0.87314402793711257F;
         }
 
         this.handR.rotateAngleY = 0.0F;
@@ -139,6 +142,8 @@ public class ModelDelphinus extends ModelBase {
         this.handL.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+
+        GL11.glTranslatef(0F, 0.3F, 0F);
     }
 
     /**

@@ -24,7 +24,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -44,7 +43,7 @@ public class Delphinus extends EntityFriend {
     public Delphinus(World worldIn) {
         super(worldIn);
         this.experienceValue = 10;
-        this.setSize(0.6F, 1.4F);
+        this.setSize(0.7F, 0.8F);
         this.moveHelper = new Delphinus.DelphinusMoveHelper(this);
     }
 
@@ -53,13 +52,13 @@ public class Delphinus extends EntityFriend {
         EntityAIMoveTowardsRestriction entityaimovetowardsrestriction = new EntityAIMoveTowardsRestriction(this, 1.0D);
         this.wander = new EntityAIWander(this, 1.0D, 80);
         this.tasks.addTask(1, this.aiWaterSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
-        this.tasks.addTask(4, new EntityWaterAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(5, entityaimovetowardsrestriction);
-        this.tasks.addTask(7, this.wander);
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 12.0F, 0.01F));
-        this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityWaterAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(4, entityaimovetowardsrestriction);
+        this.tasks.addTask(5, this.wander);
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityCreature.class, 12.0F, 0.01F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this) {
             public boolean apply(@Nullable EntityLiving p_apply_1_) {
@@ -67,8 +66,8 @@ public class Delphinus extends EntityFriend {
             }
         });
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.wander.setMutexBits(3);
-        entityaimovetowardsrestriction.setMutexBits(3);
+        this.wander.setMutexBits(1);
+        entityaimovetowardsrestriction.setMutexBits(1);
     }
 
     protected void applyEntityAttributes() {
@@ -79,14 +78,8 @@ public class Delphinus extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
     }
 
-    //registerFixesDelphinusのところはいじらないで
-    public static void registerFixesDelphinus(DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, Delphinus.class);
-    }
 
-    /**
-     * Returns new PathNavigateGround instance
-     */
+    @Override
     protected PathNavigate createNavigator(World worldIn) {
         return new PathNavigateSwimmer(this, worldIn);
     }
@@ -118,6 +111,10 @@ public class Delphinus extends EntityFriend {
      */
     protected boolean canTriggerWalking() {
         return false;
+    }
+
+    protected boolean isValidLightLevel() {
+        return true;
     }
 
 
@@ -218,18 +215,14 @@ public class Delphinus extends EntityFriend {
         return super.processInteract(player, hand);
     }
 
-    /**
-     * Checks that the entity is not colliding with any blocks / liquids
-     */
+    @Override
     public boolean isNotColliding() {
         return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty();
     }
 
-    /**
-     * Checks if the entity's current position is a valid location to spawn this entity.
-     */
-    public boolean getCanSpawnHere() {
-        return (!this.world.canBlockSeeSky(new BlockPos(this))) && super.getCanSpawnHere();
+    @Override
+    public boolean isPushedByWater() {
+        return false;
     }
 
     /**
@@ -256,10 +249,6 @@ public class Delphinus extends EntityFriend {
         return flag;
     }
 
-    /**
-     * The speed it takes to move the entityliving's rotationPitch through the faceEntity method. This is only currently
-     * use in wolves.
-     */
     public int getVerticalFaceSpeed() {
         return 180;
     }
