@@ -2,7 +2,7 @@ package com.japaricraft.japaricraftmod.gui;
 
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
+import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;

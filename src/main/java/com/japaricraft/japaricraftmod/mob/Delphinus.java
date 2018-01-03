@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
 import com.japaricraft.japaricraftmod.mob.ai.EntityWaterAIFollowOwner;
 import com.japaricraft.japaricraftmod.mob.ai.EntityWaterAISit;
 import net.minecraft.block.material.Material;

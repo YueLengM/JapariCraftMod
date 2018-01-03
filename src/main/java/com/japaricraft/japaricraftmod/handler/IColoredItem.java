@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.hander;
+package com.japaricraft.japaricraftmod.handler;
 
 import net.minecraft.client.renderer.color.IItemColor;
 import net.minecraftforge.fml.relauncher.Side;

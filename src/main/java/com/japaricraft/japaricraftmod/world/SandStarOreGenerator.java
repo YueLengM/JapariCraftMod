@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.world;
 
-import com.japaricraft.japaricraftmod.hander.JapariBlocks;
+import com.japaricraft.japaricraftmod.handler.JapariBlocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderSurface;

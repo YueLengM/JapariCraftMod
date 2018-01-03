@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.gui;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
+import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

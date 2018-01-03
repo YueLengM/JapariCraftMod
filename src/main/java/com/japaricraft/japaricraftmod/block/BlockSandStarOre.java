@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.block;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.hander.JapariItems;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

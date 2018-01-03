@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.world;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.hander.JapariTreasure;
+import com.japaricraft.japaricraftmod.handler.JapariTreasure;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod;
 
 
-import com.japaricraft.japaricraftmod.hander.JapariItems;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootPool;
 import net.minecraft.world.storage.loot.LootTableList;

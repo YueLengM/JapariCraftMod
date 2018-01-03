@@ -1,8 +1,8 @@
 package com.japaricraft.japaricraftmod.gui;
 
 import com.google.common.collect.Sets;
-import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;

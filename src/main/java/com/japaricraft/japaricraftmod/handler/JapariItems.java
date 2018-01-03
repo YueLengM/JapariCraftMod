@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.hander;
+package com.japaricraft.japaricraftmod.handler;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;

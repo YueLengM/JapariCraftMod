@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.mob.ai;
 
-import com.japaricraft.japaricraftmod.hander.JapariItems;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;

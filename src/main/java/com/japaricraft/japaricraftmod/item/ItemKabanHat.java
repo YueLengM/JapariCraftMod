@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
-import static com.japaricraft.japaricraftmod.hander.JapariItems.KabanHatMaterial;
+import static com.japaricraft.japaricraftmod.handler.JapariItems.KabanHatMaterial;
 
 
 public class ItemKabanHat extends ItemArmor {

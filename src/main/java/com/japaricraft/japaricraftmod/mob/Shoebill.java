@@ -2,8 +2,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.hander.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.EntityFriend;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;

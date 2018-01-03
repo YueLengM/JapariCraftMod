@@ -2,7 +2,7 @@ package com.japaricraft.japaricraftmod;
 
 
 import com.google.common.collect.Lists;
-import com.japaricraft.japaricraftmod.hander.IColoredItem;
+import com.japaricraft.japaricraftmod.handler.IColoredItem;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;

@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.mob.ai;
+package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
