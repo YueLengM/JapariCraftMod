@@ -1,12 +1,10 @@
 package com.japaricraft.japaricraftmod.mob.ai;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.pathfinding.PathNavigate;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -90,25 +88,10 @@ public class EntityWaterAIFollowOwner extends EntityAIBase {
                             int j = MathHelper.floor(this.owner.posZ) - 2;
                             int k = MathHelper.floor(this.owner.getEntityBoundingBox().minY);
 
-                            for (int l = 0; l <= 4; ++l) {
-                                for (int i1 = 0; i1 <= 4; ++i1) {
-                                    if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.isTeleportFriendlyBlock(i, j, k, l, i1)) {
-                                        this.tameable.setLocationAndAngles((double) ((float) (i + l) + 0.5F), (double) k, (double) ((float) (j + i1) + 0.5F), this.tameable.rotationYaw, this.tameable.rotationPitch);
-                                        this.petPathfinder.clearPath();
-                                        return;
-                                    }
-                                }
-                            }
                         }
                     }
                 }
             }
         }
-    }
-
-    protected boolean isTeleportFriendlyBlock(int x, int p_192381_2_, int y, int p_192381_4_, int p_192381_5_) {
-        BlockPos blockpos = new BlockPos(x + p_192381_4_, y - 1, p_192381_2_ + p_192381_5_);
-        IBlockState iblockstate = this.world.getBlockState(blockpos);
-        return iblockstate.canEntitySpawn(this.tameable) && this.world.isAirBlock(blockpos.up(2));
     }
 }
