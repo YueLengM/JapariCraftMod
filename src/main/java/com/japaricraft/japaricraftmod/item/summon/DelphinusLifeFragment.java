@@ -1,8 +1,12 @@
 package com.japaricraft.japaricraftmod.item.summon;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.Delphinus;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -11,10 +15,15 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class DelphinusLifeFragment extends Item {
     public DelphinusLifeFragment() {
         this.setUnlocalizedName("DelphinusLifeFragment");
+        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setMaxStackSize(1);
     }
 
@@ -26,7 +35,7 @@ public class DelphinusLifeFragment extends Item {
             itemstack.shrink(1);
         }
 
-        world.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.BLOCK_NOTE_HAT, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_CHICKEN_EGG, SoundCategory.PLAYERS, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
         playerIn.getCooldownTracker().setCooldown(this, 30);
         if (!world.isRemote) {
             Delphinus beast = new Delphinus(world);
@@ -38,7 +47,18 @@ public class DelphinusLifeFragment extends Item {
         return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
+        super.addInformation(stack, world, tooltip, flags);
+        tooltip.add(I18n.format(getUnlocalizedName() + ".tooltip"));
+    }
+
     public boolean hasEffect(ItemStack stack) {
         return true;
+    }
+
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.EPIC;
     }
 }

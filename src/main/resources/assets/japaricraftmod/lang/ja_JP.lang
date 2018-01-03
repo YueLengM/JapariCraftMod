@@ -29,6 +29,7 @@ item.SandStarLow.name=サンドスターロウ
 item.japaricoin.name=じゃぱりコイン
 item.SandStarCake115.name=サンドスターケーキ115
 item.DelphinusLifeFragment.name=マイルカの命がこもったサンドスター
+item.DelphinusLifeFragment.tooltip=必ず海で使いましょう
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン

@@ -3,9 +3,7 @@ package com.japaricraft.japaricraftmod.item;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySkeletonHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumRarity;
@@ -31,7 +29,6 @@ public class ItemSandStarFragment extends Item {
     public ItemSandStarFragment() {
         this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("SandStarFragment");
-        addOnlyWayTransformation(EntitySkeletonHorse.class, EntityHorse.class);
         addOnlyWayTransformation(EntityPigZombie.class, EntityPig.class);
     }
 
