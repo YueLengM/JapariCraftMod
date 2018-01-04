@@ -83,10 +83,10 @@ public class JapariEntityRegistry {
                 sandy_biomes.add(biome);
             }
         }
-        EntityRegistry.addSpawn(Fennec.class, 6, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
-        EntityRegistry.addSpawn(KouteiPenguin.class, 6, 1, 3, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(RoyalPenguin.class, 6, 1, 3, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(Serval.class, 10, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
+        EntityRegistry.addSpawn(Fennec.class, 4, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
+        EntityRegistry.addSpawn(KouteiPenguin.class, 3, 1, 3, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
+        EntityRegistry.addSpawn(RoyalPenguin.class, 3, 1, 3, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
+        EntityRegistry.addSpawn(Serval.class, 9, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
         EntityRegistry.addSpawn(Shoebill.class, 9, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(Araisan.class, 9, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(WhiteOwl.class, 9, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
