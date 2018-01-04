@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.5.2": "change mobweight and can see Araisan equip Hat",
     "3.5.1": "fix Delphinus bug",
     "3.5.0": "add Delphinus",
     "3.4.5": "Fixed Can`t Damage When Friends equipped with Armor",
@@ -20,7 +21,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.5.1",
-    "1.12-latest": "3.5.1"
+    "1.12-recommended": "3.5.2",
+    "1.12-latest": "3.5.2"
   }
 }
