@@ -17,7 +17,7 @@ public class BlockSandStar extends Block {
         setCreativeTab(JapariCraftMod.tabJapariCraft);
         setUnlocalizedName("SandStarBlock");
         setHardness(4.0F);/*硬さ*/
-        setResistance(30.0F);/*爆破耐性*/
+        setResistance(20.0F);/*爆破耐性*/
         setSoundType(SoundType.GLASS);
         setLightLevel(10);
         setHarvestLevel("pickaxe",1);

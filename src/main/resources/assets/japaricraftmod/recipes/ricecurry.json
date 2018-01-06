@@ -1,12 +1,11 @@
 {
-  "type": "forge:ore_shapeless",
+  "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
       "item": "minecraft:potion"
     },
     {
-      "type": "forge:ore_dict",
-      "ore": "cropRice"
+      "item": "minecraft:wheat"
     },
     {
       "item": "minecraft:potato"
