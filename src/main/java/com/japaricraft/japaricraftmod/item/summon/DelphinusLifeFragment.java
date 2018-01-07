@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.item.summon;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.Delphinus;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
@@ -23,7 +22,6 @@ import java.util.List;
 public class DelphinusLifeFragment extends Item {
     public DelphinusLifeFragment() {
         this.setUnlocalizedName("DelphinusLifeFragment");
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setMaxStackSize(1);
     }
 

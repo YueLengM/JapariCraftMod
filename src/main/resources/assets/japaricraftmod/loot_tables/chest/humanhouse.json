@@ -8,11 +8,6 @@
     "entries": [
       {
         "type": "item",
-        "name": "japaricraftmod:sandstar_delphinus",
-        "weight": 1
-      },
-      {
-        "type": "item",
         "name": "japaricraftmod:wildliberationpotion",
         "weight": 3
       },

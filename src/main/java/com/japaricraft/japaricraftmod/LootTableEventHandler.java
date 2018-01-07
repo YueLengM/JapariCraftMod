@@ -42,11 +42,6 @@ public class LootTableEventHandler {
                 main.addEntry(new LootEntryItem(JapariItems.japaricoin, 1, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:japaricoin"));
             }
         }
-        if (event.getName().equals(LootTableList.CHESTS_JUNGLE_TEMPLE)) {
-            LootPool main = event.getTable().getPool("main");
-            if (main != null) {
-                main.addEntry(new LootEntryItem(JapariItems.sandstar_delphinus, 4, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstar_delphinus"));
-            }
-        }
+
     }
 }

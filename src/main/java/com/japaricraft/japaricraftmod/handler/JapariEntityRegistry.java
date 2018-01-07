@@ -5,6 +5,8 @@ import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.JapariConfig;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.*;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
@@ -40,7 +42,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Alpaca"), Alpaca.class, "Alpaca", 17, instance, 60, 1, false, 0xf0f5f0, 0xf5f5dc);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Squirre"), Squirre.class, "Squirre", 18, instance, 60, 1, false, 0xf0f5f0, 0x993300);
 
-
+        EntitySpawnPlacementRegistry.setPlacementType(Delphinus.class, EntityLiving.SpawnPlacementType.IN_WATER);
     }
     public static void addSpawns()
     {
@@ -95,5 +97,6 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(Cerulean.class, JapariConfig.cerulean_wight, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(PoisonCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(Alpaca.class, 9, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
+        EntityRegistry.addSpawn(Delphinus.class, 8, 2, 3, EnumCreatureType.WATER_CREATURE, Biomes.OCEAN, Biomes.DEEP_OCEAN);
     }
 }

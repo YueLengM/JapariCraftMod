@@ -9,8 +9,8 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -22,7 +22,6 @@ import net.minecraft.pathfinding.PathNavigateSwimmer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -112,13 +111,20 @@ public class Delphinus extends EntityFriend {
         return false;
     }
 
-    protected boolean isValidLightLevel() {
-        return true;
-    }
 
-
+    @Override
     public float getBlockPathWeight(BlockPos pos) {
         return this.world.getBlockState(pos).getMaterial() == Material.WATER ? 10.0F + this.world.getLightBrightness(pos) - 0.5F : super.getBlockPathWeight(pos);
+    }
+
+    @Override
+    public boolean getCanSpawnHere() {
+        return (this.rand.nextInt(10) == 0 || world.getBlockState(new BlockPos(MathHelper.floor(posX), MathHelper.floor(posY), MathHelper.floor(posZ))).getBlock() == Blocks.WATER);
+    }
+
+    @Override
+    protected boolean canDespawn() {
+        return !this.isTamed() && this.ticksExisted > 2400;
     }
 
     protected void updateAITasks() {
@@ -152,10 +158,6 @@ public class Delphinus extends EntityFriend {
             this.isAirBorne = true;
         }
         super.onLivingUpdate();
-    }
-
-    protected SoundEvent getFlopSound() {
-        return SoundEvents.ENTITY_GUARDIAN_FLOP;
     }
 
     @Override
@@ -319,5 +321,4 @@ public class Delphinus extends EntityFriend {
             }
         }
     }
-
 }
