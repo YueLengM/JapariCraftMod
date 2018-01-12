@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class InventoryFriendEquipment extends InventoryFriend
 {
-
+    //slotCountでスロットの合計を入力
     public InventoryFriendEquipment(EntityFriend friend)
     {
         super(friend, 3);

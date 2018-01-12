@@ -34,7 +34,9 @@ public class ContainerFriendInventory extends Container
         {
             switch (index)
             {
-                //胸の装備スロット
+                /*0は胸の装備スロット
+                1は足、2は頭
+                 */
                 case 0 :
                     this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 8, 18)
                     {

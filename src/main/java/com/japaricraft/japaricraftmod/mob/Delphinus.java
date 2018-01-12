@@ -33,6 +33,7 @@ import java.util.Set;
 public class Delphinus extends EntityFriend {
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH, Items.COOKED_FISH);
 
+    //今回は水中のみ行動可能だから新たに水中で座るようになるAIを用意
     protected EntityWaterAISit aiWaterSit;
 
     private static final DataParameter<Boolean> MOVING = EntityDataManager.createKey(Delphinus.class, DataSerializers.BOOLEAN);
@@ -45,6 +46,7 @@ public class Delphinus extends EntityFriend {
         this.moveHelper = new Delphinus.DelphinusMoveHelper(this);
     }
 
+    //ガーディアンを参考にした
     protected void initEntityAI() {
         this.aiWaterSit = new EntityWaterAISit(this);
         EntityAIMoveTowardsRestriction entityaimovetowardsrestriction = new EntityAIMoveTowardsRestriction(this, 1.0D);
@@ -76,7 +78,8 @@ public class Delphinus extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
     }
 
-
+    //ナビゲーター(?)を変える
+    //Overrideを忘れずに
     @Override
     protected PathNavigate createNavigator(World worldIn) {
         return new PathNavigateSwimmer(this, worldIn);
@@ -188,6 +191,7 @@ public class Delphinus extends EntityFriend {
                 }
             }
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+                //aiSitからWaterSitへ変える
                 this.aiWaterSit.setSitting(!this.isSitting());
                 return true;
             }
