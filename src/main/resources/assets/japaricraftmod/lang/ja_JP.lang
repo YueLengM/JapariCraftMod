@@ -58,11 +58,12 @@ entity.Alpaca.name=アルパカ・スリ
 entity.Squirre.name=りす
 entity.CeruleanBird.name=セルリアンバード(未使用)
 entity.Delphinus.name=マイルカ
+entity.BlackCerulean.name=ブラックセルリアン
 
 advancements.japaricraftmod.root.title=じゃぱりくらふともっど
 advancements.japaricraftmod.root.description=じゃぱりまんを作る
-advancements.japaricraftmod.sandstarhandler.title=サンドスターの使い手
-advancements.japaricraftmod.sandstarhandler.description=サンドスターハンドラーを倒す
+advancements.japaricraftmod.blackcerulean.title=あくまのせるりあん
+advancements.japaricraftmod.blackcerulean.description=ブラックセルリアンを倒す
 advancements.japaricraftmod.cerulean.title=セルリアンハンター
 advancements.japaricraftmod.cerulean.description=セルリアンを倒す
 advancements.japaricraftmod.wildpotion.title=エネルギードリンク

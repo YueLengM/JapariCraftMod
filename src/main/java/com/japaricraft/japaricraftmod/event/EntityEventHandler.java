@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.event;
 
+import com.japaricraft.japaricraftmod.mob.BlackCerulean;
 import com.japaricraft.japaricraftmod.mob.Cerulean;
 import com.japaricraft.japaricraftmod.mob.Serval;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -17,6 +18,7 @@ public class EntityEventHandler {
             EntityVillager villager = (EntityVillager) event.getEntity();
 
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, Cerulean.class, 12.0F, 0.8D, 0.8D));
+            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, BlackCerulean.class, 12.0F, 0.8D, 0.8D));
         }
         if (event.getEntity() instanceof EntityCreeper) {
             EntityCreeper creeper = (EntityCreeper) event.getEntity();
@@ -27,6 +29,7 @@ public class EntityEventHandler {
             EntityVindicator vindicator = (EntityVindicator) event.getEntity();
 
             vindicator.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(vindicator, Cerulean.class, true));
+            vindicator.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(vindicator, BlackCerulean.class, true));
         }
     }
 }

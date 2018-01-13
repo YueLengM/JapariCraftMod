@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:darksandstar"
+    },
+    "title": {
+      "translate": "advancements.japaricraftmod.blackcerulean.title"
+    },
+    "description": {
+      "translate": "advancements.japaricraftmod.blackcerulean.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "japaricraftmod:japaricraftmod/cerulean",
+  "rewards": {
+    "experience": 160
+  },
+  "criteria": {
+    "blackcerulean": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "japaricraftmod:mobs.BlackCerulean"
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "blackcerulean"
+    ]
+  ]
+}

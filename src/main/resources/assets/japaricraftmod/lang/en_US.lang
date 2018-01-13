@@ -54,6 +54,7 @@ entity.Alpaca.name=Alpaca Suri
 entity.Squirre.name=Squirre
 entity.CeruleanBird.name=CeruleanBird(Unuse)
 entity.Delphinus.name=Delphinus
+entity.BlackCerulean.name=BlackCerulean
 
 itemGroup.JapariCraftTab=JapariCraft
 
@@ -63,8 +64,8 @@ entity.active=Active
 
 advancements.japaricraftmod.root.title=JapariCraftMod
 advancements.japaricraftmod.root.description=Make Japariman
-advancements.japaricraftmod.sandstarhandler.title=SandStarHandler
-advancements.japaricraftmod.sandstarhandler.description=Kill SandStar Handler
+advancements.japaricraftmod.blackcerulean.title=BlackCerulean
+advancements.japaricraftmod.blackcerulean.description=Kill Evil BlackCerulean
 advancements.japaricraftmod.cerulean.title=Cerulean Hunter
 advancements.japaricraftmod.cerulean.description=Kill Cerulean
 advancements.japaricraftmod.wildpotion.title=Energy drink

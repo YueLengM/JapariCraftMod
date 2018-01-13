@@ -74,7 +74,9 @@ public class PoisonCerulean extends Cerulean  {
     }
 
 
-    public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEAD; }
+    public EnumCreatureAttribute getCreatureAttribute() {
+        return EnumCreatureAttribute.UNDEFINED;
+    }
 
 
 
