@@ -43,6 +43,7 @@ public class Araisan extends EntityFriend {
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIAvoidEntity<>(this,Cerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, CeruleanBird.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, BlackCerulean.class, 8.0F, 1.1D, 1.1D));
         this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
