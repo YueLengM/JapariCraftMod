@@ -92,7 +92,7 @@ public class ModelBlackCerulean extends ModelBase {
         float f = ageInTicks - (float) entityIn.ticksExisted;
         float f1 = ((BlackCerulean) entityIn).getStandingAnimationScale(f);
         f1 = f1 * f1;
-        this.mainBody.rotateAngleX = f1 * (float) Math.PI * -0.35F;
+        this.mainBody.rotateAngleX = f1 * (float) Math.PI * -0.32F;
         this.mainLegL1.rotateAngleX -= f1 * (float) Math.PI * 0.45F;
         this.mainLegR1.rotateAngleX -= f1 * (float) Math.PI * 0.45F;
 

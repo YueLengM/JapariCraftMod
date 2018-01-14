@@ -60,12 +60,12 @@ public class BlackCerulean extends EntityMob {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(90.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(28.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(160.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(30.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.5D);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(8.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.3D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
     }
 
     @Override
@@ -186,13 +186,13 @@ public class BlackCerulean extends EntityMob {
             double d0 = this.getAttackReachSqr(p_190102_1_);
 
             if (p_190102_2_ <= d0 && this.attackTick <= 0) {
-                this.attackTick = 30;
+                this.attackTick = 40;
                 this.attacker.attackEntityAsMob(p_190102_1_);
                 BlackCerulean.this.setStanding(false);
             } else if (p_190102_2_ <= d0 * 2.0D) {
                 if (this.attackTick <= 0) {
                     BlackCerulean.this.setStanding(false);
-                    this.attackTick = 30;
+                    this.attackTick = 40;
                 }
 
                 if (this.attackTick <= 10) {
@@ -200,7 +200,7 @@ public class BlackCerulean extends EntityMob {
                     BlackCerulean.this.playWarningSound();
                 }
             } else {
-                this.attackTick = 30;
+                this.attackTick = 40;
                 BlackCerulean.this.setStanding(false);
             }
         }
@@ -214,7 +214,7 @@ public class BlackCerulean extends EntityMob {
         }
 
         protected double getAttackReachSqr(EntityLivingBase attackTarget) {
-            return (double) (9.0F + attackTarget.width);
+            return (double) (12.0F + attackTarget.width);
         }
     }
 }
