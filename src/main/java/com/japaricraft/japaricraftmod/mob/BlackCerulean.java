@@ -214,7 +214,7 @@ public class BlackCerulean extends EntityMob {
         }
 
         protected double getAttackReachSqr(EntityLivingBase attackTarget) {
-            return (double) (12.0F + attackTarget.width);
+            return (double) (15.0F + attackTarget.width);
         }
     }
 }
