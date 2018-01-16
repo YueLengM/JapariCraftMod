@@ -82,3 +82,7 @@ fluid.sandstar=サンドスターの水
 
 item.WildLiberationSource.tooltip=あまり食べれる物じゃない
 item.SandStarCake115.tooltip=意外と美味しい
+
+japaricraftmod.config.cerulean_wight=セルリアンの湧き率
+japaricraftmod.config.poisoncerulean_wight=毒セルリアンの湧き率
+japaricraftmod.config.blackcerulean_wight=Bossの湧き率 (ブラックセルリアン)

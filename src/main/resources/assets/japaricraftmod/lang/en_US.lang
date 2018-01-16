@@ -81,7 +81,10 @@ entity.Villager.japaricraftmod.zookeeper=ZooKeeper
 
 fluid.sandstar=SandStarWater
 
-
 item.WildLiberationSource.tooltip=It is not much to eat
 item.SandStarCake115.tooltip=It is surprisingly delicious
 item.DelphinusLifeFragment.tooltip=Don`t use in YourHouse! Use In Sea!
+
+japaricraftmod.config.cerulean_wight=Cerulean Wight
+japaricraftmod.config.poisoncerulean_wight=PoisonCerulean Wight
+japaricraftmod.config.blackcerulean_wight=Boss Wight(BlackCerulean)
