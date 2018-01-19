@@ -161,7 +161,7 @@ public class BlackCerulean extends EntityMob {
 
     @Override
     public float getEyeHeight() {
-        return this.height * 0.5F;
+        return this.height * 0.6F;
     }
 
     @Override
