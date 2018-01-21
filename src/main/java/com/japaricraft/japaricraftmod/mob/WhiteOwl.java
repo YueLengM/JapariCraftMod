@@ -44,10 +44,13 @@ public class WhiteOwl extends EntityFriend {
         this.setSize(0.6F, 1.8F);
         this.setTamed(false);
     }
+
+    @Override
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
 
+    @Override
     protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
 
@@ -61,10 +64,8 @@ public class WhiteOwl extends EntityFriend {
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
 
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
-        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this)
-        {
-            public boolean apply(@Nullable EntityLiving p_apply_1_)
-            {
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this) {
+            public boolean apply(@Nullable EntityLiving p_apply_1_) {
                 return p_apply_1_ != null && IMob.VISIBLE_MOB_SELECTOR.apply(p_apply_1_) && !(p_apply_1_ instanceof EntityFriend);
             }
         });
@@ -74,10 +75,9 @@ public class WhiteOwl extends EntityFriend {
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, BlackCerulean.class, false));
     }
 
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    @Override
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
@@ -87,7 +87,7 @@ public class WhiteOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -226,7 +226,7 @@ public class WhiteOwl extends EntityFriend {
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
-
+    @Override
     public Item getDropItem () {
 
         return null;//なにも落とさない
@@ -238,8 +238,9 @@ public class WhiteOwl extends EntityFriend {
 
         }
     }
-    public boolean canDespawn()
-    {
+
+    @Override
+    public boolean canDespawn() {
         return false;
     }
 

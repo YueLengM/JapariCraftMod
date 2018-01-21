@@ -38,8 +38,10 @@ public class BrownOwl extends EntityFriend {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
         this.setTamed(false);
+        this.moveHelper = new EntityFlyHelper(this);
     }
 
+    @Override
     protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
 
@@ -67,11 +69,12 @@ public class BrownOwl extends EntityFriend {
 
     }
 
+    @Override
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
 
-
+    @Override
     protected void updateAITasks()
     {
         if (this.ticksExisted % 5 == 0)
@@ -85,6 +88,7 @@ public class BrownOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
+    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -221,7 +225,7 @@ public class BrownOwl extends EntityFriend {
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
-
+    @Override
     public Item getDropItem () {
 
         return null;//なにも落とさない
@@ -234,7 +238,7 @@ public class BrownOwl extends EntityFriend {
         }
     }
 
-
+    @Override
     public boolean canDespawn()
     {
         return false;
