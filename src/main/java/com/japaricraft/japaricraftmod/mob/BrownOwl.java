@@ -38,7 +38,6 @@ public class BrownOwl extends EntityFriend {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
         this.setTamed(false);
-        this.moveHelper = new EntityFlyHelper(this);
     }
 
     @Override
