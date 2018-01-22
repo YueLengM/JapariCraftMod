@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.handler;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.block.BlockCampfire;
 import com.japaricraft.japaricraftmod.block.BlockSandStar;
 import com.japaricraft.japaricraftmod.block.BlockSandStarOre;
 import com.japaricraft.japaricraftmod.block.BlockWoodenBox;
@@ -20,13 +19,11 @@ public class JapariBlocks {
     public static final BlockSandStar SANDSTAR_BLOCK = new BlockSandStar();
     public static final BlockSandStarOre SANDSTAR_ORE = new BlockSandStarOre();
     public static final BlockWoodenBox BLOCK_WOODEN_BOX = new BlockWoodenBox();
-    public static final BlockCampfire BLOCK_CAMPFIRE = new BlockCampfire();
     public static void registerBlocks(IForgeRegistry<Block> registry)
     {
         registry.register(SANDSTAR_ORE.setRegistryName("sandstar_ore"));
         registry.register(SANDSTAR_BLOCK.setRegistryName("sandstar_block"));
         registry.register(BLOCK_WOODEN_BOX.setRegistryName("woodenbox"));
-        registry.register(BLOCK_CAMPFIRE.setRegistryName("campfire"));
     }
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry)
@@ -34,7 +31,6 @@ public class JapariBlocks {
         JapariItems.register(registry, new ItemBlock(SANDSTAR_ORE));
         JapariItems.register(registry, new ItemBlock(SANDSTAR_BLOCK));
         JapariItems.register(registry, new ItemBlock(BLOCK_WOODEN_BOX));
-        JapariItems.register(registry, new ItemBlock(BLOCK_CAMPFIRE));
     }
 
 
@@ -51,7 +47,6 @@ public class JapariBlocks {
         registerModel(SANDSTAR_ORE);
         registerModel(SANDSTAR_BLOCK);
         registerModel(BLOCK_WOODEN_BOX);
-        registerModel(BLOCK_CAMPFIRE);
     }
 
     @SideOnly(Side.CLIENT)
