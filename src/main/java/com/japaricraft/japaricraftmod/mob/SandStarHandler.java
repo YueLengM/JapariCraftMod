@@ -11,11 +11,14 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
+import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.DataFixer;
@@ -58,7 +61,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(16.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60.0D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1D);
     }
 
@@ -244,9 +247,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             super();
         }
 
-        /**
-         * Returns whether the EntityAIBase should begin execution.
-         */
+
         public boolean shouldExecute() {
             if (!super.shouldExecute()) {
                 return false;
@@ -270,6 +271,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
                 EntityVex entityvex = new EntityVex(SandStarHandler.this.world);
                 entityvex.moveToBlockPosAndAngles(blockpos, 0.0F, 0.0F);
                 entityvex.onInitialSpawn(SandStarHandler.this.world.getDifficultyForLocation(blockpos), null);
+                entityvex.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.WOODEN_SWORD));
                 entityvex.setOwner(SandStarHandler.this);
                 entityvex.setBoundOrigin(blockpos);
                 entityvex.setLimitedLife(20 * (30 + SandStarHandler.this.rand.nextInt(90)));
@@ -292,7 +294,14 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         public boolean shouldExecute() {
-            return !SandStarHandler.this.isSpellcasting() && SandStarHandler.this.ticksExisted >= this.spellCooldown;
+            if (SandStarHandler.this.isSpellcasting()) {
+                return false;
+            } else if (SandStarHandler.this.ticksExisted < this.spellCooldown) {
+                return false;
+            } else if (getHealth() < 40) ;
+            {
+                return true;
+            }
         }
 
         protected int getCastingTime() {
@@ -300,15 +309,15 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         protected int getCastingInterval() {
-            return 400;
+            return 200;
         }
 
         protected void castSpell() {
-            SandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION,400,0));
+            SandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
         }
 
         protected SoundEvent getSpellPrepareSound() {
-            return SoundEvents.EVOCATION_ILLAGER_PREPARE_SUMMON;
+            return SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE;
         }
 
         protected SpellType getSpellType() {
