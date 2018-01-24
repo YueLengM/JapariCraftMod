@@ -15,6 +15,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -33,6 +34,7 @@ public class KouteiPenguin extends EntityFriend {
         super(worldIn);
         this.setSize(0.59F, 1.7F);
         this.setTamed(false);
+        ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
     protected void initEntityAI()  {
@@ -40,7 +42,8 @@ public class KouteiPenguin extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));

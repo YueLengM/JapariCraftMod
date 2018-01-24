@@ -12,6 +12,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
@@ -26,6 +27,7 @@ public class Alpaca extends EntityFriend {
         super(worldIn);
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
+        ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
 
@@ -39,10 +41,11 @@ public class Alpaca extends EntityFriend {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
-        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, CeruleanBird.class, 6.5F, 1.1D, 1.1D));
-        this.tasks.addTask(3, new EntityAIAvoidEntity<>(this, BlackCerulean.class, 8.0F, 1.1D, 1.1D));
+        this.tasks.addTask(1, this.aiSit);
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, CeruleanBird.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, BlackCerulean.class, 8.0F, 1.1D, 1.1D));
+        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));

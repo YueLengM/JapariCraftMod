@@ -16,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -40,6 +41,7 @@ public class Serval extends EntityFriend{
         super(worldIn);
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
+        ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
 
@@ -53,14 +55,15 @@ public class Serval extends EntityFriend{
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(4, new EntityAIAttackMelee(this, 1.0D, true));
-        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIServalBeg(this, 8.0F));
-        this.tasks.addTask(8, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.tasks.addTask(10, new EntityAILookIdle(this));
+        this.tasks.addTask(1, this.aiSit);
+        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIServalBeg(this, 8.0F));
+        this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this)
         {
