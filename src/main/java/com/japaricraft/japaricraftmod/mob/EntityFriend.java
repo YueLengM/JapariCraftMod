@@ -105,7 +105,7 @@ public class EntityFriend extends EntityTameable{
     }
 
     public ItemStack onItemStackPickup(ItemStack stack) {
-        return inventoryFriendMain.addItem(stack);
+        return getInventoryFriendMain().addItem(stack);
     }
 
     protected void playPickupSound() {
