@@ -939,10 +939,10 @@ public class AnimalVillagePieces {
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 0, 5, 3, 5, iblockstate4, iblockstate4, false);
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 5, 5, 3, 5, iblockstate4, iblockstate4, false);
             //柱
-            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 0, 3, 0, iblockstate3, iblockstate3, false);
-            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 0, 5, 3, 0, iblockstate3, iblockstate3, false);
-            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 5, 0, 3, 5, iblockstate3, iblockstate3, false);
-            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 5, 5, 3, 5, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 0, 3, 0, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 0, 5, 3, 0, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 5, 0, 3, 5, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 5, 5, 3, 5, iblockstate3, iblockstate3, false);
             //窓
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 2, 2, 0, 2, 3, Blocks.STAINED_GLASS_PANE.getDefaultState(), Blocks.STAINED_GLASS_PANE.getDefaultState(), false);
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 2, 2, 5, 2, 3, Blocks.STAINED_GLASS_PANE.getDefaultState(), Blocks.STAINED_GLASS_PANE.getDefaultState(), false);
