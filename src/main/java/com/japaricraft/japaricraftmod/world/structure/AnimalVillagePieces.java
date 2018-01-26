@@ -757,18 +757,12 @@ public class AnimalVillagePieces {
             }
 
             IBlockState iblockstate = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
-            IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.TORCH.getDefaultState());
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate, Blocks.FLOWING_WATER.getDefaultState(), false);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 2, 12, 2, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 3, 12, 2, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 2, 12, 3, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 3, 12, 3, structureBoundingBoxIn);
 
-            this.setBlockState(worldIn, iblockstate1, 1, 12, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 4, 12, 1, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 1, 12, 4, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate1, 4, 12, 4, structureBoundingBoxIn);
-
             return true;
         }
 
@@ -778,50 +772,6 @@ public class AnimalVillagePieces {
         }
     }
 
-    public static class TorchNew extends Village {
-        public TorchNew() {
-        }
-
-        public TorchNew(Start start, int p_i45568_2_, Random rand, StructureBoundingBox p_i45568_4_, EnumFacing facing) {
-            super(start, p_i45568_2_);
-            this.setCoordBaseMode(facing);
-            this.boundingBox = p_i45568_4_;
-        }
-
-        public static TorchNew createPiece(Start start, List<StructureComponent> p_175853_1_, Random rand, int p_175853_3_, int p_175853_4_, int p_175853_5_, EnumFacing facing, int p_175853_7_) {
-            StructureBoundingBox structureboundingbox = StructureBoundingBox.getComponentToAddBoundingBox(p_175853_3_, p_175853_4_, p_175853_5_, 0, 0, 0, 4, 6, 5, facing);
-            return canVillageGoDeeper(structureboundingbox) && StructureComponent.findIntersecting(p_175853_1_, structureboundingbox) == null ? new TorchNew(start, p_175853_7_, rand, structureboundingbox, facing) : null;
-        }
-
-        @SuppressWarnings("deprecation")
-        public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
-            if (this.averageGroundLvl < 0) {
-                this.averageGroundLvl = this.getAverageGroundLevel(worldIn, structureBoundingBoxIn);
-
-                if (this.averageGroundLvl < 0) {
-                    return true;
-                }
-
-                this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 5, 0);
-            }
-
-            IBlockState iblockstate = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
-            this.setBlockState(worldIn, iblockstate, 1, 0, 0, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate, 1, 1, 0, structureBoundingBoxIn);
-            this.setBlockState(worldIn, iblockstate, 1, 2, 0, structureBoundingBoxIn);
-            this.setBlockState(worldIn, Blocks.WOOL.getDefaultState(), 1, 3, 0, structureBoundingBoxIn);
-            this.settorch(worldIn, EnumFacing.EAST, 2, 3, 0, structureBoundingBoxIn);
-            this.settorch(worldIn, EnumFacing.NORTH, 1, 3, 1, structureBoundingBoxIn);
-            this.settorch(worldIn, EnumFacing.WEST, 0, 3, 0, structureBoundingBoxIn);
-            this.settorch(worldIn, EnumFacing.SOUTH, 1, 3, -1, structureBoundingBoxIn);
-            return true;
-        }
-
-        @Override
-        protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_) {
-            super.readStructureFromNBT(tagCompound);
-        }
-    }
 
     public static class WoodHut extends Village {
         private boolean isTallHouse;
@@ -988,6 +938,11 @@ public class AnimalVillagePieces {
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 0, 3, 5, iblockstate4, iblockstate4, false);
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 0, 5, 3, 5, iblockstate4, iblockstate4, false);
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 5, 5, 3, 5, iblockstate4, iblockstate4, false);
+            //柱
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 0, 3, 0, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 0, 5, 3, 0, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 5, 0, 3, 5, iblockstate3, iblockstate3, false);
+            this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 5, 5, 3, 5, iblockstate3, iblockstate3, false);
             //窓
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 2, 2, 0, 2, 3, Blocks.STAINED_GLASS_PANE.getDefaultState(), Blocks.STAINED_GLASS_PANE.getDefaultState(), false);
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 2, 2, 5, 2, 3, Blocks.STAINED_GLASS_PANE.getDefaultState(), Blocks.STAINED_GLASS_PANE.getDefaultState(), false);
