@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.event.AnimalVillageEventHandler;
 import com.japaricraft.japaricraftmod.event.EntityEventHandler;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.handler.JapariBlocks;
@@ -8,6 +9,8 @@ import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.handler.JapariRenderingRegistry;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
+import com.japaricraft.japaricraftmod.world.structure.AnimalVillagePieces;
+import com.japaricraft.japaricraftmod.world.structure.MapGenAnimalVillage;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntityVillager;
@@ -107,6 +110,9 @@ public class JapariCraftMod {
     public void init(FMLInitializationEvent event)
     {
         JapariEntityRegistry.addSpawns();
+        MinecraftForge.EVENT_BUS.register(new AnimalVillageEventHandler());
+        MapGenStructureIO.registerStructure(MapGenAnimalVillage.Start.class, "AnimalVillage");
+        AnimalVillagePieces.registerVillagePieces();
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
