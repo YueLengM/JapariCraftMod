@@ -21,8 +21,10 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.village.Village;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
@@ -37,6 +39,9 @@ public class WhiteOwl extends EntityFriend {
     public float oFlapSpeed;
     public float oFlap;
     private float wingRotDelta = 1.0F;
+    private boolean isLookingForHome;
+    Village village;
+    private int randomTickDivider;
 
     public WhiteOwl(World worldIn)
     {
@@ -83,6 +88,28 @@ public class WhiteOwl extends EntityFriend {
     protected void updateAITasks() {
         if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
+        }
+        if (!this.isTamed()) {
+            if (--this.randomTickDivider <= 0) {
+                BlockPos blockpos = new BlockPos(this);
+                this.world.getVillageCollection().addToVillagerPositionList(blockpos);
+                this.randomTickDivider = 70 + this.rand.nextInt(50);
+                this.village = this.world.getVillageCollection().getNearestVillage(blockpos, 32);
+
+                if (this.village == null) {
+                    this.detachHome();
+                } else {
+                    BlockPos blockpos1 = this.village.getCenter();
+                    this.setHomePosAndDistance(blockpos1, this.village.getVillageRadius());
+
+                    if (this.isLookingForHome) {
+                        this.isLookingForHome = false;
+                        this.village.setDefaultPlayerReputation(5);
+                    }
+                }
+            }
+        } else {
+            this.detachHome();
         }
     }
     @Override
