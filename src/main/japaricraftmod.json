@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.7.1": "add Tutinoko",
     "3.7.0": "Fix EntityCrashBug and addStructure",
     "3.6.2": "fix CrashBug and Model",
     "3.6.1": "Can Change BlackCerulean Wight",
@@ -26,7 +27,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.7.0",
-    "1.12-latest": "3.7.0"
+    "1.12-recommended": "3.7.1",
+    "1.12-latest": "3.7.1"
   }
 }

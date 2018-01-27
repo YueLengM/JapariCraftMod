@@ -2,12 +2,14 @@ package com.japaricraft.japaricraftmod.world.structure;
 
 import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.handler.JapariTreasure;
+import com.japaricraft.japaricraftmod.handler.ModVillagers;
+import com.japaricraft.japaricraftmod.mob.Tutinoko;
 import com.japaricraft.japaricraftmod.mob.WhiteOwl;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityZombieVillager;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
@@ -572,10 +574,10 @@ public class AnimalVillagePieces {
                         entityzombie.enablePersistence();
                         worldIn.spawnEntity(entityzombie);
                     } else {
-                        EntityVillager entityvillager = new EntityVillager(worldIn);
+                        Tutinoko entityvillager = new Tutinoko(worldIn);
                         entityvillager.setLocationAndAngles((double) j + 0.5D, (double) k, (double) l + 0.5D, 0.0F, 0.0F);
-                        entityvillager.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityvillager)), null);
-                        entityvillager.setProfession(this.chooseForgeProfession(i, entityvillager.getProfessionForge()));
+                        entityvillager.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityvillager)), (IEntityLivingData) null);
+                        ModVillagers.INSTANCE.setRandomProfession(entityvillager, worldIn.rand);
                         worldIn.spawnEntity(entityvillager);
                     }
                 }

@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.world;
 
-import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.handler.JapariTreasure;
+import com.japaricraft.japaricraftmod.handler.ModVillagers;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -139,7 +139,7 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
     @Override
     protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof)
     {
-        return JapariCraftMod.japariProfession;
+        return ModVillagers.japariProfession;
     }
     public static class VillageManager implements VillagerRegistry.IVillageCreationHandler
     {

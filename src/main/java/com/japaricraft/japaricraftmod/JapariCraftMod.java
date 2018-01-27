@@ -3,18 +3,13 @@ package com.japaricraft.japaricraftmod;
 import com.japaricraft.japaricraftmod.event.AnimalVillageEventHandler;
 import com.japaricraft.japaricraftmod.event.EntityEventHandler;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
-import com.japaricraft.japaricraftmod.handler.JapariBlocks;
-import com.japaricraft.japaricraftmod.handler.JapariEntityRegistry;
-import com.japaricraft.japaricraftmod.handler.JapariItems;
-import com.japaricraft.japaricraftmod.handler.JapariRenderingRegistry;
+import com.japaricraft.japaricraftmod.handler.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
 import com.japaricraft.japaricraftmod.world.structure.AnimalVillagePieces;
 import com.japaricraft.japaricraftmod.world.structure.MapGenAnimalVillage;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -30,7 +25,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -42,7 +36,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "3.7.0";
+    public static final String VERSION = "3.7.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -58,7 +52,7 @@ public class JapariCraftMod {
     public static final int ID_JAPARI_INVENTORY = 1;
     public static final int STATUS_GUI_ID = 2;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
-    public static VillagerRegistry.VillagerProfession japariProfession;
+
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {
@@ -119,26 +113,7 @@ public class JapariCraftMod {
         MapGenStructureIO.registerStructureComponent(ComponentJapariHouse1.class, "JH1");
 
         //Villagerのレンダー
-
-        japariProfession = new VillagerRegistry.VillagerProfession(JapariCraftMod.MODID + ":zookeeper","japaricraftmod:textures/entity/zookeeper.png", "japaricraftmod:textures/entity/zookeeper_zombie.png");
-        ForgeRegistries.VILLAGER_PROFESSIONS.register(japariProfession);
-        VillagerRegistry.VillagerCareer career_zookeeper = new VillagerRegistry.VillagerCareer(japariProfession, MODID + ".zookeeper");
-        career_zookeeper.addTrade(1,
-                new EntityVillager.EmeraldForItems(Items.WHEAT, new EntityVillager.PriceInfo(18, 22)),
-                new EntityVillager.EmeraldForItems(Items.APPLE, new EntityVillager.PriceInfo(12, 18)),
-                new EntityVillager.EmeraldForItems(Items.SUGAR, new EntityVillager.PriceInfo(14, 19)),
-                new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(15, 19))
-        );
-        career_zookeeper.addTrade(2,
-                new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-10, -18)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.japarimanapple, new EntityVillager.PriceInfo(-10, -18)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.japarimancocoa, new EntityVillager.PriceInfo(-10, -18))
-        );
-        career_zookeeper.addTrade(3,
-                new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.wildliberationpotion, new EntityVillager.PriceInfo(6, 8)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.starjapariman, new EntityVillager.PriceInfo(6, 8)));
+        ModVillagers.INSTANCE.init();
     }
     private void loadMeta() {
         metadata.modId = MODID;

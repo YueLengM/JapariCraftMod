@@ -60,6 +60,7 @@ entity.Squirre.name=りす
 entity.CeruleanBird.name=セルリアンバード(未使用)
 entity.Delphinus.name=マイルカ
 entity.BlackCerulean.name=ブラックセルリアン
+entity.Tutinoko.name=つちのこ
 
 advancements.japaricraftmod.root.title=じゃぱりくらふともっど
 advancements.japaricraftmod.root.description=じゃぱりまんを作る
@@ -76,7 +77,10 @@ advancement.japariman_dinner.desc=じゃぱりまんを全種類食べる
 advancements.japaricraftmod.sandstarminer.title=サンドスター採掘家
 advancements.japaricraftmod.sandstarminer.description=サンドスターを手に入れる
 
-entity.Villager.japaricraftmod.zookeeper=飼育員
+entity.Villager.zookeeper=飼育員
+entity.Villager.raretreader=トレジャートレーダー
+entity.Villager.armorcrafter=防具職人
+entity.Villager.foodcrafter=農民
 
 fluid.sandstar=サンドスターの水
 

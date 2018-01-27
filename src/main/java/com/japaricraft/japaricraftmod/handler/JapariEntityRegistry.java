@@ -41,6 +41,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.RoyalPenguin"), RoyalPenguin.class, "RoyalPenguin", 16, instance, 60, 1, false, 2243405, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Alpaca"), Alpaca.class, "Alpaca", 17, instance, 60, 1, false, 0xf0f5f0, 0xf5f5dc);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Squirre"), Squirre.class, "Squirre", 18, instance, 60, 1, false, 0xf0f5f0, 0x993300);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Tutinoko"), Tutinoko.class, "Tutinoko", 19, instance, 60, 1, false, 0x800000, 0xFFFFCC);
 
         EntitySpawnPlacementRegistry.setPlacementType(Delphinus.class, EntityLiving.SpawnPlacementType.IN_WATER);
     }
