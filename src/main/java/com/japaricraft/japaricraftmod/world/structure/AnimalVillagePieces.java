@@ -759,11 +759,17 @@ public class AnimalVillagePieces {
             }
 
             IBlockState iblockstate = this.getBiomeSpecificBlockState(Blocks.COBBLESTONE.getDefaultState());
+            IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.TORCH.getDefaultState());
             this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate, Blocks.FLOWING_WATER.getDefaultState(), false);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 2, 12, 2, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 3, 12, 2, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 2, 12, 3, structureBoundingBoxIn);
             this.setBlockState(worldIn, Blocks.FLOWING_WATER.getDefaultState(), 3, 12, 3, structureBoundingBoxIn);
+
+            this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 1, 12, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 4, 12, 1, structureBoundingBoxIn);
+            this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 1, 12, 4, structureBoundingBoxIn);
+            this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 4, 12, 4, structureBoundingBoxIn);
 
             return true;
         }

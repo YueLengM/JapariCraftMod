@@ -22,7 +22,7 @@ public class MapGenAnimalVillage extends MapGenStructure {
     private final int minTownSeparation;
 
     public MapGenAnimalVillage() {
-        this.distance = 30;
+        this.distance = 31;
         this.minTownSeparation = 8;
     }
 
