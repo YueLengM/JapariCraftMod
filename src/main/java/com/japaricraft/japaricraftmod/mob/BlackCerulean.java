@@ -104,7 +104,7 @@ public class BlackCerulean extends EntityMob {
     @Override
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register(IS_STANDING, Boolean.valueOf(false));
+        this.dataManager.register(IS_STANDING, Boolean.FALSE);
     }
 
     @Override

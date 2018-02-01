@@ -56,7 +56,7 @@ public class Serval extends EntityFriend{
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.05D, true));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));

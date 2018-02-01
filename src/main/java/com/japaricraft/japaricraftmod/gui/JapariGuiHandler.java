@@ -33,6 +33,9 @@ public class JapariGuiHandler implements IGuiHandler {
                 return new GuiFriendInventory((EntityFriend) entity, player);
             }
         }
+        if (ID == JapariCraftMod.ID_Book) {
+            return new GuiJapariBook(player);
+        }
         return null;
     }
 }

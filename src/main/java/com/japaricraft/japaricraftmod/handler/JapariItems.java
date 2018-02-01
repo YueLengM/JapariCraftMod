@@ -51,6 +51,7 @@ public class JapariItems {
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
+    public static final Item researchbook = new ResearchBook();
 
     public static List<Item> getItems()
     {
@@ -104,6 +105,7 @@ public class JapariItems {
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
+        register(registry, researchbook.setRegistryName("researchbook"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
 
@@ -127,6 +129,7 @@ public class JapariItems {
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(sandstar_delphinus, "sandstar_sealife");
+        registerModel(researchbook, "researchbook");
     }
 
     @SideOnly(Side.CLIENT)
