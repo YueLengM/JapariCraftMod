@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " #X",
+    "#SX",
+    " #X"
+  ],
+  "key": {
+    "#": {
+      "item": "japaricraftmod:sandstar_fragment"
+    },
+    "X": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "japaricraftmod:sugarstar"
+    }
+  },
+  "result": {
+    "item": "japaricraftmod:sandstarbow"
+  }
+}

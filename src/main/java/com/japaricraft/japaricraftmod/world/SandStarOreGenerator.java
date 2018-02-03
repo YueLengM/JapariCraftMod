@@ -28,7 +28,7 @@ public class SandStarOreGenerator implements IWorldGenerator {
                 int genZ = z + random.nextInt(16);
                 new WorldGenMinable(random.nextInt(70) == 0 ?
                         JapariBlocks.SANDSTAR_ORE.getDefaultState() :
-                        JapariBlocks.SANDSTAR_ORE.getDefaultState(), 5).generate(world, random, new BlockPos(genX, genY, genZ));
+                        JapariBlocks.SANDSTAR_ORE.getDefaultState(), 6).generate(world, random, new BlockPos(genX, genY, genZ));
             }
         }
     }

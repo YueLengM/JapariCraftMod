@@ -52,6 +52,7 @@ public class JapariItems {
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
     public static final Item researchbook = new ResearchBook();
+    public static final Item sandstarbow = new SandStarBow();
 
     public static List<Item> getItems()
     {
@@ -100,6 +101,7 @@ public class JapariItems {
         register(registry, sandstarcake_115.setRegistryName("sandstarcake_115"));
         register(registry, sugarstar.setRegistryName("sugarstar"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
+        register(registry, sandstarbow.setRegistryName("sandstarbow"));
         register(registry, sandstar_delphinus.setRegistryName("sandstar_delphinus"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
@@ -130,6 +132,7 @@ public class JapariItems {
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(sandstar_delphinus, "sandstar_sealife");
         registerModel(researchbook, "researchbook");
+        registerModel(sandstarbow, "sandstarbow");
     }
 
     @SideOnly(Side.CLIENT)

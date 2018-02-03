@@ -67,10 +67,10 @@ public class ModVillagers {
                 new EntityVillager.EmeraldForItems(Items.CARROT, new EntityVillager.PriceInfo(15, 19))
         );
         career_zookeeper.addTrade(2,
-                new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-10, -18)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.japarimanapple, new EntityVillager.PriceInfo(-10, -18)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-8, -10)),
+                new EntityVillager.ListItemForEmeralds(JapariItems.japarimanapple, new EntityVillager.PriceInfo(-8, -10)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.japarimancocoa, new EntityVillager.PriceInfo(-10, -18))
+                new EntityVillager.ListItemForEmeralds(JapariItems.japarimancocoa, new EntityVillager.PriceInfo(-8, -10))
         );
         career_zookeeper.addTrade(3,
                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14)),

@@ -1,0 +1,6 @@
+{
+  "parent": "item/bow",
+  "textures": {
+    "layer0": "japaricraftmod:items/sandstarbow_pulling_0"
+  }
+}
