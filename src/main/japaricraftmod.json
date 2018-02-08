@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.8.1": "delete Delphinus",
     "3.8.0": "add AnimalRuin",
     "3.7.3": "add SandStarBow",
     "3.7.2": "texture change",
@@ -30,7 +31,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.8.0",
-    "1.12-latest": "3.8.0"
+    "1.12-recommended": "3.8.1",
+    "1.12-latest": "3.8.1"
   }
 }
