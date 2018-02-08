@@ -34,7 +34,7 @@ public class JapariConfig {
     @Config.RequiresMcRestart
     @Config.RangeInt(min = 0, max = 30)
     @Config.Comment("Changes spawn rate of Delphinus. Increase value to spawn more Delphinus.")
-    public static int delphinus_wight = 4;
+    public static int delphinus_wight = 0;
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

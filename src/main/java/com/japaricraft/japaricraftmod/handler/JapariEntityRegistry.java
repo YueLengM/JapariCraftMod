@@ -30,18 +30,18 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Shoebill"), Shoebill.class, "Shoebill", 5, instance, 60, 1, false, 7375001, 10000);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.WhiteOwl"), WhiteOwl.class, "WhiteOwl", 6, instance, 60, 1, false, 7375001, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BrownOwl"), BrownOwl.class, "BrownOwl", 7, instance, 60, 1, false, 5243410, 5243405);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanBird"), CeruleanBird.class, "CeruleanBird", 8, instance, 60, 1, false, 0x00CCFF, 0x99CCFF);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanBird"), CeruleanBird.class, "CeruleanBird", 8, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Delphinus"), Delphinus.class, "Delphinus", 9, instance, 80, 1, false, 0x333333, 0x0066CC);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BlackCerulean"), BlackCerulean.class, "BlackCerulean", 10, instance, 120, 1, false, 0x000000, 0x333333);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), Guide.class, "Guide", 11, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Araisan"), Araisan.class, "Araisan", 12, instance, 60, 1, false, 0x666699, 0x969696);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.PoisonCerulean"), PoisonCerulean.class, "PoisonCerulean", 13, instance, 60, 1, false, 4243405, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Fennec"), Fennec.class, "Fennec", 14, instance, 60, 1, false, 13434879, 13408767);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SandStarHandler"), SandStarHandler.class, "SandStarHandler", 15, instance, 60, 1, false, 9868950, 13434879);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SandStarHandler"), SandStarHandler.class, "SandStarHandler", 15, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.RoyalPenguin"), RoyalPenguin.class, "RoyalPenguin", 16, instance, 60, 1, false, 2243405, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Alpaca"), Alpaca.class, "Alpaca", 17, instance, 60, 1, false, 0xf0f5f0, 0xf5f5dc);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Squirre"), Squirre.class, "Squirre", 18, instance, 60, 1, false, 0xf0f5f0, 0x993300);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Tutinoko"), Tutinoko.class, "Tutinoko", 19, instance, 60, 1, false, 0x800000, 0xFFFFCC);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Tutinoko"), Tutinoko.class, "Tutinoko", 19, instance, 60, 1, false);
 
         EntitySpawnPlacementRegistry.setPlacementType(Delphinus.class, EntityLiving.SpawnPlacementType.IN_WATER);
     }
