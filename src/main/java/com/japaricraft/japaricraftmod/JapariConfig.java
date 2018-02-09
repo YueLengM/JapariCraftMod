@@ -30,12 +30,6 @@ public class JapariConfig {
     @Config.Comment("Changes spawn rate of BlackCerulean. Increase value to spawn more PoisonCerulean.")
     public static int blackcerulean_wight = 4;
 
-    @Config.LangKey(config + "delphinus_wight")
-    @Config.RequiresMcRestart
-    @Config.RangeInt(min = 0, max = 30)
-    @Config.Comment("Changes spawn rate of Delphinus. Increase value to spawn more Delphinus.")
-    public static int delphinus_wight = 0;
-
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.getModID().equals(JapariCraftMod.MODID)) {

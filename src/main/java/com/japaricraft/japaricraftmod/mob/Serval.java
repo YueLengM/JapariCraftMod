@@ -3,6 +3,7 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIServalBeg;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -56,9 +57,9 @@ public class Serval extends EntityFriend{
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.05D, true));
+        this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.05D, true));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.1D, 11.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(6, new EntityAIServalBeg(this, 8.0F));
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
@@ -90,6 +91,7 @@ public class Serval extends EntityFriend{
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
+
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
@@ -102,6 +104,13 @@ public class Serval extends EntityFriend{
         } else {
             this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
         }
+    }
+
+    @Override
+    public void setTamed(boolean tamed) {
+        super.setTamed(tamed);
+
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
     }
 
     @SideOnly(Side.CLIENT)

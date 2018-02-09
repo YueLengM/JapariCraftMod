@@ -4,7 +4,6 @@ package com.japaricraft.japaricraftmod.handler;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
-import com.japaricraft.japaricraftmod.item.summon.DelphinusLifeFragment;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -42,7 +41,6 @@ public class JapariItems {
     public static final Item curry = new Curry();
     public static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
-    public static final Item sandstar_delphinus = new DelphinusLifeFragment();
     public static final Item darksandstar = new DarkSandStar();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarcake_115 = new SandStarCake115();
@@ -102,7 +100,6 @@ public class JapariItems {
         register(registry, sugarstar.setRegistryName("sugarstar"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, sandstarbow.setRegistryName("sandstarbow"));
-        register(registry, sandstar_delphinus.setRegistryName("sandstar_delphinus"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
@@ -130,7 +127,6 @@ public class JapariItems {
         registerModel(sandstarfragment,"sandstar_fragment");
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
-        registerModel(sandstar_delphinus, "sandstar_sealife");
         registerModel(researchbook, "researchbook");
         registerModel(sandstarbow, "sandstarbow");
     }

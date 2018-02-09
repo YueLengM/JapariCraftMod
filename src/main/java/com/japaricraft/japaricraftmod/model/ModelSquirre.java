@@ -133,6 +133,7 @@ public class ModelSquirre extends ModelBase {
         this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
+
         GL11.glTranslatef(0F, 0.5F, 0F);
     }
 
