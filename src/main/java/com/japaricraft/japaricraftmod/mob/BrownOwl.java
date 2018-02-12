@@ -101,6 +101,13 @@ public class BrownOwl extends EntityFriend {
     }
 
     @Override
+    public void setTamed(boolean tamed) {
+        super.setTamed(tamed);
+
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+    }
+
+    @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
     {
         ItemStack stack = player.getHeldItem(hand);

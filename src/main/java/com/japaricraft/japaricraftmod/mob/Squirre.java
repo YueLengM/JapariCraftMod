@@ -74,6 +74,13 @@ public class Squirre extends EntityFriend {
     }
 
     @Override
+    public void setTamed(boolean tamed) {
+        super.setTamed(tamed);
+
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+    }
+
+    @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
