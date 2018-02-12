@@ -16,7 +16,6 @@ public class ServalEntityRender extends RenderLiving<Serval>
 {
     private static final ResourceLocation SERVAL_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval/serval.png");
     private static final ResourceLocation BEG_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval/serval_beg.png");
-    private static final ResourceLocation PLAY_TEXTURES = new ResourceLocation(MODID, "textures/entity/serval/serval_play.png");
     public ServalEntityRender(RenderManager renderManager)
     {
             super(renderManager, new ModelServal(), 0.5F);
@@ -26,9 +25,7 @@ public class ServalEntityRender extends RenderLiving<Serval>
     @Override
     protected ResourceLocation getEntityTexture(Serval entity)
     {
-        if (entity.isPlaying()) {
-            return PLAY_TEXTURES;
-        } else if (entity.isBegging()) {
+        if (entity.isBegging()) {
             return BEG_TEXTURES;
         } else {
             return SERVAL_TEXTURES;

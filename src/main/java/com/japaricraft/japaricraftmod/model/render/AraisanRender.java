@@ -18,8 +18,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 @SideOnly(Side.CLIENT)
 public class AraisanRender extends RenderLiving<Araisan>
 {
-    private static final ResourceLocation Arai_TEXTURES = new ResourceLocation(MODID, "textures/entity/araisan/araisan.png");
-    private static final ResourceLocation PLAY_TEXTURES = new ResourceLocation(MODID, "textures/entity/araisan/araisan_play.png");
+    private static final ResourceLocation Arai_TEXTURES = new ResourceLocation(MODID, "textures/entity/araisan.png");
     public AraisanRender(RenderManager renderManager)
     {
         super(renderManager, new ModelAraisan(), 0.5F);
@@ -65,10 +64,6 @@ public class AraisanRender extends RenderLiving<Araisan>
     @Override
     protected ResourceLocation getEntityTexture(Araisan entity)
     {
-        if (entity.isPlaying()) {
-            return PLAY_TEXTURES;
-        } else {
-            return Arai_TEXTURES;
-        }
+        return Arai_TEXTURES;
     }
 }
