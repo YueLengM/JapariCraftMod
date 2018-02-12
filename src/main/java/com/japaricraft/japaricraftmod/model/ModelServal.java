@@ -164,8 +164,8 @@ public class ModelServal extends ModelBase {
         this.main_hair_r.addBox(-4.0F, -4.0F, -1.0F, 8, 8, 1, 0.0F);
         this.setRotateAngle(main_hair_r, 0.0F, -1.5707963267948966F, -0.17453292519943295F);
         this.hand_r = new ModelRenderer(this, 38, 20);
-        this.hand_r.setRotationPoint(-3.5F, -7.5F, 1.0F);
-        this.hand_r.addBox(-1.0F, -0.5F, -2.0F, 2, 10, 2, 0.0F);
+        this.hand_r.setRotationPoint(-3.5F, -7.5F, -1.0F);
+        this.hand_r.addBox(-1.0F, -0.5F, 0.0F, 2, 10, 2, 0.0F);
         this.setRotateAngle(hand_r, 0.0F, 0.0F, 0.08726646259971647F);
         this.main_hair_r2 = new ModelRenderer(this, 0, 22);
         this.main_hair_r2.setRotationPoint(4.8F, -3.95F, 0.0F);
@@ -269,7 +269,7 @@ public class ModelServal extends ModelBase {
         this.hand_r.rotateAngleZ = 0.0F;
         this.hand_l.rotateAngleZ = 0.0F;
         this.hand_r.rotateAngleY = 0.0F;
-        this.hand_r.rotateAngleZ = 0.0F;
+        this.hand_l.rotateAngleY = 0.0F;
 
         this.leg_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
         this.leg_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
@@ -288,6 +288,11 @@ public class ModelServal extends ModelBase {
             this.leg_l.rotateAngleY = -((float)Math.PI / 10F);
             this.leg_l.rotateAngleZ = -0.07853982F;
             GL11.glTranslatef(0F, 0.2F, 0F);
+        }
+
+        if (entityServal.isPlaying()) {
+            this.hand_r.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
+            this.hand_l.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
         }
 
 
