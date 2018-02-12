@@ -4,7 +4,9 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIServalBeg;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.IMob;
@@ -31,7 +33,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 
-public class Serval extends EntityFriend{
+public class Serval extends EntityPlayFriend {
     private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(Serval.class, DataSerializers.BOOLEAN);
 
     public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
@@ -59,12 +61,13 @@ public class Serval extends EntityFriend{
         this.tasks.addTask(1, this.aiSit);
         this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.05D, true));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.1D, 11.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIServalBeg(this, 8.0F));
-        this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIServalBeg(this, 8.0F));
+        this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.1D));
+        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
+        this.tasks.addTask(10, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this)
         {

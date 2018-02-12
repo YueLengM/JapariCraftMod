@@ -168,7 +168,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
 
         if (p_190102_2_ <= d0 && this.attackTick <= 0) {
             float f3 = 1.5F;
-
+            //他の敵対mobへの範囲攻撃
             for (EntityMob entitymob : this.world.getEntitiesWithinAABB(EntityMob.class, attacker.getAttackTarget().getEntityBoundingBox().grow(1.0D, 0.25D, 1.0D))) {
                 if (entitymob != attacker && entitymob != attacker.getAttackTarget() && !entitymob.isOnSameTeam(entitymob) && entitymob.getDistanceSq(entitymob) < 9.0D) {
                     entitymob.knockBack(attacker, 0.4F, (double) MathHelper.sin(attacker.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(attacker.rotationYaw * 0.017453292F)));
@@ -183,6 +183,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
         }
     }
 
+    //スイープ攻撃時ののエフェクト
     public void spawnSweepParticles() {
         double d0 = (double) (-MathHelper.sin(attacker.rotationYaw * 0.017453292F));
         double d1 = (double) MathHelper.cos(attacker.rotationYaw * 0.017453292F);

@@ -221,7 +221,10 @@ public class ModelServal extends ModelBase {
 
     public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
         Serval entityServal = (Serval) entitylivingbaseIn;
+
         this.head.rotateAngleZ = entityServal.getInterestedAngle(partialTickTime);
+
+
     }
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
@@ -260,10 +263,14 @@ public class ModelServal extends ModelBase {
             f = 1.0F;
         }
 
+
         this.hand_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
         this.hand_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.hand_r.rotateAngleZ = 0.0F;
         this.hand_l.rotateAngleZ = 0.0F;
+        this.hand_r.rotateAngleY = 0.0F;
+        this.hand_r.rotateAngleZ = 0.0F;
+
         this.leg_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
         this.leg_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
         this.leg_r.rotateAngleY = 0.0F;
@@ -271,8 +278,6 @@ public class ModelServal extends ModelBase {
         this.leg_r.rotateAngleZ = 0.0F;
         this.leg_l.rotateAngleZ = 0.0F;
 
-        this.hand_r.rotateAngleY = 0.0F;
-        this.hand_r.rotateAngleZ = 0.0F;
 
         if (entityServal.isSitting()||this.isRiding)
         {
@@ -282,30 +287,10 @@ public class ModelServal extends ModelBase {
             this.leg_l.rotateAngleX = -1.4137167F;
             this.leg_l.rotateAngleY = -((float)Math.PI / 10F);
             this.leg_l.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.6F, 0F);
-        }
-        else {
-            this.leg_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-            this.leg_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
-            this.leg_r.rotateAngleY = 0.0F;
-            this.leg_l.rotateAngleY = 0.0F;
-            this.leg_r.rotateAngleZ = 0.0F;
-            this.leg_l.rotateAngleZ = 0.0F;
-            GL11.glTranslatef(0F, 0.4F, 0F);
+            GL11.glTranslatef(0F, 0.2F, 0F);
         }
 
-        if (this.swingProgress > 0.0F) {
-            float f1 = this.swingProgress;
-            this.body.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
 
-            this.hand_r.rotationPointZ = MathHelper.sin(this.body.rotateAngleY) * 5.0F;
-            this.hand_r.rotationPointX = -MathHelper.cos(this.body.rotateAngleY) * 5.0F;
-            this.hand_l.rotationPointZ = -MathHelper.sin(this.body.rotateAngleY) * 5.0F;
-            this.hand_l.rotationPointX = MathHelper.cos(this.body.rotateAngleY) * 5.0F;
-            this.hand_r.rotateAngleY += this.body.rotateAngleY;
-            this.hand_l.rotateAngleY += this.body.rotateAngleY;
-            this.hand_l.rotateAngleX += this.body.rotateAngleY;
-        }
         this.hand_r.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.hand_l.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.hand_r.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
@@ -313,6 +298,7 @@ public class ModelServal extends ModelBase {
 
         this.tail_1.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 
+        GL11.glTranslatef(0F, 0.4F, 0F);
     }
     /**
      * This is a helper function from Tabula to set the rotation of model parts

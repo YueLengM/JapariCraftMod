@@ -176,6 +176,7 @@ public class EntityFriend extends EntityTameable{
         }
     }
 
+    //死んだ時に持ってるアイテム落とす
     @Override
     public void onDeath(DamageSource cause) {
         World world = this.getEntityWorld();
@@ -188,19 +189,18 @@ public class EntityFriend extends EntityTameable{
 
         super.onDeath(cause);
     }
-    public EntityFriend.Condition getCondition()
-    {
+
+    //ここから下は体力バーの表示方法
+    public EntityFriend.Condition getCondition() {
         int health = (int) this.getHealth();
         int healthMax = (int) this.getMaxHealth();
 
         EntityFriend.Condition condition = EntityFriend.Condition.FINE;
 
-        if (health < (healthMax / 2))
-        {
+        if (health < (healthMax / 2)) {
             condition = EntityFriend.Condition.HURT;
 
-            if (health < (healthMax / 4))
-            {
+            if (health < (healthMax / 4)) {
                 condition = EntityFriend.Condition.DYING;
             }
         }

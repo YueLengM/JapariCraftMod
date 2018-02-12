@@ -3,6 +3,8 @@ package com.japaricraft.japaricraftmod.mob;
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -20,7 +22,7 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class Araisan extends EntityFriend {
+public class Araisan extends EntityPlayFriend {
 
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
 
@@ -46,11 +48,12 @@ public class Araisan extends EntityFriend {
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, CeruleanBird.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, BlackCerulean.class, 8.0F, 1.1D, 1.1D));
-        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.1D));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
     }
 
     protected void applyEntityAttributes() {
