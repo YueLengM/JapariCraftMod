@@ -1,22 +1,15 @@
 package com.japaricraft.japaricraftmod.gui;
 
-import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
-import java.util.Set;
-
 public class ContainerFriendInventory extends Container
 {
-    //ここで先に装備できるアイテムを指定
-    private static final Set<Item> Hand_ITEMS = Sets.newHashSet(Items.BOW);
     private EntityFriend entityFriend;
     private EntityPlayer entityPlayer;
 
