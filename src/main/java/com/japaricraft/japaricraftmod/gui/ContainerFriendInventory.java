@@ -1,13 +1,14 @@
 package com.japaricraft.japaricraftmod.gui;
 
 import com.google.common.collect.Sets;
-import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 import java.util.Set;
@@ -15,17 +16,17 @@ import java.util.Set;
 public class ContainerFriendInventory extends Container
 {
     //ここで先に装備できるアイテムを指定
-    private static final Set<Item> Chest_ITEMS = Sets.newHashSet(Items.LEATHER_CHESTPLATE,Items.CHAINMAIL_CHESTPLATE,Items.GOLDEN_CHESTPLATE,Items.IRON_CHESTPLATE,Items.DIAMOND_CHESTPLATE);
-    private static final Set<Item> Boot_ITEMS = Sets.newHashSet(Items.LEATHER_BOOTS,Items.CHAINMAIL_BOOTS,Items.GOLDEN_BOOTS,Items.IRON_BOOTS,Items.DIAMOND_BOOTS);
-    private static final Set<Item> Head_ITEMS = Sets.newHashSet(Items.LEATHER_HELMET, Items.CHAINMAIL_HELMET, Items.GOLDEN_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET, JapariItems.kabanhat);
+    private static final Set<Item> Hand_ITEMS = Sets.newHashSet(Items.BOW);
     private EntityFriend entityFriend;
     private EntityPlayer entityPlayer;
+
 
     public ContainerFriendInventory(EntityFriend entityFriend, EntityPlayer entityPlayer)
     {
         int column;
         int row;
         int index;
+
 
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
@@ -40,28 +41,47 @@ public class ContainerFriendInventory extends Container
                 case 0 :
                     this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 8, 18)
                     {
+                        public int getSlotStackLimit() {
+                            return 1;
+                        }
                         @Override
                         public boolean isItemValid(ItemStack stack)
                         {
-                            return Chest_ITEMS.contains(stack.getItem());
+                            if (stack.isEmpty()) return false;
+                            boolean flag = !stack.isEmpty() && stack.getItem() instanceof ItemArmor &&
+                                    ((ItemArmor) stack.getItem()).getEquipmentSlot() == EntityEquipmentSlot.CHEST;
+                            return flag;
 
                         }
                     });
                     break;
                 case 1 :
                     this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 8, 36) {
+
+                        public int getSlotStackLimit() {
+                            return 1;
+                        }
                         @Override
                         public boolean isItemValid(ItemStack stack) {
-                            return Boot_ITEMS.contains(stack.getItem());
+                            if (stack.isEmpty()) return false;
+                            boolean flag = !stack.isEmpty() && stack.getItem() instanceof ItemArmor &&
+                                    ((ItemArmor) stack.getItem()).getEquipmentSlot() == EntityEquipmentSlot.FEET;
+                            return flag;
 
                         }
                     });
                     break;
                 case 2:
                     this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, 80, 36) {
+                        public int getSlotStackLimit() {
+                            return 1;
+                        }
                         @Override
                         public boolean isItemValid(ItemStack stack) {
-                            return Head_ITEMS.contains(stack.getItem());
+                            if (stack.isEmpty()) return false;
+                            boolean flag = !stack.isEmpty() && stack.getItem() instanceof ItemArmor &&
+                                    ((ItemArmor) stack.getItem()).getEquipmentSlot() == EntityEquipmentSlot.HEAD;
+                            return flag;
 
                         }
                     });
@@ -138,7 +158,7 @@ public class ContainerFriendInventory extends Container
         }
         else
         {
-            if (!this.mergeItemStack(dstItemStack, 3, 32, false))
+            if (!this.mergeItemStack(dstItemStack, 4, 32, false))
             {
                 return stackEmpty;
             }
