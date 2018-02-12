@@ -51,7 +51,7 @@ public class Araisan extends EntityPlayFriend {
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.1D));
+        this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.05D));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
     }

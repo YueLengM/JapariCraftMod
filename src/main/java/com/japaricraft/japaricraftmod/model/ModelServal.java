@@ -291,8 +291,16 @@ public class ModelServal extends ModelBase {
         }
 
         if (entityServal.isPlaying()) {
+            this.hand_r.rotationPointZ = 0.0F;
+            this.hand_r.rotationPointX = -4.0F;
+            this.hand_l.rotationPointZ = 0.0F;
+            this.hand_l.rotationPointX = 4.0F;
             this.hand_r.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
             this.hand_l.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
+            this.hand_r.rotateAngleZ = 2.3561945F;
+            this.hand_l.rotateAngleZ = -2.3561945F;
+            this.hand_r.rotateAngleY = 0.0F;
+            this.hand_l.rotateAngleY = 0.0F;
         }
 
 
