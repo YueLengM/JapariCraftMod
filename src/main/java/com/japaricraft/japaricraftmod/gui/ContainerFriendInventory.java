@@ -151,7 +151,7 @@ public class ContainerFriendInventory extends Container
         }
         else
         {
-            if (!this.mergeItemStack(dstItemStack, 4, 32, false))
+            if (!this.mergeItemStack(dstItemStack, 3, 32, false))
             {
                 return stackEmpty;
             }

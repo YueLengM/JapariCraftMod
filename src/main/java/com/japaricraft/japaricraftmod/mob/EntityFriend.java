@@ -1,23 +1,29 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Set;
 
 public class EntityFriend extends EntityTameable{
+    private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
@@ -75,6 +81,27 @@ public class EntityFriend extends EntityTameable{
         super.onLivingUpdate();
         if (!world.isRemote) {
             pickupItem();
+            //やばい時はじゃぱりまんを食べる
+            if (getHealth() < 15 && this.rand.nextInt(20) == 0) {
+                eatJapariman();
+            }
+        }
+    }
+
+    //インベントリにじゃぱりまんが入ってた時に消費して回復する処理
+    private void eatJapariman() {
+        ItemStack friendsstack;
+        //そのスロットに置くとじゃぱりまんを食べてくれる
+        friendsstack = getInventoryFriendMain().getStackInSlot(1);
+
+        if (!friendsstack.isEmpty()) {
+            //じゃぱりまんがあるか確認
+            if (Heal_ITEMS.contains(friendsstack.getItem())) {
+                ItemFood itemfood = (ItemFood) friendsstack.getItem();
+                this.heal((float) itemfood.getHealAmount(friendsstack));
+                friendsstack.shrink(1);
+                this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+            }
         }
     }
 
@@ -98,7 +125,6 @@ public class EntityFriend extends EntityTameable{
                         entityItem.setItem(stack);
                     }
                 }
-
                 break;
             }
         }
