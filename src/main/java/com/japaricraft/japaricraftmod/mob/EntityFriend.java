@@ -92,7 +92,7 @@ public class EntityFriend extends EntityTameable{
     private void eatJapariman() {
         ItemStack friendsstack;
         //そのスロットに置くとじゃぱりまんを食べてくれる
-        friendsstack = getInventoryFriendMain().getStackInSlot(1);
+        friendsstack = getInventoryFriendMain().getStackInSlot(0);
 
         if (!friendsstack.isEmpty()) {
             //じゃぱりまんがあるか確認

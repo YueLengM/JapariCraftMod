@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.8.5": "Friends Eat naturally Japariman",
     "3.8.4": "fix Araisan texture bug",
     "3.8.3": "Araisan and Serval now playing",
     "3.8.2": "Serval and Fennec can SweepAttack",
@@ -34,7 +35,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.8.4",
-    "1.12-latest": "3.8.4"
+    "1.12-recommended": "3.8.5",
+    "1.12-latest": "3.8.5"
   }
 }
