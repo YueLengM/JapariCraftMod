@@ -10,7 +10,7 @@
       "translate": "advancements.japaricraftmod.cerulean.description"
     }
   },
-  "parent": "japaricraftmod:japaricraftmod/root",
+  "parent": "japaricraftmod:japaricraftmod/tame_friends",
   "criteria": {
     "cerulean": {
       "trigger": "minecraft:player_killed_entity",

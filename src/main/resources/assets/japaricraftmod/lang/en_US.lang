@@ -65,7 +65,7 @@ entity.arai.friend=Thank`s!!
 entity.weitting=Weitting
 entity.active=Active
 
-advancements.japaricraftmod.root.title=JapariCraft Mod
+advancements.japaricraftmod.root.title=Beginning JapariCraftMod
 advancements.japaricraftmod.root.description=Make Japariman
 advancements.japaricraftmod.blackcerulean.title=BlackCerulean
 advancements.japaricraftmod.blackcerulean.description=Kill Evil Black Cerulean
@@ -79,6 +79,8 @@ advancement.japariman_dinner=I want to eat Japariman!
 advancement.japariman_dinner.desc=Eat every type of Japariman
 advancements.japaricraftmod.sandstarminer.title=Sandstar Miner
 advancements.japaricraftmod.sandstarminer.description=Get Sandstar
+advancements.japaricraftmod.friends.title=Make Friends
+advancements.japaricraftmod.friends.description=Give Japariman to Friends
 
 entity.Villager.zookeeper=ZooKeeper
 entity.Villager.raretreader=Treasure Trader

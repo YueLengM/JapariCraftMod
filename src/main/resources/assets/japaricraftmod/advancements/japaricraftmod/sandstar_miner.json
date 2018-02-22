@@ -10,7 +10,7 @@
       "translate": "advancements.japaricraftmod.sandstarminer.description"
     }
   },
-  "parent": "japaricraftmod:japaricraftmod/root",
+  "parent": "japaricraftmod:japaricraftmod/tame_friends",
   "criteria": {
     "wild": {
       "trigger": "minecraft:inventory_changed",

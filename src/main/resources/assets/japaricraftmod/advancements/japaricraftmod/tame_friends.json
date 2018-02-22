@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "japaricraftmod:kabanhat"
+    },
+    "title": {
+      "translate": "advancements.japaricraftmod.friends.title"
+    },
+    "description": {
+      "translate": "advancements.japaricraftmod.friends.description"
+    }
+  },
+  "parent": "japaricraftmod:japaricraftmod/root",
+  "criteria": {
+    "done": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [
+    [
+      "done"
+    ]
+  ]
+}

@@ -3,6 +3,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
@@ -168,6 +169,7 @@ public class WhiteOwl extends EntityFriend {
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
                     this.world.setEntityState(this, (byte)7);
+                    AchievementsJapari.grantAdvancement(player, "tame_friends");
                 }
                 else
                 {

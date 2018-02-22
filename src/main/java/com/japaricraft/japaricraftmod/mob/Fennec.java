@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
 import net.minecraft.entity.*;
@@ -170,6 +171,7 @@ public class Fennec extends EntityFriend {
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
                     this.world.setEntityState(this, (byte)7);
+                    AchievementsJapari.grantAdvancement(player, "tame_friends");
                 }
                 else
                 {

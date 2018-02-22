@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.*;
@@ -180,6 +181,7 @@ public class KouteiPenguin extends EntityFriend {
                     this.playTameEffect(true);
                     this.aiSit.setSitting(true);
                     this.world.setEntityState(this, (byte)7);
+                    AchievementsJapari.grantAdvancement(player, "tame_friends");
                 }
                 else
                 {

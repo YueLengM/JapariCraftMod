@@ -11,7 +11,7 @@
     },
     "frame": "challenge"
   },
-  "parent": "japaricraftmod:japaricraftmod/root",
+  "parent": "japaricraftmod:japaricraftmod/tame_friends",
   "criteria": {
     "japariman": {
       "trigger": "minecraft:consume_item",
