@@ -6,8 +6,12 @@ import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.passive.AbstractHorse;
 import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.InventoryHelper;
@@ -232,6 +236,24 @@ public class EntityFriend extends EntityTameable{
         }
 
         return condition;
+    }
+
+    public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
+        if (!(target instanceof EntityGhast)) {
+            if (target instanceof EntityTameable) {
+                EntityTameable entityTameable = (EntityTameable) target;
+                if (entityTameable.isTamed() && entityTameable.getOwner() == owner) {
+                    return false;
+                }
+            }
+            if (target instanceof EntityPlayer && owner instanceof EntityPlayer && !((EntityPlayer) owner).canAttackPlayer((EntityPlayer) target)) {
+                return false;
+            } else {
+                return !(target instanceof AbstractHorse) || !((AbstractHorse) target).isTame();
+            }
+        } else {
+            return true;
+        }
     }
 
     public enum Condition
