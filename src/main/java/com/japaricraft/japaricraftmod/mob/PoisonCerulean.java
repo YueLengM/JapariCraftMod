@@ -1,20 +1,21 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
 import net.minecraft.init.MobEffects;
-import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class PoisonCerulean extends Cerulean  {
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/cerulean");
 
 
     public PoisonCerulean(World worldIn)
@@ -79,18 +80,11 @@ public class PoisonCerulean extends Cerulean  {
     }
 
 
-
+    @Nullable
     @Override
-    protected void dropLoot(boolean wasRecentlyHit, int lootingModifier, DamageSource source) {
-        super.dropLoot(wasRecentlyHit, lootingModifier, source);
-
-        this.entityDropItem(new ItemStack(Items.SLIME_BALL, 4), 0.0F);
-        this.entityDropItem(new ItemStack(Items.CLAY_BALL, 2), 0.0F);
-        if (rand.nextInt(10) == 0) {
-            entityDropItem(new ItemStack(JapariItems.wildliberationsource), 0.5F);
-        }
+    protected ResourceLocation getLootTable() {
+        return LOOT_TABLE;
     }
-
 
 
     protected void applyEntityAttributes(){

@@ -1,7 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 
-import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -10,15 +10,16 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class Cerulean extends EntityMob {
+import javax.annotation.Nullable;
 
+public class Cerulean extends EntityMob {
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/cerulean");
 
     public Cerulean(World worldIn)
     {
@@ -87,16 +88,10 @@ public class Cerulean extends EntityMob {
     }
 
 
-
+    @Nullable
     @Override
-    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
-        //ほんとは確率とかで落とすものが決めれるんだと思う
-        {
-            this.entityDropItem(new ItemStack(Items.SLIME_BALL, 2), 0.0F);
-        }
-        if (rand.nextInt(18) == 0) {
-            entityDropItem(new ItemStack(JapariItems.wildliberationsource), 0.5F);
-        }
+    protected ResourceLocation getLootTable() {
+        return LOOT_TABLE;
     }
 
 
