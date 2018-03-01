@@ -9,14 +9,12 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -125,6 +123,8 @@ public class KouteiPenguin extends EntityFriend {
                         }
 
                         this.heal((float) itemfood.getHealAmount(stack));
+                        this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+
                         for (int i = 0; i < 7; ++i) {
                             double d0 = this.rand.nextGaussian() * 0.02D;
                             double d1 = this.rand.nextGaussian() * 0.02D;
@@ -134,13 +134,13 @@ public class KouteiPenguin extends EntityFriend {
                         return true;
                     }
                 }
-                if (stack.getItem() == JapariItems.wildliberationpotion) {
+                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
 
                     if (!player.capabilities.isCreativeMode) {
                         stack.shrink(1);
                     }
-                    this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 1000, 0));
-                    this.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 2400, 0));
+                    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 4.0D);
+                    this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
 
                     for (int i = 0; i < 7; ++i) {
                         double d0 = this.rand.nextGaussian() * 0.02D;

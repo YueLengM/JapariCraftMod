@@ -101,6 +101,8 @@ public class Araisan extends EntityPlayFriend {
                         }
 
                         this.heal((float) itemfood.getHealAmount(stack));
+                        this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+
                         for (int i = 0; i < 7; ++i) {
                             double d0 = this.rand.nextGaussian() * 0.02D;
                             double d1 = this.rand.nextGaussian() * 0.02D;

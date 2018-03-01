@@ -108,6 +108,8 @@ public class Squirre extends EntityFriend {
                         }
 
                         this.heal((float) itemfood.getHealAmount(stack));
+                        this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+
                         for (int i = 0; i < 7; ++i) {
                             double d0 = this.rand.nextGaussian() * 0.02D;
                             double d1 = this.rand.nextGaussian() * 0.02D;
@@ -116,6 +118,22 @@ public class Squirre extends EntityFriend {
                         }
                         return true;
                     }
+                }
+                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
+
+                    if (!player.capabilities.isCreativeMode) {
+                        stack.shrink(1);
+                    }
+                    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 4.0D);
+                    this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
+
+                    for (int i = 0; i < 7; ++i) {
+                        double d0 = this.rand.nextGaussian() * 0.02D;
+                        double d1 = this.rand.nextGaussian() * 0.02D;
+                        double d2 = this.rand.nextGaussian() * 0.02D;
+                        this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                    }
+                    return true;
                 }
             }
             if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
