@@ -25,7 +25,7 @@ import java.util.Set;
 
 public class KouteiPenguin extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH,Items.COOKED_FISH);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH, Items.COOKED_FISH, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
     public KouteiPenguin(World worldIn)
     {
         super(worldIn);

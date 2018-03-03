@@ -84,7 +84,9 @@ public class EntityFriend extends EntityTameable{
     public void onLivingUpdate() {
         super.onLivingUpdate();
         if (!world.isRemote) {
-            pickupItem();
+            if (this.isEntityAlive()) {
+                pickupItem();
+            }
             //やばい時はじゃぱりまんを食べる
             if (getHealth() < 15 && this.rand.nextInt(20) == 0) {
                 eatJapariman();
