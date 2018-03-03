@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.8.8": "some bugfix",
     "3.8.7": "balanced Friends ability",
     "3.8.6": "Add Achievements and balanced SpawnRate",
     "3.8.5": "Friends Eat naturally Japariman",

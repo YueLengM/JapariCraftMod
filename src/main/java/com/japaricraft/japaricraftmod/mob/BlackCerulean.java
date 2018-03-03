@@ -14,6 +14,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
@@ -41,13 +42,14 @@ public class BlackCerulean extends EntityMob {
         super(worldIn);
         this.setSize(3.9F, 3.8F);
         this.experienceValue = 20;
+        this.setPathPriority(PathNodeType.WATER, -1.0F);
     }
 
     @Override
     protected void initEntityAI() {
         super.initEntityAI();
         this.tasks.addTask(1, new BlackCerulean.AIMeleeAttack());
-        this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(5, new EntityAILookIdle(this));
         this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));

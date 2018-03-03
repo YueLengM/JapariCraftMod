@@ -5,8 +5,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -216,9 +214,9 @@ public class ModelServal extends ModelBase {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-        this.skirt_1.render(f5);
-        this.body.render(f5);
+    public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+        this.skirt_1.render(scale);
+        this.body.render(scale);
     }
 
     public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
@@ -290,38 +288,7 @@ public class ModelServal extends ModelBase {
             this.leg_l.rotateAngleZ = -0.07853982F;
             GL11.glTranslatef(0F, 0.2F, 0F);
         }
-        this.hand_r.rotateAngleZ = 0.0F;
-        this.hand_l.rotateAngleZ = 0.0F;
-        this.hand_r.rotateAngleY = 0.0F;
-        this.hand_l.rotateAngleY = 0.0F;
 
-        if (this.swingProgress > 0.0F) {
-            EnumHandSide enumhandside = this.getMainHand(entityIn);
-            ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
-            float f1 = this.swingProgress;
-            this.body.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
-
-            if (enumhandside == EnumHandSide.LEFT) {
-                this.body.rotateAngleY *= -1.0F;
-            }
-
-            this.hand_r.rotationPointZ = MathHelper.sin(this.body.rotateAngleY) * 5.0F;
-            this.hand_r.rotationPointX = -MathHelper.cos(this.body.rotateAngleY) * 5.0F;
-            this.hand_l.rotationPointZ = -MathHelper.sin(this.body.rotateAngleY) * 5.0F;
-            this.hand_l.rotationPointX = MathHelper.cos(this.body.rotateAngleY) * 5.0F;
-            this.hand_r.rotateAngleY += this.body.rotateAngleY;
-            this.hand_l.rotateAngleY += this.body.rotateAngleY;
-            this.hand_l.rotateAngleX += this.body.rotateAngleY;
-            f1 = 1.0F - this.swingProgress;
-            f1 = f1 * f1;
-            f1 = f1 * f1;
-            f1 = 1.0F - f1;
-            float f2 = MathHelper.sin(f1 * (float) Math.PI);
-            float f3 = MathHelper.sin(this.swingProgress * (float) Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
-            modelrenderer.rotateAngleX = (float) ((double) modelrenderer.rotateAngleX - ((double) f2 * 1.2D + (double) f3));
-            modelrenderer.rotateAngleY += this.body.rotateAngleY * 2.0F;
-            modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
-        }
 
         if (entityServal.isPlaying()) {
             this.hand_r.rotationPointZ = 0.0F;
@@ -347,13 +314,6 @@ public class ModelServal extends ModelBase {
         GL11.glTranslatef(0F, 0.4F, 0F);
     }
 
-    public void postRenderArm(float scale, EnumHandSide side) {
-        float f = side == EnumHandSide.RIGHT ? 1.0F : -1.0F;
-        ModelRenderer modelrenderer = this.getArmForSide(side);
-        modelrenderer.rotationPointX += f;
-        modelrenderer.postRender(scale);
-        modelrenderer.rotationPointX -= f;
-    }
 
     /**
      * This is a helper function from Tabula to set the rotation of model parts
@@ -362,19 +322,5 @@ public class ModelServal extends ModelBase {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
-    }
-
-    public ModelRenderer getArmForSide(EnumHandSide side) {
-        return side == EnumHandSide.LEFT ? this.hand_l : this.hand_r;
-    }
-
-    protected EnumHandSide getMainHand(Entity entityIn) {
-        if (entityIn instanceof EntityLivingBase) {
-            EntityLivingBase entitylivingbase = (EntityLivingBase) entityIn;
-            EnumHandSide enumhandside = entitylivingbase.getPrimaryHand();
-            return entitylivingbase.swingingHand == EnumHand.MAIN_HAND ? enumhandside : enumhandside.opposite();
-        } else {
-            return EnumHandSide.RIGHT;
-        }
     }
 }
