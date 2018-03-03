@@ -4,6 +4,8 @@ import com.japaricraft.japaricraftmod.mob.Serval;
 import com.japaricraft.japaricraftmod.model.ModelServal;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -19,6 +21,11 @@ public class ServalEntityRender extends RenderLiving<Serval>
     public ServalEntityRender(RenderManager renderManager)
     {
             super(renderManager, new ModelServal(), 0.5F);
+        this.addLayer(new LayerHeldItem(this) {
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelServal) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
+            }
+        });
     }
 
 
