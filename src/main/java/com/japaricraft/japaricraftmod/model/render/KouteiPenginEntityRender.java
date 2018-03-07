@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.KouteiPenguin;
+import com.japaricraft.japaricraftmod.mob.EntityKouteiPenguin;
 import com.japaricraft.japaricraftmod.model.ModelKouteiPengin;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class KouteiPenginEntityRender extends RenderLiving<KouteiPenguin>
+public class KouteiPenginEntityRender extends RenderLiving<EntityKouteiPenguin>
 {
     private static final ResourceLocation Pengin_TEXTURES = new ResourceLocation(MODID, "textures/entity/ppp1.png");
     public KouteiPenginEntityRender(RenderManager renderManager)
@@ -61,7 +61,7 @@ public class KouteiPenginEntityRender extends RenderLiving<KouteiPenguin>
 
 
     @Override
-    protected ResourceLocation getEntityTexture(KouteiPenguin entity)
+    protected ResourceLocation getEntityTexture(EntityKouteiPenguin entity)
     {
         return Pengin_TEXTURES;
     }

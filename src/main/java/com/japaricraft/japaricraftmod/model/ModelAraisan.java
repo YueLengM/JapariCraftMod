@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Araisan;
+import com.japaricraft.japaricraftmod.mob.EntityAraisan;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -209,12 +209,12 @@ public class ModelAraisan extends ModelBase {
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        if (!(entityIn instanceof Araisan))
+        if (!(entityIn instanceof EntityAraisan))
         {
             return;
         }
 
-        Araisan entityarai = (Araisan) entityIn;
+        EntityAraisan entityarai = (EntityAraisan) entityIn;
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 

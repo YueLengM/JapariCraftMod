@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Shoebill;
+import com.japaricraft.japaricraftmod.mob.EntityShoebill;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -156,12 +156,12 @@ public class ModelShoebill extends ModelBase {
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        if (!(entityIn instanceof Shoebill))
+        if (!(entityIn instanceof EntityShoebill))
         {
             return;
         }
 
-        Shoebill entityshoebill = (Shoebill) entityIn;
+        EntityShoebill entityshoebill = (EntityShoebill) entityIn;
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 

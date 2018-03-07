@@ -22,15 +22,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-public class CeruleanBird extends EntityFlying implements IMob {
+public class EntityCeruleanBird extends EntityFlying implements IMob {
 
-    public CeruleanBird(World worldIn) {
+    public EntityCeruleanBird(World worldIn) {
         super(worldIn);
         this.setSize(0.5F, 0.5F);
 
-        this.moveHelper = new CeruleanBird.BirdMoveHelper();
-        this.tasks.addTask(3, new CeruleanBird.AIBirdRandomFly());
-        this.tasks.addTask(4, new CeruleanBird.AIBirdAttackTarget());
+        this.moveHelper = new EntityCeruleanBird.BirdMoveHelper();
+        this.tasks.addTask(3, new EntityCeruleanBird.AIBirdRandomFly());
+        this.tasks.addTask(4, new EntityCeruleanBird.AIBirdAttackTarget());
         this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
         this.targetTasks.addTask(2, new EntityAIFindEntityNearest(this, EntityFriend.class));
         experienceValue = 4;
@@ -72,7 +72,7 @@ public class CeruleanBird extends EntityFlying implements IMob {
 
     // Helper class representing a point in space that the wasp is targeting for some reason
     class WaspMoveTargetPos {
-        private CeruleanBird wasp = CeruleanBird.this;
+        private EntityCeruleanBird wasp = EntityCeruleanBird.this;
 
         public double posX;
         public double posY;
@@ -146,13 +146,13 @@ public class CeruleanBird extends EntityFlying implements IMob {
         // We'll re-use it here with a slightly different interpretation
         // Here it will mean 'has a target and not yet arrived'
 
-        private CeruleanBird wasp = CeruleanBird.this;
+        private EntityCeruleanBird wasp = EntityCeruleanBird.this;
         private int courseChangeCooldown = 0;
         private double closeEnough = 0.3D;
         private WaspMoveTargetPos targetPos = new WaspMoveTargetPos();
 
         public BirdMoveHelper() {
-            super(CeruleanBird.this);
+            super(EntityCeruleanBird.this);
         }
 
         @Override
@@ -207,7 +207,7 @@ public class CeruleanBird extends EntityFlying implements IMob {
 
     // AI class for implementing the random flying behaviour
     class AIBirdRandomFly extends EntityAIBase {
-        private CeruleanBird wasp = CeruleanBird.this;
+        private EntityCeruleanBird wasp = EntityCeruleanBird.this;
         private WaspMoveTargetPos targetPos = new WaspMoveTargetPos();
 
         public AIBirdRandomFly() {
@@ -292,7 +292,7 @@ public class CeruleanBird extends EntityFlying implements IMob {
 
     // AI class for implementing the behaviour to target and attack players
     class AIBirdAttackTarget extends EntityAIBase {
-        private CeruleanBird wasp = CeruleanBird.this;
+        private EntityCeruleanBird wasp = EntityCeruleanBird.this;
         private int attackTick = 0;
         private WaspMoveTargetPos targetPos = new WaspMoveTargetPos();
 

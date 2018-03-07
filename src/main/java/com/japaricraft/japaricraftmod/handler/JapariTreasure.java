@@ -2,7 +2,7 @@ package com.japaricraft.japaricraftmod.handler;
 
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.SandStarHandler;
+import com.japaricraft.japaricraftmod.mob.EntitySandStarHandler;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -24,7 +24,7 @@ public class JapariTreasure {
 
 
     public static void init() {
-        LootTableList.register(SandStarHandler.LOOT_TABLE);
+        LootTableList.register(EntitySandStarHandler.LOOT_TABLE);
     }
     private static ResourceLocation register(String id) {
         return LootTableList.register(new ResourceLocation(JapariCraftMod.MODID, id));

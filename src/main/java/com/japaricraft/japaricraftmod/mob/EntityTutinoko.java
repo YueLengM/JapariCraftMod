@@ -20,17 +20,17 @@ import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-public class Tutinoko extends EntityVillager {
+public class EntityTutinoko extends EntityVillager {
 
     private String professionName;
     private net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof;
 
-    public Tutinoko(World worldIn) {
+    public EntityTutinoko(World worldIn) {
         super(worldIn);
         this.setSize(0.5F, 1.5F);
     }
 
-    public Tutinoko(World worldIn, int profession) {
+    public EntityTutinoko(World worldIn, int profession) {
         super(worldIn, profession);
     }
 
@@ -108,7 +108,7 @@ public class Tutinoko extends EntityVillager {
     }
 
     public EntityVillager createChild(EntityAgeable ageable) {
-        Tutinoko entityvillager = new Tutinoko(this.world);
+        EntityTutinoko entityvillager = new EntityTutinoko(this.world);
         entityvillager.onInitialSpawn(this.world.getDifficultyForLocation(new BlockPos(entityvillager)), null);
         return entityvillager;
     }

@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Alpaca;
+import com.japaricraft.japaricraftmod.mob.EntityAlpaca;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -258,11 +258,11 @@ public class ModelAlpaca extends ModelBase {
     }
 
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-        if (!(entityIn instanceof Alpaca)) {
+        if (!(entityIn instanceof EntityAlpaca)) {
             return;
         }
 
-        Alpaca entityarai = (Alpaca) entityIn;
+        EntityAlpaca entityarai = (EntityAlpaca) entityIn;
         boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 

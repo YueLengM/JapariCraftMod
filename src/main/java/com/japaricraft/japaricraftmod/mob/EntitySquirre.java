@@ -4,42 +4,29 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
-import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
-import com.japaricraft.japaricraftmod.mob.ai.EntityAIServalBeg;
-import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Set;
 
+public class EntitySquirre extends EntityFriend {
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.APPLE, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
-public class Serval extends EntityPlayFriend {
-    private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(Serval.class, DataSerializers.BOOLEAN);
-
-    public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
-
-    private float headRotationCourse;
-    private float headRotationCourseOld;
-    public Serval(World worldIn) {
+    public EntitySquirre(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.6F);
+        this.setSize(0.6F, 1.5F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
@@ -55,76 +42,44 @@ public class Serval extends EntityPlayFriend {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.05D, true));
-        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIPlayWithFriend(this, 1.05D));
-        this.tasks.addTask(7, new EntityAIServalBeg(this, 8.0F));
-        this.tasks.addTask(8, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.tasks.addTask(2, this.aiSit);
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
+
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, BlackCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCeruleanBird.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityBlackCerulean.class, false));
     }
-
-    protected void entityInit() {
-        super.entityInit();
-        this.dataManager.register(BEGGING, Boolean.FALSE);
-    }
-
-
 
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(22D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
 
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
-    }
-
-    public void onUpdate() {
-        super.onUpdate();
-        this.headRotationCourseOld = this.headRotationCourse;
-
-        if (this.isBegging()) {
-            this.headRotationCourse += (1.0F - this.headRotationCourse) * 0.4F;
-        } else {
-            this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
-        }
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
     @Override
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
 
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
-    @SideOnly(Side.CLIENT)
-    public float getInterestedAngle(float p_70917_1_) {
-        return (this.headRotationCourseOld + (this.headRotationCourse - this.headRotationCourseOld) * p_70917_1_) * 0.15F * (float) Math.PI;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_CAT_HURT;
-    }
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_CAT_DEATH;
+        return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_CAT_AMBIENT;
-    }
 
     public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.UNDEFINED;
@@ -137,40 +92,17 @@ public class Serval extends EntityPlayFriend {
 
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn)
-    {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-
-        if (flag)
-        {
-            this.applyEnchantments(this, entityIn);
-        }
-
-        return flag;
-    }
-
-    public boolean isBegging() {
-        return this.dataManager.get(BEGGING);
-    }
-
-    public void setBegging(boolean beg) {
-        this.dataManager.set(BEGGING, beg);
-    }
-
-    @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
-        {
-            if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if(this.getHealth()<this.getMaxHealth()) {
+                    if (this.getHealth() < this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -204,33 +136,26 @@ public class Serval extends EntityPlayFriend {
                     return true;
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
-            {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        }
-        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                stack.setCount(stack.getCount()-1);
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
             }
 
-            if (!this.world.isRemote)
-            {
-                if (this.rand.nextInt(3) == 0)
-                {
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(3) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte)7);
+                    this.aiSit.setSitting(true);
+                    this.world.setEntityState(this, (byte) 7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                }
-                else
-                {
+                } else {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte)6);
+                    this.world.setEntityState(this, (byte) 6);
                 }
 
 
@@ -242,17 +167,27 @@ public class Serval extends EntityPlayFriend {
         return super.processInteract(player, hand);
     }
 
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    @Override
+    public boolean attackEntityAsMob(Entity entityIn) {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+
+        if (flag) {
+            this.applyEnchantments(this, entityIn);
+        }
+
+        return flag;
+    }
+
+
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
 
+
     @Override
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 

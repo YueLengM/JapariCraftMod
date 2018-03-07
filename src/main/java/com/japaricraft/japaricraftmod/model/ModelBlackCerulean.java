@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.BlackCerulean;
+import com.japaricraft.japaricraftmod.mob.EntityBlackCerulean;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -97,7 +97,7 @@ public class ModelBlackCerulean extends ModelBase {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
         super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
         float f = ageInTicks - (float) entityIn.ticksExisted;
-        float f1 = ((BlackCerulean) entityIn).getStandingAnimationScale(f);
+        float f1 = ((EntityBlackCerulean) entityIn).getStandingAnimationScale(f);
         f1 = f1 * f1;
         this.mainBody.rotateAngleX = f1 * (float) Math.PI * -0.32F;
         this.mainLegL1.rotateAngleX -= f1 * (float) Math.PI * 0.45F;

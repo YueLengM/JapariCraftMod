@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.Tutinoko;
+import com.japaricraft.japaricraftmod.mob.EntityTutinoko;
 import com.japaricraft.japaricraftmod.model.ModelTutinoko;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
-public class TutinokoRender extends RenderLiving<Tutinoko> {
+public class TutinokoRender extends RenderLiving<EntityTutinoko> {
     private static final ResourceLocation Tutinoko_TEXTURES = new ResourceLocation(MODID, "textures/entity/tutinoko.png");
 
     public TutinokoRender(RenderManager renderManager) {
@@ -18,11 +18,11 @@ public class TutinokoRender extends RenderLiving<Tutinoko> {
 
 
     @Override
-    protected ResourceLocation getEntityTexture(Tutinoko entity) {
+    protected ResourceLocation getEntityTexture(EntityTutinoko entity) {
         return Tutinoko_TEXTURES;
     }
 
-    protected void preRenderCallback(Tutinoko entitylivingbaseIn, float partialTickTime) {
+    protected void preRenderCallback(EntityTutinoko entitylivingbaseIn, float partialTickTime) {
         float f = 0.9375F;
 
         if (entitylivingbaseIn.getGrowingAge() < 0) {

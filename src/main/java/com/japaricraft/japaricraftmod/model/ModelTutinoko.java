@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Tutinoko;
+import com.japaricraft.japaricraftmod.mob.EntityTutinoko;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -78,7 +78,7 @@ public class ModelTutinoko extends ModelBase {
     }
 
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-        if (!(entityIn instanceof Tutinoko)) {
+        if (!(entityIn instanceof EntityTutinoko)) {
             return;
         }
 

@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Fennec;
+import com.japaricraft.japaricraftmod.mob.EntityFennec;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -244,12 +244,12 @@ public class ModelFennec extends ModelBase {
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        if (!(entityIn instanceof Fennec))
+        if (!(entityIn instanceof EntityFennec))
         {
             return;
         }
 
-        Fennec entityFennec = (Fennec) entityIn;
+        EntityFennec entityEntityFennec = (EntityFennec) entityIn;
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -288,7 +288,7 @@ public class ModelFennec extends ModelBase {
         this.leg_r.rotateAngleZ = 0.0F;
         this.leg_l.rotateAngleZ = 0.0F;
 
-        if (entityFennec.isSitting()||this.isRiding)
+        if (entityEntityFennec.isSitting()||this.isRiding)
         {
             this.leg_r.rotateAngleX = -1.4137167F;
             this.leg_r.rotateAngleY = ((float)Math.PI / 10F);

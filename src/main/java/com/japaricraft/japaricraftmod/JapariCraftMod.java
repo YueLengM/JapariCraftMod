@@ -51,6 +51,7 @@ public class JapariCraftMod {
     public static JapariCraftMod instance;
     public static final int ID_Book = 0;
     public static final int ID_JAPARI_INVENTORY = 1;
+    public static final int ID_NPCGUIDE = 2;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
 
 

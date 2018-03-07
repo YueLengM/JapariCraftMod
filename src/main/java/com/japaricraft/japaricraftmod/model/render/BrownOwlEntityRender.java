@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.BrownOwl;
+import com.japaricraft.japaricraftmod.mob.EntityBrownOwl;
 import com.japaricraft.japaricraftmod.model.ModelBrownOwl;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class BrownOwlEntityRender extends RenderLiving<BrownOwl>
+public class BrownOwlEntityRender extends RenderLiving<EntityBrownOwl>
 {
     private static final ResourceLocation OWL_TEXTURES = new ResourceLocation(MODID, "textures/entity/owl1.png");
     public BrownOwlEntityRender(RenderManager renderManager)
@@ -21,11 +21,11 @@ public class BrownOwlEntityRender extends RenderLiving<BrownOwl>
     }
 
     @Override
-    protected ResourceLocation getEntityTexture(BrownOwl entity)
+    protected ResourceLocation getEntityTexture(EntityBrownOwl entity)
     {
         return OWL_TEXTURES;
     }
-    protected float handleRotationFloat(BrownOwl livingBase, float partialTicks)
+    protected float handleRotationFloat(EntityBrownOwl livingBase, float partialTicks)
     {
         float f = livingBase.oFlap + (livingBase.wingRotation - livingBase.oFlap) * partialTicks;
         float f1 = livingBase.oFlapSpeed + (livingBase.destPos - livingBase.oFlapSpeed) * partialTicks;

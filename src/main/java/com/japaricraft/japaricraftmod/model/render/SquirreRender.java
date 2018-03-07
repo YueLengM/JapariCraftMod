@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.Squirre;
+import com.japaricraft.japaricraftmod.mob.EntitySquirre;
 import com.japaricraft.japaricraftmod.model.ModelSquirre;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
-public class SquirreRender extends RenderLiving<Squirre> {
+public class SquirreRender extends RenderLiving<EntitySquirre> {
     private static final ResourceLocation TEXTURES = new ResourceLocation(MODID, "textures/entity/squirre.png");
 
     public SquirreRender(RenderManager renderManager) {
@@ -61,7 +61,7 @@ public class SquirreRender extends RenderLiving<Squirre> {
      * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
      */
     @Override
-    protected ResourceLocation getEntityTexture(Squirre entity) {
+    protected ResourceLocation getEntityTexture(EntitySquirre entity) {
         return TEXTURES;
     }
 }

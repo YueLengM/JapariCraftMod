@@ -1,11 +1,10 @@
 package com.japaricraft.japaricraftmod.mob;
 
-
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
+import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,41 +13,27 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import java.util.Set;
 
+public class EntityKouteiPenguin extends EntityFriend {
 
-public class WhiteOwl extends EntityFriend {
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry,Items.RABBIT_STEW,Items.MUSHROOM_STEW);
-    private EntityPlayerSP player;
-    public float wingRotation;
-    public float destPos;
-    public float oFlapSpeed;
-    public float oFlap;
-    private float wingRotDelta = 1.0F;
-
-    public WhiteOwl(World worldIn)
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH, Items.COOKED_FISH, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+    public EntityKouteiPenguin(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.8F);
+        this.setSize(0.59F, 1.7F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
-    @Override
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
-
-    @Override
     protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
 
@@ -57,24 +42,49 @@ public class WhiteOwl extends EntityFriend {
         this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(6, new EntityAIMoveIndoors(this));
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(8, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAILookIdle(this));
-        this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-
+        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, BlackCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCeruleanBird.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityBlackCerulean.class, false));
+
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+        super.writeEntityToNBT(compound);
+
+        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
+
+        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
+
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+        super.readEntityFromNBT(compound);
+
+        this.getInventoryFriendMain().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, 10));
+
+        this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
+
+    }
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return null;
     }
 
 
-    @Override
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
+    protected void updateAITasks()
+    {
+        if (this.ticksExisted % 5 == 0)
+        {
             this.heal(0.06F);
         }
     }
@@ -84,15 +94,15 @@ public class WhiteOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
     }
+
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
@@ -158,10 +168,10 @@ public class WhiteOwl extends EntityFriend {
             {
                 if (this.rand.nextInt(3) == 0)
                 {
-                    player.sendStatusMessage(new TextComponentTranslation("entity.whiteowl.friend"), true);
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
+                    this.aiSit.setSitting(true);
                     this.world.setEntityState(this, (byte)7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
                 }
@@ -181,36 +191,14 @@ public class WhiteOwl extends EntityFriend {
         return super.processInteract(player, hand);
     }
 
-    @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        this.calculateFlapping();
-    }
-
-    private void calculateFlapping() {
-        this.oFlap = this.wingRotation;
-        this.oFlapSpeed = this.destPos;
-        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
-        this.destPos = MathHelper.clamp(this.destPos, 0.0F, 1.0F);
-
-        if (!this.onGround && this.wingRotDelta < 1.0F) {
-            this.wingRotDelta = 1.0F;
-        }
-
-        this.wingRotDelta = (float)((double)this.wingRotDelta * 0.9D);
-
-        if (!this.onGround && this.motionY < 0.0D) {
-            this.motionY *= 0.6D;
-        }
-
-        this.wingRotation += this.wingRotDelta * 2.0F;
-    }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+    public boolean attackEntityAsMob(Entity entityIn)
+    {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
-        if (flag) {
+        if (flag)
+        {
             this.applyEnchantments(this, entityIn);
         }
 
@@ -218,14 +206,10 @@ public class WhiteOwl extends EntityFriend {
     }
 
 
-    public void fall(float distance, float damageMultiplier)
-    {
-    }
-
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
-    @Override
+
     public Item getDropItem () {
 
         return null;//なにも落とさない
@@ -238,8 +222,8 @@ public class WhiteOwl extends EntityFriend {
         }
     }
 
-    @Override
-    public boolean canDespawn() {
+    public boolean canDespawn()
+    {
         return false;
     }
 

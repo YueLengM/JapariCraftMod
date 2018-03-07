@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.PoisonCerulean;
+import com.japaricraft.japaricraftmod.mob.PoisonEntityCerulean;
 import com.japaricraft.japaricraftmod.model.ModelCerulean;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class PoisonCeruleanRender extends RenderLiving<PoisonCerulean>
+public class PoisonCeruleanRender extends RenderLiving<PoisonEntityCerulean>
 {
     private static final ResourceLocation Cerulean_TEXTURES = new ResourceLocation(MODID, "textures/entity/cerulean/poison_cerulean.png");
     public PoisonCeruleanRender(RenderManager renderManager)
@@ -21,7 +21,7 @@ public class PoisonCeruleanRender extends RenderLiving<PoisonCerulean>
 
 
     @Override
-    protected ResourceLocation getEntityTexture(PoisonCerulean entity)
+    protected ResourceLocation getEntityTexture(PoisonEntityCerulean entity)
     {
         return Cerulean_TEXTURES;
     }

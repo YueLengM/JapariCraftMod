@@ -9,22 +9,22 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class JapariRenderingRegistry {
     public static void registerRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(Serval.class, ServalEntityRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(WhiteOwl.class, WhiteOwlEntityRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(BrownOwl.class, BrownOwlEntityRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Araisan.class, AraisanRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Cerulean.class, CeruleanRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(PoisonCerulean.class, PoisonCeruleanRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Shoebill.class, ShoebillEntityRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Guide.class, GuideRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(KouteiPenguin.class, KouteiPenginEntityRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Fennec.class, FennecRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(SandStarHandler.class, SandStarHandlerRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(RoyalPenguin.class, RoyalPenguinRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Alpaca.class, AlpacaRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Squirre.class, SquirreRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(CeruleanBird.class, CeruleanBirdRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(BlackCerulean.class, BlackCeruleanRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(Tutinoko.class, TutinokoRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityServal.class, ServalEntityRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityWhiteOwl.class, WhiteOwlEntityRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBrownOwl.class, BrownOwlEntityRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityAraisan.class, AraisanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityCerulean.class, CeruleanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(PoisonEntityCerulean.class, PoisonCeruleanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityShoebill.class, ShoebillEntityRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityGuide.class, GuideRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityKouteiPenguin.class, KouteiPenginEntityRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityFennec.class, FennecRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntitySandStarHandler.class, SandStarHandlerRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(RoyalPenguinEntity.class, RoyalPenguinRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityAlpaca.class, AlpacaRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntitySquirre.class, SquirreRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityCeruleanBird.class, CeruleanBirdRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBlackCerulean.class, BlackCeruleanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTutinoko.class, TutinokoRender::new);
     }
 }

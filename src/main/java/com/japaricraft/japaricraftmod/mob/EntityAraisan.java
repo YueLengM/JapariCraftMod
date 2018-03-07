@@ -4,6 +4,8 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -21,10 +23,11 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class Alpaca extends EntityFriend {
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+public class EntityAraisan extends EntityPlayFriend {
 
-    public Alpaca(World worldIn) {
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
+
+    public EntityAraisan(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
@@ -43,14 +46,15 @@ public class Alpaca extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
-        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, CeruleanBird.class, 6.5F, 1.1D, 1.1D));
-        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, BlackCerulean.class, 8.0F, 1.1D, 1.1D));
-        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityCerulean.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityCeruleanBird.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityBlackCerulean.class, 8.0F, 1.1D, 1.1D));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.05D));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
     }
 
     protected void applyEntityAttributes() {
@@ -58,6 +62,8 @@ public class Alpaca extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
+
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
     @Override
@@ -77,17 +83,19 @@ public class Alpaca extends EntityFriend {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
+    {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed()) {
-            if (player.isSneaking() && !this.isSitting()) {
-                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed())
+        {
+            if(player.isSneaking()&&!this.isSitting()){
+                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if (this.getHealth() < this.getMaxHealth()) {
+                    if(this.getHealth()<this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -105,25 +113,33 @@ public class Alpaca extends EntityFriend {
                     }
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
+            {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
-            if (!player.capabilities.isCreativeMode) {
-                stack.setCount(stack.getCount() - 1);
+        }
+        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
+        {
+            if (!player.capabilities.isCreativeMode)
+            {
+                stack.setCount(stack.getCount()-1);
             }
 
-            if (!this.world.isRemote) {
-                if (this.rand.nextInt(3) == 0) {
+            if (!this.world.isRemote)
+            {
+                if (this.rand.nextInt(3) == 0)
+                {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte) 7);
+                    this.world.setEntityState(this, (byte)7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                } else {
+                }
+                else
+                {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte) 6);
+                    this.world.setEntityState(this, (byte)6);
                 }
 
 
@@ -136,15 +152,21 @@ public class Alpaca extends EntityFriend {
     }
 
 
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
+
+
+
+    protected void updateAITasks()
+    {
+        if (this.ticksExisted % 5 == 0)
+        {
             this.heal(0.06F);
         }
     }
 
 
     @Override
-    public boolean canDespawn() {
+    public boolean canDespawn()
+    {
         return false;
     }
 

@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.Guide;
+import com.japaricraft.japaricraftmod.mob.EntityGuide;
 import com.japaricraft.japaricraftmod.model.ModelGuide;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class GuideRender extends RenderBiped<Guide>
+public class GuideRender extends RenderBiped<EntityGuide>
 {
     private static final ResourceLocation Guide_TEXTURES = new ResourceLocation(MODID, "textures/entity/guide.png");
     public GuideRender(RenderManager renderManager)
@@ -21,7 +21,7 @@ public class GuideRender extends RenderBiped<Guide>
 
 
     @Override
-    protected ResourceLocation getEntityTexture(Guide entity)
+    protected ResourceLocation getEntityTexture(EntityGuide entity)
     {
         return Guide_TEXTURES;
     }

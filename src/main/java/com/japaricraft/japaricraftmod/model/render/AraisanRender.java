@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.Araisan;
+import com.japaricraft.japaricraftmod.mob.EntityAraisan;
 import com.japaricraft.japaricraftmod.model.ModelAraisan;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class AraisanRender extends RenderLiving<Araisan>
+public class AraisanRender extends RenderLiving<EntityAraisan>
 {
     private static final ResourceLocation Arai_TEXTURES = new ResourceLocation(MODID, "textures/entity/araisan/araisan.png");
     public AraisanRender(RenderManager renderManager)
@@ -62,7 +62,7 @@ public class AraisanRender extends RenderLiving<Araisan>
 
 
     @Override
-    protected ResourceLocation getEntityTexture(Araisan entity)
+    protected ResourceLocation getEntityTexture(EntityAraisan entity)
     {
         return Arai_TEXTURES;
     }

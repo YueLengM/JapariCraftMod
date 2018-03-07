@@ -19,10 +19,10 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class Cerulean extends EntityMob {
+public class EntityCerulean extends EntityMob {
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/cerulean");
 
-    public Cerulean(World worldIn)
+    public EntityCerulean(World worldIn)
     {
         super(worldIn);
         this.setSize(0.95F, 0.95F);

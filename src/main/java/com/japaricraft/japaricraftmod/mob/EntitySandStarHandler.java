@@ -30,11 +30,11 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 
 
-public class SandStarHandler extends EntitySpellcasterIllager {
+public class EntitySandStarHandler extends EntitySpellcasterIllager {
     private EntitySheep wololoTarget;
 
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/sandstarhandler");
-    public SandStarHandler(World worldIn) {
+    public EntitySandStarHandler(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.95F);
         this.experienceValue = 12;
@@ -51,7 +51,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         this.tasks.addTask(8, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F, 1.0F));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, SandStarHandler.class));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntitySandStarHandler.class));
         this.targetTasks.addTask(2, (new EntityAINearestAttackableTarget(this, EntityPlayer.class, true)).setUnseenMemoryTicks(300));
         this.targetTasks.addTask(3, (new EntityAINearestAttackableTarget(this, EntityVillager.class, false)).setUnseenMemoryTicks(300));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityIronGolem.class, false));
@@ -70,7 +70,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
     }
 
     public static void registerFixesEvoker(DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, SandStarHandler.class);
+        EntityLiving.registerFixesMob(fixer, EntitySandStarHandler.class);
     }
 
     /**
@@ -157,28 +157,28 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         protected void castSpell() {
-            EntityLivingBase entitylivingbase = SandStarHandler.this.getAttackTarget();
+            EntityLivingBase entitylivingbase = EntitySandStarHandler.this.getAttackTarget();
             assert entitylivingbase != null;
-            double d0 = Math.min(entitylivingbase.posY, SandStarHandler.this.posY);
-            double d1 = Math.max(entitylivingbase.posY, SandStarHandler.this.posY) + 1.0D;
-            float f = (float) MathHelper.atan2(entitylivingbase.posZ - SandStarHandler.this.posZ, entitylivingbase.posX - SandStarHandler.this.posX);
+            double d0 = Math.min(entitylivingbase.posY, EntitySandStarHandler.this.posY);
+            double d1 = Math.max(entitylivingbase.posY, EntitySandStarHandler.this.posY) + 1.0D;
+            float f = (float) MathHelper.atan2(entitylivingbase.posZ - EntitySandStarHandler.this.posZ, entitylivingbase.posX - EntitySandStarHandler.this.posX);
 
-            if (SandStarHandler.this.getDistanceSq(entitylivingbase) < 9.0D) {
+            if (EntitySandStarHandler.this.getDistanceSq(entitylivingbase) < 9.0D) {
                 for (int i = 0; i < 5; ++i) {
                     float f1 = f + (float) i * (float) Math.PI * 0.4F;
-                    this.spawnFangs(SandStarHandler.this.posX + (double) MathHelper.cos(f1) * 1.5D, SandStarHandler.this.posZ + (double) MathHelper.sin(f1) * 1.5D, d0, d1, f1, 0);
+                    this.spawnFangs(EntitySandStarHandler.this.posX + (double) MathHelper.cos(f1) * 1.5D, EntitySandStarHandler.this.posZ + (double) MathHelper.sin(f1) * 1.5D, d0, d1, f1, 0);
                 }
 
                 for (int k = 0; k < 8; ++k) {
                     float f2 = f + (float) k * (float) Math.PI * 2.0F / 8.0F + ((float) Math.PI * 2F / 5F);
-                    this.spawnFangs(SandStarHandler.this.posX + (double) MathHelper.cos(f2) * 2.5D, SandStarHandler.this.posZ + (double) MathHelper.sin(f2) * 2.5D, d0, d1, f2, 3);
+                    this.spawnFangs(EntitySandStarHandler.this.posX + (double) MathHelper.cos(f2) * 2.5D, EntitySandStarHandler.this.posZ + (double) MathHelper.sin(f2) * 2.5D, d0, d1, f2, 3);
                 }
             } else {
                 for (int l = 0; l < 16; ++l) {
                     double d2 = 1.25D * (double) (l + 1);
                     int j;
                     j = l;
-                    this.spawnFangs(SandStarHandler.this.posX + (double) MathHelper.cos(f) * d2, SandStarHandler.this.posZ + (double) MathHelper.sin(f) * d2, d0, d1, f, j);
+                    this.spawnFangs(EntitySandStarHandler.this.posX + (double) MathHelper.cos(f) * d2, EntitySandStarHandler.this.posZ + (double) MathHelper.sin(f) * d2, d0, d1, f, j);
                 }
             }
         }
@@ -189,10 +189,10 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             double d0 = 0.0D;
 
             while (true) {
-                if (!SandStarHandler.this.world.isBlockNormalCube(blockpos, true) && SandStarHandler.this.world.isBlockNormalCube(blockpos.down(), true)) {
-                    if (!SandStarHandler.this.world.isAirBlock(blockpos)) {
-                        IBlockState iblockstate = SandStarHandler.this.world.getBlockState(blockpos);
-                        AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(SandStarHandler.this.world, blockpos);
+                if (!EntitySandStarHandler.this.world.isBlockNormalCube(blockpos, true) && EntitySandStarHandler.this.world.isBlockNormalCube(blockpos.down(), true)) {
+                    if (!EntitySandStarHandler.this.world.isAirBlock(blockpos)) {
+                        IBlockState iblockstate = EntitySandStarHandler.this.world.getBlockState(blockpos);
+                        AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(EntitySandStarHandler.this.world, blockpos);
 
                         if (axisalignedbb != null) {
                             d0 = axisalignedbb.maxY;
@@ -211,8 +211,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             }
 
             if (flag) {
-                EntityEvokerFangs SandStarHandlerfangs = new EntityEvokerFangs(SandStarHandler.this.world, p_190876_1_, (double) blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, SandStarHandler.this);
-                SandStarHandler.this.world.spawnEntity(SandStarHandlerfangs);
+                EntityEvokerFangs SandStarHandlerfangs = new EntityEvokerFangs(EntitySandStarHandler.this.world, p_190876_1_, (double) blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, EntitySandStarHandler.this);
+                EntitySandStarHandler.this.world.spawnEntity(SandStarHandlerfangs);
             }
         }
 
@@ -234,10 +234,10 @@ public class SandStarHandler extends EntitySpellcasterIllager {
          * Keep ticking a continuous task that has already been started
          */
         public void updateTask() {
-            if (SandStarHandler.this.getAttackTarget() != null) {
-                SandStarHandler.this.getLookHelper().setLookPositionWithEntity(SandStarHandler.this.getAttackTarget(), (float) SandStarHandler.this.getHorizontalFaceSpeed(), (float) SandStarHandler.this.getVerticalFaceSpeed());
-            } else if (SandStarHandler.this.getWololoTarget() != null) {
-                SandStarHandler.this.getLookHelper().setLookPositionWithEntity(SandStarHandler.this.getWololoTarget(), (float) SandStarHandler.this.getHorizontalFaceSpeed(), (float) SandStarHandler.this.getVerticalFaceSpeed());
+            if (EntitySandStarHandler.this.getAttackTarget() != null) {
+                EntitySandStarHandler.this.getLookHelper().setLookPositionWithEntity(EntitySandStarHandler.this.getAttackTarget(), (float) EntitySandStarHandler.this.getHorizontalFaceSpeed(), (float) EntitySandStarHandler.this.getVerticalFaceSpeed());
+            } else if (EntitySandStarHandler.this.getWololoTarget() != null) {
+                EntitySandStarHandler.this.getLookHelper().setLookPositionWithEntity(EntitySandStarHandler.this.getWololoTarget(), (float) EntitySandStarHandler.this.getHorizontalFaceSpeed(), (float) EntitySandStarHandler.this.getVerticalFaceSpeed());
             }
         }
     }
@@ -252,8 +252,8 @@ public class SandStarHandler extends EntitySpellcasterIllager {
             if (!super.shouldExecute()) {
                 return false;
             } else {
-                int i = SandStarHandler.this.world.getEntitiesWithinAABB(EntityVex.class, SandStarHandler.this.getEntityBoundingBox().grow(16.0D)).size();
-                return SandStarHandler.this.rand.nextInt(8) + 1 > i;
+                int i = EntitySandStarHandler.this.world.getEntitiesWithinAABB(EntityVex.class, EntitySandStarHandler.this.getEntityBoundingBox().grow(16.0D)).size();
+                return EntitySandStarHandler.this.rand.nextInt(8) + 1 > i;
             }
         }
 
@@ -267,15 +267,15 @@ public class SandStarHandler extends EntitySpellcasterIllager {
 
         protected void castSpell() {
             for (int i = 0; i < 3; ++i) {
-                BlockPos blockpos = (new BlockPos(SandStarHandler.this)).add(-2 + SandStarHandler.this.rand.nextInt(5), 1, -2 + SandStarHandler.this.rand.nextInt(5));
-                EntityVex entityvex = new EntityVex(SandStarHandler.this.world);
+                BlockPos blockpos = (new BlockPos(EntitySandStarHandler.this)).add(-2 + EntitySandStarHandler.this.rand.nextInt(5), 1, -2 + EntitySandStarHandler.this.rand.nextInt(5));
+                EntityVex entityvex = new EntityVex(EntitySandStarHandler.this.world);
                 entityvex.moveToBlockPosAndAngles(blockpos, 0.0F, 0.0F);
-                entityvex.onInitialSpawn(SandStarHandler.this.world.getDifficultyForLocation(blockpos), null);
+                entityvex.onInitialSpawn(EntitySandStarHandler.this.world.getDifficultyForLocation(blockpos), null);
                 entityvex.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.WOODEN_SWORD));
-                entityvex.setOwner(SandStarHandler.this);
+                entityvex.setOwner(EntitySandStarHandler.this);
                 entityvex.setBoundOrigin(blockpos);
-                entityvex.setLimitedLife(20 * (30 + SandStarHandler.this.rand.nextInt(90)));
-                SandStarHandler.this.world.spawnEntity(entityvex);
+                entityvex.setLimitedLife(20 * (30 + EntitySandStarHandler.this.rand.nextInt(90)));
+                EntitySandStarHandler.this.world.spawnEntity(entityvex);
             }
         }
 
@@ -294,9 +294,9 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         public boolean shouldExecute() {
-            if (SandStarHandler.this.isSpellcasting()) {
+            if (EntitySandStarHandler.this.isSpellcasting()) {
                 return false;
-            } else if (SandStarHandler.this.ticksExisted < this.spellCooldown) {
+            } else if (EntitySandStarHandler.this.ticksExisted < this.spellCooldown) {
                 return false;
             } else if (getHealth() < 40) ;
             {
@@ -313,7 +313,7 @@ public class SandStarHandler extends EntitySpellcasterIllager {
         }
 
         protected void castSpell() {
-            SandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+            EntitySandStarHandler.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
         }
 
         protected SoundEvent getSpellPrepareSound() {

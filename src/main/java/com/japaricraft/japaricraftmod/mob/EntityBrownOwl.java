@@ -17,28 +17,30 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class Squirre extends EntityFriend {
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.APPLE, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+public class EntityBrownOwl extends EntityFriend {
 
-    public Squirre(World worldIn) {
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry,Items.RABBIT_STEW,Items.MUSHROOM_STEW);
+    public float wingRotation;
+    public float destPos;
+    public float oFlapSpeed;
+    public float oFlap;
+    private float wingRotDelta = 1.0F;
+
+    public EntityBrownOwl(World worldIn)
+    {
         super(worldIn);
-        this.setSize(0.6F, 1.5F);
+        this.setSize(0.6F, 1.8F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
-
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
-
-
-    protected void initEntityAI() {
-        super.initEntityAI();
+    @Override
+    protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -50,59 +52,66 @@ public class Squirre extends EntityFriend {
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, BlackCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCeruleanBird.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityBlackCerulean.class, false));
+
+
     }
 
-    protected void applyEntityAttributes() {
-        super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(22D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
+    @Override
+    public EntityAgeable createChild(EntityAgeable ageable) {
+        return null;
+    }
 
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
+    @Override
+    protected void updateAITasks()
+    {
+        if (this.ticksExisted % 5 == 0)
+        {
+            this.heal(0.06F);
+        }
+    }
+    @Override
+    protected SoundEvent getDeathSound()
+    {
+        return SoundEvents.ENTITY_PLAYER_DEATH;
+    }
+
+    @Override
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(26.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
+        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
     @Override
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
 
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
     }
 
     @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_PLAYER_DEATH;
-    }
-
-
-    public EnumCreatureAttribute getCreatureAttribute() {
-        return EnumCreatureAttribute.UNDEFINED;
-    }
-
-    public Item getDropItem() {
-
-        return null;//なにも落とさない
-    }
-
-
-    @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand) {
+    public boolean processInteract(EntityPlayer player, EnumHand hand)
+    {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed()) {
-            if (player.isSneaking() && !this.isSitting()) {
-                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed())
+        {
+            if(player.isSneaking()&&!this.isSitting()){
+                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if (this.getHealth() < this.getMaxHealth()) {
+                    if(this.getHealth()<this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -136,27 +145,36 @@ public class Squirre extends EntityFriend {
                     return true;
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
+            {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
-            if (!player.capabilities.isCreativeMode) {
-                stack.setCount(stack.getCount() - 1);
+        }
+        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
+        {
+            if (!player.capabilities.isCreativeMode)
+            {
+                stack.setCount(stack.getCount()-1);
             }
 
-            if (!this.world.isRemote) {
-                if (this.rand.nextInt(3) == 0) {
+            if (!this.world.isRemote)
+            {
+                if (this.rand.nextInt(3) == 0)
+                {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
                     this.aiSit.setSitting(true);
-                    this.world.setEntityState(this, (byte) 7);
+                    this.world.setEntityState(this, (byte)7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                } else {
-                    this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte) 6);
                 }
+                else
+                {
+                    this.playTameEffect(false);
+                    this.world.setEntityState(this, (byte)6);
+                }
+
 
 
             }
@@ -165,6 +183,31 @@ public class Squirre extends EntityFriend {
         }
 
         return super.processInteract(player, hand);
+    }
+
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        this.calculateFlapping();
+    }
+
+    private void calculateFlapping() {
+        this.oFlap = this.wingRotation;
+        this.oFlapSpeed = this.destPos;
+        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
+        this.destPos = MathHelper.clamp(this.destPos, 0.0F, 1.0F);
+
+        if (!this.onGround && this.wingRotDelta < 1.0F) {
+            this.wingRotDelta = 1.0F;
+        }
+
+        this.wingRotDelta = (float)((double)this.wingRotDelta * 0.9D);
+
+        if (!this.onGround && this.motionY < 0.0D) {
+            this.motionY *= 0.6D;
+        }
+
+        this.wingRotation += this.wingRotDelta * 2.0F;
     }
 
     @Override
@@ -178,18 +221,30 @@ public class Squirre extends EntityFriend {
         return flag;
     }
 
+    public void fall(float distance, float damageMultiplier)
+    {
+    }
 
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.06F);
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
+
+    @Override
+    public Item getDropItem () {
+
+        return null;//なにも落とさない
+    }
+    @Override
+    protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
+        {
+            this.entityDropItem(new ItemStack(Items.FEATHER, 2, 0), 0.0F);
+
         }
     }
 
-
     @Override
-    public boolean canDespawn() {
+    public boolean canDespawn()
+    {
         return false;
     }
-
 
 }

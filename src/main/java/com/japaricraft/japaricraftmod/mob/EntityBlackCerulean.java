@@ -28,17 +28,17 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
-public class BlackCerulean extends EntityMob {
+public class EntityBlackCerulean extends EntityMob {
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/blackcerulean");
 
-    private static final DataParameter<Boolean> IS_STANDING = EntityDataManager.<Boolean>createKey(BlackCerulean.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> IS_STANDING = EntityDataManager.<Boolean>createKey(EntityBlackCerulean.class, DataSerializers.BOOLEAN);
     private float clientSideStandAnimation0;
     private float clientSideStandAnimation;
     private int warningSoundTicks;
 
     private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.BLUE, BossInfo.Overlay.PROGRESS));
 
-    public BlackCerulean(World worldIn) {
+    public EntityBlackCerulean(World worldIn) {
         super(worldIn);
         this.setSize(3.9F, 3.8F);
         this.experienceValue = 20;
@@ -48,7 +48,7 @@ public class BlackCerulean extends EntityMob {
     @Override
     protected void initEntityAI() {
         super.initEntityAI();
-        this.tasks.addTask(1, new BlackCerulean.AIMeleeAttack());
+        this.tasks.addTask(1, new EntityBlackCerulean.AIMeleeAttack());
         this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(5, new EntityAILookIdle(this));
@@ -181,7 +181,7 @@ public class BlackCerulean extends EntityMob {
 
     public class AIMeleeAttack extends EntityAIAttackMelee {
         public AIMeleeAttack() {
-            super(BlackCerulean.this, 1.05D, true);
+            super(EntityBlackCerulean.this, 1.05D, true);
         }
 
         protected void checkAndPerformAttack(EntityLivingBase p_190102_1_, double p_190102_2_) {
@@ -190,20 +190,20 @@ public class BlackCerulean extends EntityMob {
             if (p_190102_2_ <= d0 && this.attackTick <= 0) {
                 this.attackTick = 40;
                 this.attacker.attackEntityAsMob(p_190102_1_);
-                BlackCerulean.this.setStanding(false);
+                EntityBlackCerulean.this.setStanding(false);
             } else if (p_190102_2_ <= d0 * 2.0D) {
                 if (this.attackTick <= 0) {
-                    BlackCerulean.this.setStanding(false);
+                    EntityBlackCerulean.this.setStanding(false);
                     this.attackTick = 40;
                 }
 
                 if (this.attackTick <= 10) {
-                    BlackCerulean.this.setStanding(true);
-                    BlackCerulean.this.playWarningSound();
+                    EntityBlackCerulean.this.setStanding(true);
+                    EntityBlackCerulean.this.playWarningSound();
                 }
             } else {
                 this.attackTick = 40;
-                BlackCerulean.this.setStanding(false);
+                EntityBlackCerulean.this.setStanding(false);
             }
         }
 
@@ -211,7 +211,7 @@ public class BlackCerulean extends EntityMob {
          * Reset the task's internal state. Called when this task is interrupted by another one
          */
         public void resetTask() {
-            BlackCerulean.this.setStanding(false);
+            EntityBlackCerulean.this.setStanding(false);
             super.resetTask();
         }
 

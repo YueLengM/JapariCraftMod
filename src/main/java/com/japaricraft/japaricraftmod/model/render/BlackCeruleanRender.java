@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.BlackCerulean;
+import com.japaricraft.japaricraftmod.mob.EntityBlackCerulean;
 import com.japaricraft.japaricraftmod.model.ModelBlackCerulean;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -11,7 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class BlackCeruleanRender extends RenderLiving<BlackCerulean> {
+public class BlackCeruleanRender extends RenderLiving<EntityBlackCerulean> {
     private static final ResourceLocation TEXTURES = new ResourceLocation(MODID, "textures/entity/blackcerulean.png");
 
     public BlackCeruleanRender(RenderManager renderManager) {
@@ -20,7 +20,7 @@ public class BlackCeruleanRender extends RenderLiving<BlackCerulean> {
 
 
     @Override
-    protected ResourceLocation getEntityTexture(BlackCerulean entity) {
+    protected ResourceLocation getEntityTexture(EntityBlackCerulean entity) {
         return TEXTURES;
     }
 }

@@ -14,12 +14,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.Village;
 import net.minecraft.world.World;
 
-public class Guide extends EntityCreature {
+public class EntityGuide extends EntityCreature {
     Village village;
     private int randomTickDivider;
     private boolean isLookingForHome;
 
-    public Guide(World worldIn) {
+    public EntityGuide(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.9F);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
@@ -32,7 +32,7 @@ public class Guide extends EntityCreature {
         super.initEntityAI();
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIAvoidEntity<>(this, EntityZombie.class, 7.0F, 1.1D, 1.1D));
-        this.tasks.addTask(1, new EntityAIAvoidEntity<>(this, Cerulean.class, 6.5F, 1.1D, 1.1D));
+        this.tasks.addTask(1, new EntityAIAvoidEntity<>(this, EntityCerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(3, new EntityAIMoveIndoors(this));
         this.tasks.addTask(4, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(5, new EntityAIOpenDoor(this, true));

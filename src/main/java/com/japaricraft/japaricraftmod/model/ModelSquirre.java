@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Squirre;
+import com.japaricraft.japaricraftmod.mob.EntitySquirre;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -70,11 +70,11 @@ public class ModelSquirre extends ModelBase {
     }
 
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-        if (!(entityIn instanceof Squirre)) {
+        if (!(entityIn instanceof EntitySquirre)) {
             return;
         }
 
-        Squirre entitysquirre = (Squirre) entityIn;
+        EntitySquirre entitysquirre = (EntitySquirre) entityIn;
         boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 

@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model.render;
 
-import com.japaricraft.japaricraftmod.mob.RoyalPenguin;
+import com.japaricraft.japaricraftmod.mob.RoyalPenguinEntity;
 import com.japaricraft.japaricraftmod.model.ModelRoyalPenguin;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class RoyalPenguinRender extends RenderLiving<RoyalPenguin> {
+public class RoyalPenguinRender extends RenderLiving<RoyalPenguinEntity> {
     private static final ResourceLocation Pengin_TEXTURES = new ResourceLocation(MODID, "textures/entity/ppp2.png");
 
     public RoyalPenguinRender(RenderManager renderManager) {
@@ -60,7 +60,7 @@ public class RoyalPenguinRender extends RenderLiving<RoyalPenguin> {
 
 
     @Override
-    protected ResourceLocation getEntityTexture(RoyalPenguin entity) {
+    protected ResourceLocation getEntityTexture(RoyalPenguinEntity entity) {
         return Pengin_TEXTURES;
     }
 }

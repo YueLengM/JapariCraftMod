@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,29 +18,24 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class BrownOwl extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry,Items.RABBIT_STEW,Items.MUSHROOM_STEW);
-    public float wingRotation;
-    public float destPos;
-    public float oFlapSpeed;
-    public float oFlap;
-    private float wingRotDelta = 1.0F;
+public class EntityShoebill extends EntityFriend {
 
-    public BrownOwl(World worldIn)
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
+    private EntityPlayerSP player;
+
+    public EntityShoebill(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.6F, 1.8F);
+        this.setSize(0.6F, 1.6F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
-    @Override
     protected void initEntityAI()  {
         this.aiSit = new EntityAISit(this);
 
@@ -55,19 +51,16 @@ public class BrownOwl extends EntityFriend {
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, Cerulean.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, CeruleanBird.class, false));
-        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, BlackCerulean.class, false));
-
-
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCeruleanBird.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityBlackCerulean.class, false));
     }
 
-    @Override
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
 
-    @Override
+
     protected void updateAITasks()
     {
         if (this.ticksExisted % 5 == 0)
@@ -81,22 +74,15 @@ public class BrownOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
+
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(26.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(22D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.29D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(22.0D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
-    @Override
-    public void setTamed(boolean tamed) {
-        super.setTamed(tamed);
-
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
-    }
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand)
@@ -165,7 +151,6 @@ public class BrownOwl extends EntityFriend {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.aiSit.setSitting(true);
                     this.world.setEntityState(this, (byte)7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
                 }
@@ -176,7 +161,6 @@ public class BrownOwl extends EntityFriend {
                 }
 
 
-
             }
 
             return true;
@@ -184,51 +168,24 @@ public class BrownOwl extends EntityFriend {
 
         return super.processInteract(player, hand);
     }
-
     @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-        this.calculateFlapping();
-    }
+    public boolean attackEntityAsMob(Entity entityIn)
+    {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
-    private void calculateFlapping() {
-        this.oFlap = this.wingRotation;
-        this.oFlapSpeed = this.destPos;
-        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
-        this.destPos = MathHelper.clamp(this.destPos, 0.0F, 1.0F);
-
-        if (!this.onGround && this.wingRotDelta < 1.0F) {
-            this.wingRotDelta = 1.0F;
-        }
-
-        this.wingRotDelta = (float)((double)this.wingRotDelta * 0.9D);
-
-        if (!this.onGround && this.motionY < 0.0D) {
-            this.motionY *= 0.6D;
-        }
-
-        this.wingRotation += this.wingRotDelta * 2.0F;
-    }
-
-    @Override
-    public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-
-        if (flag) {
+        if (flag)
+        {
             this.applyEnchantments(this, entityIn);
         }
 
         return flag;
     }
 
-    public void fall(float distance, float damageMultiplier)
-    {
-    }
 
     @Override
     public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
 
-    @Override
+
     public Item getDropItem () {
 
         return null;//なにも落とさない
@@ -241,10 +198,12 @@ public class BrownOwl extends EntityFriend {
         }
     }
 
-    @Override
+
     public boolean canDespawn()
     {
         return false;
     }
 
 }
+
+

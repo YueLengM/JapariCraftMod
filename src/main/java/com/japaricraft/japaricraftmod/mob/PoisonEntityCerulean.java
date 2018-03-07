@@ -14,11 +14,11 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class PoisonCerulean extends Cerulean  {
+public class PoisonEntityCerulean extends EntityCerulean {
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/cerulean");
 
 
-    public PoisonCerulean(World worldIn)
+    public PoisonEntityCerulean(World worldIn)
     {
         super(worldIn);
         this.setSize(0.95F, 0.95F);

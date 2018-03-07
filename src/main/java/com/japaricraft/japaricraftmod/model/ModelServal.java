@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.model;
 
-import com.japaricraft.japaricraftmod.mob.Serval;
+import com.japaricraft.japaricraftmod.mob.EntityServal;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -220,21 +220,21 @@ public class ModelServal extends ModelBase {
     }
 
     public void setLivingAnimations(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTickTime) {
-        Serval entityServal = (Serval) entitylivingbaseIn;
+        EntityServal entityEntityServal = (EntityServal) entitylivingbaseIn;
 
-        this.head.rotateAngleZ = entityServal.getInterestedAngle(partialTickTime);
+        this.head.rotateAngleZ = entityEntityServal.getInterestedAngle(partialTickTime);
 
 
     }
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        if (!(entityIn instanceof Serval))
+        if (!(entityIn instanceof EntityServal))
         {
             return;
         }
 
-        Serval entityServal = (Serval) entityIn;
+        EntityServal entityEntityServal = (EntityServal) entityIn;
         boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -278,7 +278,7 @@ public class ModelServal extends ModelBase {
         this.leg_r.rotateAngleZ = 0.0F;
         this.leg_l.rotateAngleZ = 0.0F;
 
-        if (entityServal.isSitting()||this.isRiding)
+        if (entityEntityServal.isSitting()||this.isRiding)
         {
             this.leg_r.rotateAngleX = -1.4137167F;
             this.leg_r.rotateAngleY = ((float)Math.PI / 10F);
@@ -290,7 +290,7 @@ public class ModelServal extends ModelBase {
         }
 
 
-        if (entityServal.isPlaying()) {
+        if (entityEntityServal.isPlaying()) {
             this.hand_r.rotationPointZ = 0.0F;
             this.hand_r.rotationPointX = -4.0F;
             this.hand_l.rotationPointZ = 0.0F;
