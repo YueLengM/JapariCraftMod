@@ -137,6 +137,7 @@ public class ModelWhiteOwl extends ModelBase {
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
+
         if (flag)
         {
             this.head.rotateAngleX = -((float)Math.PI / 4F);
@@ -145,7 +146,7 @@ public class ModelWhiteOwl extends ModelBase {
         {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
-
+        this.body.rotateAngleX = 0.0F;
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
 
@@ -175,6 +176,10 @@ public class ModelWhiteOwl extends ModelBase {
         this.legL.rotateAngleY = 0.0F;
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
+
+        if (entityowl.isFlying()) {
+            this.body.rotateAngleX = 0.87314402793711257F;
+        }
 
         if (entityowl.isSitting()||this.isRiding)
         {

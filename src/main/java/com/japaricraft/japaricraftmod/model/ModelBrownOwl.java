@@ -144,6 +144,7 @@ public class ModelBrownOwl extends ModelBase {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
 
+        this.body.rotateAngleX = 0.0F;
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
 
@@ -173,6 +174,11 @@ public class ModelBrownOwl extends ModelBase {
         this.legL.rotateAngleY = 0.0F;
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
+
+        if (entityowl.isFlying()) {
+            this.body.rotateAngleX = 0.87314402793711257F;
+            this.body.rotateAngleZ = this.head.rotateAngleZ;
+        }
 
         if (entityowl.isSitting()||this.isRiding)
         {
