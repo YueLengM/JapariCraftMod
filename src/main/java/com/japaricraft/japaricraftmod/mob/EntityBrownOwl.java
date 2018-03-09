@@ -210,6 +210,8 @@ public class EntityBrownOwl extends EntityFriend {
         if (!this.onGround && this.motionY < 0.0D) {
             this.motionY *= 0.6D;
         }
+        //飛んでるか
+        //flying?
         if (!this.onGround) {
             setFrying(true);
         } else {
@@ -222,7 +224,8 @@ public class EntityBrownOwl extends EntityFriend {
     @Override
     public void onUpdate() {
         super.onUpdate();
-
+        //when get attacktaget
+        //もしアタックターゲットを見つけたら
         if (!isOnLadder() && this.getAttackTarget() != null) {
             double a = this.getAttackTarget().posX - posX;
             double b = this.getAttackTarget().posZ - posZ;
