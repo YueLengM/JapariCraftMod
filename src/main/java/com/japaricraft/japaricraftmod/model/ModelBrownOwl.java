@@ -175,10 +175,6 @@ public class ModelBrownOwl extends ModelBase {
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
 
-        if (entityowl.isFlying()) {
-            this.body.rotateAngleX = 0.87314402793711257F;
-            this.body.rotateAngleZ = this.head.rotateAngleZ;
-        }
 
         if (entityowl.isSitting()||this.isRiding)
         {

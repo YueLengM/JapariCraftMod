@@ -22,8 +22,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Set;
 
@@ -36,8 +34,6 @@ public class EntityWhiteOwl extends EntityFriend {
     public float oFlapSpeed;
     public float oFlap;
     private float wingRotDelta = 1.0F;
-
-    private boolean flying;
 
     public EntityWhiteOwl(World worldIn)
     {
@@ -203,39 +199,11 @@ public class EntityWhiteOwl extends EntityFriend {
 
         this.wingRotDelta = (float)((double)this.wingRotDelta * 0.9D);
 
-        if (this.getAttackTarget() == null) {
-
-            if (!this.onGround && this.motionY < 0.0D) {
-                this.motionY *= 0.6D;
-            }
-        }
-        //飛んでるか
-        //flying?(test)
-        if (!this.onGround) {
-            setFrying(true);
-        } else {
-            setFrying(false);
+        if (!this.onGround && this.motionY < 0.0D) {
+            this.motionY *= 0.6D;
         }
 
         this.wingRotation += this.wingRotDelta * 2.0F;
-    }
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-        //when get attacktaget
-        //もしアタックターゲットを見つけたら
-        if (!isOnLadder() && this.getAttackTarget() != null) {
-            double a = this.getAttackTarget().posX - posX;
-            double b = this.getAttackTarget().posZ - posZ;
-            if ((this.getAttackTarget().posY > posY + 1)) {
-                this.motionY += 0.1F;
-            }
-            if (!onGround) {
-                this.motionX += a * 0.009D;
-                this.motionZ += b * 0.009D;
-            }
-        }
     }
 
     @Override
@@ -268,16 +236,6 @@ public class EntityWhiteOwl extends EntityFriend {
             this.entityDropItem(new ItemStack(Items.FEATHER, 2, 0), 0.0F);
 
         }
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void setFrying(boolean fly) {
-        this.flying = fly;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public boolean isFlying() {
-        return this.flying;
     }
 
     @Override
