@@ -211,7 +211,7 @@ public class EntityBrownOwl extends EntityFriend {
             this.motionY *= 0.6D;
         }
         //飛んでるか
-        //flying?
+        //flying?(test)
         if (!this.onGround) {
             setFrying(true);
         } else {

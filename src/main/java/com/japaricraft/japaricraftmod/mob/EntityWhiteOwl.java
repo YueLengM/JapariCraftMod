@@ -209,6 +209,8 @@ public class EntityWhiteOwl extends EntityFriend {
                 this.motionY *= 0.6D;
             }
         }
+        //飛んでるか
+        //flying?(test)
         if (!this.onGround) {
             setFrying(true);
         } else {
@@ -221,7 +223,8 @@ public class EntityWhiteOwl extends EntityFriend {
     @Override
     public void onUpdate() {
         super.onUpdate();
-
+        //when get attacktaget
+        //もしアタックターゲットを見つけたら
         if (!isOnLadder() && this.getAttackTarget() != null) {
             double a = this.getAttackTarget().posX - posX;
             double b = this.getAttackTarget().posZ - posZ;
