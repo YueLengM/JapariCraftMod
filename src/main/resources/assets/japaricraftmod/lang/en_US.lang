@@ -58,6 +58,7 @@ entity.CeruleanBird.name=Cerulean Bird(Unuse)
 entity.Delphinus.name=Dolphin
 entity.BlackCerulean.name=Black Cerulean
 entity.Tutinoko.name=Tsuchinoko(Unuse)
+entity.AlpacaCafe.name=AlpacaCafe
 
 itemGroup.JapariCraftTab=JapariCraft
 
@@ -121,6 +122,5 @@ page.7.desc=
 page.8.name=
 page.8.desc=
 
-guide.0.desc=hi Are you the first time to come to this village?
-guide.1.desc=I ... I can not tell you a name but I can teach you various advice as the same crafter
-guide.2.desc=...Recently I've heard that there are an increasing number of talented tribes called Friends in this world, but I'm studying about it Feel free to ask.
+cafe.0.desc=Welcome!
+cafe.1.desc=Make yourself at cafe :)

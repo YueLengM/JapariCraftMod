@@ -7,13 +7,13 @@ import net.minecraft.world.gen.structure.StructureStart;
 import java.util.List;
 import java.util.Random;
 
-public class StructureSandStarRuinStart extends StructureStart {
+public class StructureAlpacaCafeStart extends StructureStart {
 
-    public StructureSandStarRuinStart(World par1World, Random par2Random, int par3, int par4) {
+    public StructureAlpacaCafeStart(World par1World, Random par2Random, int par3, int par4) {
         super(par3, par4);
 
         // 構造物の構成パーツを決定する
-        ComponentSandStarRuin componentHumanHouse1 = new ComponentSandStarRuin(0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2);
+        ComponentAlpacaCafe componentHumanHouse1 = new ComponentAlpacaCafe(0, par2Random, (par3 << 4) + 2, (par4 << 4) + 2);
         this.components.add(componentHumanHouse1);
         // 次のパーツを得る
         componentHumanHouse1.buildComponent(componentHumanHouse1, components, par2Random);

@@ -9,7 +9,7 @@
       "entries": [
         {
           "type": "item",
-          "name": "japaricraftmod:sandstarbow",
+          "name": "minecraft:golden_apple",
           "weight": 1
         },
         {
@@ -39,13 +39,27 @@
       "entries": [
         {
           "type": "item",
-          "name": "minecraft:bone",
+          "name": "minecraft:bread",
           "functions": [
             {
               "function": "set_count",
               "count": {
-                "min": 1,
-                "max": 2
+                "min": 2,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 10
+        },
+        {
+          "type": "item",
+          "name": "japaricraftmod:japariman",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 3
               }
             }
           ],

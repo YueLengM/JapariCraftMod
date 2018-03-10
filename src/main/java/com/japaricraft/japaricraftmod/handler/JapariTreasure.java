@@ -19,7 +19,7 @@ import java.util.Random;
 
 public class JapariTreasure {
     public static final ResourceLocation humanhouse = register("chest/humanhouse");
-    public static final ResourceLocation ruin = register("chest/ruin");
+    public static final ResourceLocation cafe = register("chest/cafe");
     private ResourceLocation lootTable;
 
 

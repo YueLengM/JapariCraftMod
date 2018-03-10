@@ -9,17 +9,17 @@ import net.minecraft.world.gen.structure.StructureStart;
 import java.util.Map;
 import java.util.Random;
 
-public class MapGenSandStarRuin extends MapGenStructure {
+public class MapGenAlpacaCafe extends MapGenStructure {
     /**
      * None
      */
     private int distance;
 
-    public MapGenSandStarRuin() {
-        this.distance = 34;
+    public MapGenAlpacaCafe() {
+        this.distance = 9;
     }
 
-    public MapGenSandStarRuin(Map<String, String> map) {
+    public MapGenAlpacaCafe(Map<String, String> map) {
         this();
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -30,7 +30,7 @@ public class MapGenSandStarRuin extends MapGenStructure {
     }
 
     public String getStructureName() {
-        return "SandStarRuin";
+        return "AlpacaCafe";
     }
 
     protected boolean canSpawnStructureAtCoords(int chunkX, int chunkZ) {
@@ -47,7 +47,7 @@ public class MapGenSandStarRuin extends MapGenStructure {
 
         int k = chunkX / this.distance;
         int l = chunkZ / this.distance;
-        Random random = this.world.setRandomSeed(k, l, 12357617);
+        Random random = this.world.setRandomSeed(k, l, 11387319);
         k = k * this.distance;
         l = l * this.distance;
         k = k + random.nextInt(this.distance - 8);
@@ -68,6 +68,6 @@ public class MapGenSandStarRuin extends MapGenStructure {
 
     @Override
     protected StructureStart getStructureStart(int i, int j) {
-        return new StructureSandStarRuinStart(this.world, this.rand, i, j);
+        return new StructureAlpacaCafeStart(this.world, this.rand, i, j);
     }
 }

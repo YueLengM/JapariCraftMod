@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.gui;
 
-import com.japaricraft.japaricraftmod.mob.EntityGuide;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -16,21 +15,19 @@ import org.lwjgl.opengl.GL11;
 
 import java.io.IOException;
 
-public class GuiGuide extends GuiScreen {
+public class GuiCafe extends GuiScreen {
     //Tomさんのコードを参考にして、Entityは使わないのでなくした
     private static final ResourceLocation BOOK_GUI_TEXTURES = new ResourceLocation("japaricraftmod:textures/gui/guide.png");
-    private final EntityGuide entityGuide;
     private final int bookImageWidth = 192;
     private final int bookImageHeight = 192;
     private int time = 0;
-    private GuiGuide.NextPageButton buttonNextPage;
+    private GuiCafe.NextPageButton buttonNextPage;
     private GuiButton buttonDone;
     private int currPage;
-    private int bookTotalPages = 3;
+    private int bookTotalPages = 2;
 
-    public GuiGuide(EntityGuide entityGuide) {
-        this.entityGuide = entityGuide;
-        this.bookTotalPages = 3;
+    public GuiCafe() {
+        this.bookTotalPages = 2;
     }
 
 
@@ -39,7 +36,7 @@ public class GuiGuide extends GuiScreen {
         this.buttonDone = this.addButton(new GuiButton(0, this.width / 2 - 100, 196, 200, 20, I18n.format("gui.done")));
         int i = (this.width - 192) / 2;
         int j = 2;
-        this.buttonNextPage = this.addButton(new GuiGuide.NextPageButton(1, i + 120, 156, true));
+        this.buttonNextPage = this.addButton(new GuiCafe.NextPageButton(1, i + 120, 156, true));
         this.updateButtons();
     }
 
@@ -81,7 +78,7 @@ public class GuiGuide extends GuiScreen {
         String s6 = "???";
 
         if (this.currPage >= 0 && this.currPage < 10) {
-            s6 = BookUtils.japariTranslate("guide." + this.currPage + ".desc");
+            s6 = BookUtils.japariTranslate("cafe." + this.currPage + ".desc");
         }
 
         this.fontRenderer.drawSplitString(s6, i + 40, 100, 116, 0);
@@ -163,7 +160,7 @@ public class GuiGuide extends GuiScreen {
             if (this.visible) {
                 boolean flag = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                mc.getTextureManager().bindTexture(GuiGuide.BOOK_GUI_TEXTURES);
+                mc.getTextureManager().bindTexture(GuiCafe.BOOK_GUI_TEXTURES);
                 int i = 0;
                 int j = 192;
 

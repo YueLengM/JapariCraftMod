@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.event;
 
-import com.japaricraft.japaricraftmod.world.structure.MapGenSandStarRuin;
+import com.japaricraft.japaricraftmod.world.structure.MapGenAlpacaCafe;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -8,8 +8,8 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class SandStarRuinEventHandler {
-    MapGenSandStarRuin mapGenSandStarRuin = new MapGenSandStarRuin();
+public class AlpacaCafeEventHandler {
+    MapGenAlpacaCafe mapGenAlpacaCafe = new MapGenAlpacaCafe();
 
     public static BlockPos getHeight(World world, BlockPos pos) {
         for (int y = 0; y < 256; y++) {
@@ -30,9 +30,9 @@ public class SandStarRuinEventHandler {
         BlockPos height = getHeight(event.getWorld(), new BlockPos(x, 0, z));
         // 通常世界(Overworld)に生成する
         if (event.getWorld().provider.getDimension() == 0 && BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.MOUNTAIN)) {
-            mapGenSandStarRuin.generate(event.getWorld(), event.getChunkX(), event.getChunkZ(), null);
+            mapGenAlpacaCafe.generate(event.getWorld(), event.getChunkX(), event.getChunkZ(), null);
 
-            mapGenSandStarRuin.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
+            mapGenAlpacaCafe.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
         }
     }
 }

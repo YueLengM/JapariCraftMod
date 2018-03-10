@@ -1,13 +1,13 @@
 package com.japaricraft.japaricraftmod;
 
+import com.japaricraft.japaricraftmod.event.AlpacaCafeEventHandler;
 import com.japaricraft.japaricraftmod.event.EntityEventHandler;
-import com.japaricraft.japaricraftmod.event.SandStarRuinEventHandler;
 import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.handler.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
-import com.japaricraft.japaricraftmod.world.structure.ComponentSandStarRuin;
-import com.japaricraft.japaricraftmod.world.structure.StructureSandStarRuinStart;
+import com.japaricraft.japaricraftmod.world.structure.ComponentAlpacaCafe;
+import com.japaricraft.japaricraftmod.world.structure.StructureAlpacaCafeStart;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -51,7 +51,7 @@ public class JapariCraftMod {
     public static JapariCraftMod instance;
     public static final int ID_Book = 0;
     public static final int ID_JAPARI_INVENTORY = 1;
-    public static final int ID_NPCGUIDE = 2;
+    public static final int ID_CAFE = 2;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
 
 
@@ -105,9 +105,9 @@ public class JapariCraftMod {
     public void init(FMLInitializationEvent event)
     {
         JapariEntityRegistry.addSpawns();
-        MinecraftForge.EVENT_BUS.register(new SandStarRuinEventHandler());
-        MapGenStructureIO.registerStructure(StructureSandStarRuinStart.class, "SandStarRuin");
-        MapGenStructureIO.registerStructureComponent(ComponentSandStarRuin.class, "SL");
+        MinecraftForge.EVENT_BUS.register(new AlpacaCafeEventHandler());
+        MapGenStructureIO.registerStructure(StructureAlpacaCafeStart.class, "AlpacaCafe");
+        MapGenStructureIO.registerStructureComponent(ComponentAlpacaCafe.class, "AC");
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());
