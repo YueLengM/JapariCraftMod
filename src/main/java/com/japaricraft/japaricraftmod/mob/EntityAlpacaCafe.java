@@ -19,7 +19,7 @@ public class EntityAlpacaCafe extends EntityCreature {
 
     public EntityAlpacaCafe(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.9F);
+        this.setSize(0.6F, 1.6F);
     }
 
 

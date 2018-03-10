@@ -63,7 +63,7 @@ public class MapGenAlpacaCafe extends MapGenStructure {
 
     public BlockPos getNearestStructurePos(World worldIn, BlockPos pos, boolean findUnexplored) {
         this.world = worldIn;
-        return findNearestStructurePosBySpacing(worldIn, this, pos, this.distance, 8, 12357617, false, 100, findUnexplored);
+        return findNearestStructurePosBySpacing(worldIn, this, pos, this.distance, 8, 11387319, false, 100, findUnexplored);
     }
 
     @Override
