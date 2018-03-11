@@ -221,7 +221,7 @@ public class EntityBrownOwl extends EntityFriend {
             double d3 = a * a + b * b;
             d3 = (double) MathHelper.sqrt(d3);
 
-            if ((this.getAttackTarget().posY > posY + 1)) {
+            if ((this.getAttackTarget().posY > posY)) {
                 this.motionY += 0.09F;
             }
             if (!onGround) {
