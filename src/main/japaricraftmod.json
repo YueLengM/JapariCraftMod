@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.9.2": "fix AlpacaCafe too many generate",
     "3.9.1": "fix hard to attack",
     "3.9.0": "owl now fly!",
     "3.8.8": "some bugfix",
@@ -40,7 +41,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.9.1",
-    "1.12-latest": "3.9.1"
+    "1.12-recommended": "3.9.2",
+    "1.12-latest": "3.9.2"
   }
 }

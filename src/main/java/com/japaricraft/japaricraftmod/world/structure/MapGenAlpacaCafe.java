@@ -16,7 +16,7 @@ public class MapGenAlpacaCafe extends MapGenStructure {
     private int distance;
 
     public MapGenAlpacaCafe() {
-        this.distance = 9;
+        this.distance = 28;
     }
 
     public MapGenAlpacaCafe(Map<String, String> map) {
