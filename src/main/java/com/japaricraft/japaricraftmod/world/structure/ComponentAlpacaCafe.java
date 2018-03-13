@@ -33,7 +33,7 @@ public class ComponentAlpacaCafe extends StructureComponent {
         super();
         this.facing = EnumFacing.NORTH;
         this.setCoordBaseMode(facing);
-        this.boundingBox = new StructureBoundingBox(par3, 64, par4, par3 + 6, 64 + 15, par4 + 6);
+        this.boundingBox = new StructureBoundingBox(par3, 64, par4, par3 + 10, 64 + 6, par4 + 10);
     }
 
     protected int getAverageGroundLevel(World worldIn, StructureBoundingBox structurebb) {
@@ -119,7 +119,7 @@ public class ComponentAlpacaCafe extends StructureComponent {
         this.setBlockState(world, JapariBlocks.SANDSTAR_BLOCK.getDefaultState(), 5, 0, 4, structureboundingbox);
         this.setBlockState(world, JapariBlocks.SANDSTAR_BLOCK.getDefaultState(), 5, 0, 5, structureboundingbox);
         //ドアの位置を確保
-        this.fillWithAir(world, structureboundingbox, 5, 1, 1, 3, 2, 1);
+        this.fillWithAir(world, structureboundingbox, 5, 1, 1, 5, 2, 1);
         this.generateDoor(world, structureboundingbox, random, 5, 1, 1, EnumFacing.NORTH, Blocks.SPRUCE_DOOR);
         //窓
         this.setBlockState(world, iBlockState4, 3, 2, 1, structureboundingbox);

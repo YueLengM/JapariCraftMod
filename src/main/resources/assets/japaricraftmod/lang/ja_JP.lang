@@ -4,6 +4,7 @@ tile.SandStarBlock.name=サンドスター
 tile.sandstar_ore.name=サンドスター鉱石
 tile.sandstarwater.name=サンドスターの温泉
 tile.Campfire.name=焚き火
+tile.SandStarLamp.name=サンドスターランプ
 
 item.Japariman.name=じゃぱりまん
 item.JaparimanCocoa.name=じゃぱりまんココア味
@@ -61,6 +62,7 @@ entity.Delphinus.name=マイルカ
 entity.BlackCerulean.name=ブラックセルリアン
 entity.Tutinoko.name=つちのこ
 entity.AlpacaCafe.name=アルパカ(カフェオーナー)
+entity.CeruleanEye.name=セルリアンアイ
 item.sandstarbow.name=サンドスターの弓
 
 advancements.japaricraftmod.root.title=始まりのじゃぱりくらふと

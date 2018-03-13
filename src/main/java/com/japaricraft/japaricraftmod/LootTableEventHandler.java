@@ -28,9 +28,9 @@ public class LootTableEventHandler {
             LootPool main = event.getTable().getPool("main");
             if (main != null)
             {
-                main.addEntry(new LootEntryItem(JapariItems.japariman, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japariman"));
-                main.addEntry(new LootEntryItem(JapariItems.japarimanapple, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimanapple"));
-                main.addEntry(new LootEntryItem(JapariItems.japarimancocoa, 5, 4, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimancocoa"));
+                main.addEntry(new LootEntryItem(JapariItems.japariman, 5, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:japariman"));
+                main.addEntry(new LootEntryItem(JapariItems.japarimanapple, 5, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimanapple"));
+                main.addEntry(new LootEntryItem(JapariItems.japarimancocoa, 5, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:japarimancocoa"));
             }
         }
         if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT))

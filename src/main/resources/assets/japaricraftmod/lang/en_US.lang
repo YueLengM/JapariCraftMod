@@ -4,6 +4,7 @@ tile.SandStarBlock.name=Sandstar Block
 tile.sandstar_ore.name=Sandstar Ore
 tile.sandstarwater.name=Sandstar Water
 tile.Campfire.name=Campfire
+tile.SandStarLamp.name=SandStarLamp
 
 item.Japariman.name=Japariman
 item.JaparimanCocoa.name=Cocoa Japariman
@@ -59,6 +60,7 @@ entity.Delphinus.name=Dolphin
 entity.BlackCerulean.name=Black Cerulean
 entity.Tutinoko.name=Tsuchinoko(Unuse)
 entity.AlpacaCafe.name=AlpacaCafe
+entity.CeruleanEye.name=CeruleanEye
 
 itemGroup.JapariCraftTab=JapariCraft
 

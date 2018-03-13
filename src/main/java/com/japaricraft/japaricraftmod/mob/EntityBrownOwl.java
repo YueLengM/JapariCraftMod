@@ -226,7 +226,6 @@ public class EntityBrownOwl extends EntityFriend {
             }
             if (!onGround) {
                 this.motionX += a / d3 * 0.09D * this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
-                ;
                 this.motionZ += b / d3 * 0.09D * this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
                 this.rotationYaw = -((float) MathHelper.atan2(a, b)) * (180F / (float) Math.PI);
             }
