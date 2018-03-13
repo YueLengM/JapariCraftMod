@@ -47,6 +47,16 @@ public class ComponentSandStarRuinUnderRoom extends StructureComponent {
         StructureComponent structureComponent2 = new ComponentSandStarRuinCorridor(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.maxZ, 0);
         ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent2);
         par2List.add(structureComponent2);
+        StructureComponent structureComponent3 = new ComponentSandStarRuinMiniHole(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.minZ - 14, 0);
+        ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent3);
+        par2List.add(structureComponent3);
+        StructureComponent structureComponent4 = new ComponentSandStarRuinMiniHole(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.maxZ + 7, 0);
+        ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent4);
+        par2List.add(structureComponent4);
+
+        StructureComponent structureComponent5 = new ComponentSandStarRuinTreasureRoom(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.minZ - 21, 0);
+        ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent5);
+        par2List.add(structureComponent5);
     }
 
     @Override
@@ -54,6 +64,7 @@ public class ComponentSandStarRuinUnderRoom extends StructureComponent {
         IBlockState iblockstate = Blocks.STONEBRICK.getDefaultState();
         IBlockState air = Blocks.AIR.getDefaultState();
         IBlockState sandstarlamp = JapariBlocks.SANDSTAR_Lamp.getDefaultState();
+        IBlockState ironbar = Blocks.IRON_BARS.getDefaultState();
         this.fillWithAir(world, structureboundingbox, 0, 0, 0, 8, 5, 8);
         //土台と中
         this.fillWithBlocks(world, structureboundingbox, 0, 0, 0, 8, 5, 8, iblockstate, air, false);
@@ -67,10 +78,10 @@ public class ComponentSandStarRuinUnderRoom extends StructureComponent {
         //台
         this.fillWithBlocks(world, structureboundingbox, 3, 1, 3, 5, 1, 5, iblockstate, iblockstate, false);
         //鉄作
-        this.fillWithBlocks(world, structureboundingbox, 0, 2, 3, 0, 4, 3, sandstarlamp, sandstarlamp, false);
-        this.fillWithBlocks(world, structureboundingbox, 0, 2, 6, 0, 4, 6, sandstarlamp, sandstarlamp, false);
-        this.fillWithBlocks(world, structureboundingbox, 8, 2, 3, 8, 4, 3, sandstarlamp, sandstarlamp, false);
-        this.fillWithBlocks(world, structureboundingbox, 8, 2, 6, 8, 4, 6, sandstarlamp, sandstarlamp, false);
+        this.fillWithBlocks(world, structureboundingbox, 0, 2, 2, 0, 4, 2, ironbar, ironbar, false);
+        this.fillWithBlocks(world, structureboundingbox, 0, 2, 6, 0, 4, 6, ironbar, ironbar, false);
+        this.fillWithBlocks(world, structureboundingbox, 8, 2, 2, 8, 4, 2, ironbar, ironbar, false);
+        this.fillWithBlocks(world, structureboundingbox, 8, 2, 6, 8, 4, 6, ironbar, ironbar, false);
         return true;
     }
 }

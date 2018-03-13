@@ -1,15 +1,10 @@
 package com.japaricraft.japaricraftmod.world.structure;
 
 import com.japaricraft.japaricraftmod.handler.JapariBlocks;
-import com.japaricraft.japaricraftmod.mob.EntityCeruleanEye;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityList;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -18,14 +13,14 @@ import net.minecraft.world.gen.structure.template.TemplateManager;
 import java.util.List;
 import java.util.Random;
 
-public class ComponentSandStarRuinCorridor extends StructureComponent {
+public class ComponentSandStarRuinMiniHole extends StructureComponent {
     //入り口とはまた別のやつで通路的なやつ
     protected int averageGroundLvl = -1;
     private EnumFacing facing;
 
     // 構成パーツリストを記憶するためのリスト
 
-    public ComponentSandStarRuinCorridor() {
+    public ComponentSandStarRuinMiniHole() {
     }
 
     @Override
@@ -38,7 +33,7 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
 
     }
 
-    public ComponentSandStarRuinCorridor(int height, Random par2Random, int par3, int par4, int par5) {
+    public ComponentSandStarRuinMiniHole(int height, Random par2Random, int par3, int par4, int par5) {
         super();
         this.facing = EnumFacing.NORTH;
         this.setCoordBaseMode(facing);
@@ -47,6 +42,7 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
 
     @Override
     public void buildComponent(StructureComponent par1StructureComponent, List par2List, Random par3Random) {
+
     }
 
     @Override
@@ -68,27 +64,12 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
         this.fillWithBlocks(world, structureboundingbox, 5, 1, 0, 5, 3, 0, lamp, lamp, false);
         this.fillWithBlocks(world, structureboundingbox, 1, 1, 7, 1, 3, 7, lamp, lamp, false);
         this.fillWithBlocks(world, structureboundingbox, 5, 1, 7, 5, 3, 7, lamp, lamp, false);
-        if (random.nextBoolean()) {
-            this.setBlockState(world, JapariBlocks.SANDSTAR_Lamp.getDefaultState(), 3, 0, 4, structureboundingbox);
-        } else {
-            this.generateSpawner(world, structureboundingbox, random, 3, 0, 4);
-        }
+        //穴
+        this.fillWithAir(world, structureboundingbox, 3, -6, 4, 5, 0, 6);
+        this.setBlockState(world, iblockstate, 3, 0, 6, structureboundingbox);
 
         return true;
     }
 
-    protected void generateSpawner(World worldIn, StructureBoundingBox sbb, Random rand, int x, int y, int z) {
-        BlockPos blockpos =
-                new BlockPos(this.getXWithOffset(x, z), this.getYWithOffset(y), this.getZWithOffset(x, z));
-
-        if (sbb.isVecInside(blockpos) && worldIn.getBlockState(blockpos).getBlock() != Blocks.MOB_SPAWNER) {
-            this.setBlockState(worldIn, Blocks.MOB_SPAWNER.getDefaultState(), x, y, z, sbb);
-            TileEntity tileentity = worldIn.getTileEntity(blockpos);
-
-            if (tileentity instanceof TileEntityMobSpawner) {
-                ((TileEntityMobSpawner) tileentity).getSpawnerBaseLogic().setEntityId(EntityList.getKey(EntityCeruleanEye.class));
-            }
-        }
-    }
 
 }
