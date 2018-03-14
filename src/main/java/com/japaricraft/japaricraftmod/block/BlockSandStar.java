@@ -19,7 +19,7 @@ public class BlockSandStar extends Block {
         setHardness(4.0F);/*硬さ*/
         setResistance(20.0F);/*爆破耐性*/
         setSoundType(SoundType.GLASS);
-        setLightLevel(5.5F);
+        setLightLevel(6F);
         setHarvestLevel("pickaxe",1);
     }
     //ブロックの描画

@@ -56,7 +56,7 @@ public class ComponentSandStarRuinTreasureRoom extends StructureComponent {
         IBlockState lamp = JapariBlocks.SANDSTAR_Lamp.getDefaultState();
         IBlockState air = Blocks.AIR.getDefaultState();
         this.fillWithAir(world, structureboundingbox, 0, 0, 0, 6, 4, 7);
-        //土台と中
+        //土台
         this.fillWithBlocks(world, structureboundingbox, 0, 0, 0, 8, 4, 7, iblockstate, air, false);
         //中を空気に
         this.fillWithAir(world, structureboundingbox, 1, 1, 1, 7, 3, 6);

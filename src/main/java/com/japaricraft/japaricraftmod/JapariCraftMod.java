@@ -115,6 +115,7 @@ public class JapariCraftMod {
         MapGenStructureIO.registerStructureComponent(ComponentSandStarRuinCorridor.class, "SSRC");
         MapGenStructureIO.registerStructureComponent(ComponentSandStarRuinMiniHole.class, "SSRMH");
         MapGenStructureIO.registerStructureComponent(ComponentSandStarRuinTreasureRoom.class, "SSRTR");
+        MapGenStructureIO.registerStructureComponent(ComponentSandStarRuinBossRoom.class, "SSRBR");
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
         VillagerRegistry.instance().registerVillageCreationHandler(new ComponentJapariHouse1.VillageManager());

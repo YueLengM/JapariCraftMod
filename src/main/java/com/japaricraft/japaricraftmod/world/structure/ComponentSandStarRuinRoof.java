@@ -50,7 +50,7 @@ public class ComponentSandStarRuinRoof extends StructureComponent {
         IBlockState air = Blocks.AIR.getDefaultState();
         IBlockState ironBar = Blocks.IRON_BARS.getDefaultState();
         this.fillWithAir(world, structureboundingbox, 0, 1, 0, 8, 6, 8);
-        //土台と中
+        //土台
         this.fillWithBlocks(world, structureboundingbox, 1, 1, 1, 7, 4, 7, iblockstate, air, false);
         //中を空気に
         this.fillWithAir(world, structureboundingbox, 2, 1, 2, 6, 3, 6);

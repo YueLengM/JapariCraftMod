@@ -55,7 +55,7 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
         IBlockState lamp = JapariBlocks.SANDSTAR_Lamp.getDefaultState();
         IBlockState air = Blocks.AIR.getDefaultState();
         this.fillWithAir(world, structureboundingbox, 0, 0, 0, 6, 4, 7);
-        //土台と中
+        //土台
         this.fillWithBlocks(world, structureboundingbox, 0, 0, 0, 6, 4, 7, iblockstate, air, false);
         //中を空気に
         this.fillWithAir(world, structureboundingbox, 1, 1, 1, 5, 3, 6);

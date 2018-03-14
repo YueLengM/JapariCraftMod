@@ -54,9 +54,14 @@ public class ComponentSandStarRuinUnderRoom extends StructureComponent {
         ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent4);
         par2List.add(structureComponent4);
 
-        StructureComponent structureComponent5 = new ComponentSandStarRuinTreasureRoom(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.minZ - 21, 0);
-        ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent5);
-        par2List.add(structureComponent5);
+        if (par3Random.nextBoolean()) {
+            StructureComponent structureComponent5 = new ComponentSandStarRuinTreasureRoom(this.boundingBox.minY, par3Random, this.boundingBox.minX + 1, this.boundingBox.minZ - 21, 0);
+            ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent5);
+            par2List.add(structureComponent5);
+        }
+        StructureComponent structureComponent6 = new ComponentSandStarRuinBossRoom(this.boundingBox.minY - 12, par3Random, this.boundingBox.minX + 1, this.boundingBox.minZ - 14, 0);
+        ((ComponentSandStarRuin1) par1StructureComponent).structureComponents.add(structureComponent6);
+        par2List.add(structureComponent6);
     }
 
     @Override
