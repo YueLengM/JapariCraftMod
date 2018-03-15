@@ -1,5 +1,6 @@
 package com.japaricraft.japaricraftmod.mob;
 
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -17,6 +18,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -25,7 +27,10 @@ import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
+    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/endercerulean");
     public int deathTicks;
     private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.PINK, BossInfo.Overlay.PROGRESS));
     private static final DataParameter<Integer> INVULNERABILITY_TIME = EntityDataManager.<Integer>createKey(EntityEnderCerulean.class, DataSerializers.VARINT);
@@ -286,7 +291,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
         }
 
         boolean flag = this.world.getGameRules().getBoolean("doMobLoot");
-        int i = 80;
+        int i = 100;
 
 
         if (this.deathTicks >= 40 && this.deathTicks <= 90 && this.ticksExisted % 5 == 0) {
@@ -339,6 +344,12 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             p_184668_1_ -= i;
             this.world.spawnEntity(new EntityXPOrb(this.world, this.posX, this.posY, this.posZ, i));
         }
+    }
+
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable() {
+        return LOOT_TABLE;
     }
 
     public boolean attackEntityFrom(DamageSource source, float amount) {
