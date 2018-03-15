@@ -29,7 +29,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 
 public class EntityBlackCerulean extends EntityMob {
-    public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/blackcerulean");
+    private static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/blackcerulean");
 
     private static final DataParameter<Boolean> IS_STANDING = EntityDataManager.<Boolean>createKey(EntityBlackCerulean.class, DataSerializers.BOOLEAN);
     private float clientSideStandAnimation0;
@@ -139,12 +139,12 @@ public class EntityBlackCerulean extends EntityMob {
         this.bossInfo.setPercent(getHealth() / getMaxHealth());
     }
 
-    public boolean isStanding() {
-        return ((Boolean) this.dataManager.get(IS_STANDING)).booleanValue();
+    private boolean isStanding() {
+        return (Boolean) this.dataManager.get(IS_STANDING);
     }
 
-    public void setStanding(boolean standing) {
-        this.dataManager.set(IS_STANDING, Boolean.valueOf(standing));
+    private void setStanding(boolean standing) {
+        this.dataManager.set(IS_STANDING, standing);
     }
 
     @Override

@@ -60,8 +60,7 @@ public class ComponentSandStarRuinRoof extends StructureComponent {
         this.fillWithBlocks(world, structureboundingbox, 1, 2, 4, 1, 2, 5, ironBar, ironBar, false);
         this.fillWithBlocks(world, structureboundingbox, 7, 2, 4, 7, 2, 5, ironBar, ironBar, false);
         //チェスト
-        this.setBlockState(world, iblockstate, 3, 1, 4, structureboundingbox);
-        this.generateChest(world, structureboundingbox, random, 3, 1, 3, JapariTreasure.roof);
+        this.generateChest(world, structureboundingbox, random, 2, 1, 3, JapariTreasure.roof);
         //飾り
         this.fillWithBlocks(world, structureboundingbox, 3, 5, 3, 5, 5, 5, iblockstate, iblockstate, false);
         this.setBlockState(world, iblockstate, 4, 6, 4, structureboundingbox);

@@ -69,15 +69,11 @@ public class ComponentSandStarRuinBossRoom extends StructureComponent {
         this.setBlockState(world, lamp, 17, 4, 17, structureboundingbox);
         this.setBlockState(world, lamp, 17, 5, 17, structureboundingbox);
 
-        this.setBlockState(world, lava, 8, 7, 8, structureboundingbox);
-        this.setBlockState(world, lava, 8, 7, 12, structureboundingbox);
-        this.setBlockState(world, lava, 12, 7, 8, structureboundingbox);
-        this.setBlockState(world, lava, 12, 7, 12, structureboundingbox);
-
-        this.setBlockState(world, air, 8, 0, 8, structureboundingbox);
-        this.setBlockState(world, air, 8, 0, 12, structureboundingbox);
-        this.setBlockState(world, air, 12, 0, 8, structureboundingbox);
-        this.setBlockState(world, air, 12, 0, 12, structureboundingbox);
+        this.setBlockState(world, lamp, 8, 0, 8, structureboundingbox);
+        this.setBlockState(world, lamp, 8, 0, 12, structureboundingbox);
+        this.setBlockState(world, lamp, 12, 0, 8, structureboundingbox);
+        this.setBlockState(world, lamp, 12, 0, 12, structureboundingbox);
+        this.setBlockState(world, JapariBlocks.Cerulean_STATUE.getDefaultState(), 10, 1, 10, structureboundingbox);
 
         this.fillWithAir(world, structureboundingbox, 3, 7, 17, 5, 7, 19);
 

@@ -63,6 +63,7 @@ entity.BlackCerulean.name=ブラックセルリアン
 entity.Tutinoko.name=つちのこ
 entity.AlpacaCafe.name=アルパカ(カフェオーナー)
 entity.CeruleanEye.name=セルリアンアイ
+entity.EnderCerulean.name=エンダーセルリアン
 item.sandstarbow.name=サンドスターの弓
 
 advancements.japaricraftmod.root.title=始まりのじゃぱりくらふと
@@ -121,3 +122,8 @@ page.8.desc=危機を感じた誰かの手によってフレンズを転送さ�
 
 cafe.0.desc=ふぁ〜！ いらっしゃい!
 cafe.1.desc=ちょっと狭いかもしれないけどゆっくりしてってにぇ〜
+
+entity.cerulean.text1=女王は言った
+entity.cerulean.text2=全ての輝きはやがて消える、しかしセルリアンはそれを再現する永遠に
+entity.cerulean.text3=それなのに奴らはわかってくれない
+entity.cerulean.text4=理解されなかった女王のために...お前を倒す！

@@ -16,7 +16,7 @@ public class MapGenSandStarRuin extends MapGenStructure {
     private int distance;
 
     public MapGenSandStarRuin() {
-        this.distance = 9;
+        this.distance = 36;
     }
 
     public MapGenSandStarRuin(Map<String, String> map) {

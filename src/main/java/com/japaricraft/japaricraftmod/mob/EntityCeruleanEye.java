@@ -29,9 +29,8 @@ public class EntityCeruleanEye extends EntityMob {
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityAnimal.class, false));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityAnimal.class, false));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
     }
 
     protected float getSoundVolume() {
@@ -95,6 +94,7 @@ public class EntityCeruleanEye extends EntityMob {
 
         super.updateAITasks();
     }
+
 
     public void fall(float distance, float damageMultiplier) {
     }

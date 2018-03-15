@@ -41,6 +41,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Tutinoko"), EntityTutinoko.class, "Tutinoko", 19, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.AlpacaCafe"), EntityAlpacaCafe.class, "AlpacaCafe", 20, instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanEye"), EntityCeruleanEye.class, "CeruleanEye", 21, instance, 70, 1, false, 0x333333, 0x339966);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.EnderCerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, instance, 70, 1, false, 0x333333, 0x808080);
     }
     public static void addSpawns()
     {

@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.EntityCerulean;
 import com.japaricraft.japaricraftmod.model.ModelCerulean;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -20,6 +21,17 @@ public class CeruleanRender extends RenderLiving<EntityCerulean>
     }
 
 
+    public void doRender(EntityCerulean entity, double x, double y, double z, float entityYaw, float partialTicks) {
+        if (!entity.isInvisible()) {
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            GlStateManager.enableNormalize();
+            GlStateManager.enableBlend();
+            GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+            super.doRender(entity, x, y, z, entityYaw, partialTicks);
+            GlStateManager.disableBlend();
+            GlStateManager.disableNormalize();
+        }
+    }
     @Override
     protected ResourceLocation getEntityTexture(EntityCerulean entity)
     {

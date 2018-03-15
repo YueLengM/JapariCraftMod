@@ -61,6 +61,7 @@ entity.BlackCerulean.name=Black Cerulean
 entity.Tutinoko.name=Tsuchinoko(Unuse)
 entity.AlpacaCafe.name=AlpacaCafe
 entity.CeruleanEye.name=CeruleanEye
+entity.EnderCerulean.name=EnderCerulean
 
 itemGroup.JapariCraftTab=JapariCraft
 
@@ -126,3 +127,8 @@ page.8.desc=
 
 cafe.0.desc=Welcome!
 cafe.1.desc=Make yourself at cafe :)
+
+entity.cerulean.text1=The Queen said
+entity.cerulean.text2=All glows will eventually disappear, but Cerulean will reproduce and remember forever
+entity.cerulean.text3=But they did not understand
+entity.cerulean.text4=For the queen who was not understood ... kill you!
