@@ -261,6 +261,7 @@ public class ModelAraisan extends ModelBase {
             this.leg_l.rotateAngleX = -1.4137167F;
             this.leg_l.rotateAngleY = -((float)Math.PI / 10F);
             this.leg_l.rotateAngleZ = -0.07853982F;
+            GL11.glTranslatef(0F, 0.2F, 0F);
         }
 
         if (entityarai.isPlaying()) {

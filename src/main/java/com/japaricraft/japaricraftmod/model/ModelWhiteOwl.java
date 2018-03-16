@@ -184,15 +184,7 @@ public class ModelWhiteOwl extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float)Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-        }
-        else
-        {
-            this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-            this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
-            this.legR.rotateAngleY = 0.0F;
-            this.legL.rotateAngleY = 0.0F;
-            this.legR.rotateAngleZ = 0.0F;
-            this.legL.rotateAngleZ = 0.0F;
+            GL11.glTranslatef(0F, 0.2F, 0F);
         }
         this.handR.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;
