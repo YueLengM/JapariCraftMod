@@ -115,7 +115,7 @@ public class ModelSquirre extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.2F, 0F);
+            GL11.glTranslatef(0F, 0.3F, 0F);
         }
 
         this.handR.rotateAngleY = 0.0F;
