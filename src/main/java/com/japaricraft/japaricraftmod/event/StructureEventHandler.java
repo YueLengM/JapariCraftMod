@@ -37,7 +37,7 @@ public class StructureEventHandler {
 
             mapGenAlpacaCafe.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
         }
-        if (event.getWorld().provider.getDimensionType() == DimensionType.OVERWORLD && !BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.MOUNTAIN) && !BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.OCEAN)) {
+        if (event.getWorld().provider.getDimensionType() == DimensionType.OVERWORLD && BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.FOREST)) {
             mapGenSandStarRuin.generate(event.getWorld(), event.getChunkX(), event.getChunkZ(), null);
             mapGenSandStarRuin.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
         }
