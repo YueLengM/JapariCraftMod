@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.9.4": "add SandStarNeckLace",
     "3.9.3": "add EnderCerulean",
     "3.9.2": "fix AlpacaCafe too many generate",
     "3.9.1": "fix hard to attack",
@@ -42,7 +43,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.9.3",
-    "1.12-latest": "3.9.3"
+    "1.12-recommended": "3.9.4",
+    "1.12-latest": "3.9.4"
   }
 }
