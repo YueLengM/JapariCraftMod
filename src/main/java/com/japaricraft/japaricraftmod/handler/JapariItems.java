@@ -41,6 +41,7 @@ public class JapariItems {
     public static final Item curry = new Curry();
     public static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
+    public static final Item sandstarnecklace = new ItemSandStarNeckLace();
     public static final Item darksandstar = new DarkSandStar();
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarcake_115 = new SandStarCake115();
@@ -99,6 +100,7 @@ public class JapariItems {
         register(registry, sandstarcake_115.setRegistryName("sandstarcake_115"));
         register(registry, sugarstar.setRegistryName("sugarstar"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
+        register(registry, sandstarnecklace.setRegistryName("sandstarnecklace"));
         register(registry, sandstarbow.setRegistryName("sandstarbow"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
@@ -129,6 +131,7 @@ public class JapariItems {
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(researchbook, "researchbook");
         registerModel(sandstarbow, "sandstarbow");
+        registerModel(sandstarnecklace, "sandstarnecklace");
     }
 
     @SideOnly(Side.CLIENT)

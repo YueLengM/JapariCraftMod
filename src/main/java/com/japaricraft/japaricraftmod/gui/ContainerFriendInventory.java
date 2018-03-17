@@ -1,15 +1,21 @@
 package com.japaricraft.japaricraftmod.gui;
 
+import com.google.common.collect.Sets;
+import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
+import java.util.Set;
+
 public class ContainerFriendInventory extends Container
 {
+    private static final Set<Item> Neck_ITEMS = Sets.newHashSet(JapariItems.sandstarnecklace);
     private EntityFriend entityFriend;
     private EntityPlayer entityPlayer;
 
@@ -74,7 +80,8 @@ public class ContainerFriendInventory extends Container
                             if (stack.isEmpty()) return false;
                             boolean flag = !stack.isEmpty() && stack.getItem() instanceof ItemArmor &&
                                     ((ItemArmor) stack.getItem()).getEquipmentSlot() == EntityEquipmentSlot.HEAD;
-                            return flag;
+                            boolean flag2 = !stack.isEmpty() && Neck_ITEMS.contains(stack.getItem());
+                            return flag || flag2;
 
                         }
                     });

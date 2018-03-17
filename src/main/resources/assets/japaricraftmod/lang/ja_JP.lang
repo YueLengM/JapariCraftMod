@@ -33,6 +33,7 @@ item.SandStarCake115.name=サンドスターケーキ115
 item.DelphinusLifeFragment.name=マイルカの命がこもったサンドスター
 item.DelphinusLifeFragment.tooltip=必ず海で使いましょう
 item.researchbook.name=サンドスター研究ノート
+item.SandStarNeckLace.name=サンドスターネックレス
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
@@ -93,6 +94,7 @@ fluid.sandstar=サンドスターの水
 
 item.WildLiberationSource.tooltip=あまり食べれる物じゃない
 item.SandStarCake115.tooltip=意外と美味しい
+item.SandStarNeckLace.tooltip=フレンズ専用装備
 
 japaricraftmod.config.cerulean_wight=セルリアンの湧き率
 japaricraftmod.config.poisoncerulean_wight=毒セルリアンの湧き率

@@ -33,6 +33,7 @@ item.japaricoin.name=Japari Coin
 item.SandStarCake115.name=Sandstar Cake 115
 item.DelphinusLifeFragment.name=Sandstar with Dolphin's life
 item.sandstarbow.name=Sandstar Bow
+item.SandStarNeckLace.name=SandStarNeckLace
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -96,6 +97,7 @@ fluid.sandstar=SandStarWater
 item.WildLiberationSource.tooltip=It is not much to eat
 item.SandStarCake115.tooltip=It is surprisingly delicious
 item.DelphinusLifeFragment.tooltip=Always use at sea.
+item.SandStarNeckLace.tooltip=Friends only equipment
 
 japaricraftmod.config.cerulean_wight=Cerulean Wight
 japaricraftmod.config.poisoncerulean_wight=PoisonCerulean Wight
