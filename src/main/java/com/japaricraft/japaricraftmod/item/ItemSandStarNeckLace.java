@@ -7,6 +7,7 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -42,5 +43,13 @@ public class ItemSandStarNeckLace extends Item {
     public void addInformation(ItemStack stack, World world, List<String> tooltip, ITooltipFlag flags) {
         super.addInformation(stack, world, tooltip, flags);
         tooltip.add(I18n.format(getUnlocalizedName() + ".tooltip"));
+    }
+
+    public boolean hasEffect(ItemStack stack) {
+        return true;
+    }
+
+    public EnumRarity getRarity(ItemStack stack) {
+        return EnumRarity.COMMON;
     }
 }
