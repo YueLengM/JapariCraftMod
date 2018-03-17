@@ -178,6 +178,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
                 }
             }
             this.world.playSound((EntityPlayer) null, attacker.posX, attacker.posY, attacker.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, attacker.getSoundCategory(), 1.0F, 1.0F);
+            //パーティクル
             this.spawnSweepParticles();
             this.attackTick = 20;
             this.attacker.swingArm(EnumHand.MAIN_HAND);

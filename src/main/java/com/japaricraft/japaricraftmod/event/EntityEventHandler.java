@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityEventHandler {
+    //エンティティのAI関係
     @SubscribeEvent
     public void onEntityJoin(EntityJoinWorldEvent event) {
         if (event.getEntity() instanceof EntityVillager) {

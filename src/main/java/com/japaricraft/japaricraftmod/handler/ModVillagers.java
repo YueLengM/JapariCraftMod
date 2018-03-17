@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Random;
 
 public class ModVillagers {
+    //修正予定
     public static final ModVillagers INSTANCE = new ModVillagers();
     public static VillagerRegistry.VillagerProfession japariProfession;
     public Map<Integer, VillagerRegistry.VillagerProfession> professions = Maps.newHashMap();

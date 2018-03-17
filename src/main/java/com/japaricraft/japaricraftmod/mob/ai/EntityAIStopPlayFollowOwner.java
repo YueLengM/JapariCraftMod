@@ -16,6 +16,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityAIStopPlayFollowOwner extends EntityAIBase {
+    //場合によっては廃止予定・・・？
     private final EntityPlayFriend playfriend;
     private EntityLivingBase owner;
     World world;
