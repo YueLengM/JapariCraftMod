@@ -74,10 +74,6 @@ public class ComponentSandStarRuin1 extends StructureComponent {
 
     @Override
     public boolean addComponentParts(World world, Random random, StructureBoundingBox structureboundingbox) {
-        if (this.isLiquidInStructureBoundingBox(world, structureboundingbox)) {
-            return false;
-        }
-
         if (this.averageGroundLvl < 0) {
             this.averageGroundLvl = this.getAverageGroundLevel(world, structureboundingbox);
 

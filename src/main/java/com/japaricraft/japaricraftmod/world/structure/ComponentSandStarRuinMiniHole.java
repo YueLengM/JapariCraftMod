@@ -65,6 +65,7 @@ public class ComponentSandStarRuinMiniHole extends StructureComponent {
         this.fillWithBlocks(world, structureboundingbox, 1, 1, 7, 1, 3, 7, lamp, lamp, false);
         this.fillWithBlocks(world, structureboundingbox, 5, 1, 7, 5, 3, 7, lamp, lamp, false);
         //穴
+        this.fillWithBlocks(world, structureboundingbox, 2, -6, 3, 6, 0, 7, iblockstate, air, false);
         this.fillWithAir(world, structureboundingbox, 3, -6, 4, 5, 0, 6);
         this.setBlockState(world, iblockstate, 3, 0, 6, structureboundingbox);
 
