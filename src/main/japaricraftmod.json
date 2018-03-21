@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.9.6": "add SandStarArmor",
     "3.9.5": "fix SandStarRuinGenerate",
     "3.9.4": "add SandStarNeckLace",
     "3.9.3": "add EnderCerulean",
@@ -44,7 +45,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.9.5",
-    "1.12-latest": "3.9.5"
+    "1.12-recommended": "3.9.6",
+    "1.12-latest": "3.9.6"
   }
 }
