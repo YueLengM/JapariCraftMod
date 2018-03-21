@@ -8,6 +8,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityDragonFireball;
+import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.init.SoundEvents;
@@ -242,7 +243,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             double d0 = this.getDistanceSq(target);
             float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
             if ((this.getHealth() < 100)) {
-                if (this.rand.nextInt(5) == 0) {
+                if (this.rand.nextInt(6) == 0) {
                     for (int i = 0; i < 3; ++i) {
                         EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                         entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
@@ -271,7 +272,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
                     entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                     this.world.spawnEntity(entitysmallfireball);
                 } else {
-                    EntityWitherSkull entityfireball = new EntityWitherSkull(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+                    EntityLargeFireball entityfireball = new EntityLargeFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                     entityfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                     this.world.spawnEntity(entityfireball);
                 }

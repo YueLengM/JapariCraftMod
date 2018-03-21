@@ -32,7 +32,7 @@ public class JapariItems {
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 800, 9F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
-    public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 18, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
+    public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 20, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 
 
     public static final Item japariman = new Japariman();
@@ -108,10 +108,10 @@ public class JapariItems {
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, sandstarnecklace.setRegistryName("sandstarnecklace"));
         register(registry, sandstarbow.setRegistryName("sandstarbow"));
-        register(registry, sandstarHelmet.setRegistryName("sandstarhelmet"));
-        register(registry, sandstarChestplate.setRegistryName("sandstarchestplate"));
-        register(registry, sandstarLeggings.setRegistryName("sandstarleggings"));
-        register(registry, sandstarBoot.setRegistryName("sandstarboots"));
+        register(registry, sandstarHelmet.setRegistryName("sandstar_ironhelmet"));
+        register(registry, sandstarChestplate.setRegistryName("sandstar_ironchestplate"));
+        register(registry, sandstarLeggings.setRegistryName("sandstar_ironleggings"));
+        register(registry, sandstarBoot.setRegistryName("sandstar_ironboots"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));

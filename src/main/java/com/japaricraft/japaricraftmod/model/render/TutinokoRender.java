@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.EntityTutinoko;
 import com.japaricraft.japaricraftmod.model.ModelTutinoko;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -22,16 +21,4 @@ public class TutinokoRender extends RenderLiving<EntityTutinoko> {
         return Tutinoko_TEXTURES;
     }
 
-    protected void preRenderCallback(EntityTutinoko entitylivingbaseIn, float partialTickTime) {
-        float f = 0.9375F;
-
-        if (entitylivingbaseIn.getGrowingAge() < 0) {
-            f = (float) ((double) f * 0.5D);
-            this.shadowSize = 0.25F;
-        } else {
-            this.shadowSize = 0.5F;
-        }
-
-        GlStateManager.scale(f, f, f);
-    }
 }

@@ -34,10 +34,10 @@ item.SandStarCake115.name=Sandstar Cake 115
 item.DelphinusLifeFragment.name=Sandstar with Dolphin's life
 item.sandstarbow.name=Sandstar Bow
 item.SandStarNeckLace.name=SandStarNeckLace
-item.SandStarHelmet.name=SandStarHelmet
-item.SandStarChestPlate.name=SandStarChestPlate
-item.SandStarLeggings.name=SandStarLeggings
-item.SandStarBoot.name=SandStarBoot
+item.SandStarIronHelmet.name=SandStarHelmet
+item.SandStarIronChestPlate.name=SandStarChestPlate
+item.SandStarIronLeggings.name=SandStarLeggings
+item.SandStarIronBoot.name=SandStarBoot
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -99,6 +99,7 @@ entity.Villager.foodcrafter=Farmer
 fluid.sandstar=SandStarWater
 
 item.WildLiberationSource.tooltip=It is not much to eat
+item.WildLiberationPotion.tooltip=Raising Health when used for Friends
 item.SandStarCake115.tooltip=It is surprisingly delicious
 item.DelphinusLifeFragment.tooltip=Always use at sea.
 item.SandStarNeckLace.tooltip=Friends only equipment

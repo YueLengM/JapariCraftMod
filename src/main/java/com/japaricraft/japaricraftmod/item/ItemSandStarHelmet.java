@@ -13,7 +13,7 @@ public class ItemSandStarHelmet extends ItemArmor {
     public ItemSandStarHelmet(ArmorMaterial kabanHatMaterial, int i, EntityEquipmentSlot head) {
         super(JapariItems.SandStarArmorMaterial, 0, head);
         setCreativeTab(tabJapariCraft);
-        setUnlocalizedName("SandStarHelmet");
+        setUnlocalizedName("SandStarIronHelmet");
     }
 
     public String getArmorTexture(ItemStack stack, Entity entity, EntityEquipmentSlot slot, String type) {
