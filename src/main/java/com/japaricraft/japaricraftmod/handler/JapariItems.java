@@ -6,6 +6,7 @@ import com.japaricraft.japaricraftmod.item.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -31,6 +32,7 @@ public class JapariItems {
 
     private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 800, 9F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
+    public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 18, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 
 
     public static final Item japariman = new Japariman();
@@ -43,6 +45,10 @@ public class JapariItems {
     public static final Item sandstarfragment = new ItemSandStarFragment();
     public static final Item sandstarnecklace = new ItemSandStarNeckLace();
     public static final Item darksandstar = new DarkSandStar();
+    public static final Item sandstarHelmet = new ItemSandStarHelmet(SandStarArmorMaterial, 0, EntityEquipmentSlot.HEAD);
+    public static final Item sandstarChestplate = new ItemSandStarChestPlate(SandStarArmorMaterial, 1, EntityEquipmentSlot.CHEST);
+    public static final Item sandstarLeggings = new ItemSandStarLeggings(SandStarArmorMaterial, 2, EntityEquipmentSlot.LEGS);
+    public static final Item sandstarBoot = new ItemSandStarBoot(SandStarArmorMaterial, 3, EntityEquipmentSlot.FEET);
     public static final Item sugarstar = new SugarStar();
     public static final Item sandstarcake_115 = new SandStarCake115();
     public static final Item starcaramel = new StarCaramel();
@@ -102,6 +108,10 @@ public class JapariItems {
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
         register(registry, sandstarnecklace.setRegistryName("sandstarnecklace"));
         register(registry, sandstarbow.setRegistryName("sandstarbow"));
+        register(registry, sandstarHelmet.setRegistryName("sandstarhelmet"));
+        register(registry, sandstarChestplate.setRegistryName("sandstarchestplate"));
+        register(registry, sandstarLeggings.setRegistryName("sandstarleggings"));
+        register(registry, sandstarBoot.setRegistryName("sandstarboots"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
@@ -127,6 +137,10 @@ public class JapariItems {
         registerModel(wildliberationsource,"wildliberation_source");
         registerModel(kabanhat,"kabanhat");
         registerModel(sandstarfragment,"sandstar_fragment");
+        registerModel(sandstarHelmet, "sandstarhelmet");
+        registerModel(sandstarChestplate, "sandstarchestplate");
+        registerModel(sandstarLeggings, "sandstarleggings");
+        registerModel(sandstarBoot, "sandstarboots");
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(researchbook, "researchbook");

@@ -34,6 +34,10 @@ item.DelphinusLifeFragment.name=マイルカの命がこもったサンドスタ
 item.DelphinusLifeFragment.tooltip=必ず海で使いましょう
 item.researchbook.name=サンドスター研究ノート
 item.SandStarNeckLace.name=サンドスターネックレス
+item.SandStarHelmet.name=サンドスターヘルメット
+item.SandStarChestPlate.name=サンドスターチェストプレート
+item.SandStarLeggings.name=サンドスターレギンス
+item.SandStarBoot.name=サンドスターブーツ
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン

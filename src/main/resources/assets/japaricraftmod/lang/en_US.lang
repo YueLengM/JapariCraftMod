@@ -34,6 +34,10 @@ item.SandStarCake115.name=Sandstar Cake 115
 item.DelphinusLifeFragment.name=Sandstar with Dolphin's life
 item.sandstarbow.name=Sandstar Bow
 item.SandStarNeckLace.name=SandStarNeckLace
+item.SandStarHelmet.name=SandStarHelmet
+item.SandStarChestPlate.name=SandStarChestPlate
+item.SandStarLeggings.name=SandStarLeggings
+item.SandStarBoot.name=SandStarBoot
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
