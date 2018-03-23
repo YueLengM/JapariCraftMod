@@ -11,7 +11,6 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
@@ -30,7 +29,6 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 public class JapariItems {
     private static final NonNullList<Item> ITEMS = NonNullList.create();
 
-    private static Item.ToolMaterial SandStar = EnumHelper.addToolMaterial("SandStar", 3, 800, 9F, 4F, 16).setRepairItem(new ItemStack(JapariItems.sandstarfragment));
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
     public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 20, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 

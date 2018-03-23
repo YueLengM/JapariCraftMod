@@ -189,4 +189,8 @@ public class SandStarBow extends ItemBow {
     public int getItemEnchantability() {
         return 1;
     }
+
+    public boolean getIsRepairable(ItemStack toRepair, ItemStack repair) {
+        return repair.getItem() == JapariItems.sandstarfragment || super.getIsRepairable(toRepair, repair);
+    }
 }
