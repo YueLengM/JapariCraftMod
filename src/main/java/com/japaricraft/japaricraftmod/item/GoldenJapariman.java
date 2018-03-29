@@ -13,7 +13,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 public class GoldenJapariman extends ItemFood {
 
     public GoldenJapariman() {
-        super(4, 3, false);
+        super(5, 7, false);
         this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("GoldenJapariman");
         this.setAlwaysEdible();
