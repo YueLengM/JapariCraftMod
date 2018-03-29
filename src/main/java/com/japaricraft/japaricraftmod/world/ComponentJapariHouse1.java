@@ -20,6 +20,10 @@ import java.util.Random;
 
 public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
 
+    public ComponentJapariHouse1() {
+
+    }
+
     public ComponentJapariHouse1(StructureVillagePieces.Start p_i2107_1_, int p_i2107_2_, Random p_i2106_3_, StructureBoundingBox p_i2106_4_, EnumFacing facing) {
         super(p_i2107_1_, p_i2107_2_);
         this.setCoordBaseMode(facing);
