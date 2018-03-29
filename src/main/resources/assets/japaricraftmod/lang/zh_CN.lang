@@ -1,9 +1,10 @@
 #
 tile.BlockWoodenFrame.name=木框架
 tile.SandStarBlock.name=砂之星块
-tile.SandStarOre.name=砂之星矿
+tile.sandstar_ore.name=砂之星矿
 tile.sandstarwater.name=砂之星水
 tile.Campfire.name=营火
+tile.SandStarLamp.name=砂之星灯
 
 item.Japariman.name=加帕里馒头
 item.JaparimanCocoa.name=可可加帕里馒头
@@ -32,6 +33,11 @@ item.SandStarCake115.name=砂之星蛋糕 115
 item.DelphinusLifeFragment.name=带有海豚生命的砂之星
 item.DelphinusLifeFragment.tooltip=必须在海上使用
 item.researchbook.name=砂之星研究手册
+item.SandStarNeckLace.name=砂之星项链
+item.SandStarIronHelmet.name=砂之星头盔
+item.SandStarIronChestPlate.name=砂之星胸甲
+item.SandStarIronLeggings.name=砂之星护腿
+item.SandStarIronBoot.name=砂之星靴子
 
 entity.AncientSkeleton.name=古代骷髅
 entity.KouteiPenguin.name=帝企鹅
@@ -59,7 +65,10 @@ entity.Squirre.name=松鼠
 entity.CeruleanBird.name=天蓝怪鸟 (未使用)
 entity.Delphinus.name=海豚
 entity.BlackCerulean.name=黑天蓝怪
-entity.Tutinoko.name=野槌蛇 (未使用)
+entity.Tutinoko.name=野槌蛇
+entity.AlpacaCafe.name=苏利羊驼 (咖啡厅老板)
+entity.CeruleanEye.name=眼之天蓝怪
+entity.EnderCerulean.name=末影天蓝怪
 item.sandstarbow.name=砂之星弓
 
 advancements.japaricraftmod.root.title=开始加帕里之旅
@@ -87,8 +96,10 @@ entity.Villager.foodcrafter=农夫
 fluid.sandstar=砂之星液
 
 
-item.WildLiberationSource.tooltip=还不足以为食
+item.WildLiberationSource.tooltip=还不能吃
 item.SandStarCake115.tooltip=真是太美味了
+item.SandStarNeckLace.tooltip=friends专用饰品
+item.WildLiberationPotion.tooltip=为friends提升生命
 
 japaricraftmod.config.cerulean_wight=天蓝怪生成率
 japaricraftmod.config.poisoncerulean_wight=毒液天蓝怪生成率
@@ -115,3 +126,9 @@ page.7.name=最后的信息
 page.7.desc=…抱歉，很久不见。在地下要塞里依靠别的世界的friends看了一下书，她们似乎是原本住在动物园一样的地方，但是因为天蓝怪的原因，好像就很难再生活下去了。
 page.8.name=
 page.8.desc=似乎有感觉到危急的某人已经把friends转移了。…这个要是被刌民看到而且滥用的话就完蛋啦！看到这本书的人应该去保护friends。…
+
+cafe.0.desc=哇~！ 欢迎光临！
+cafe.1.desc=虽然有些狭小但也可以在这里休息~
+
+entity.cerulean.text1=女王说过
+entity.cerulean.text2=所有的“光辉”终将消失，但天蓝怪会将之再现并永久保存
