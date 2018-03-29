@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
-public class ItemSandStarNeckLace extends Item {
+public class ItemSandStarNeckLace extends Item implements FriendsEquipment {
     private final float attackDamage;
     private final int damageReduceAmount;
 
@@ -51,5 +51,10 @@ public class ItemSandStarNeckLace extends Item {
 
     public EnumRarity getRarity(ItemStack stack) {
         return EnumRarity.COMMON;
+    }
+
+    @Override
+    public EntityEquipmentSlot getEquipmentType() {
+        return EntityEquipmentSlot.HEAD;
     }
 }
