@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "3.9.8": "some fix",
     "3.9.7": "can repair SandStarBow and SandStarArmor",
     "3.9.6": "add SandStarArmor",
     "3.9.5": "fix SandStarRuinGenerate",
@@ -46,7 +47,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "3.9.7",
-    "1.12-latest": "3.9.7"
+    "1.12-recommended": "3.9.8",
+    "1.12-latest": "3.9.8"
   }
 }
