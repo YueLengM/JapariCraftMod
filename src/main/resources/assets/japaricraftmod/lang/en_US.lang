@@ -5,6 +5,7 @@ tile.sandstar_ore.name=Sandstar Ore
 tile.sandstarwater.name=Sandstar Water
 tile.Campfire.name=Campfire
 tile.SandStarLamp.name=SandStarLamp
+tile.JaparimanBowl.name=JaparimanBowl
 
 item.Japariman.name=Japariman
 item.JaparimanCocoa.name=Cocoa Japariman
@@ -103,6 +104,7 @@ item.WildLiberationPotion.tooltip=Raising Health when used for Friends
 item.SandStarCake115.tooltip=It is surprisingly delicious
 item.DelphinusLifeFragment.tooltip=Always use at sea.
 item.SandStarNeckLace.tooltip=Friends only equipment
+item.japaricoin.tooltip=In the past coins used in some zoo
 
 japaricraftmod.config.cerulean_wight=Cerulean Wight
 japaricraftmod.config.poisoncerulean_wight=PoisonCerulean Wight

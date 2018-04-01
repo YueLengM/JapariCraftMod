@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "japaricraftmod:japariman"
+    },
+    {
+      "item": "japaricraftmod:japariman"
+    },
+    {
+      "item": "japaricraftmod:japariman"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "japaricraftmod:japarimanbowl"
+  }
+}

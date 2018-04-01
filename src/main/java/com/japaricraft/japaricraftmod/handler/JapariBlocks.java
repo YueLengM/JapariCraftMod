@@ -19,6 +19,7 @@ public class JapariBlocks {
     public static final BlockSandStarLamp SANDSTAR_Lamp = new BlockSandStarLamp();
     public static final BlockWoodenBox BLOCK_WOODEN_BOX = new BlockWoodenBox();
     public static final BlockAnimalStatue ANIMAL_STATUE = new BlockAnimalStatue();
+    public static final BlockJaparimanBowl Japariman_Bowl = new BlockJaparimanBowl();
     public static final BlockCeruleanStatue Cerulean_STATUE = new BlockCeruleanStatue();
     public static void registerBlocks(IForgeRegistry<Block> registry)
     {
@@ -26,6 +27,7 @@ public class JapariBlocks {
         registry.register(SANDSTAR_BLOCK.setRegistryName("sandstar_block"));
         registry.register(SANDSTAR_Lamp.setRegistryName("sandstar_lamp"));
         registry.register(BLOCK_WOODEN_BOX.setRegistryName("woodenbox"));
+        registry.register(Japariman_Bowl.setRegistryName("japarimanbowl"));
         registry.register(Cerulean_STATUE.setRegistryName("ceruleanstatue"));
         registry.register(ANIMAL_STATUE.setRegistryName("animalstatue"));
     }
@@ -35,6 +37,7 @@ public class JapariBlocks {
         JapariItems.register(registry, new ItemBlock(SANDSTAR_ORE));
         JapariItems.register(registry, new ItemBlock(SANDSTAR_BLOCK));
         JapariItems.register(registry, new ItemBlock(SANDSTAR_Lamp));
+        JapariItems.register(registry, new ItemBlock(Japariman_Bowl));
         JapariItems.register(registry, new ItemBlock(BLOCK_WOODEN_BOX));
         JapariItems.register(registry, new ItemBlock(ANIMAL_STATUE));
     }
@@ -53,6 +56,7 @@ public class JapariBlocks {
         registerModel(SANDSTAR_ORE);
         registerModel(SANDSTAR_BLOCK);
         registerModel(SANDSTAR_Lamp);
+        registerModel(Japariman_Bowl);
         registerModel(BLOCK_WOODEN_BOX);
         registerModel(Cerulean_STATUE);
         registerModel(ANIMAL_STATUE);

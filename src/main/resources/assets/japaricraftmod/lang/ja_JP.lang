@@ -5,6 +5,7 @@ tile.sandstar_ore.name=サンドスター鉱石
 tile.sandstarwater.name=サンドスターの温泉
 tile.Campfire.name=焚き火
 tile.SandStarLamp.name=サンドスターランプ
+tile.JaparimanBowl.name=じゃぱりまんのはいったボウル
 
 item.Japariman.name=じゃぱりまん
 item.JaparimanCocoa.name=じゃぱりまんココア味
@@ -100,6 +101,7 @@ item.WildLiberationSource.tooltip=あまり食べれる物じゃない
 item.SandStarCake115.tooltip=意外と美味しい
 item.SandStarNeckLace.tooltip=フレンズ専用装備
 item.WildLiberationPotion.tooltip=フレンズに使うと体力を上げる
+item.japaricoin.tooltip=昔は動物園で使われてたコイン(個性的すぎる...)
 
 japaricraftmod.config.cerulean_wight=セルリアンの湧き率
 japaricraftmod.config.poisoncerulean_wight=毒セルリアンの湧き率
