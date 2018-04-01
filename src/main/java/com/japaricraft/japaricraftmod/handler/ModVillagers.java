@@ -33,7 +33,6 @@ public class ModVillagers {
         );
         career_zookeeper.addTrade(3,
                 new EntityVillager.EmeraldForItems(Items.SLIME_BALL, new EntityVillager.PriceInfo(8, 14)),
-                new EntityVillager.EmeraldForItems(JapariItems.japaricoin, new EntityVillager.PriceInfo(1, 2)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.wildliberationpotion, new EntityVillager.PriceInfo(6, 8)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.starjapariman, new EntityVillager.PriceInfo(6, 8)));
     }
