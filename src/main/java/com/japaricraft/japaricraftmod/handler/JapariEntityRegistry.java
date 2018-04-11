@@ -22,26 +22,26 @@ import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
 public class JapariEntityRegistry {
     public static void registerEntities() {
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.KouteiPenguin"), EntityKouteiPenguin.class, "KouteiPenguin", 1, instance, 60, 1, false, 2243405, 7375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Cerulean"), EntityCerulean.class, "Cerulean", 2, instance, 60, 1, false, 4243405, 7375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Serval"), EntityServal.class, "Serval", 3, instance, 60, 1, false, 16703405, 6375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Shoebill"), EntityShoebill.class, "Shoebill", 5, instance, 60, 1, false, 7375001, 10000);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.WhiteOwl"), EntityWhiteOwl.class, "WhiteOwl", 6, instance, 60, 1, false, 7375001, 7375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BrownOwl"), EntityBrownOwl.class, "BrownOwl", 7, instance, 60, 1, false, 5243410, 5243405);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanBird"), EntityCeruleanBird.class, "CeruleanBird", 8, instance, 60, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.BlackCerulean"), EntityBlackCerulean.class, "BlackCerulean", 10, instance, 120, 1, false, 0x000000, 0x333333);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Guide"), EntityGuide.class, "Guide", 11, instance, 60, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Araisan"), EntityAraisan.class, "Araisan", 12, instance, 60, 1, false, 0x666699, 0x969696);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.PoisonCerulean"), PoisonEntityCerulean.class, "PoisonCerulean", 13, instance, 60, 1, false, 4243405, 7375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Fennec"), EntityFennec.class, "Fennec", 14, instance, 60, 1, false, 13434879, 13408767);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.SandStarHandler"), EntitySandStarHandler.class, "SandStarHandler", 15, instance, 60, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.RoyalPenguin"), RoyalPenguinEntity.class, "RoyalPenguin", 16, instance, 60, 1, false, 2243405, 7375001);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Alpaca"), EntityAlpaca.class, "Alpaca", 17, instance, 60, 1, false, 0xf0f5f0, 0xf5f5dc);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Squirre"), EntitySquirre.class, "Squirre", 18, instance, 60, 1, false, 0xf0f5f0, 0x993300);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.Tutinoko"), EntityTutinoko.class, "Tutinoko", 19, instance, 60, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.AlpacaCafe"), EntityAlpacaCafe.class, "AlpacaCafe", 20, instance, 60, 1, false);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.CeruleanEye"), EntityCeruleanEye.class, "CeruleanEye", 21, instance, 70, 1, false, 0x333333, 0x339966);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "mobs.EnderCerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, instance, 70, 1, false, 0x333333, 0x808080);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "kouteipenguin"), EntityKouteiPenguin.class, "KouteiPenguin", 1, instance, 60, 1, false, 2243405, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "cerulean"), EntityCerulean.class, "Cerulean", 2, instance, 60, 1, false, 4243405, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "serval"), EntityServal.class, "Serval", 3, instance, 60, 1, false, 16703405, 6375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "shoebill"), EntityShoebill.class, "Shoebill", 5, instance, 60, 1, false, 7375001, 10000);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "whiteOwl"), EntityWhiteOwl.class, "WhiteOwl", 6, instance, 60, 1, false, 7375001, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "brownOwl"), EntityBrownOwl.class, "BrownOwl", 7, instance, 60, 1, false, 5243410, 5243405);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "ceruleanbird"), EntityCeruleanBird.class, "CeruleanBird", 8, instance, 60, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "blackcerulean"), EntityBlackCerulean.class, "BlackCerulean", 10, instance, 120, 1, false, 0x000000, 0x333333);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "guide"), EntityGuide.class, "Guide", 11, instance, 60, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "araisan"), EntityAraisan.class, "Araisan", 12, instance, 60, 1, false, 0x666699, 0x969696);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "poisoncerulean"), PoisonEntityCerulean.class, "PoisonCerulean", 13, instance, 60, 1, false, 4243405, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "fennec"), EntityFennec.class, "Fennec", 14, instance, 60, 1, false, 13434879, 13408767);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "sandstarhandler"), EntitySandStarHandler.class, "SandStarHandler", 15, instance, 60, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "royalpenguin"), RoyalPenguinEntity.class, "RoyalPenguin", 16, instance, 60, 1, false, 2243405, 7375001);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "alpaca"), EntityAlpaca.class, "Alpaca", 17, instance, 60, 1, false, 0xf0f5f0, 0xf5f5dc);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "squirre"), EntitySquirre.class, "Squirre", 18, instance, 60, 1, false, 0xf0f5f0, 0x993300);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "tutinoko"), EntityTutinoko.class, "Tutinoko", 19, instance, 60, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "alpacacafe"), EntityAlpacaCafe.class, "AlpacaCafe", 20, instance, 60, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "ceruleaneye"), EntityCeruleanEye.class, "CeruleanEye", 21, instance, 70, 1, false, 0x333333, 0x339966);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "endercerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, instance, 70, 1, false, 0x333333, 0x808080);
     }
     public static void addSpawns()
     {
