@@ -19,6 +19,7 @@ public class ModelBrownOwl extends ModelBase {
     private ModelRenderer legL;
     private ModelRenderer wing2;
     private ModelRenderer wing1;
+    private ModelRenderer skirt1;
     ModelRenderer hairA_L;
 
     public ModelBrownOwl() {
@@ -27,9 +28,9 @@ public class ModelBrownOwl extends ModelBase {
         this.legL = new ModelRenderer(this, 80, 0);
         this.legL.setRotationPoint(1.4F, -1.0F, 0.0F);
         this.legL.addBox(-1.0F, 4.3F, -1.0F, 2, 8, 2, 0.0F);
-        ModelRenderer skirt1 = new ModelRenderer(this, 0, 40);
-        skirt1.setRotationPoint(0.0F, 8.0F, 0.0F);
-        skirt1.addBox(-3.0F, 0.0F, -3.0F, 6, 6, 6, 0.0F);
+        this.skirt1 = new ModelRenderer(this, 0, 40);
+        this.skirt1.setRotationPoint(0.0F, 8.0F, 0.0F);
+        this.skirt1.addBox(-3.0F, 0.0F, -3.0F, 6, 6, 6, 0.0F);
         ModelRenderer neckA = new ModelRenderer(this, 90, 0);
         neckA.setRotationPoint(-0.1F, -0.8F, 0.0F);
         neckA.addBox(-3.0F, 0.0F, -3.0F, 6, 1, 6, 0.0F);
@@ -98,8 +99,8 @@ public class ModelBrownOwl extends ModelBase {
         hairA_L.setRotationPoint(-4.2F, 3.1F, -2.0F);
         hairA_L.addBox(-0.2F, -2.5F, 0.0F, 1, 5, 3, 0.0F);
         this.setRotateAngle(hairA_L, 0.0F, 0.0F, 0.1668534764906579F);
-        skirt1.addChild(this.legL);
-        this.body.addChild(skirt1);
+        this.skirt1.addChild(this.legL);
+        this.body.addChild(this.skirt1);
         this.body.addChild(neckA);
         hair1.addChild(hairA_R);
         this.head.addChild(neck);
@@ -112,7 +113,7 @@ public class ModelBrownOwl extends ModelBase {
         hair1.addChild(wing2);
         hair1.addChild(hairA1);
         this.body.addChild(this.handR);
-        skirt1.addChild(this.legR);
+        this.skirt1.addChild(this.legR);
         hair1.addChild(hairA2);
         hair1.addChild(wing1);
         this.body.addChild(handA_L);
@@ -174,17 +175,13 @@ public class ModelBrownOwl extends ModelBase {
         this.legL.rotateAngleY = 0.0F;
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
+        this.skirt1.rotateAngleX = 0F;
 
 
         if (entityowl.isSitting()||this.isRiding)
         {
-            this.legR.rotateAngleX = -1.4137167F;
-            this.legR.rotateAngleY = ((float)Math.PI / 10F);
-            this.legR.rotateAngleZ = 0.07853982F;
-            this.legL.rotateAngleX = -1.4137167F;
-            this.legL.rotateAngleY = -((float)Math.PI / 10F);
-            this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.2F, 0F);
+            this.skirt1.rotateAngleX = -1.4137167F;
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
         this.handR.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;
