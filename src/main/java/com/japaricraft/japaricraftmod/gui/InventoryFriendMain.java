@@ -17,7 +17,7 @@ public class InventoryFriendMain extends InventoryFriend
     {
         super.markDirty();
 
-        this.getContainerEntityChasts().playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5F, this.getContainerEntityChasts().getRNG().nextFloat() * 0.1F + 0.9F);
+        this.getContainerEntityFriends().playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5F, this.getContainerEntityFriends().getRNG().nextFloat() * 0.1F + 0.9F);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class InventoryFriendMain extends InventoryFriend
     {
         super.markDirty();
 
-        this.getContainerEntityChasts().playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5F, this.getContainerEntityChasts().getRNG().nextFloat() * 0.1F + 0.9F);
+        this.getContainerEntityFriends().playSound(SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.5F, this.getContainerEntityFriends().getRNG().nextFloat() * 0.1F + 0.9F);
     }
 
 }

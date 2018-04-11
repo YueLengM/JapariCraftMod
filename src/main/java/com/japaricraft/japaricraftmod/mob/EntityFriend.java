@@ -94,21 +94,33 @@ public class EntityFriend extends EntityTameable{
         }
     }
 
-    //インベントリにじゃぱりまんが入ってた時に消費して回復する処理
-    private void eatJapariman() {
-        ItemStack friendsstack;
-        //そのスロットに置くとじゃぱりまんを食べてくれる
-        friendsstack = getInventoryFriendMain().getStackInSlot(0);
 
-        if (!friendsstack.isEmpty()) {
+    //インベントリにじゃぱりまんがあるか確認する処理
+
+    private void eatJapariman() {
+        ItemStack itemstack = findFood();
+
+        if (!itemstack.isEmpty()) {
             //じゃぱりまんがあるか確認
+
+            ItemFood itemfood = (ItemFood) itemstack.getItem();
+            this.heal((float) itemfood.getHealAmount(itemstack));
+            itemstack.shrink(1);
+            this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+        }
+    }
+
+    private ItemStack findFood() {
+        ItemStack friendsstack;
+
+        for (int i = 0; i < this.getInventoryFriendMain().getSizeInventory(); ++i) {
+            friendsstack = getInventoryFriendMain().getStackInSlot(i);
+
             if (Heal_ITEMS.contains(friendsstack.getItem())) {
-                ItemFood itemfood = (ItemFood) friendsstack.getItem();
-                this.heal((float) itemfood.getHealAmount(friendsstack));
-                friendsstack.shrink(1);
-                this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+                return friendsstack;
             }
         }
+        return ItemStack.EMPTY;
     }
 
     private void pickupItem() {

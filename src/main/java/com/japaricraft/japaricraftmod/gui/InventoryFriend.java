@@ -27,7 +27,7 @@ public class InventoryFriend extends InventoryBasic
 
     // TODO /* ======================================== MOD START =====================================*/
 
-    public EntityFriend getContainerEntityChasts()
+    public EntityFriend getContainerEntityFriends()
     {
         return this.entityfriends;
     }
