@@ -1,7 +1,6 @@
 package com.japaricraft.japaricraftmod.gui;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
-import com.japaricraft.japaricraftmod.mob.EntityAlpacaCafe;
 import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +14,7 @@ public class JapariGuiHandler implements IGuiHandler {
         if (ID == JapariCraftMod.ID_JAPARI_INVENTORY) {
             Entity entity = world.getEntityByID(x);
 
-            if (entity instanceof EntityFriend)
-            {
+            if (entity instanceof EntityFriend) {
                 return new ContainerFriendInventory((EntityFriend) entity, player);
             }
         }
@@ -25,24 +23,15 @@ public class JapariGuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if (ID == JapariCraftMod.ID_JAPARI_INVENTORY)
-        {
+        if (ID == JapariCraftMod.ID_JAPARI_INVENTORY) {
             Entity entity = world.getEntityByID(x);
 
-            if (entity instanceof EntityFriend)
-            {
+            if (entity instanceof EntityFriend) {
                 return new GuiFriendInventory((EntityFriend) entity, player);
             }
         }
         if (ID == JapariCraftMod.ID_Book) {
             return new GuiJapariBook(player);
-        }
-        if (ID == JapariCraftMod.ID_CAFE) {
-            Entity entity = world.getEntityByID(x);
-
-            if (entity instanceof EntityAlpacaCafe) {
-                return new GuiCafe();
-            }
         }
         return null;
     }

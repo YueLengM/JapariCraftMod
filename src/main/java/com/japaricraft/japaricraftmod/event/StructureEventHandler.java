@@ -1,6 +1,5 @@
 package com.japaricraft.japaricraftmod.event;
 
-import com.japaricraft.japaricraftmod.world.structure.MapGenAlpacaCafe;
 import com.japaricraft.japaricraftmod.world.structure.MapGenSandStarRuin;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -11,7 +10,6 @@ import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class StructureEventHandler {
-    MapGenAlpacaCafe mapGenAlpacaCafe = new MapGenAlpacaCafe();
     MapGenSandStarRuin mapGenSandStarRuin = new MapGenSandStarRuin();
 
     public static BlockPos getHeight(World world, BlockPos pos) {
@@ -31,12 +29,6 @@ public class StructureEventHandler {
         int x = (event.getChunkX() * 16) + event.getRand().nextInt(16);
         int z = (event.getChunkZ() * 16) + event.getRand().nextInt(16);
         BlockPos height = getHeight(event.getWorld(), new BlockPos(x, 0, z));
-        // 通常世界(Overworld)に生成する
-        if (event.getWorld().provider.getDimension() == 0 && BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.MOUNTAIN)) {
-            mapGenAlpacaCafe.generate(event.getWorld(), event.getChunkX(), event.getChunkZ(), null);
-
-            mapGenAlpacaCafe.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
-        }
         if (event.getWorld().provider.getDimensionType() == DimensionType.OVERWORLD && BiomeDictionary.hasType(event.getWorld().getBiome(height), BiomeDictionary.Type.FOREST)) {
             mapGenSandStarRuin.generate(event.getWorld(), event.getChunkX(), event.getChunkZ(), null);
             mapGenSandStarRuin.generateStructure(event.getWorld(), event.getRand(), event.getWorld().getChunkFromChunkCoords(event.getChunkX(), event.getChunkZ()).getPos());
