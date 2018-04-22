@@ -126,7 +126,7 @@ public class JapariCraftMod {
         metadata.name = MODNAME;
         metadata.version = VERSION;
         metadata.description = ("けもフレ関連のアイテムを追加します");
-        metadata.credits = ("モデル製作者:dragon");
+        metadata.credits = ("");
         metadata.logoFile = ("assets/japaricraftmod/textures/logo.png");
         metadata.url = ("https://minecraft.curseforge.com/projects/japaricraftmod");
 
