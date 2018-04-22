@@ -35,7 +35,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "4.0.0";
+    public static final String VERSION = "4.0.1";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -50,7 +50,6 @@ public class JapariCraftMod {
     public static JapariCraftMod instance;
     public static final int ID_Book = 0;
     public static final int ID_JAPARI_INVENTORY = 1;
-    public static final int ID_CAFE = 2;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
 
 
