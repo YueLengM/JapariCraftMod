@@ -115,7 +115,7 @@ public class EntityAlpaca extends EntityFriend {
             }
 
             if (!this.world.isRemote) {
-                if (this.rand.nextInt(3) == 0) {
+                if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);

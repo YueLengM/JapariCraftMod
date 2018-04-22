@@ -158,7 +158,7 @@ public class EntityWhiteOwl extends EntityFriend {
 
             if (!this.world.isRemote)
             {
-                if (this.rand.nextInt(3) == 0)
+                if (this.rand.nextInt(2) == 0)
                 {
                     player.sendStatusMessage(new TextComponentTranslation("entity.whiteowl.friend"), true);
                     this.setTamed(true);

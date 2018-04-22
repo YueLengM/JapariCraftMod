@@ -128,7 +128,7 @@ public class EntityAraisan extends EntityPlayFriend {
 
             if (!this.world.isRemote)
             {
-                if (this.rand.nextInt(3) == 0)
+                if (this.rand.nextInt(2) == 0)
                 {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());

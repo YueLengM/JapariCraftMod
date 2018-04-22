@@ -112,7 +112,7 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 0, 1, 7, 0, 3, Blocks.DOUBLE_STONE_SLAB.getDefaultState(), Blocks.DOUBLE_STONE_SLAB.getDefaultState(), false);
         this.setBlockState(worldIn, Blocks.CRAFTING_TABLE.getDefaultState(), 6, 1, 1, structureBoundingBoxIn);
         this.setBlockState(worldIn, Blocks.FURNACE.getDefaultState(), 6, 1, 2, structureBoundingBoxIn);
-        this.setBlockState(worldIn, JapariBlocks.Japariman_Bowl.getDefaultState(), 6, 1, 3, structureBoundingBoxIn);
+        this.setBlockState(worldIn, JapariBlocks.Japariman_Bowl.getDefaultState(), 6, 2, 2, structureBoundingBoxIn);
         this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 1, 0, structureBoundingBoxIn);
         this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 2, 0, structureBoundingBoxIn);
         this.placeTorch(worldIn, EnumFacing.NORTH, 2, 3, 1, structureBoundingBoxIn);
