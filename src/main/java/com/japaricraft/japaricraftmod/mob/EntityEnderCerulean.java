@@ -243,7 +243,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             double d0 = this.getDistanceSq(target);
             float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
             if ((this.getHealth() < 100)) {
-                if (this.rand.nextInt(6) == 0) {
+                if (this.rand.nextInt(7) == 0) {
                     for (int i = 0; i < 3; ++i) {
                         EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                         entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
@@ -251,7 +251,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
                     }
                 } else {
 
-                    if (this.rand.nextInt(4) == 0) {
+                    if (this.rand.nextInt(5) == 0) {
                         for (int i = 0; i < 2; ++i) {
                             EntityCeruleanEye eye = new EntityCeruleanEye(world);
                             eye.setPosition(this.posX, this.posY, this.posZ);
@@ -267,7 +267,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
                     }
                 }
             } else {
-                if (this.rand.nextInt(7) == 0) {
+                if (this.rand.nextInt(8) == 0) {
                     EntityDragonFireball entitysmallfireball = new EntityDragonFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                     entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                     this.world.spawnEntity(entitysmallfireball);
