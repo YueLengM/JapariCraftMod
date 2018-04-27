@@ -39,6 +39,7 @@ item.SandStarIronHelmet.name=SandStarHelmet
 item.SandStarIronChestPlate.name=SandStarChestPlate
 item.SandStarIronLeggings.name=SandStarLeggings
 item.SandStarIronBoot.name=SandStarBoot
+item.ServalEarCostume.name=ServalEarCostume
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
