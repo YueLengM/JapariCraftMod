@@ -19,11 +19,9 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityGuide.class, GuideRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityKouteiPenguin.class, KouteiPenginEntityRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityFennec.class, FennecRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntitySandStarHandler.class, SandStarHandlerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(RoyalPenguinEntity.class, RoyalPenguinRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityAlpaca.class, AlpacaRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySquirre.class, SquirreRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityCeruleanBird.class, CeruleanBirdRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBlackCerulean.class, BlackCeruleanRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTutinoko.class, TutinokoRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityCeruleanEye.class, CeruleanEyeRender::new);
