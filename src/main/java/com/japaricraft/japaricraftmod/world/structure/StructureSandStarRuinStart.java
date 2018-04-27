@@ -9,6 +9,9 @@ import java.util.Random;
 
 public class StructureSandStarRuinStart extends StructureStart {
 
+    public StructureSandStarRuinStart() {
+    }
+
     public StructureSandStarRuinStart(World par1World, Random par2Random, int par3, int par4) {
         super(par3, par4);
 

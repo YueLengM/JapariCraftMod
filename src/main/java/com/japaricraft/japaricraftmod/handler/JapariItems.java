@@ -3,6 +3,7 @@ package com.japaricraft.japaricraftmod.handler;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.item.*;
+import com.japaricraft.japaricraftmod.item.armor.*;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,6 +30,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 public class JapariItems {
     private static final NonNullList<Item> ITEMS = NonNullList.create();
 
+    public static final ItemArmor.ArmorMaterial animalCostumeMaterial = EnumHelper.addArmorMaterial("animalcostume", MODID + ":" + "textures/models/armor/kabanhat_layer_1.png", 8, new int[]{0, 0, 0, 0}, 12, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
     public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 20, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 
@@ -53,8 +55,8 @@ public class JapariItems {
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
     public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
+    public static final Item servalEarCostume = new ItemServalEarCostume(animalCostumeMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
-    public static final Item researchbook = new ResearchBook();
     public static final Item sandstarbow = new SandStarBow();
 
     public static List<Item> getItems()
@@ -113,8 +115,8 @@ public class JapariItems {
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
+        register(registry, servalEarCostume.setRegistryName("serval_earcostume"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
-        register(registry, researchbook.setRegistryName("researchbook"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
 
@@ -134,6 +136,7 @@ public class JapariItems {
         registerModel(wildliberationpotion,"wildliberation_potion");
         registerModel(wildliberationsource,"wildliberation_source");
         registerModel(kabanhat,"kabanhat");
+        registerModel(servalEarCostume, "serval_earcostume");
         registerModel(sandstarfragment,"sandstar_fragment");
         registerModel(sandstarHelmet, "sandstarhelmet");
         registerModel(sandstarChestplate, "sandstarchestplate");
@@ -141,7 +144,6 @@ public class JapariItems {
         registerModel(sandstarBoot, "sandstarboots");
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
-        registerModel(researchbook, "researchbook");
         registerModel(sandstarbow, "sandstarbow");
         registerModel(sandstarnecklace, "sandstarnecklace");
     }

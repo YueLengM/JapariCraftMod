@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.item;
+package com.japaricraft.japaricraftmod.item.armor;
 
 import com.japaricraft.japaricraftmod.model.ModelKabanHat;
 import net.minecraft.entity.Entity;

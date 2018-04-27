@@ -1,6 +1,6 @@
 package com.japaricraft.japaricraftmod.gui;
 
-import com.japaricraft.japaricraftmod.item.FriendsEquipment;
+import com.japaricraft.japaricraftmod.item.armor.FriendsEquipment;
 import com.japaricraft.japaricraftmod.mob.EntityFriend;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;

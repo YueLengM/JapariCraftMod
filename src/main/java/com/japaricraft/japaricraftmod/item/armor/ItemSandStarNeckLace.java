@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.item;
+package com.japaricraft.japaricraftmod.item.armor;
 
 import com.google.common.collect.Multimap;
 import com.japaricraft.japaricraftmod.JapariCraftMod;

@@ -41,12 +41,6 @@ public class LootTableEventHandler {
                 main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
             }
         }
-        if (event.getName().equals(LootTableList.CHESTS_STRONGHOLD_LIBRARY)) {
-            LootPool main = event.getTable().getPool("main");
-            if (main != null) {
-                main.addEntry(new LootEntryItem(JapariItems.researchbook, 3, 2, new LootFunction[0], new LootCondition[0], "japaricraftmod:researchbook"));
-            }
-        }
 
     }
 }

@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.item;
+package com.japaricraft.japaricraftmod.item.armor;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 

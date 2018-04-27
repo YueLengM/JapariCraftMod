@@ -1,4 +1,4 @@
-package com.japaricraft.japaricraftmod.item;
+package com.japaricraft.japaricraftmod.item.armor;
 
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.Entity;
