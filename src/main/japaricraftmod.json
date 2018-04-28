@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod/files",
   "1.12.2": {
+    "4.0.2": "add ServalEarCostume",
     "4.0.1": "some fix",
     "4.0.0": "fix model and useful japariman",
     "3.9.9": "add JaparimanBowl",
@@ -50,7 +51,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12-recommended": "4.0.1",
-    "1.12-latest": "4.0.1"
+    "1.12-recommended": "4.0.2",
+    "1.12-latest": "4.0.2"
   }
 }
