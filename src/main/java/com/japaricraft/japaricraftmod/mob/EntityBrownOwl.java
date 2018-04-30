@@ -104,7 +104,7 @@ public class EntityBrownOwl extends EntityFriend {
     {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
+        if (this.isTamed() && !this.isRiding())
         {
             if(player.isSneaking()&&!this.isSitting()){
                 player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
@@ -129,8 +129,13 @@ public class EntityBrownOwl extends EntityFriend {
                         return true;
                     }
                 }
-                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
+                if (!this.isRiding() && player.getPassengers().size() <= 0 && this.isOwner(player) && stack.getItem() == Items.SADDLE) {
+                    this.startRiding(player, true);
 
+                    return true;
+                }
+
+                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
                     if (!player.capabilities.isCreativeMode) {
                         stack.shrink(1);
                     }
@@ -187,6 +192,12 @@ public class EntityBrownOwl extends EntityFriend {
     }
 
     @Override
+    public double getYOffset() {
+        return this.getRidingEntity() != null ? -0.40D : 0.0D;
+    }
+
+
+    @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
         this.calculateFlapping();
@@ -231,6 +242,61 @@ public class EntityBrownOwl extends EntityFriend {
                 this.rotationYaw = -((float) MathHelper.atan2(a, b)) * (180F / (float) Math.PI);
             }
         }
+        //フクロウが(いろんな意味で)乗ってる時に特定の操作で下ろす処理
+        if (this.isRiding()) {
+            final Entity entity = this.getRidingEntity();
+
+            if (entity.isSneaking() && entity.onGround) {
+                this.dismountRidingEntity();
+            }
+
+            if (entity.motionY < 0) {
+                entity.motionY *= entity.isSneaking() ? 0.9D : 0.7D;
+
+                entity.fallDistance = 0;
+            }
+
+        }
+
+    }
+
+    @Override
+    public void updateRidden() {
+        super.updateRidden();
+
+        if (getRidingEntity() instanceof EntityPlayer) {
+            EntityPlayer lep = (EntityPlayer) getRidingEntity();
+
+            renderYawOffset = lep.renderYawOffset;
+            prevRenderYawOffset = lep.prevRenderYawOffset;
+
+            renderYawOffset = lep.renderYawOffset;
+            if (((rotationYaw - renderYawOffset) % 360F) > 90F) {
+                rotationYaw = renderYawOffset + 90F;
+            }
+            if (((rotationYaw - renderYawOffset) % 360F) < -90F) {
+                rotationYaw = renderYawOffset - 90F;
+            }
+            if (((rotationYawHead - renderYawOffset) % 360F) > 90F) {
+                rotationYawHead = renderYawOffset + 90F;
+            }
+            if (((rotationYawHead - renderYawOffset) % 360F) < -90F) {
+                rotationYawHead = renderYawOffset - 90F;
+            }
+            double dx, dz;
+            dx = Math.sin((lep.renderYawOffset * Math.PI) / 180D) * 0.35;
+            dz = Math.cos((lep.renderYawOffset * Math.PI) / 180D) * 0.35;
+            posX += dx;
+            posZ -= dz;
+        }
+    }
+
+    @Override
+    public boolean canBeAttackedWithItem() {
+        if (getRidingEntity() != null && getRidingEntity() == this.getOwner()) {
+            return false;
+        }
+        return super.canBeAttackedWithItem();
     }
 
     @Override
