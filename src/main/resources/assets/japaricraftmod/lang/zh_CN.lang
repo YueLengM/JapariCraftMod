@@ -2,9 +2,10 @@
 tile.BlockWoodenFrame.name=木框架
 tile.SandStarBlock.name=砂之星块
 tile.sandstar_ore.name=砂之星矿
-tile.sandstarwater.name=砂之星水
+tile.sandstarwater.name=砂之星温泉水
 tile.Campfire.name=营火
 tile.SandStarLamp.name=砂之星灯
+tile.JaparimanBowl.name=加帕里馒头碗
 
 item.Japariman.name=加帕里馒头
 item.JaparimanCocoa.name=可可加帕里馒头
@@ -38,6 +39,7 @@ item.SandStarIronHelmet.name=砂之星头盔
 item.SandStarIronChestPlate.name=砂之星胸甲
 item.SandStarIronLeggings.name=砂之星护腿
 item.SandStarIronBoot.name=砂之星靴子
+item.ServalEarCostume.name=薮猫耳装饰
 
 entity.AncientSkeleton.name=古代骷髅
 entity.KouteiPenguin.name=帝企鹅
@@ -51,7 +53,7 @@ entity.LuckyBeast.name=幸运野兽
 entity.SafeguardLuckyBeast.name=幸运野兽卫兵
 entity.SavannaNamekuji.name=稀树草原条纹大蛞蝓
 entity.Guide.name=爱丽丝
-entity.Villager.japalar=加帕里员工
+entity.Villager.japalar=加帕里饲养员
 entity.Araisan.name=浣熊
 itemGroup.JapariCraftTab=加帕里Craft
 entity.whiteowl.friend=谢谢你为我做好吃的
@@ -62,11 +64,10 @@ entity.SandStarHandler.name=サンドスターハンドラー (未使用)
 entity.RoyalPenguin.name=皇家企鹅
 entity.Alpaca.name=苏利羊驼
 entity.Squirre.name=松鼠
+entity.SandCat.name=沙丘猫
 entity.CeruleanBird.name=天蓝怪鸟 (未使用)
-entity.Delphinus.name=海豚
 entity.BlackCerulean.name=黑天蓝怪
 entity.Tutinoko.name=野槌蛇
-entity.AlpacaCafe.name=苏利羊驼 (咖啡厅老板)
 entity.CeruleanEye.name=眼之天蓝怪
 entity.EnderCerulean.name=末影天蓝怪
 item.sandstarbow.name=砂之星弓
@@ -100,6 +101,7 @@ item.WildLiberationSource.tooltip=还不能吃
 item.SandStarCake115.tooltip=真是太美味了
 item.SandStarNeckLace.tooltip=friends专用饰品
 item.WildLiberationPotion.tooltip=为friends提升生命
+item.japaricoin.tooltip=以往动物园里使用的硬币
 
 japaricraftmod.config.cerulean_wight=天蓝怪生成率
 japaricraftmod.config.poisoncerulean_wight=毒液天蓝怪生成率
@@ -131,4 +133,6 @@ cafe.0.desc=哇~！ 欢迎光临！
 cafe.1.desc=虽然有些狭小但也可以在这里休息~
 
 entity.cerulean.text1=女王说过
-entity.cerulean.text2=所有的“光辉”终将消失，但天蓝怪会将之再现并永久保存
+entity.cerulean.text2=所有的光辉终将消失，但天蓝怪会将之再现并永久保存
+entity.cerulean.text3=但是他们并不明白
+entity.cerulean.text4=不能理解女王的话的人啊 …… 死吧！
