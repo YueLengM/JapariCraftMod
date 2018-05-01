@@ -4,7 +4,6 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -26,7 +25,6 @@ import java.util.Set;
 public class EntityShoebill extends EntityFriend {
 
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
-    private EntityPlayerSP player;
 
     public EntityShoebill(World worldIn)
     {

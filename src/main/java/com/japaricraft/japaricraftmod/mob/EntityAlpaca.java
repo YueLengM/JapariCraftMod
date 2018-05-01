@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -46,10 +47,11 @@ public class EntityAlpaca extends EntityFriend {
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityCerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityBlackCerulean.class, 8.0F, 1.1D, 1.1D));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
+        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.0D, 11.0F, 2.0F));
+        this.tasks.addTask(5, new EntityAIFriendCollectItem(this, 1.0F));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
     }
 
     protected void applyEntityAttributes() {

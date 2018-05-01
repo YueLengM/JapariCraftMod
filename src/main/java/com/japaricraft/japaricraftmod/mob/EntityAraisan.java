@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
 import net.minecraft.entity.EntityAgeable;
@@ -49,7 +50,8 @@ public class EntityAraisan extends EntityPlayFriend {
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityCerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityBlackCerulean.class, 8.0F, 1.1D, 1.1D));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 13.0F, 2.0F));
+        this.tasks.addTask(5, new EntityAIStopPlayFollowOwner(this, 1.1D, 11.0F, 2.0F));
+        this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIPlayWithFriend(this, 1.05D));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 5.0F));
