@@ -62,11 +62,10 @@ entity.SandStarHandler.name=Sandstar Handler(Unuse)
 entity.RoyalPenguin.name=Royal Penguin
 entity.Alpaca.name=Alpaca Suri
 entity.Squirre.name=Squirrel
+entity.SandCat.name=SandCat
 entity.CeruleanBird.name=Cerulean Bird(Unuse)
-entity.Delphinus.name=Dolphin
 entity.BlackCerulean.name=Black Cerulean
 entity.Tutinoko.name=Tsuchinoko(Unuse)
-entity.AlpacaCafe.name=AlpacaCafe
 entity.CeruleanEye.name=CeruleanEye
 entity.EnderCerulean.name=EnderCerulean
 
