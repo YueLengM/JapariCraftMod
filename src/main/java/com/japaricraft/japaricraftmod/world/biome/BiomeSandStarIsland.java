@@ -44,7 +44,7 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 15, 1, 2));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 75, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 70, 2, 3));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 70, 2, 3));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 4, 1, 2));
