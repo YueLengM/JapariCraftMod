@@ -8,6 +8,8 @@ import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityHusk;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityChicken;
@@ -33,16 +35,19 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableCreatureList.clear();
 
         this.spawnableCreatureList.add(new SpawnListEntry(EntityShoebill.class, 2, 2, 3));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityBrownOwl.class, 2, 1, 3));
-        this.spawnableCreatureList.add(new SpawnListEntry(EntityWhiteOwl.class, 2, 1, 3));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityBrownOwl.class, 2, 2, 3));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityWhiteOwl.class, 2, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntitySquirre.class, 2, 2, 3));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntityAraisan.class, 2, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityRabbit.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 3, 1, 2));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 2));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 2, 1, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 15, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 75, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 70, 2, 3));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 4, 1, 2));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;
