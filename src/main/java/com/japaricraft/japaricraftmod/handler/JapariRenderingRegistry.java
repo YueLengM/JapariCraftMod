@@ -27,5 +27,6 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityCeruleanEye.class, CeruleanEyeRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityEnderCerulean.class, EnderCeruleanRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySandCat.class, SandCatRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntitySandStarSlime.class, SandStarSlimeRender::new);
     }
 }

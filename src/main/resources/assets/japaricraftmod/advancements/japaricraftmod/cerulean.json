@@ -16,7 +16,7 @@
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": {
-          "type": "japaricraftmod:mobs.Cerulean"
+          "type": "japaricraftmod:cerulean"
         }
       }
     },
@@ -24,7 +24,7 @@
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
         "entity": {
-          "type": "japaricraftmod:mobs.PoisonCerulean"
+          "type": "japaricraftmod:poisonCerulean"
         }
       }
     }

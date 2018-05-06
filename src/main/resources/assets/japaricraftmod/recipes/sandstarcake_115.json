@@ -11,7 +11,7 @@
       "item": "japaricraftmod:sugarstar"
     },
     {
-      "item": "twilightforest:experiment_115"
+      "item": "japaricraftmod:sugarstar"
     },
     {
       "item": "twilightforest:experiment_115"
@@ -22,6 +22,6 @@
   ],
   "result": {
     "item": "japaricraftmod:sandstarcake_115",
-    "count": 3
+    "count": 2
   }
 }
