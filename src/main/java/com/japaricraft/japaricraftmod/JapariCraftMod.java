@@ -6,10 +6,12 @@ import com.japaricraft.japaricraftmod.gui.JapariGuiHandler;
 import com.japaricraft.japaricraftmod.handler.*;
 import com.japaricraft.japaricraftmod.world.ComponentJapariHouse1;
 import com.japaricraft.japaricraftmod.world.SandStarOreGenerator;
+import com.japaricraft.japaricraftmod.world.biome.JapariBiomes;
 import com.japaricraft.japaricraftmod.world.structure.*;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -83,6 +85,12 @@ public class JapariCraftMod {
         JapariEntityRegistry.registerEntities();
     }
 
+    @SubscribeEvent
+    public void registerBiomes(RegistryEvent.Register<Biome> event) {
+        IForgeRegistry<Biome> registry = event.getRegistry();
+
+        JapariBiomes.registerBiomes(registry);
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -101,7 +109,9 @@ public class JapariCraftMod {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        JapariBiomes.registerBiomeTypes();
         JapariEntityRegistry.addSpawns();
+
         MinecraftForge.EVENT_BUS.register(new StructureEventHandler());
         MapGenStructureIO.registerStructure(StructureSandStarRuinStart.class, "SandStarRuin");
         MapGenStructureIO.registerStructureComponent(ComponentSandStarRuin1.class, "SSR");

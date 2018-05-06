@@ -21,6 +21,7 @@ public class JapariBlocks {
     public static final BlockAnimalStatue ANIMAL_STATUE = new BlockAnimalStatue();
     public static final BlockJaparimanBowl Japariman_Bowl = new BlockJaparimanBowl();
     public static final BlockCeruleanStatue Cerulean_STATUE = new BlockCeruleanStatue();
+    public static final BlockSandStarTreeApple TREE_APPLE = new BlockSandStarTreeApple();
     public static void registerBlocks(IForgeRegistry<Block> registry)
     {
         registry.register(SANDSTAR_ORE.setRegistryName("sandstar_ore"));
@@ -30,6 +31,7 @@ public class JapariBlocks {
         registry.register(Japariman_Bowl.setRegistryName("japarimanbowl"));
         registry.register(Cerulean_STATUE.setRegistryName("ceruleanstatue"));
         registry.register(ANIMAL_STATUE.setRegistryName("animalstatue"));
+        registry.register(TREE_APPLE.setRegistryName("sandstar_apple"));
     }
 
     public static void registerItemBlocks(IForgeRegistry<Item> registry)
@@ -60,6 +62,7 @@ public class JapariBlocks {
         registerModel(BLOCK_WOODEN_BOX);
         registerModel(Cerulean_STATUE);
         registerModel(ANIMAL_STATUE);
+        registerModel(TREE_APPLE);
     }
 
     @SideOnly(Side.CLIENT)

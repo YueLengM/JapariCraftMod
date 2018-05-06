@@ -6,6 +6,7 @@ tile.sandstarwater.name=サンドスターの温泉
 tile.Campfire.name=焚き火
 tile.SandStarLamp.name=サンドスターランプ
 tile.JaparimanBowl.name=じゃぱりまんのはいったボウル
+tile.sandstar_apple.name=りんご
 
 item.Japariman.name=じゃぱりまん
 item.JaparimanCocoa.name=じゃぱりまんココア味
@@ -40,6 +41,7 @@ item.SandStarIronChestPlate.name=サンドスターチェストプレート
 item.SandStarIronLeggings.name=サンドスターレギンス
 item.SandStarIronBoot.name=サンドスターブーツ
 item.ServalEarCostume.name=サーバルコスチューム(耳)
+item.sandstarbow.name=サンドスターの弓
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
@@ -70,7 +72,8 @@ entity.BlackCerulean.name=ブラックセルリアン
 entity.Tutinoko.name=つちのこ
 entity.CeruleanEye.name=セルリアンアイ
 entity.EnderCerulean.name=エンダーセルリアン
-item.sandstarbow.name=サンドスターの弓
+entity.SandStarSlime.name=サンドスタースライム
+
 
 advancements.japaricraftmod.root.title=始まりのじゃぱりくらふと
 advancements.japaricraftmod.root.description=フレンズと仲間になるためのじゃぱりまん
