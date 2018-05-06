@@ -1,6 +1,33 @@
 {
   "pools": [
     {
+      "name": "slime",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:slime_ball",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            },
+            {
+              "function": "looting_enchant",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
       "rolls": 1,
       "name": "source",
       "entries": [
@@ -14,8 +41,8 @@
             },
             {
               "condition": "random_chance_with_looting",
-              "chance": 0.08,
-              "looting_multiplier": 0.03
+              "chance": 0.07,
+              "looting_multiplier": 0.01
             }
           ]
         }
@@ -35,8 +62,8 @@
             },
             {
               "condition": "random_chance_with_looting",
-              "chance": 0.09,
-              "looting_multiplier": 0.03
+              "chance": 0.074,
+              "looting_multiplier": 0.02
             }
           ]
         }
