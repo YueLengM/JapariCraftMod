@@ -22,7 +22,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.DifficultyInstance;
@@ -170,18 +169,6 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
         //もしアタックターゲットを見つけたら
         EntityLivingBase target = this.getAttackTarget();
         if (target instanceof EntityPlayer) {
-            if (getInvulTime() == 230) {
-                ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("entity.cerulean.text1"), false);
-            }
-            if (getInvulTime() == 170) {
-                ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("entity.cerulean.text2"), false);
-            }
-            if (getInvulTime() == 90) {
-                ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("entity.cerulean.text3"), false);
-            }
-            if (getInvulTime() == 10) {
-                ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("entity.cerulean.text4"), false);
-            }
             if (!this.onGround && this.motionY < 0.0D) {
                 this.motionY *= 0.6D;
             }

@@ -181,7 +181,7 @@ public class ModelBrownOwl extends ModelBase {
         if (entityowl.isSitting()||this.isRiding)
         {
             this.skirt1.rotateAngleX = -1.4137167F;
-            GL11.glTranslatef(0F, 0.4F, 0F);
+            GL11.glTranslatef(0F, 0.5F, 0F);
         }
         this.handR.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;

@@ -115,7 +115,7 @@ public class ModelSquirre extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.3F, 0F);
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
         this.handR.rotateAngleY = 0.0F;
@@ -128,7 +128,7 @@ public class ModelSquirre extends ModelBase {
         this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
 
-        GL11.glTranslatef(0F, 0.5F, 0F);
+        GL11.glTranslatef(0F, 0.6F, 0F);
     }
 
 

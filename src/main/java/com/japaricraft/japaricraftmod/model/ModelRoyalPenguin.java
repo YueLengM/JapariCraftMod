@@ -201,7 +201,7 @@ public class ModelRoyalPenguin extends ModelBase {
             this.leg_l.rotateAngleX = -1.4137167F;
             this.leg_l.rotateAngleY = -((float) Math.PI / 10F);
             this.leg_l.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.2F, 0F);
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
         this.hand_r.rotateAngleY = 0.0F;

@@ -45,8 +45,9 @@ public class ModelSandCat extends ModelBase {
         this.textureWidth = 256;
         this.textureHeight = 128;
         this.earR = new ModelRenderer(this, 0, 121);
-        this.earR.setRotationPoint(-2.7F, -6.4F, 0.0F);
-        this.earR.addBox(-4.0F, -5.0F, -1.0F, 5, 5, 2, 0.0F);
+        this.earR.setRotationPoint(-5.0F, -5.1F, 0.0F);
+        this.earR.addBox(-4.0F, -5.0F, -1.0F, 5, 4, 1, 0.0F);
+        this.setRotateAngle(earR, 0.0F, 0.0F, 0.8196066167365371F);
         this.handL = new ModelRenderer(this, 28, 20);
         this.handL.setRotationPoint(3.5F, -7.4F, -1.0F);
         this.handL.addBox(-1.0F, -0.5F, 0.0F, 2, 10, 2, 0.0F);
@@ -73,8 +74,9 @@ public class ModelSandCat extends ModelBase {
         this.ribbonChild2.addBox(-1.0F, -1.0F, -1.0F, 2, 2, 1, 0.0F);
         this.setRotateAngle(ribbonChild2, 0.0F, -0.010471975511965976F, 1.5707963267948966F);
         this.earL = new ModelRenderer(this, 0, 107);
-        this.earL.setRotationPoint(2.7F, -6.4F, -0.1F);
-        this.earL.addBox(-1.0F, -5.0F, -1.0F, 5, 5, 2, 0.0F);
+        this.earL.setRotationPoint(5.0F, -5.1F, 0.0F);
+        this.earL.addBox(-1.0F, -5.0F, -1.0F, 5, 4, 1, 0.0F);
+        this.setRotateAngle(earL, 0.0F, 0.0F, -0.8196066167365371F);
         this.hair5 = new ModelRenderer(this, 0, 55);
         this.hair5.setRotationPoint(1.0F, -3.1F, -4.0F);
         this.hair5.addBox(-2.0F, -1.0F, -1.0F, 2, 1, 1, 0.0F);
@@ -243,7 +245,7 @@ public class ModelSandCat extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.2F, 0F);
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
 

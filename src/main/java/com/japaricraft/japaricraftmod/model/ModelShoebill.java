@@ -209,7 +209,7 @@ public class ModelShoebill extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float)Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.3F, 0F);
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
         this.rightH.rotateAngleY = 0.0F;
