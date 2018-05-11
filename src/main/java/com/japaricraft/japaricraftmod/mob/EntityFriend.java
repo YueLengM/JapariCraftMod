@@ -1,12 +1,14 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
+import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.passive.AbstractHorse;
@@ -20,6 +22,9 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -29,8 +34,11 @@ import java.util.Set;
 public class EntityFriend extends EntityTameable{
     private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
+    protected static final DataParameter<Float> dataEXPValue = EntityDataManager.createKey(EntityFriend.class, DataSerializers.FLOAT);
+
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
+    public float friendPoint = 0;
 
     protected EntityFriend(World worldIn) {
         super(worldIn);
@@ -45,7 +53,34 @@ public class EntityFriend extends EntityTameable{
         return null;
     }
 
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+        dataManager.register(EntityFriend.dataEXPValue, 0f);
+    }
 
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (ticksExisted % 10 == 0) {
+            friendPoint = dataManager.get(EntityFriend.dataEXPValue);
+        }
+    }
+
+    public float getExp() {
+        return friendPoint;
+    }
+
+    public void addExperience(float value) {
+        friendPoint += value;
+        if (friendPoint >= 240) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
+            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
+            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
+            friendPoint = 0;
+        }
+        dataManager.set(EntityFriend.dataEXPValue, friendPoint);
+    }
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
@@ -53,6 +88,8 @@ public class EntityFriend extends EntityTameable{
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
 
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
+
+        compound.setFloat(JapariCraftMod.MODID + ":FRIEND_EXP", experienceValue);
     }
 
     @Override
@@ -63,6 +100,9 @@ public class EntityFriend extends EntityTameable{
 
         this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
 
+        friendPoint = compound.getFloat(JapariCraftMod.MODID + ":FRIEND_EXP");
+
+        dataManager.set(EntityFriend.dataEXPValue, friendPoint);
     }
 
     @Override
@@ -88,7 +128,7 @@ public class EntityFriend extends EntityTameable{
                 pickupItem();
             }
             //やばい時はじゃぱりまんを食べる
-            if (getHealth() < 15 && this.rand.nextInt(20) == 0) {
+            if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
                 eatJapariman();
             }
         }
@@ -269,6 +309,7 @@ public class EntityFriend extends EntityTameable{
             return true;
         }
     }
+
 
     public enum Condition
     {

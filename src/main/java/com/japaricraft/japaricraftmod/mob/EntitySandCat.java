@@ -154,6 +154,7 @@ public class EntitySandCat extends EntityFriend {
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
+        addExperience(1 + rand.nextInt(2));
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
         if (flag) {

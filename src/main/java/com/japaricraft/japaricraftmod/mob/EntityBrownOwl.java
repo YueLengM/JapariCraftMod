@@ -225,23 +225,6 @@ public class EntityBrownOwl extends EntityFriend {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        //when get attacktaget
-        //もしアタックターゲットを見つけたら
-        if (!isOnLadder() && this.getAttackTarget() != null) {
-            double a = this.getAttackTarget().posX - posX;
-            double b = this.getAttackTarget().posZ - posZ;
-            double d3 = a * a + b * b;
-            d3 = (double) MathHelper.sqrt(d3);
-
-            if ((this.getAttackTarget().posY > posY)) {
-                this.motionY += 0.09F;
-            }
-            if (!onGround) {
-                this.motionX += a / d3 * 0.09D * this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
-                this.motionZ += b / d3 * 0.09D * this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
-                this.rotationYaw = -((float) MathHelper.atan2(a, b)) * (180F / (float) Math.PI);
-            }
-        }
         //フクロウが(いろんな意味で)乗ってる時に特定の操作で下ろす処理
         if (this.isRiding()) {
             final Entity entity = this.getRidingEntity();
@@ -301,6 +284,7 @@ public class EntityBrownOwl extends EntityFriend {
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
+        addExperience(1 + rand.nextInt(2));
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
         if (flag) {

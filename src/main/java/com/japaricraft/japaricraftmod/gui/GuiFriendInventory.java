@@ -14,14 +14,15 @@ public class GuiFriendInventory extends GuiContainer
 
     private static final ResourceLocation RES_CHAST_INVENTORY = new ResourceLocation(JapariCraftMod.MODID +":"+ "textures/gui/friend_inventory.png");
 
-    private EntityFriend entityChast;
+    private EntityFriend entityFriends;
     private EntityPlayer entityPlayer;
-    public GuiFriendInventory(EntityFriend entityChast, EntityPlayer entityPlayer)
+
+    public GuiFriendInventory(EntityFriend entityFriends, EntityPlayer entityPlayer)
     {
-        super(new ContainerFriendInventory(entityChast, entityPlayer));
+        super(new ContainerFriendInventory(entityFriends, entityPlayer));
 
         this.ySize = 222;
-        this.entityChast = entityChast;
+        this.entityFriends = entityFriends;
         this.entityPlayer = entityPlayer;
     }
 
@@ -48,13 +49,13 @@ public class GuiFriendInventory extends GuiContainer
 
         int entityPosX = (originPosX + 51);
         int entityPosY = (originPosY + 60);
-        GuiInventory.drawEntityOnScreen(entityPosX, entityPosY, 25, (float) (entityPosX - xMouse), (float) ((entityPosY / 2) - yMouse), this.entityChast);
+        GuiInventory.drawEntityOnScreen(entityPosX, entityPosY, 25, (float) (entityPosX - xMouse), (float) ((entityPosY / 2) - yMouse), this.entityFriends);
     }
 
     @Override
     protected void drawGuiContainerForegroundLayer(int xMouse, int yMouse)
     {
-        String nameChast = this.entityChast.getName();
+        String nameChast = this.entityFriends.getName();
         this.fontRenderer.drawString(nameChast, this.xSize / 2 - this.fontRenderer.getStringWidth(nameChast) / 2, 6, 4210752);
         this.fontRenderer.drawString(this.entityPlayer.inventory.getDisplayName().getUnformattedText(), 8, 128, 4210752);
     }
@@ -66,7 +67,7 @@ public class GuiFriendInventory extends GuiContainer
 
         if (this.isPointInRegion(102, 22, 64, 14, mouseX, mouseY))
         {
-            this.drawHoveringText(Lists.newArrayList(this.entityChast.getHealth() + " / " + this.entityChast.getMaxHealth()), mouseX, mouseY);
+            this.drawHoveringText(Lists.newArrayList(this.entityFriends.getHealth() + " / " + this.entityFriends.getMaxHealth() + " : " + entityFriends.friendPoint + "exp"), mouseX, mouseY);
         }
     }
 
@@ -75,7 +76,7 @@ public class GuiFriendInventory extends GuiContainer
     {
         int healthTextureY;
 
-        switch (this.entityChast.getCondition())
+        switch (this.entityFriends.getCondition())
         {
             case HURT :
 
@@ -99,8 +100,8 @@ public class GuiFriendInventory extends GuiContainer
 
     private int getHealthBar()
     {
-        int health = (int) this.entityChast.getHealth();
-        int healthMax = (int) this.entityChast.getMaxHealth();
+        int health = (int) this.entityFriends.getHealth();
+        int healthMax = (int) this.entityFriends.getMaxHealth();
 
         return Math.min(60, (60 - ((healthMax - health) * 3)));
     }
