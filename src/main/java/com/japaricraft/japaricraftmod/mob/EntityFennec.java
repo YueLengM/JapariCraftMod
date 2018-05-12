@@ -8,6 +8,7 @@ import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -17,6 +18,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 import java.util.Set;
@@ -126,6 +128,11 @@ public class EntityFennec extends EntityFriend {
                 player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
+                if (this.isOwner(player) && stack.getItem() == Items.STICK) {
+                    float i = friendPoint;
+                    String s = String.valueOf(i);
+                    player.sendStatusMessage(new TextComponentTranslation(s + "exp"), true);
+                }
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
                     if(this.getHealth()<this.getMaxHealth()) {

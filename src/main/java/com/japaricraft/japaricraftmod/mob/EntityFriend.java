@@ -73,7 +73,7 @@ public class EntityFriend extends EntityTameable{
 
     public void addExperience(float value) {
         friendPoint += value;
-        if (friendPoint >= 240) {
+        if (friendPoint >= 220) {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
             this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
             this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);

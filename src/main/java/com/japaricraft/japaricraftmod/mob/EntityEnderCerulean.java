@@ -1,16 +1,15 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityDragonFireball;
+import net.minecraft.entity.projectile.EntityEvokerFangs;
 import net.minecraft.entity.projectile.EntityLargeFireball;
-import net.minecraft.entity.projectile.EntitySmallFireball;
-import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -21,6 +20,8 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
@@ -229,41 +230,77 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             double d3 = target.posZ - this.posZ;
             double d0 = this.getDistanceSq(target);
             float f = MathHelper.sqrt(MathHelper.sqrt(d0)) * 0.5F;
+            double d4 = Math.min(target.posY, this.posY);
+            double d5 = Math.max(target.posY, this.posY) + 1.0D;
+            float f3 = (float) MathHelper.atan2(target.posZ - this.posZ, target.posX - this.posX);
             if ((this.getHealth() < 100)) {
-                if (this.rand.nextInt(7) == 0) {
-                    for (int i = 0; i < 3; ++i) {
-                        EntitySmallFireball entitysmallfireball = new EntitySmallFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
-                        entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
-                        this.world.spawnEntity(entitysmallfireball);
+
+
+                if (this.rand.nextInt(6) == 0) {
+                    for (int i = 0; i < 2; ++i) {
+                        EntityCeruleanEye eye = new EntityCeruleanEye(world);
+                        eye.setPosition(this.posX, this.posY, this.posZ);
+                        eye.setHealth(16);
+                        this.world.spawnEntity(eye);
                     }
                 } else {
-
-                    if (this.rand.nextInt(5) == 0) {
-                        for (int i = 0; i < 2; ++i) {
-                            EntityCeruleanEye eye = new EntityCeruleanEye(world);
-                            eye.setPosition(this.posX, this.posY, this.posZ);
-                            eye.setHealth(16);
-                            this.world.spawnEntity(eye);
-                        }
+                    if (d0 > 15.0D) {
+                        EntityLargeFireball entityfireball = new EntityLargeFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+                        entityfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
+                        this.world.spawnEntity(entityfireball);
                     } else {
-                        for (int i = 0; i < 2; ++i) {
-                            EntityWitherSkull entitysmallfireball = new EntityWitherSkull(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
-                            entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
-                            this.world.spawnEntity(entitysmallfireball);
+                        for (int k = 0; k < 5; ++k) {
+                            float f2 = f3 + (float) k * (float) Math.PI * 0.4F;
+                            this.spawnFangs(this.posX + (double) MathHelper.cos(f2) * 1.5D, this.posZ + (double) MathHelper.sin(f2) * 1.5D, d4, d5, f2, 1);
                         }
                     }
                 }
+
             } else {
-                if (this.rand.nextInt(8) == 0) {
-                    EntityDragonFireball entitysmallfireball = new EntityDragonFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
-                    entitysmallfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
-                    this.world.spawnEntity(entitysmallfireball);
-                } else {
+                if (d0 > 13.0D) {
                     EntityLargeFireball entityfireball = new EntityLargeFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                     entityfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                     this.world.spawnEntity(entityfireball);
+                } else {
+                    for (int k = 0; k < 5; ++k) {
+                        float f2 = f3 + (float) k * (float) Math.PI * 0.4F;
+                        this.spawnFangs(this.posX + (double) MathHelper.cos(f2) * 1.5D, this.posZ + (double) MathHelper.sin(f2) * 1.5D, d4, d5, f2, 1);
+                    }
                 }
             }
+        }
+    }
+
+    private void spawnFangs(double p_190876_1_, double p_190876_3_, double p_190876_5_, double p_190876_7_, float p_190876_9_, int p_190876_10_) {
+        BlockPos blockpos = new BlockPos(p_190876_1_, p_190876_7_, p_190876_3_);
+        boolean flag = false;
+        double d0 = 0.0D;
+
+        while (true) {
+            if (!this.world.isBlockNormalCube(blockpos, true) && this.world.isBlockNormalCube(blockpos.down(), true)) {
+                if (!this.world.isAirBlock(blockpos)) {
+                    IBlockState iblockstate = this.world.getBlockState(blockpos);
+                    AxisAlignedBB axisalignedbb = iblockstate.getCollisionBoundingBox(this.world, blockpos);
+
+                    if (axisalignedbb != null) {
+                        d0 = axisalignedbb.maxY;
+                    }
+                }
+
+                flag = true;
+                break;
+            }
+
+            blockpos = blockpos.down();
+
+            if (blockpos.getY() < MathHelper.floor(p_190876_5_) - 1) {
+                break;
+            }
+        }
+
+        if (flag) {
+            EntityEvokerFangs entityevokerfangs = new EntityEvokerFangs(this.world, p_190876_1_, (double) blockpos.getY() + d0, p_190876_3_, p_190876_9_, p_190876_10_, this);
+            this.world.spawnEntity(entityevokerfangs);
         }
     }
 
