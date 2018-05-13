@@ -37,7 +37,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "4.2.2.01";
+    public static final String VERSION = "4.2.2.02";
     public static final String MODNAME = "JapariCraftMod";
 
 

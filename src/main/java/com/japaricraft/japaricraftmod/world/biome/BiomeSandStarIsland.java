@@ -10,7 +10,6 @@ import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityHusk;
-import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
@@ -46,8 +45,7 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 15, 1, 2));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 70, 2, 3));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 70, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 1, 1, 1));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 4, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 10, 1, 2));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;
