@@ -1,17 +1,10 @@
 package com.japaricraft.japaricraftmod.world.structure;
 
 import com.japaricraft.japaricraftmod.handler.JapariBlocks;
-import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
@@ -72,26 +65,9 @@ public class ComponentSandStarRuinTreasureRoom extends StructureComponent {
         //台
         this.fillWithBlocks(world, structureboundingbox, 3, 1, 3, 5, 1, 5, iblockstate, iblockstate, false);
 
-        this.spawnZombie(world, structureboundingbox, 3, 2, 3);
+        this.setBlockState(world, Blocks.GOLD_BLOCK.getDefaultState(), 4, 1, 4, structureboundingbox);
+
         return true;
     }
 
-    private void spawnZombie(World worldIn, StructureBoundingBox structureBoundingBox, int x, int y, int z) {
-        int i = this.getXWithOffset(x, z);
-        int j = this.getYWithOffset(y);
-        int k = this.getZWithOffset(x, z);
-
-        if (structureBoundingBox.isVecInside(new BlockPos(i, j, k))) {
-            EntityZombieVillager entityZombie = new EntityZombieVillager(worldIn);
-
-            entityZombie.setLocationAndAngles((double) i + 0.5D, (double) j, (double) k + 0.5D, 0.0F, 0.0F);
-            entityZombie.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityZombie)), (IEntityLivingData) null);
-            entityZombie.enablePersistence();
-            entityZombie.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
-            entityZombie.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(JapariItems.kabanhat));
-
-
-            worldIn.spawnEntity(entityZombie);
-        }
-    }
 }
