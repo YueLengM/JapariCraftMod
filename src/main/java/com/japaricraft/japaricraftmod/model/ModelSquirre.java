@@ -108,7 +108,7 @@ public class ModelSquirre extends ModelBase {
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
 
-        if (entitysquirre.isSitting() || this.isRiding) {
+        if (entitysquirre.isSitting() || entitysquirre.isSleeping() || this.isRiding) {
             this.legR.rotateAngleX = -1.4137167F;
             this.legR.rotateAngleY = ((float) Math.PI / 10F);
             this.legR.rotateAngleZ = 0.07853982F;

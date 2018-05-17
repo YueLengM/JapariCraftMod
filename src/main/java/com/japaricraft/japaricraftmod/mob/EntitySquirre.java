@@ -12,11 +12,16 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
@@ -24,6 +29,10 @@ import java.util.Set;
 
 public class EntitySquirre extends EntityFriend {
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.APPLE, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+
+    private static final DataParameter<Boolean> SLEEPING = EntityDataManager.createKey(EntitySquirre.class, DataSerializers.BOOLEAN);
+
+    private boolean isSleeping;
 
     public EntitySquirre(World worldIn) {
         super(worldIn);
@@ -70,6 +79,23 @@ public class EntitySquirre extends EntityFriend {
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 
+    protected void entityInit() {
+        super.entityInit();
+        this.dataManager.register(SLEEPING, Boolean.FALSE);
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setBoolean("Sleeping", this.isSleeping());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        this.setSleeping(compound.getBoolean("Sleeping"));
+    }
+
     @Override
     public void setTamed(boolean tamed) {
         super.setTamed(tamed);
@@ -92,6 +118,40 @@ public class EntitySquirre extends EntityFriend {
         return null;//なにも落とさない
     }
 
+    public boolean isSleeping() {
+        if (world.isRemote) {
+            boolean isSleeping = this.dataManager.get(SLEEPING);
+            this.isSleeping = isSleeping;
+            return isSleeping;
+        }
+        return isSleeping;
+    }
+
+    public void setSleeping(boolean sleeping) {
+        this.dataManager.set(SLEEPING, sleeping);
+        if (!world.isRemote) {
+            this.isSleeping = sleeping;
+        }
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (!world.isRemote && !this.isInWater() && !this.isSleeping() && (!this.isTamed() || this.isTamed() && this.isSitting()) && this.onGround && this.getAttackTarget() == null && !this.world.isDaytime() && this.getRNG().nextInt(250) == 0 && this.getAttackTarget() == null) {
+            setSleeping(true);
+        }
+        if (!world.isRemote && this.isSleeping() && (!this.isSitting() && this.isTamed() || this.isInWater() || (this.world.canBlockSeeSky(new BlockPos(this)) && this.world.isDaytime()) || this.getAttackTarget() != null)) {
+            setSleeping(false);
+        }
+    }
+
+    @Override
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        if (this.isSleeping()) {
+            this.getNavigator().clearPath();
+        }
+    }
 
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {

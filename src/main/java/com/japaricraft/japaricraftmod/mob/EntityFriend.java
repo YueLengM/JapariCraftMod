@@ -71,6 +71,9 @@ public class EntityFriend extends EntityTameable{
         return friendPoint;
     }
 
+    /**
+     * フレンズの経験値関係
+     */
     public void addExperience(float value) {
         friendPoint += value;
         if (friendPoint >= 220) {
@@ -150,6 +153,9 @@ public class EntityFriend extends EntityTameable{
         }
     }
 
+    /**
+     * インベントリ内の食べれる食べ物を探す.
+     */
     private ItemStack findFood() {
         ItemStack friendsstack;
 
@@ -292,6 +298,9 @@ public class EntityFriend extends EntityTameable{
         return condition;
     }
 
+    /**
+     * バニラから引用、事故がないように
+     */
     public boolean shouldAttackEntity(EntityLivingBase target, EntityLivingBase owner) {
         if (!(target instanceof EntityGhast)) {
             if (target instanceof EntityTameable) {

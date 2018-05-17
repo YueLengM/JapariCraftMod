@@ -14,6 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 public class SquirreRender extends RenderLiving<EntitySquirre> {
+    private static final ResourceLocation SLEEPING_TEXTURES = new ResourceLocation(MODID, "textures/entity/squirre_sleep.png");
     private static final ResourceLocation TEXTURES = new ResourceLocation(MODID, "textures/entity/squirre.png");
 
     public SquirreRender(RenderManager renderManager) {
@@ -49,6 +50,10 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
                 p_188359_1_();
             }
 
+            /**
+             * 黄昏の森のコードを参考にしている
+             * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
+             */
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
             }
@@ -56,12 +61,13 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
 
     }
 
-    /**
-     * 黄昏の森のコードを参考にしている
-     * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
-     */
+    //寝るときと寝ない時のテクスチャ
     @Override
     protected ResourceLocation getEntityTexture(EntitySquirre entity) {
-        return TEXTURES;
+        if (entity.isSleeping()) {
+            return SLEEPING_TEXTURES;
+        } else {
+            return TEXTURES;
+        }
     }
 }
