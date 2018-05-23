@@ -29,6 +29,7 @@ public class EntityAIFriendCollectItem extends EntityAIBase {
 
     @Override
     public boolean shouldExecute() {
+        if (!friend.isTamed()) return false;
         if (friend.isSitting()) return false;
         if (findItem()) {
             List llist = friend.world.getEntitiesWithinAABB(EntityItem.class, friend.getEntityBoundingBox().grow(8F, 2D, 8F));
