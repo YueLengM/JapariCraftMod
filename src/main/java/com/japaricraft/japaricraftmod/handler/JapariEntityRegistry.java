@@ -92,9 +92,9 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(EntityServal.class, 6, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
         EntityRegistry.addSpawn(EntityShoebill.class, 6, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
         EntityRegistry.addSpawn(EntityAraisan.class, 6, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
-        EntityRegistry.addSpawn(EntityWhiteOwl.class, 6, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(EntityBrownOwl.class, 6, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(EntitySquirre.class, 6, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntityWhiteOwl.class, 5, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntityBrownOwl.class, 5, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntitySquirre.class, 5, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(EntityCerulean.class, JapariConfig.cerulean_wight, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(PoisonEntityCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(EntityAlpaca.class, 6, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
