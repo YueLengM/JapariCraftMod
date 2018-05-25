@@ -93,6 +93,8 @@ advancements.japaricraftmod.sandstarminer.title=Sandstar Miner
 advancements.japaricraftmod.sandstarminer.description=Get Sandstar
 advancements.japaricraftmod.friends.title=Make Friends
 advancements.japaricraftmod.friends.description=Give Japariman to Friends
+advancements.japaricraftmod.endercerulean.title=The unstable one
+advancements.japaricraftmod.endercerulean.description=Kill EnderCerulean
 
 entity.Villager.zookeeper=ZooKeeper
 entity.Villager.raretreader=Treasure Trader

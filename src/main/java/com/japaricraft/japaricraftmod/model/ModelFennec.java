@@ -309,7 +309,9 @@ public class ModelFennec extends ModelBase {
         this.hand_r.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.hand_l.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
-        this.tail_1.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+
+        this.tail_1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.8F * limbSwingAmount;
+
         GL11.glTranslatef(0F, 0.4F, 0F);
     }
     /**

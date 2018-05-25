@@ -91,6 +91,8 @@ advancements.japaricraftmod.sandstarminer.title=謎の物質サンドスター
 advancements.japaricraftmod.sandstarminer.description=サンドスターを手に入れる
 advancements.japaricraftmod.friends.title=友達作り
 advancements.japaricraftmod.friends.description=フレンズにじゃぱりまんをあげる
+advancements.japaricraftmod.endercerulean.title=不安定なもの
+advancements.japaricraftmod.endercerulean.description=エンダーセルリアンを倒す
 
 entity.Villager.zookeeper=飼育員
 entity.Villager.raretreader=トレジャートレーダー
