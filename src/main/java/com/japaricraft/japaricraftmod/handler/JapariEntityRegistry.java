@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.japaricraft.japaricraftmod.JapariConfig;
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.mob.projectile.EntityDarkSandStarball;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
@@ -41,6 +42,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "tutinoko"), EntityTutinoko.class, "Tutinoko", 19, instance, 65, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "ceruleaneye"), EntityCeruleanEye.class, "CeruleanEye", 21, instance, 70, 1, false, 0x333333, 0x339966);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "endercerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, instance, 70, 1, false, 0x333333, 0x808080);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "darksandstarball"), EntityDarkSandStarball.class, "DarkSandStarBall", 23, instance, 120, 3, true);
     }
     public static void addSpawns()
     {
@@ -87,15 +89,15 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(EntitySandCat.class, 2, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(EntityKouteiPenguin.class, 3, 1, 2, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
         EntityRegistry.addSpawn(RoyalPenguinEntity.class, 3, 1, 2, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
-        EntityRegistry.addSpawn(EntityServal.class, 7, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
-        EntityRegistry.addSpawn(EntityShoebill.class, 7, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
-        EntityRegistry.addSpawn(EntityAraisan.class, 7, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
-        EntityRegistry.addSpawn(EntityWhiteOwl.class, 7, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(EntityBrownOwl.class, 7, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
-        EntityRegistry.addSpawn(EntitySquirre.class, 7, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntityServal.class, 6, 2, 3, EnumCreatureType.CREATURE, Biome.getBiome(35), Biome.getBiome(36), Biome.getBiome(163));
+        EntityRegistry.addSpawn(EntityShoebill.class, 6, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
+        EntityRegistry.addSpawn(EntityAraisan.class, 6, 2, 3, EnumCreatureType.CREATURE, plain_biomes.toArray(new Biome[plain_biomes.size()]));
+        EntityRegistry.addSpawn(EntityWhiteOwl.class, 6, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntityBrownOwl.class, 6, 2, 2, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
+        EntityRegistry.addSpawn(EntitySquirre.class, 6, 2, 3, EnumCreatureType.CREATURE, forest_biomes.toArray(new Biome[forest_biomes.size()]));
         EntityRegistry.addSpawn(EntityCerulean.class, JapariConfig.cerulean_wight, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(PoisonEntityCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
-        EntityRegistry.addSpawn(EntityAlpaca.class, 7, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
+        EntityRegistry.addSpawn(EntityAlpaca.class, 6, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
         EntityRegistry.addSpawn(EntityBlackCerulean.class, JapariConfig.blackcerulean_wight, 1, 1, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
     }
 }

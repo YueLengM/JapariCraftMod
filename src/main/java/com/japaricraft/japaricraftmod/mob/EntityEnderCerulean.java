@@ -1,6 +1,7 @@
 package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
+import com.japaricraft.japaricraftmod.mob.projectile.EntityDarkSandStarball;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -9,7 +10,6 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityEvokerFangs;
-import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -38,7 +38,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
 
     public EntityEnderCerulean(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.7F);
+        this.setSize(0.6F, 1.6F);
         this.isImmuneToFire = true;
         this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
     }
@@ -86,7 +86,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             int j1 = this.getInvulTime() - 1;
 
             if (j1 <= 0) {
-                this.world.newExplosion(this, this.posX, this.posY + (double) this.getEyeHeight(), this.posZ, 2.0F, false, this.world.getGameRules().getBoolean("mobGriefing"));
+                this.world.newExplosion(this, this.posX, this.posY + (double) this.getEyeHeight(), this.posZ, 3.0F, false, this.world.getGameRules().getBoolean("mobGriefing"));
             }
 
             this.setInvulTime(j1);
@@ -234,9 +234,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
             double d5 = Math.max(target.posY, this.posY) + 1.0D;
             float f3 = (float) MathHelper.atan2(target.posZ - this.posZ, target.posX - this.posX);
             if ((this.getHealth() < 100)) {
-
-
-                if (this.rand.nextInt(6) == 0) {
+                if (this.rand.nextInt(7) == 0) {
                     for (int i = 0; i < 2; ++i) {
                         EntityCeruleanEye eye = new EntityCeruleanEye(world);
                         eye.setPosition(this.posX, this.posY, this.posZ);
@@ -245,7 +243,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
                     }
                 } else {
                     if (d0 > 15.0D) {
-                        EntityLargeFireball entityfireball = new EntityLargeFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+                        EntityDarkSandStarball entityfireball = new EntityDarkSandStarball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                         entityfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                         this.world.spawnEntity(entityfireball);
                     } else {
@@ -258,7 +256,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
 
             } else {
                 if (d0 > 13.0D) {
-                    EntityLargeFireball entityfireball = new EntityLargeFireball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
+                    EntityDarkSandStarball entityfireball = new EntityDarkSandStarball(this.world, this, d1 + this.getRNG().nextGaussian() * (double) f, d2, d3 + this.getRNG().nextGaussian() * (double) f);
                     entityfireball.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
                     this.world.spawnEntity(entityfireball);
                 } else {

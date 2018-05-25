@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.pathfinding.PathNodeType;
@@ -29,7 +28,7 @@ public class EntityCeruleanEye extends EntityMob {
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityAnimal.class, false));
+        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityFriend.class, false));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
     }
 

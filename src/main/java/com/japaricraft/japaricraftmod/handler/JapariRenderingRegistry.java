@@ -1,7 +1,10 @@
 package com.japaricraft.japaricraftmod.handler;
 
 import com.japaricraft.japaricraftmod.mob.*;
+import com.japaricraft.japaricraftmod.mob.projectile.EntityDarkSandStarball;
 import com.japaricraft.japaricraftmod.model.render.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -28,5 +31,6 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityEnderCerulean.class, EnderCeruleanRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySandCat.class, SandCatRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySandStarSlime.class, SandStarSlimeRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityDarkSandStarball.class, m -> new RenderSnowball<>(m, JapariItems.darksandstar, Minecraft.getMinecraft().getRenderItem()));
     }
 }
