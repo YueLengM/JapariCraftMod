@@ -18,7 +18,7 @@ import static com.japaricraft.japaricraftmod.JapariCraftMod.tabJapariCraft;
 
 public class WildLiberationSource extends ItemFood {
     public WildLiberationSource() {
-        super(2,1,false);
+        super(1, 1, false);
         this.setCreativeTab(tabJapariCraft);
         this.setUnlocalizedName("WildLiberationSource");
         this.setAlwaysEdible();

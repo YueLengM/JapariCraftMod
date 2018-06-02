@@ -87,7 +87,7 @@ advancements.japaricraftmod.sandstartool.title=さらにアップグレード
 advancements.japaricraftmod.sandstartool.description=サンドスターピッケルを手に入れる
 advancement.japariman_dinner=じゃぱりまんがどうしても食べたい
 advancement.japariman_dinner.desc=じゃぱりまんを全種類食べる
-advancements.japaricraftmod.sandstarminer.title=謎の物質サンドスター
+advancements.japaricraftmod.sandstarminer.title=未知なる物質
 advancements.japaricraftmod.sandstarminer.description=サンドスターを手に入れる
 advancements.japaricraftmod.friends.title=友達作り
 advancements.japaricraftmod.friends.description=フレンズにじゃぱりまんをあげる
@@ -95,9 +95,6 @@ advancements.japaricraftmod.endercerulean.title=不安定なもの
 advancements.japaricraftmod.endercerulean.description=エンダーセルリアンを倒す
 
 entity.Villager.zookeeper=飼育員
-entity.Villager.raretreader=トレジャートレーダー
-entity.Villager.armorcrafter=防具職人
-entity.Villager.foodcrafter=農民
 
 fluid.sandstar=サンドスターの水
 
@@ -114,30 +111,3 @@ japaricraftmod.config.blackcerulean_wight=Bossの湧き率 (ブラックセル�
 japaricraftmod.config.delphinus_wight=マイルカの湧き率
 japaricraftmod.config.structure=構成物
 japaricraftmod.config.animalvillage=アニマルビレッジを生成します
-
-page.0.name=研究1日目
-page.0.desc=村人からもらった謎の輝く宝石をもらったわけだが、俺はまだこの宝石の特徴を把握してない。村の本で調べるしかないな
-page.1.name=研究2日目
-page.1.desc=どうやらこの宝石はサンドスターというらしい。この宝石でアニマルガールという人型動物(?)に変える能力があったりする訳だが・・・。
-page.2.name=研究3日目
-page.2.desc=ふくろうに似たかっこうの女を森で見かけた。聞いてみたところ彼女もアニマルガールらしい。ちょっと口調が偉そうだったけどね・・・
-page.3.name=
-page.3.desc=さらに彼女にサンドスターのことを聞いてみると、元はセルリアンを生み出すサンドスターローでもあるらしい。
-page.4.name=
-page.4.desc=セルリアンはアニマルフレンドの中にあるサンドスターを狙って食べてるというが・・・、じゃあなぜ自然にあるサンドスターを食べないんだ？
-page.5.name=研究4日目
-page.5.desc=彼女に教えられた図書館で調べ物進めてみたが、なんと物理法則を変更できたり完全に分断された環境(ディメンション?)を生み出せるらしい
-page.6.name=
-page.6.desc=新たなディメンションを期待したのだが、今の自分にはリスクが大きすぎるからディメンションの件は考えないことにした。
-page.7.name=最後のメッセージ
-page.7.desc=・・・随分と間が空いてしまってすまない。地下要塞にある他の世界のフレンズの本を頼りに見てみたが彼女たちは元々動物園らしきところで住んでたらしいがセルリアンによって継続が難しくなったらしい
-page.8.name=
-page.8.desc=危機を感じた誰かの手によってフレンズを転送させたらしいんだ。・・・これをillagerたちに見られて悪用されるとまずい、この本を見ている人ならフレンズを守ってくれるはず・・・
-
-cafe.0.desc=ふぁ〜！ いらっしゃい!
-cafe.1.desc=ちょっと狭いかもしれないけどゆっくりしてってにぇ〜
-
-entity.cerulean.text1=女王は言った
-entity.cerulean.text2=全ての輝きはやがて消える、しかしセルリアンはそれを再現する永遠に
-entity.cerulean.text3=それなのに奴らはわかってくれない
-entity.cerulean.text4=理解されなかった女王のために...お前を倒す！

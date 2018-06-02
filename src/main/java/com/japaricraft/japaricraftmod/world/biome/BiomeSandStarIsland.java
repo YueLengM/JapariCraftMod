@@ -8,9 +8,6 @@ import net.minecraft.block.BlockOldLeaf;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityHusk;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -30,7 +27,6 @@ public class BiomeSandStarIsland extends Biome {
 
     public BiomeSandStarIsland() {
         super(new Biome.BiomeProperties("SandStarIsland").setTemperature(0.85F).setRainfall(0.9F).setBaseHeight(0.0F).setHeightVariation(0.35F));
-        this.spawnableMonsterList.clear();
         this.spawnableCreatureList.clear();
 
         this.spawnableCreatureList.add(new SpawnListEntry(EntityShoebill.class, 2, 2, 3));
@@ -42,10 +38,7 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityEnderman.class, 15, 1, 2));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityHusk.class, 70, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 70, 2, 3));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 10, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 1, 1, 2));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;
