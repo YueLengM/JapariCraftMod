@@ -2,7 +2,6 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAITutinokoTradePlayer;
-import com.sun.istack.internal.Nullable;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,9 +22,7 @@ import java.util.Random;
 
 public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
 
-    @Nullable
     private MerchantRecipeList buyingList;
-    @Nullable
     private EntityPlayer buyingPlayer;
 
     private static final EntityTutinoko.ITradeList[] DEFAULT_TRADE_LIST_MAP = new EntityTutinoko.ITradeList[]{new EntityTutinoko.JapariCoinForItems(Items.RECORD_13, new EntityTutinoko.PriceInfo(2, 4)), new EntityTutinoko.JapariCoinForItems(Items.GOLD_INGOT, new EntityTutinoko.PriceInfo(1, 3)), new EntityTutinoko.ListItemForJapariCoin(JapariItems.starjapariman, new EntityTutinoko.PriceInfo(-3, -2)), new EntityTutinoko.ListItemForJapariCoin(Items.ENDER_EYE, new EntityTutinoko.PriceInfo(1, 2))};
@@ -89,12 +86,11 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
         return super.processInteract(player, hand);
     }
 
-    @Nullable
-    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata) {
         return this.finalizeMobSpawn(difficulty, livingdata, true);
     }
 
-    public IEntityLivingData finalizeMobSpawn(DifficultyInstance p_190672_1_, @Nullable IEntityLivingData data, boolean p_190672_3_) {
+    public IEntityLivingData finalizeMobSpawn(DifficultyInstance p_190672_1_, IEntityLivingData data, boolean p_190672_3_) {
         data = super.onInitialSpawn(p_190672_1_, data);
 
         this.populateBuyingList();
@@ -102,11 +98,10 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
     }
 
     @Override
-    public void setCustomer(@Nullable EntityPlayer player) {
+    public void setCustomer(EntityPlayer player) {
         this.buyingPlayer = player;
     }
 
-    @Nullable
     @Override
     public EntityPlayer getCustomer() {
         return this.buyingPlayer;
@@ -116,7 +111,6 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
         return this.buyingPlayer != null;
     }
 
-    @Nullable
     @Override
     public MerchantRecipeList getRecipes(EntityPlayer player) {
         if (this.buyingList == null) {
@@ -139,7 +133,7 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
     }
 
     @Override
-    public void setRecipes(@Nullable MerchantRecipeList recipeList) {
+    public void setRecipes(MerchantRecipeList recipeList) {
 
     }
 
