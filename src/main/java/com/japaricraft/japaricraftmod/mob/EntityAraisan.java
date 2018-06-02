@@ -26,7 +26,7 @@ import java.util.Set;
 
 public class EntityAraisan extends EntityPlayFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     public EntityAraisan(World worldIn) {
         super(worldIn);
@@ -84,19 +84,17 @@ public class EntityAraisan extends EntityPlayFriend {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
-        {
-            if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if(this.getHealth()<this.getMaxHealth()) {
+                    if (this.getHealth() < this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -114,33 +112,25 @@ public class EntityAraisan extends EntityPlayFriend {
                     }
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
-            {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        }
-        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                stack.setCount(stack.getCount()-1);
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
             }
 
-            if (!this.world.isRemote)
-            {
-                if (this.rand.nextInt(2) == 0)
-                {
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte)7);
+                    this.world.setEntityState(this, (byte) 7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                }
-                else
-                {
+                } else {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte)6);
+                    this.world.setEntityState(this, (byte) 6);
                 }
 
 
@@ -153,21 +143,15 @@ public class EntityAraisan extends EntityPlayFriend {
     }
 
 
-
-
-
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
 
 
     @Override
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 

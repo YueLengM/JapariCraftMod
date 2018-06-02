@@ -26,7 +26,8 @@ import java.util.Set;
 
 public class EntityFennec extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman,JapariItems.japarimanapple,JapariItems.japarimancocoa,JapariItems.japarimanfruit);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+
     public EntityFennec(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.6F);
@@ -83,6 +84,7 @@ public class EntityFennec extends EntityFriend {
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.ENTITY_CAT_HURT;
     }
+
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_CAT_DEATH;
@@ -103,13 +105,11 @@ public class EntityFennec extends EntityFriend {
     }
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn)
-    {
+    public boolean attackEntityAsMob(Entity entityIn) {
         addExperience(1 + rand.nextInt(2));
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
-        if (flag)
-        {
+        if (flag) {
             this.applyEnchantments(this, entityIn);
         }
 
@@ -118,14 +118,12 @@ public class EntityFennec extends EntityFriend {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
-        {
-            if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && stack.getItem() == Items.STICK) {
@@ -135,7 +133,7 @@ public class EntityFennec extends EntityFriend {
                 }
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if(this.getHealth()<this.getMaxHealth()) {
+                    if (this.getHealth() < this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -169,33 +167,25 @@ public class EntityFennec extends EntityFriend {
                     return true;
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
-            {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        }
-        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                stack.setCount(stack.getCount()-1);
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
             }
 
-            if (!this.world.isRemote)
-            {
-                if (this.rand.nextInt(3) == 0)
-                {
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(3) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte)7);
+                    this.world.setEntityState(this, (byte) 7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                }
-                else
-                {
+                } else {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte)6);
+                    this.world.setEntityState(this, (byte) 6);
                 }
 
 
@@ -207,17 +197,14 @@ public class EntityFennec extends EntityFriend {
         return super.processInteract(player, hand);
     }
 
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
 
     @Override
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 

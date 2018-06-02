@@ -27,15 +27,15 @@ import java.util.Set;
 public class EntityKouteiPenguin extends EntityFriend {
 
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.FISH, Items.COOKED_FISH, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
-    public EntityKouteiPenguin(World worldIn)
-    {
+
+    public EntityKouteiPenguin(World worldIn) {
         super(worldIn);
         this.setSize(0.59F, 1.7F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
-    protected void initEntityAI()  {
+    protected void initEntityAI() {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -57,8 +57,7 @@ public class EntityKouteiPenguin extends EntityFriend {
     }
 
     @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
+    public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
 
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
@@ -68,8 +67,7 @@ public class EntityKouteiPenguin extends EntityFriend {
     }
 
     @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
+    public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
 
         this.getInventoryFriendMain().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, 10));
@@ -77,26 +75,24 @@ public class EntityKouteiPenguin extends EntityFriend {
         this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
 
     }
+
     public EntityAgeable createChild(EntityAgeable ageable) {
         return null;
     }
 
 
-    protected void updateAITasks()
-    {
-        if (this.ticksExisted % 5 == 0)
-        {
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
     }
+
     @Override
-    protected SoundEvent getDeathSound()
-    {
+    protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    protected void applyEntityAttributes()
-    {
+    protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
@@ -106,14 +102,12 @@ public class EntityKouteiPenguin extends EntityFriend {
 
 
     @Override
-    public boolean processInteract(EntityPlayer player, EnumHand hand)
-    {
+    public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
 
-        if (this.isTamed())
-        {
-            if(player.isSneaking()&&!this.isSitting()){
-                player.openGui(JapariCraftMod.instance,JapariCraftMod.ID_JAPARI_INVENTORY,this.getEntityWorld(), this.getEntityId(), 0, 0);
+        if (this.isTamed()) {
+            if (player.isSneaking() && !this.isSitting()) {
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
                 if (this.isOwner(player) && stack.getItem() == Items.STICK) {
@@ -123,7 +117,7 @@ public class EntityKouteiPenguin extends EntityFriend {
                 }
                 if (this.isOwner(player) && TAME_ITEMS.contains(stack.getItem())) {
                     ItemFood itemfood = (ItemFood) stack.getItem();
-                    if(this.getHealth()<this.getMaxHealth()) {
+                    if (this.getHealth() < this.getMaxHealth()) {
                         if (!player.capabilities.isCreativeMode) {
                             stack.shrink(1);
                         }
@@ -157,36 +151,27 @@ public class EntityKouteiPenguin extends EntityFriend {
                     return true;
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack))
-            {
+            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
                 this.aiSit.setSitting(!this.isSitting());
                 return true;
             }
-        }
-        else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem()))
-        {
-            if (!player.capabilities.isCreativeMode)
-            {
-                stack.setCount(stack.getCount()-1);
+        } else if (!this.isTamed() && TAME_ITEMS.contains(stack.getItem())) {
+            if (!player.capabilities.isCreativeMode) {
+                stack.setCount(stack.getCount() - 1);
             }
 
-            if (!this.world.isRemote)
-            {
-                if (this.rand.nextInt(3) == 0)
-                {
+            if (!this.world.isRemote) {
+                if (this.rand.nextInt(3) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
                     this.aiSit.setSitting(true);
-                    this.world.setEntityState(this, (byte)7);
+                    this.world.setEntityState(this, (byte) 7);
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
-                }
-                else
-                {
+                } else {
                     this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte)6);
+                    this.world.setEntityState(this, (byte) 6);
                 }
-
 
 
             }
@@ -199,13 +184,11 @@ public class EntityKouteiPenguin extends EntityFriend {
 
 
     @Override
-    public boolean attackEntityAsMob(Entity entityIn)
-    {
+    public boolean attackEntityAsMob(Entity entityIn) {
         addExperience(1 + rand.nextInt(2));
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float)((int)this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
-        if (flag)
-        {
+        if (flag) {
             this.applyEnchantments(this, entityIn);
         }
 
@@ -214,13 +197,16 @@ public class EntityKouteiPenguin extends EntityFriend {
 
 
     @Override
-    public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEFINED; }
+    public EnumCreatureAttribute getCreatureAttribute() {
+        return EnumCreatureAttribute.UNDEFINED;
+    }
 
 
-    public Item getDropItem () {
+    public Item getDropItem() {
 
         return null;//なにも落とさない
     }
+
     @Override
     protected void dropFewItems(boolean parRecentlyHit, int parLootingLevel) {
         {
@@ -229,8 +215,7 @@ public class EntityKouteiPenguin extends EntityFriend {
         }
     }
 
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 
