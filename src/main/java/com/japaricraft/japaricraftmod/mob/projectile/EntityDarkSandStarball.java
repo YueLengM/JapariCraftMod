@@ -14,6 +14,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import javax.annotation.Nonnull;
+
 public class EntityDarkSandStarball extends EntityFireball {
     public int explosionPower = 1;
 
@@ -37,7 +39,7 @@ public class EntityDarkSandStarball extends EntityFireball {
      * Called when this EntityFireball hits a block or entity.
      */
     @Override
-    protected void onImpact(RayTraceResult result) {
+    protected void onImpact(@Nonnull RayTraceResult result) {
         if (!this.world.isRemote) {
             if (result.entityHit != null) {
                 result.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 4.0F);

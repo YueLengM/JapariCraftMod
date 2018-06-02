@@ -58,6 +58,7 @@ public class ModelEnderCerulean extends ModelBase {
         this.body.rotateAngleY = netHeadYaw * 0.017453292F;
         this.body.rotateAngleX = headPitch * 0.017453292F;
     }
+
     /**
      * This is a helper function from Tabula to set the rotation of model parts
      */
