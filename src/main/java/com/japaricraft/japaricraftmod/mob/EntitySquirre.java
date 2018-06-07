@@ -247,12 +247,6 @@ public class EntitySquirre extends EntityFriend {
     }
 
 
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.06F);
-        }
-    }
-
 
     @Override
     public boolean canDespawn() {

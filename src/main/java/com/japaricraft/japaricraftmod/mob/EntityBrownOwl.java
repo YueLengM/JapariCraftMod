@@ -69,13 +69,6 @@ public class EntityBrownOwl extends EntityFriend {
     }
 
     @Override
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.06F);
-        }
-    }
-
-    @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }

@@ -81,12 +81,6 @@ public class EntityKouteiPenguin extends EntityFriend {
     }
 
 
-    protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.06F);
-        }
-    }
-
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;

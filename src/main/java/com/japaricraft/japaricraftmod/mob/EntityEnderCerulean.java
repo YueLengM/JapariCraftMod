@@ -38,7 +38,7 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
 
     public EntityEnderCerulean(World worldIn) {
         super(worldIn);
-        this.setSize(0.6F, 1.6F);
+        this.setSize(0.6F, 1.7F);
         this.isImmuneToFire = true;
         this.setPathPriority(PathNodeType.DANGER_FIRE, 0.0F);
     }

@@ -319,6 +319,13 @@ public class EntityFriend extends EntityTameable{
         }
     }
 
+    @Override
+    protected void updateAITasks() {
+        if (this.ticksExisted % 5 == 0) {
+            this.heal(0.06F);
+        }
+    }
+
 
     public enum Condition
     {
