@@ -12,7 +12,7 @@ public class TutinokoRender extends RenderLiving<EntityTutinoko> {
     private static final ResourceLocation Tutinoko_TEXTURES = new ResourceLocation(MODID, "textures/entity/tutinoko.png");
 
     public TutinokoRender(RenderManager renderManager) {
-        super(renderManager, new ModelTutinoko(0.0F), 0.5F);
+        super(renderManager, new ModelTutinoko(), 0.5F);
     }
 
 

@@ -25,12 +25,12 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
     private MerchantRecipeList buyingList;
     private EntityPlayer buyingPlayer;
 
-    private static final EntityTutinoko.ITradeList[] DEFAULT_TRADE_LIST_MAP = new EntityTutinoko.ITradeList[]{new EntityTutinoko.JapariCoinForItems(Items.RECORD_13, new EntityTutinoko.PriceInfo(2, 4)), new EntityTutinoko.JapariCoinForItems(Items.GOLD_INGOT, new EntityTutinoko.PriceInfo(1, 3)), new EntityTutinoko.ListItemForJapariCoin(JapariItems.starjapariman, new EntityTutinoko.PriceInfo(-3, -2)), new EntityTutinoko.ListItemForJapariCoin(Items.ENDER_EYE, new EntityTutinoko.PriceInfo(1, 2))};
+    private static final EntityTutinoko.ITradeList[] DEFAULT_TRADE_LIST_MAP = new EntityTutinoko.ITradeList[]{new EntityTutinoko.JapariCoinForItems(Items.IRON_INGOT, new EntityTutinoko.PriceInfo(3, 6)), new EntityTutinoko.JapariCoinForItems(Items.GOLD_INGOT, new EntityTutinoko.PriceInfo(1, 3)), new EntityTutinoko.ListItemForJapariCoin(Items.SKULL, new EntityTutinoko.PriceInfo(2, 3)), new EntityTutinoko.ListItemForJapariCoin(Items.ENDER_EYE, new EntityTutinoko.PriceInfo(-3, -1))};
 
     public EntityTutinoko(World worldIn) {
         super(worldIn);
         this.experienceValue = 0;
-        this.setSize(0.48F, 1.85F);
+        this.setSize(0.48F, 1.7F);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
@@ -220,7 +220,7 @@ public class EntityTutinoko extends EntityCreature implements INpc, IMerchant {
                 i = this.price.getPrice(random);
             }
 
-            recipeList.add(new MerchantRecipe(new ItemStack(this.buyingItem, i, 0), Items.EMERALD));
+            recipeList.add(new MerchantRecipe(new ItemStack(this.buyingItem, i, 0), JapariItems.japaricoin));
         }
     }
 

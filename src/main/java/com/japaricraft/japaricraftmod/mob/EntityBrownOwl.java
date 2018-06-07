@@ -63,7 +63,6 @@ public class EntityBrownOwl extends EntityFriend {
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
 
-
     }
 
     @Override
