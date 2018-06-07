@@ -6,7 +6,10 @@ import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -42,10 +45,6 @@ public class EntityWhiteOwl extends EntityFriend {
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
-    @Override
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
 
     @Override
     protected void initEntityAI() {

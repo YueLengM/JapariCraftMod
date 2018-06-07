@@ -5,7 +5,6 @@ import com.japaricraft.japaricraftmod.JapariCraftMod;
 import com.japaricraft.japaricraftmod.advancements.AchievementsJapari;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -31,12 +30,6 @@ public class EntityAlpaca extends EntityFriend {
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
-
-
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
-    }
-
 
     protected void initEntityAI() {
         super.initEntityAI();

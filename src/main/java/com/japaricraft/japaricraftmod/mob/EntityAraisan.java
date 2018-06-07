@@ -7,7 +7,6 @@ import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIPlayWithFriend;
 import com.japaricraft.japaricraftmod.mob.ai.EntityAIStopPlayFollowOwner;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -33,11 +32,6 @@ public class EntityAraisan extends EntityPlayFriend {
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
-    }
-
-
-    public EntityAgeable createChild(EntityAgeable ageable) {
-        return null;
     }
 
 
