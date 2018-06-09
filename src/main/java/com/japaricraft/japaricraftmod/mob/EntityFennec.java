@@ -94,7 +94,6 @@ public class EntityFennec extends EntityFriend {
     }
 
 
-
     @Override
     public boolean canDespawn() {
         return false;

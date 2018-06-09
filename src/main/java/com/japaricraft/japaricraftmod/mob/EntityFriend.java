@@ -37,7 +37,7 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.Set;
 
-public class EntityFriend extends EntityTameable{
+public class EntityFriend extends EntityTameable {
     private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     protected static final DataParameter<Float> dataEXPValue = EntityDataManager.createKey(EntityFriend.class, DataSerializers.FLOAT);
@@ -53,6 +53,7 @@ public class EntityFriend extends EntityTameable{
     public boolean isBreedingItem(ItemStack stack) {
         return false;
     }
+
     @Nullable
     @Override
     public EntityAgeable createChild(EntityAgeable ageable) {
@@ -90,6 +91,7 @@ public class EntityFriend extends EntityTameable{
         }
         dataManager.set(EntityFriend.dataEXPValue, friendPoint);
     }
+
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
@@ -143,6 +145,9 @@ public class EntityFriend extends EntityTameable{
         }
     }
 
+    /*
+     * 右クリック時の処理
+     */
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
@@ -152,6 +157,7 @@ public class EntityFriend extends EntityTameable{
                 player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
             }
             if (!stack.isEmpty()) {
+                //デバッグ用
                 if (this.isOwner(player) && stack.getItem() == Items.STICK) {
                     float i = friendPoint;
                     String s = String.valueOf(i);
@@ -208,6 +214,7 @@ public class EntityFriend extends EntityTameable{
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
                     this.world.setEntityState(this, (byte) 7);
+                    //ここで実績を解除させる
                     AchievementsJapari.grantAdvancement(player, "tame_friends");
                 } else {
                     this.playTameEffect(false);
@@ -301,16 +308,15 @@ public class EntityFriend extends EntityTameable{
     }
 
 
-    public InventoryFriendMain getInventoryFriendMain()
-    {
+    public InventoryFriendMain getInventoryFriendMain() {
         if (this.inventoryFriendMain == null) {
             this.inventoryFriendMain = new InventoryFriendMain(this);
         }
 
         return this.inventoryFriendMain;
     }
-    public InventoryFriendEquipment getInventoryFriendEquipment()
-    {
+
+    public InventoryFriendEquipment getInventoryFriendEquipment() {
         if (this.inventoryFriendEquipment == null) {
             this.inventoryFriendEquipment = new InventoryFriendEquipment(this);
         }
@@ -425,8 +431,10 @@ public class EntityFriend extends EntityTameable{
     }
 
 
-    public enum Condition
-    {
+    /*
+     * GUI用、体力がどれくらいあるかで色が変わる
+     */
+    public enum Condition {
 
         FINE,
         HURT,

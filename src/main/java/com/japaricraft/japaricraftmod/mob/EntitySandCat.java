@@ -48,7 +48,6 @@ public class EntitySandCat extends EntityFriend {
     }
 
 
-
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;
@@ -61,7 +60,6 @@ public class EntitySandCat extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
-
 
 
     @Override

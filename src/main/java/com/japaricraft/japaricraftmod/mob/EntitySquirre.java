@@ -143,8 +143,6 @@ public class EntitySquirre extends EntityFriend {
     }
 
 
-
-
     @Override
     public boolean canDespawn() {
         return false;

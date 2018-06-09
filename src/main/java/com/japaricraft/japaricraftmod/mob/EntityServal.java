@@ -30,13 +30,13 @@ public class EntityServal extends EntityPlayFriend {
 
     private float headRotationCourse;
     private float headRotationCourseOld;
+
     public EntityServal(World worldIn) {
         super(worldIn);
         this.setSize(0.6F, 1.6F);
         this.setTamed(false);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
-
 
 
     protected void initEntityAI() {
@@ -68,7 +68,6 @@ public class EntityServal extends EntityPlayFriend {
         super.entityInit();
         this.dataManager.register(BEGGING, Boolean.FALSE);
     }
-
 
 
     protected void applyEntityAttributes() {
@@ -107,6 +106,7 @@ public class EntityServal extends EntityPlayFriend {
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundEvents.ENTITY_CAT_HURT;
     }
+
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_CAT_DEATH;
@@ -127,7 +127,6 @@ public class EntityServal extends EntityPlayFriend {
     }
 
 
-
     public boolean isBegging() {
         return this.dataManager.get(BEGGING);
     }
@@ -138,8 +137,7 @@ public class EntityServal extends EntityPlayFriend {
 
 
     @Override
-    public boolean canDespawn()
-    {
+    public boolean canDespawn() {
         return false;
     }
 
