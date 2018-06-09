@@ -69,6 +69,7 @@ public class GuiFriendInventory extends GuiContainer
         {
             this.drawHoveringText(Lists.newArrayList(this.entityFriends.getHealth() + " / " + this.entityFriends.getMaxHealth() + " : " + entityFriends.friendPoint + "exp"), mouseX, mouseY);
         }
+        this.renderHoveredToolTip(mouseX, mouseY);
     }
 
 
