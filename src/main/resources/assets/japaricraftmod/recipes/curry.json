@@ -2,7 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:potion"
+      "item": "minecraft:potion",
+      "data": 0
     },
     {
       "item": "minecraft:wheat"
