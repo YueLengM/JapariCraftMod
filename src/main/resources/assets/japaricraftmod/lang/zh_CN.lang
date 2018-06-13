@@ -6,6 +6,7 @@ tile.sandstarwater.name=砂之星温泉水
 tile.Campfire.name=营火
 tile.SandStarLamp.name=砂之星灯
 tile.JaparimanBowl.name=加帕里馒头碗
+tile.sandstar_apple.name=苹果
 
 item.Japariman.name=加帕里馒头
 item.JaparimanCocoa.name=可可加帕里馒头
@@ -40,11 +41,12 @@ item.SandStarIronChestPlate.name=砂之星胸甲
 item.SandStarIronLeggings.name=砂之星护腿
 item.SandStarIronBoot.name=砂之星靴子
 item.ServalEarCostume.name=薮猫耳装饰
+item.sandstarbow.name=砂之星弓
 
 entity.AncientSkeleton.name=古代骷髅
 entity.KouteiPenguin.name=帝企鹅
-entity.Cerulean.name=天蓝怪
-entity.PoisonCerulean.name=毒液天蓝怪
+entity.Cerulean.name=细胞怪
+entity.PoisonCerulean.name=毒液细胞怪
 entity.Serval.name=薮猫
 entity.Shoebill.name=鲸头鹳
 entity.WhiteOwl.name=博士（白脸角鸮）
@@ -65,19 +67,20 @@ entity.RoyalPenguin.name=皇家企鹅
 entity.Alpaca.name=苏利羊驼
 entity.Squirre.name=松鼠
 entity.SandCat.name=沙丘猫
-entity.CeruleanBird.name=天蓝怪鸟 (未使用)
-entity.BlackCerulean.name=黑天蓝怪
+entity.CeruleanBird.name=细胞怪鸟 (未使用)
+entity.BlackCerulean.name=黑细胞怪
 entity.Tutinoko.name=野槌蛇
-entity.CeruleanEye.name=眼之天蓝怪
-entity.EnderCerulean.name=末影天蓝怪
-item.sandstarbow.name=砂之星弓
+entity.CeruleanEye.name=眼之细胞怪
+entity.EnderCerulean.name=末影细胞怪
+entity.SandStarSlime.name=砂之星史莱姆
+
 
 advancements.japaricraftmod.root.title=开始加帕里之旅
 advancements.japaricraftmod.root.description=为了与friends成为朋友而做的加帕里馒头
-advancements.japaricraftmod.blackcerulean.title=黑天蓝怪
-advancements.japaricraftmod.blackcerulean.description=杀死邪恶的黑天蓝怪
-advancements.japaricraftmod.cerulean.title=天蓝怪猎人
-advancements.japaricraftmod.cerulean.description=狩猎一只天蓝怪
+advancements.japaricraftmod.blackcerulean.title=黑细胞怪
+advancements.japaricraftmod.blackcerulean.description=杀死邪恶的黑细胞怪
+advancements.japaricraftmod.cerulean.title=细胞怪猎人
+advancements.japaricraftmod.cerulean.description=狩猎一只细胞怪
 advancements.japaricraftmod.wildpotion.title=能力饮料
 advancements.japaricraftmod.wildpotion.description=制作野性解放药水
 advancements.japaricraftmod.sandstartool.title=更好升级
@@ -88,11 +91,10 @@ advancements.japaricraftmod.sandstarminer.title=砂之星矿工
 advancements.japaricraftmod.sandstarminer.description=获得砂之星
 advancements.japaricraftmod.friends.title=成为朋友吧
 advancements.japaricraftmod.friends.description=给friends加帕里馒头
+advancements.japaricraftmod.endercerulean.title=危险的东西
+advancements.japaricraftmod.endercerulean.description=打倒末影细胞怪
 
 entity.Villager.zookeeper=饲养员
-entity.Villager.raretreader=宝藏交易人
-entity.Villager.armorcrafter=护甲铸造师
-entity.Villager.foodcrafter=农夫
 
 fluid.sandstar=砂之星液
 
@@ -103,36 +105,9 @@ item.SandStarNeckLace.tooltip=friends专用饰品
 item.WildLiberationPotion.tooltip=为friends提升生命
 item.japaricoin.tooltip=以往动物园里使用的硬币
 
-japaricraftmod.config.cerulean_wight=天蓝怪生成率
-japaricraftmod.config.poisoncerulean_wight=毒液天蓝怪生成率
-japaricraftmod.config.blackcerulean_wight=Boss 生成率(黑天蓝怪)
+japaricraftmod.config.cerulean_wight=细胞怪生成率
+japaricraftmod.config.poisoncerulean_wight=毒液细胞怪生成率
+japaricraftmod.config.blackcerulean_wight=Boss 生成率(黑细胞怪)
 japaricraftmod.config.delphinus_wight=海豚生成率
 japaricraftmod.config.structure=建筑设置
 japaricraftmod.config.animalvillage=启动生成动物村民
-
-page.0.name=研究日记: 第一天
-page.0.desc=我从村民那里得到了一个闪亮的神秘宝石，但我根本不知道这是什么。我必须从村民的书籍中寻找答案。
-page.1.name=研究日记: 第二天
-page.1.desc=根据书中的信息，这个宝石可以将人类变为“兽娘”。半人半兽的生物…
-page.2.name=研究日记: 第三天
-page.2.desc=我看见了一个像猫头鹰一样的女孩子。她用傲慢的语气说着她是一个兽娘。
-page.3.name=
-page.3.desc=接下来我问她听说过砂之星吗？她说那是天蓝怪的元凶，砂之星ρ会让天蓝怪生长。
-page.4.name=
-page.4.desc=天蓝怪会摄取兽娘体内的砂之星，但为什么不去直接从环境中摄取砂之星呢？
-page.5.name=研究日记: 第四天
-page.5.desc=从她学习的图书馆我得知：它可以超越物理法则，完美的将不同环境连接起来。
-page.6.name=
-page.6.desc=我期待着一个新的维度，但我还不会起身前往，因为那样的风险还过于巨大。
-page.7.name=最后的信息
-page.7.desc=…抱歉，很久不见。在地下要塞里依靠别的世界的friends看了一下书，她们似乎是原本住在动物园一样的地方，但是因为天蓝怪的原因，好像就很难再生活下去了。
-page.8.name=
-page.8.desc=似乎有感觉到危急的某人已经把friends转移了。…这个要是被刌民看到而且滥用的话就完蛋啦！看到这本书的人应该去保护friends。…
-
-cafe.0.desc=哇~！ 欢迎光临！
-cafe.1.desc=虽然有些狭小但也可以在这里休息~
-
-entity.cerulean.text1=女王说过
-entity.cerulean.text2=所有的光辉终将消失，但天蓝怪会将之再现并永久保存
-entity.cerulean.text3=但是他们并不明白
-entity.cerulean.text4=不能理解女王的话的人啊 …… 死吧！
