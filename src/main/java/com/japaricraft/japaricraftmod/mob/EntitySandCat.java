@@ -1,7 +1,5 @@
 package com.japaricraft.japaricraftmod.mob;
 
-import com.google.common.collect.Sets;
-import com.japaricraft.japaricraftmod.handler.JapariItems;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -13,11 +11,8 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import java.util.Set;
 
 public class EntitySandCat extends EntityFriend {
-
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     public EntitySandCat(World worldIn) {
         super(worldIn);
