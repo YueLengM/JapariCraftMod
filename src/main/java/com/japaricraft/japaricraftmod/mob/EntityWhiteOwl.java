@@ -52,7 +52,7 @@ public class EntityWhiteOwl extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.05D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 11.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMoveIndoors(this));
