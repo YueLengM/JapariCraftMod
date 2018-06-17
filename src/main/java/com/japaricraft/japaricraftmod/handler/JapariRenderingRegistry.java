@@ -32,5 +32,7 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntitySandCat.class, SandCatRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntitySandStarSlime.class, SandStarSlimeRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityDarkSandStarball.class, m -> new RenderSnowball<>(m, JapariItems.darksandstar, Minecraft.getMinecraft().getRenderItem()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityOtter.class, OtterRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityBeluga.class, BelugaRender::new);
     }
 }

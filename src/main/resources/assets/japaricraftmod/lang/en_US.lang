@@ -70,6 +70,8 @@ entity.Tutinoko.name=Tsuchinoko(Unuse)
 entity.CeruleanEye.name=CeruleanEye
 entity.EnderCerulean.name=EnderCerulean
 entity.SandStarSlime.name=SandStarSlime
+entity.Otter.name=Otter
+entity.Beluga.name=Beluga
 
 itemGroup.JapariCraftTab=JapariCraft
 
