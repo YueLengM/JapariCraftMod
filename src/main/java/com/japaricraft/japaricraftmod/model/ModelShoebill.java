@@ -157,59 +157,51 @@ public class ModelShoebill extends ModelBase {
 
 
     //下は特殊なモデルを動かすのに必須
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
-    {
-        if (!(entityIn instanceof EntityShoebill))
-        {
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+        if (!(entityIn instanceof EntityShoebill)) {
             return;
         }
 
         EntityShoebill entityshoebill = (EntityShoebill) entityIn;
-        boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase)entityIn).getTicksElytraFlying() > 4;
+        boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
-        if (flag)
-        {
-            this.head.rotateAngleX = -((float)Math.PI / 4F);
-        }
-        else
-        {
+        if (flag) {
+            this.head.rotateAngleX = -((float) Math.PI / 4F);
+        } else {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
 
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
 
-        if (flag)
-        {
-            f = (float)(entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
+        if (flag) {
+            f = (float) (entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
             f = f / 0.2F;
             f = f * f * f;
         }
 
-        if (f < 1.0F)
-        {
+        if (f < 1.0F) {
             f = 1.0F;
         }
 
-        this.rightH.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.rightH.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
         this.leftH.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.rightH.rotateAngleZ = 0.0F;
         this.leftH.rotateAngleZ = 0.0F;
         this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
         this.legR.rotateAngleY = 0.0F;
         this.legL.rotateAngleY = 0.0F;
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
 
-        if (entityshoebill.isSitting()||this.isRiding)
-        {
+        if (entityshoebill.isSitting() || this.isRiding) {
             this.legR.rotateAngleX = -1.4137167F;
-            this.legR.rotateAngleY = ((float)Math.PI / 10F);
+            this.legR.rotateAngleY = ((float) Math.PI / 10F);
             this.legR.rotateAngleZ = 0.07853982F;
             this.legL.rotateAngleX = -1.4137167F;
-            this.legL.rotateAngleY = -((float)Math.PI / 10F);
+            this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
             GL11.glTranslatef(0F, 0.4F, 0F);
         }
