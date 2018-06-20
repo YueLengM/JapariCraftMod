@@ -50,11 +50,11 @@ public class EntityWhiteOwl extends EntityFriend {
     protected void initEntityAI() {
         this.aiSit = new EntityAISit(this);
 
-        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.05D, true));
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.1D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 11.0F, 2.0F));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 11.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMoveIndoors(this));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
@@ -75,12 +75,10 @@ public class EntityWhiteOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(30.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(26D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
     }
 
@@ -264,6 +262,7 @@ public class EntityWhiteOwl extends EntityFriend {
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         addExperience(1 + rand.nextInt(2));
+        this.swingArm(EnumHand.MAIN_HAND);
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
 
         if (flag) {

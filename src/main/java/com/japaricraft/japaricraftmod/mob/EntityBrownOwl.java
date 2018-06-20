@@ -46,11 +46,11 @@ public class EntityBrownOwl extends EntityFriend {
     protected void initEntityAI() {
         this.aiSit = new EntityAISit(this);
 
-        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.15D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 11.0F, 2.0F));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 11.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
@@ -70,12 +70,10 @@ public class EntityBrownOwl extends EntityFriend {
         return SoundEvents.ENTITY_PLAYER_DEATH;
     }
 
-    @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(26.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(26D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 

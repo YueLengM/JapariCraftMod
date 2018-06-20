@@ -40,7 +40,7 @@ public class EntitySquirre extends EntityFriend {
         super.initEntityAI();
         this.aiSit = new EntityAISit(this);
 
-        this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
@@ -63,8 +63,6 @@ public class EntitySquirre extends EntityFriend {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(22D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(26D);
-
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3.0D);
     }
 

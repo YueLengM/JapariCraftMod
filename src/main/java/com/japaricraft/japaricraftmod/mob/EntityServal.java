@@ -45,7 +45,7 @@ public class EntityServal extends EntityPlayFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.1D, true));
+        this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.15D, true));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(4, new EntityAIStopPlayFollowOwner(this, 1.1D, 11.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIFriendCollectItem(this, 1.0F));
@@ -74,7 +74,6 @@ public class EntityServal extends EntityPlayFriend {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(26D);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
