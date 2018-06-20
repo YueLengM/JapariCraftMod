@@ -5,6 +5,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -296,6 +298,23 @@ public class ModelServal extends ModelBase {
             this.hand_l.rotateAngleY = 0.0F;
         }
 
+        if (this.swingProgress > 0.0F) {
+            EnumHandSide enumhandside = this.getMainHand(entityIn);
+            ModelRenderer modelrenderer = this.getArmForSide(enumhandside);
+            float f1 = this.swingProgress;
+            this.body.rotateAngleY = MathHelper.sin(MathHelper.sqrt(f1) * ((float) Math.PI * 2F)) * 0.2F;
+
+            if (enumhandside == EnumHandSide.LEFT) {
+                this.body.rotateAngleY *= -1.0F;
+            }
+            this.hand_r.rotateAngleY += this.body.rotateAngleY;
+            this.hand_l.rotateAngleY += this.body.rotateAngleY;
+            float f2 = MathHelper.sin(f1 * (float) Math.PI);
+            float f3 = MathHelper.sin(this.swingProgress * (float) Math.PI) * -(this.head.rotateAngleX - 0.7F) * 0.75F;
+            modelrenderer.rotateAngleX = (float) ((double) modelrenderer.rotateAngleX - ((double) f2 * 1.2D + (double) f3));
+            modelrenderer.rotateAngleY += this.body.rotateAngleY * 2.0F;
+            modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
+        }
 
         this.hand_r.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.hand_l.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
@@ -309,6 +328,23 @@ public class ModelServal extends ModelBase {
         GL11.glTranslatef(0F, 0.4F, 0F);
     }
 
+    public void postRenderArm(float scale, EnumHandSide side) {
+        this.getArmForSide(side).postRender(scale);
+    }
+
+    protected ModelRenderer getArmForSide(EnumHandSide side) {
+        return side == EnumHandSide.LEFT ? this.hand_l : this.hand_r;
+    }
+
+    protected EnumHandSide getMainHand(Entity entityIn) {
+        if (entityIn instanceof EntityLivingBase) {
+            EntityLivingBase entitylivingbase = (EntityLivingBase) entityIn;
+            EnumHandSide enumhandside = entitylivingbase.getPrimaryHand();
+            return entitylivingbase.swingingHand == EnumHand.MAIN_HAND ? enumhandside : enumhandside.opposite();
+        } else {
+            return EnumHandSide.RIGHT;
+        }
+    }
 
     /**
      * This is a helper function from Tabula to set the rotation of model parts

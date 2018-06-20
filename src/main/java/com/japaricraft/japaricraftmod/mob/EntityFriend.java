@@ -134,6 +134,7 @@ public class EntityFriend extends EntityTameable {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
+        this.updateArmSwingProgress();
         if (!world.isRemote) {
             if (this.isEntityAlive()) {
                 pickupItem();
