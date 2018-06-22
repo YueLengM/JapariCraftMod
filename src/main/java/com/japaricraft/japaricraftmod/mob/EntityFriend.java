@@ -63,33 +63,7 @@ public class EntityFriend extends EntityTameable {
     @Override
     protected void entityInit() {
         super.entityInit();
-        dataManager.register(EntityFriend.dataEXPValue, 0f);
-    }
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-        if (ticksExisted % 10 == 0) {
-            friendPoint = dataManager.get(EntityFriend.dataEXPValue);
-        }
-    }
-
-    public float getExp() {
-        return friendPoint;
-    }
-
-    /**
-     * フレンズの経験値関係
-     */
-    public void addExperience(float value) {
-        friendPoint += value;
-        if (friendPoint >= 140) {
-            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
-            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
-            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
-            friendPoint = 0;
-        }
-        dataManager.set(EntityFriend.dataEXPValue, friendPoint);
+        dataManager.register(EntityFriend.dataEXPValue, Float.valueOf(0));
     }
 
     @Override
@@ -113,6 +87,34 @@ public class EntityFriend extends EntityTameable {
 
         friendPoint = compound.getFloat(JapariCraftMod.MODID + ":FRIEND_EXP");
 
+        dataManager.set(EntityFriend.dataEXPValue, friendPoint);
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (world.isRemote) {
+            if (ticksExisted % 10 == 0) {
+                friendPoint = dataManager.get(EntityFriend.dataEXPValue);
+            }
+        }
+    }
+
+    public float getExp() {
+        return friendPoint;
+    }
+
+    /**
+     * フレンズの経験値関係
+     */
+    public void addExperience(float value) {
+        friendPoint += value;
+        if (friendPoint >= 140) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
+            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
+            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
+            friendPoint = 0;
+        }
         dataManager.set(EntityFriend.dataEXPValue, friendPoint);
     }
 
