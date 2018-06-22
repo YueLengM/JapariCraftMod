@@ -344,6 +344,10 @@ public class EntityFriend extends EntityTameable {
 
                 itemStack = this.getInventoryFriendEquipment().getheadItem();
                 break;
+            case LEGS:
+
+                itemStack = this.getInventoryFriendEquipment().getLegItem();
+                break;
 
             default:
 
@@ -369,6 +373,10 @@ public class EntityFriend extends EntityTameable {
             case HEAD:
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(2, stack);
+                break;
+            case LEGS:
+
+                this.getInventoryFriendEquipment().setInventorySlotContents(3, stack);
                 break;
         }
     }

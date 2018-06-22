@@ -23,7 +23,7 @@ public class ContainerFriendInventory extends Container {
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 3; ++index) {
+        for (index = 0; index < 4; ++index) {
 
             final EntityEquipmentSlot slotType;
             int x = 0, y = 0;
@@ -31,17 +31,22 @@ public class ContainerFriendInventory extends Container {
                 case 0:
                     slotType = EntityEquipmentSlot.CHEST;
                     x = 8;
-                    y = 18;
+                    y = 36;
                     break;
                 case 1:
                     slotType = EntityEquipmentSlot.FEET;
-                    x = 8;
+                    x = 80;
                     y = 36;
                     break;
                 case 2:
                     slotType = EntityEquipmentSlot.HEAD;
+                    x = 8;
+                    y = 18;
+                    break;
+                case 3:
+                    slotType = EntityEquipmentSlot.LEGS;
                     x = 80;
-                    y = 36;
+                    y = 18;
                     break;
                 default:
                     slotType = null;
@@ -126,7 +131,7 @@ public class ContainerFriendInventory extends Container {
                 return stackEmpty;
             }
         } else {
-            if (!this.mergeItemStack(dstItemStack, 3, 32, false)) {
+            if (!this.mergeItemStack(dstItemStack, 4, 32, false)) {
                 return stackEmpty;
             }
         }
