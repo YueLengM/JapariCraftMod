@@ -92,12 +92,12 @@ public class EntityFriend extends EntityTameable {
 
     @Override
     public void onUpdate() {
-        super.onUpdate();
         if (world.isRemote) {
             if (ticksExisted % 10 == 0) {
                 friendPoint = dataManager.get(EntityFriend.dataEXPValue);
             }
         }
+        super.onUpdate();
     }
 
     public float getExp() {
