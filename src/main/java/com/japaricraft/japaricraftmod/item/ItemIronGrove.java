@@ -16,7 +16,7 @@ public class ItemIronGrove extends Item {
 
     public ItemIronGrove() {
         this.attackDamage = 2.0F;
-        this.attackSpeed = -2.5F;
+        this.attackSpeed = -2.8F;
         this.setMaxDamage(160);
         this.setMaxStackSize(1);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
