@@ -7,6 +7,7 @@ import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
+import com.japaricraft.japaricraftmod.item.ItemIronGrove;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -240,12 +241,19 @@ public class EntityFriend extends EntityTameable {
     public boolean attackEntityAsMob(Entity entityIn) {
         addExperience(1 + rand.nextInt(2));
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+        this.damageGrove();
 
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }
 
         return flag;
+    }
+
+    private void damageGrove() {
+        if (inventoryFriendEquipment.getHandItem() != null && inventoryFriendEquipment.getHandItem().getItem() instanceof ItemIronGrove) {
+            inventoryFriendEquipment.getHandItem().damageItem(1, this);
+        }
     }
 
 

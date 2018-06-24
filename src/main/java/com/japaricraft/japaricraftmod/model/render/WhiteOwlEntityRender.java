@@ -12,22 +12,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
 
 @SideOnly(Side.CLIENT)
-public class WhiteOwlEntityRender extends RenderLiving<EntityWhiteOwl>
-{
+public class WhiteOwlEntityRender extends RenderLiving<EntityWhiteOwl> {
     private static final ResourceLocation OWL_TEXTURES = new ResourceLocation(MODID, "textures/entity/owl2.png");
-    public WhiteOwlEntityRender(RenderManager renderManager)
-    {
+
+    public WhiteOwlEntityRender(RenderManager renderManager) {
         super(renderManager, new ModelWhiteOwl(), 0.5F);
     }
 
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityWhiteOwl entity)
-    {
+    protected ResourceLocation getEntityTexture(EntityWhiteOwl entity) {
         return OWL_TEXTURES;
     }
-    protected float handleRotationFloat(EntityWhiteOwl livingBase, float partialTicks)
-    {
+
+    protected float handleRotationFloat(EntityWhiteOwl livingBase, float partialTicks) {
         float f = livingBase.oFlap + (livingBase.wingRotation - livingBase.oFlap) * partialTicks;
         float f1 = livingBase.oFlapSpeed + (livingBase.destPos - livingBase.oFlapSpeed) * partialTicks;
         return (MathHelper.sin(f) + 1.0F) * f1;

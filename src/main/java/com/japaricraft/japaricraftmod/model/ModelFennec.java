@@ -295,6 +295,7 @@ public class ModelFennec extends ModelBase {
         }
 
         this.hand_r.rotateAngleY = 0.0F;
+        this.hand_l.rotateAngleY = 0.0F;
         this.hand_r.rotateAngleZ = 0.0F;
 
         if (this.swingProgress > 0.0F) {

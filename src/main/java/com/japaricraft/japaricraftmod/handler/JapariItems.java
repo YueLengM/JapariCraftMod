@@ -33,7 +33,7 @@ public class JapariItems {
     private static final NonNullList<Item> ITEMS = NonNullList.create();
 
     public static final ItemArmor.ArmorMaterial animalCostumeMaterial = EnumHelper.addArmorMaterial("animalcostume", MODID + ":" + "textures/models/armor/kabanhat_layer_1.png", 8, new int[]{0, 0, 0, 0}, 12, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
-    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID +":"+"textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2,0,0,2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,0);
+    public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID + ":" + "textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2, 0, 0, 2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
     public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 20, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 
 
@@ -52,12 +52,12 @@ public class JapariItems {
     public static final Item starcaramel = new StarCaramel();
     public static final Item wildliberationsource = new WildLiberationSource();
     public static final Item wildliberationpotion = new WildLiberationPotion();
-    public static final Item kabanhat= new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
+    public static final Item kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item servalEarCostume = new ItemServalEarCostume(animalCostumeMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
+    public static final Item itemIronGrove = new ItemIronGrove();
 
-    public static List<Item> getItems()
-    {
+    public static List<Item> getItems() {
         return Collections.unmodifiableList(ITEMS);
     }
 
@@ -78,13 +78,11 @@ public class JapariItems {
         return item;
     }
 
-    public static void register(IForgeRegistry<Item> registry, Item item)
-    {
+    public static void register(IForgeRegistry<Item> registry, Item item) {
         ITEMS.add(item);
 
-        if (item instanceof ItemBlock && item.getRegistryName() == null)
-        {
-            item.setRegistryName(((ItemBlock)item).getBlock().getRegistryName());
+        if (item instanceof ItemBlock && item.getRegistryName() == null) {
+            item.setRegistryName(((ItemBlock) item).getBlock().getRegistryName());
         }
 
         registry.register(item);
@@ -109,41 +107,40 @@ public class JapariItems {
         register(registry, kabanhat.setRegistryName("kabanhat"));
         register(registry, servalEarCostume.setRegistryName("serval_earcostume"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
+        register(registry, itemIronGrove.setRegistryName("irongrove"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerModels()
-    {
-        registerModel(japariman,"japariman");
-        registerModel(japarimancocoa,"japariman_cocoa");
-        registerModel(japarimanapple,"japariman_apple");
-        registerModel(japarimanfruit,"japariman_fruit");
-        registerModel(goldenjapariman,"golden_japariman");
-        registerModel(curry,"curry");
-        registerModel(starjapariman,"star_japariman");
-        registerModel(darksandstar,"darksandstar");
-        registerModel(starcaramel,"star_caramel");
-        registerModel(sugarstar,"sugarstar");
-        registerModel(wildliberationpotion,"wildliberation_potion");
-        registerModel(wildliberationsource,"wildliberation_source");
-        registerModel(kabanhat,"kabanhat");
+    public static void registerModels() {
+        registerModel(japariman, "japariman");
+        registerModel(japarimancocoa, "japariman_cocoa");
+        registerModel(japarimanapple, "japariman_apple");
+        registerModel(japarimanfruit, "japariman_fruit");
+        registerModel(goldenjapariman, "golden_japariman");
+        registerModel(curry, "curry");
+        registerModel(starjapariman, "star_japariman");
+        registerModel(darksandstar, "darksandstar");
+        registerModel(starcaramel, "star_caramel");
+        registerModel(sugarstar, "sugarstar");
+        registerModel(wildliberationpotion, "wildliberation_potion");
+        registerModel(wildliberationsource, "wildliberation_source");
+        registerModel(kabanhat, "kabanhat");
         registerModel(servalEarCostume, "serval_earcostume");
-        registerModel(sandstarfragment,"sandstar_fragment");
+        registerModel(sandstarfragment, "sandstar_fragment");
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(sandstarnecklace, "sandstarnecklace");
+        registerModel(itemIronGrove, "irongrove");
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerModel(Item item, String modelName)
-    {
+    public static void registerModel(Item item, String modelName) {
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(MODID + ":" + modelName, "inventory"));
     }
 
     @SideOnly(Side.CLIENT)
-    public static void registerModel(Item item)
-    {
+    public static void registerModel(Item item) {
         registerModel(item, item.getRegistryName().getResourcePath());
     }
 }
