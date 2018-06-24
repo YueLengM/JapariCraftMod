@@ -2,6 +2,7 @@ package com.japaricraft.japaricraftmod.model.render;
 
 import com.japaricraft.japaricraftmod.mob.EntitySquirre;
 import com.japaricraft.japaricraftmod.model.ModelSquirre;
+import com.japaricraft.japaricraftmod.model.render.layer.LayerFriendHeldItem;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -9,6 +10,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 
 import static com.japaricraft.japaricraftmod.JapariCraftMod.MODID;
@@ -56,6 +58,12 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
              */
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
+            }
+        });
+        this.addLayer(new LayerFriendHeldItem(this) {
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelSquirre) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
             }
         });
 

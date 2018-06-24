@@ -8,6 +8,8 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
 
 public class ContainerFriendInventory extends Container {
     private EntityFriend entityFriend;
@@ -23,7 +25,7 @@ public class ContainerFriendInventory extends Container {
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 4; ++index) {
+        for (index = 0; index < 5; ++index) {
 
             final EntityEquipmentSlot slotType;
             int x = 0, y = 0;
@@ -48,6 +50,11 @@ public class ContainerFriendInventory extends Container {
                     x = 80;
                     y = 18;
                     break;
+                case 4:
+                    slotType = EntityEquipmentSlot.MAINHAND;
+                    x = 98;
+                    y = 36;
+                    break;
                 default:
                     slotType = null;
             }
@@ -61,6 +68,12 @@ public class ContainerFriendInventory extends Container {
                     if (slotType == null)
                         return false;
                     Item item = stack.getItem();
+                    if (item instanceof ItemSword) {
+                        return false;
+                    }
+                    if (item instanceof ItemTool) {
+                        return false;
+                    }
                     if (item.isValidArmor(stack, slotType, entityFriend))
                         return true;
                     if (item instanceof FriendsEquipment) {

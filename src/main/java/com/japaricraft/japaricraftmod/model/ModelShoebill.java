@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
@@ -227,6 +228,8 @@ public class ModelShoebill extends ModelBase {
             modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
         }
 
+        ItemStack itemstack = ((EntityLivingBase) entityIn).getHeldItemMainhand();
+
         this.rightH.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.leftH.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.rightH.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
@@ -239,7 +242,7 @@ public class ModelShoebill extends ModelBase {
         this.getArmForSide(side).postRender(scale);
     }
 
-    protected ModelRenderer getArmForSide(EnumHandSide side) {
+    public ModelRenderer getArmForSide(EnumHandSide side) {
         return side == EnumHandSide.LEFT ? this.leftH : this.rightH;
     }
 

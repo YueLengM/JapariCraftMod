@@ -8,7 +8,7 @@ public class InventoryFriendEquipment extends InventoryFriend
     //slotCountでスロットの合計を入力
     public InventoryFriendEquipment(EntityFriend friend)
     {
-        super(friend, 4);
+        super(friend, 5);
     }
 
     // TODO /* ======================================== MOD START =====================================*/
@@ -27,6 +27,10 @@ public class InventoryFriendEquipment extends InventoryFriend
 
     public ItemStack getLegItem() {
         return this.getStackInSlot(3);
+    }
+
+    public ItemStack getHandItem() {
+        return this.getStackInSlot(4);
     }
 
 }

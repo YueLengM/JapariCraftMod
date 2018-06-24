@@ -330,7 +330,7 @@ public class ModelFennec extends ModelBase {
         this.getArmForSide(side).postRender(scale);
     }
 
-    protected ModelRenderer getArmForSide(EnumHandSide side) {
+    public ModelRenderer getArmForSide(EnumHandSide side) {
         return side == EnumHandSide.LEFT ? this.hand_l : this.hand_r;
     }
 

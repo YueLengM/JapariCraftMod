@@ -131,6 +131,9 @@ public class EntityFriend extends EntityTameable {
         if (inventoryFriendEquipment.getheadItem() != null && inventoryFriendEquipment.getheadItem().getItem() instanceof ItemArmor) {
             inventoryFriendEquipment.getheadItem().damageItem((int) pDamage, this);
         }
+        if (inventoryFriendEquipment.getLegItem() != null && inventoryFriendEquipment.getLegItem().getItem() instanceof ItemArmor) {
+            inventoryFriendEquipment.getLegItem().damageItem((int) pDamage, this);
+        }
     }
 
     @Override
@@ -348,6 +351,10 @@ public class EntityFriend extends EntityTameable {
 
                 itemStack = this.getInventoryFriendEquipment().getLegItem();
                 break;
+            case MAINHAND:
+
+                itemStack = this.getInventoryFriendEquipment().getHandItem();
+                break;
 
             default:
 
@@ -377,6 +384,10 @@ public class EntityFriend extends EntityTameable {
             case LEGS:
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(3, stack);
+                break;
+            case MAINHAND:
+
+                this.getInventoryFriendEquipment().setInventorySlotContents(4, stack);
                 break;
         }
     }
