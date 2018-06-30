@@ -113,10 +113,10 @@ public class EntityServal extends EntityFriend {
             this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
         }
 
-        if (!world.isRemote && !this.isInWater() && !this.isStretching() && this.getRNG().nextInt(450) == 0 && !this.isRiding() && !this.isTamed() && (this.onGround && this.getAttackTarget() == null)) {
+        if (!world.isRemote && !this.isInWater() && !this.isStretching() && this.getRNG().nextInt(520) == 0 && !this.isRiding() && !this.isTamed() && (this.onGround && this.getAttackTarget() == null)) {
             setStretching(true);
         }
-        if (!world.isRemote && this.isStretching() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null || this.getRNG().nextInt(100) == 0)) {
+        if (!world.isRemote && this.isStretching() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null || this.getRNG().nextInt(120) == 0)) {
             setStretching(false);
         }
     }
