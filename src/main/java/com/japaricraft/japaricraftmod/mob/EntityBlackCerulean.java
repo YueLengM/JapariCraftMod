@@ -2,31 +2,40 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.japaricraft.japaricraftmod.JapariCraftMod;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
 import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
 public class EntityBlackCerulean extends EntityMob {
     private static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/blackcerulean");
@@ -48,7 +57,7 @@ public class EntityBlackCerulean extends EntityMob {
     @Override
     protected void initEntityAI() {
         super.initEntityAI();
-        this.tasks.addTask(1, new EntityBlackCerulean.AIMeleeAttack());
+        this.tasks.addTask(1, new EntityBlackCerulean.AIMeleeAndStompAttack(this));
         this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(5, new EntityAILookIdle(this));
@@ -179,9 +188,12 @@ public class EntityBlackCerulean extends EntityMob {
         this.bossInfo.removePlayer(player);
     }
 
-    public class AIMeleeAttack extends EntityAIAttackMelee {
-        public AIMeleeAttack() {
-            super(EntityBlackCerulean.this, 1.05D, true);
+    public class AIMeleeAndStompAttack extends EntityAIAttackMelee {
+        public EntityBlackCerulean cerulean;
+
+        public AIMeleeAndStompAttack(EntityBlackCerulean blackCerulean) {
+            super(blackCerulean, 1.05D, true);
+            this.cerulean = blackCerulean;
         }
 
         protected void checkAndPerformAttack(EntityLivingBase p_190102_1_, double p_190102_2_) {
@@ -189,6 +201,75 @@ public class EntityBlackCerulean extends EntityMob {
 
             if (p_190102_2_ <= d0 && this.attackTick <= 0) {
                 this.attackTick = 40;
+                if (rand.nextInt(8) == 0) {
+                    int hitY = MathHelper.floor(cerulean.getEntityBoundingBox().minY - 0.5);
+                    final int maxDistance = 6;
+                    WorldServer world = (WorldServer) cerulean.world;
+                    cerulean.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 2, 1F + cerulean.getRNG().nextFloat() * 0.1F);
+                    int distance = 10 / 2 - 2;
+                    double spread = Math.PI * 2;
+                    int arcLen = MathHelper.ceil(distance * spread);
+                    double minY = cerulean.getEntityBoundingBox().minY;
+                    double maxY = cerulean.getEntityBoundingBox().maxY;
+                    for (int i = 0; i < arcLen; i++) {
+                        double theta = (i / (arcLen - 1.0) - 0.5) * spread;
+                        double vx = Math.cos(theta);
+                        double vz = Math.sin(theta);
+                        double px = cerulean.posX + vx * distance;
+                        double pz = cerulean.posZ + vz * distance;
+                        float factor = 1 - distance / (float) maxDistance;
+                        AxisAlignedBB selection = new AxisAlignedBB(px - 1.5, minY, pz - 1.5, px + 1.5, maxY, pz + 1.5);
+                        List<Entity> hit = world.getEntitiesWithinAABB(Entity.class, selection);
+                        for (Entity entity : hit) {
+                            if (entity == cerulean || entity instanceof EntityFallingBlock) {
+                                continue;
+                            }
+                            if (entity instanceof EntityLivingBase) {
+                                entity.attackEntityFrom(DamageSource.FALLING_BLOCK, factor * 5 + 1);
+                            }
+                            double magnitude = world.rand.nextDouble() * 0.15 + 0.1;
+                            entity.motionX += vx * factor * magnitude;
+                            if (entity.onGround) {
+                                entity.motionY += 0.1 + factor * 0.15;
+                            }
+                            entity.motionZ += vz * factor * magnitude;
+                        }
+                        if (world.rand.nextBoolean()) {
+                            int hitX = MathHelper.floor(px);
+                            int hitZ = MathHelper.floor(pz);
+                            BlockPos pos = new BlockPos(hitX, hitY, hitZ);
+                            if (world.isAirBlock(pos.up())) {
+                                IBlockState block = world.getBlockState(pos);
+                                if (block.getMaterial() != Material.AIR && block.isBlockNormalCube() && block != Blocks.BEDROCK) {
+                                    EntityFallingBlock fallingBlock = new EntityFallingBlock(world, hitX + 0.5, hitY + 0.5, hitZ + 0.5, block);
+                                    fallingBlock.motionX = 0;
+                                    fallingBlock.motionY = 0.4 + factor * 0.2;
+                                    fallingBlock.motionZ = 0;
+                                    fallingBlock.fallTime = 2;
+                                    world.spawnEntity(fallingBlock);
+                                    world.setBlockToAir(pos);
+                                    int amount = 6 + world.rand.nextInt(10);
+                                    int stateId = Block.getStateId(block);
+                                    while (amount-- > 0) {
+                                        double cx = px + world.rand.nextFloat() * 2 - 1;
+                                        double cy = cerulean.getEntityBoundingBox().minY + 0.1 + world.rand.nextFloat() * 0.3;
+                                        double cz = pz + world.rand.nextFloat() * 2 - 1;
+                                        world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, cx, cy, cz, 0, vx, 0.4 + world.rand.nextFloat() * 0.2F, vz, 1, stateId);
+                                    }
+                                }
+                            }
+                        }
+                        if (world.rand.nextBoolean()) {
+                            int amount = world.rand.nextInt(5);
+                            while (amount-- > 0) {
+                                double velX = vx * 0.075;
+                                double velY = factor * 0.3 + 0.025;
+                                double velZ = vz * 0.075;
+                                world.spawnParticle(EnumParticleTypes.CLOUD, px + world.rand.nextFloat() * 2 - 1, cerulean.getEntityBoundingBox().minY + 0.1 + world.rand.nextFloat() * 1.5, pz + world.rand.nextFloat() * 2 - 1, 0, velX, velY, velZ, 1);
+                            }
+                        }
+                    }
+                }
                 this.attacker.attackEntityAsMob(p_190102_1_);
                 EntityBlackCerulean.this.setStanding(false);
             } else if (p_190102_2_ <= d0 * 2.0D) {
