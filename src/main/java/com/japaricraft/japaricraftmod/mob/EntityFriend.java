@@ -142,7 +142,7 @@ public class EntityFriend extends EntityTameable {
         super.onLivingUpdate();
         this.updateArmSwingProgress();
         if (!world.isRemote) {
-            if (this.isEntityAlive()) {
+            if (this.isTamed() && this.isEntityAlive()) {
                 pickupItem();
             }
             //やばい時はじゃぱりまんを食べる

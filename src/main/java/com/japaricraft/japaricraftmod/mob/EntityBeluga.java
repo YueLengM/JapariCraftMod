@@ -35,9 +35,9 @@ public class EntityBeluga extends EntityFriend {
         this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.05D, true));
         this.tasks.addTask(4, new EntityAIWaterFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, this.wander);
-        this.tasks.addTask(6, new EntityAIWatchClosest2(this, EntityPlayer.class, 8.0F, 1.0F));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F, 1.0F));
+        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));

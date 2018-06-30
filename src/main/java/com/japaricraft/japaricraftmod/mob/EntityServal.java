@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -27,9 +28,11 @@ public class EntityServal extends EntityPlayFriend {
     private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(EntityServal.class, DataSerializers.BOOLEAN);
 
     public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+    private static final DataParameter<Boolean> STRETCHING = EntityDataManager.createKey(EntityServal.class, DataSerializers.BOOLEAN);
 
     private float headRotationCourse;
     private float headRotationCourseOld;
+    private boolean isStretching;
 
     public EntityServal(World worldIn) {
         super(worldIn);
@@ -52,7 +55,7 @@ public class EntityServal extends EntityPlayFriend {
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(7, new EntityAIPlayWithFriend(this, 1.05D));
         this.tasks.addTask(8, new EntityAIServalBeg(this, 8.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.tasks.addTask(10, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
@@ -62,11 +65,13 @@ public class EntityServal extends EntityPlayFriend {
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityBlackCerulean.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
+
     }
 
     protected void entityInit() {
         super.entityInit();
         this.dataManager.register(BEGGING, Boolean.FALSE);
+        this.dataManager.register(STRETCHING, Boolean.FALSE);
     }
 
 
@@ -77,6 +82,26 @@ public class EntityServal extends EntityPlayFriend {
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
+    @Override
+    public void setTamed(boolean tamed) {
+        super.setTamed(tamed);
+
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setBoolean("Stretching", this.isStretching());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        this.setStretching(compound.getBoolean("Stretching"));
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
         this.headRotationCourseOld = this.headRotationCourse;
@@ -86,13 +111,37 @@ public class EntityServal extends EntityPlayFriend {
         } else {
             this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
         }
+
+        if (!world.isRemote && !this.isInWater() && !this.isStretching() && (!this.isTamed() || this.isTamed() && this.isSitting()) && this.onGround && this.getAttackTarget() == null && this.getRNG().nextInt(300) == 0) {
+            setStretching(true);
+        }
+        if (!world.isRemote && this.isStretching() && ((!this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null) && this.getRNG().nextInt(300) == 0)) {
+            setStretching(false);
+        }
     }
 
     @Override
-    public void setTamed(boolean tamed) {
-        super.setTamed(tamed);
+    public void onLivingUpdate() {
+        super.onLivingUpdate();
+        if (this.isStretching()) {
+            this.getNavigator().clearPath();
+        }
+    }
 
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(5.0D);
+    public boolean isStretching() {
+        if (world.isRemote) {
+            boolean isStretching = this.dataManager.get(STRETCHING);
+            this.isStretching = isStretching;
+            return isStretching;
+        }
+        return isStretching;
+    }
+
+    public void setStretching(boolean stretching) {
+        this.dataManager.set(STRETCHING, stretching);
+        if (!world.isRemote) {
+            this.isStretching = stretching;
+        }
     }
 
     @SideOnly(Side.CLIENT)
