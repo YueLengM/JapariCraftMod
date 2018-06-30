@@ -124,10 +124,10 @@ public class EntitySquirre extends EntityFriend {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if (!world.isRemote && !this.isInWater() && !this.isSleeping() && (!this.isTamed() || this.isTamed() && this.isSitting()) && this.onGround && this.getAttackTarget() == null && !this.world.isDaytime() && this.getRNG().nextInt(250) == 0 && this.getAttackTarget() == null) {
+        if (!world.isRemote && !this.isInWater() && !this.isSleeping() && this.getRNG().nextInt(250) == 0 && !this.isRiding() && (!this.isTamed() && this.getAttackTarget() == null || this.isTamed() && this.isSitting()) || this.onGround && this.getAttackTarget() == null && !this.world.isDaytime()) {
             setSleeping(true);
         }
-        if (!world.isRemote && this.isSleeping() && (!this.isSitting() && this.isTamed() || this.isInWater() || (this.world.canBlockSeeSky(new BlockPos(this)) && this.world.isDaytime()) || this.getAttackTarget() != null)) {
+        if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.canBlockSeeSky(new BlockPos(this)) && this.world.isDaytime()) || this.getAttackTarget() != null)) {
             setSleeping(false);
         }
     }
