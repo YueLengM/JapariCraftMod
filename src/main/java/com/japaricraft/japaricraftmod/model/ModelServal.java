@@ -235,7 +235,7 @@ public class ModelServal extends ModelBase {
             return;
         }
 
-        EntityServal entityEntityServal = (EntityServal) entityIn;
+        EntityServal entityServal = (EntityServal) entityIn;
         boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
@@ -247,6 +247,9 @@ public class ModelServal extends ModelBase {
 
 
         this.body.rotateAngleY = 0.0F;
+        this.body.rotateAngleX = 0.0F;
+        this.skirt_1.rotationPointY = 5.6F;
+        this.skirt_1.rotateAngleX = 0.0F;
         float f = 1.0F;
 
         if (flag) {
@@ -274,7 +277,7 @@ public class ModelServal extends ModelBase {
         this.leg_r.rotateAngleZ = 0.0F;
         this.leg_l.rotateAngleZ = 0.0F;
 
-        if (entityEntityServal.isSitting() || this.isRiding) {
+        if (entityServal.isSitting() || this.isRiding) {
             this.leg_r.rotateAngleX = -1.4137167F;
             this.leg_r.rotateAngleY = ((float) Math.PI / 10F);
             this.leg_r.rotateAngleZ = 0.07853982F;
@@ -285,17 +288,14 @@ public class ModelServal extends ModelBase {
         }
 
 
-        if (entityEntityServal.isPlaying()) {
-            this.hand_r.rotationPointZ = 0.0F;
-            this.hand_r.rotationPointX = -4.0F;
-            this.hand_l.rotationPointZ = 0.0F;
-            this.hand_l.rotationPointX = 4.0F;
-            this.hand_r.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
-            this.hand_l.rotateAngleX = -1.1849558F + MathHelper.cos(ageInTicks * 0.09F) * 0.15F;
-            this.hand_r.rotateAngleZ = 2.3561945F;
-            this.hand_l.rotateAngleZ = -2.3561945F;
-            this.hand_r.rotateAngleY = 0.0F;
-            this.hand_l.rotateAngleY = 0.0F;
+        if (entityServal.isStretching()) {
+            this.body.rotateAngleX = 1.5481070465189704F;
+            this.skirt_1.rotationPointY = 9.6F;
+            this.skirt_1.rotateAngleX = 1.5481070465189704F;
+            this.head.rotateAngleX = -1.0927506446736497F;
+            this.hand_r.rotateAngleX = -3.141592653589793F;
+            this.hand_l.rotateAngleX = -3.141592653589793F;
+            GL11.glTranslatef(0F, 0.2F, 0F);
         }
 
         if (this.swingProgress > 0.0F) {

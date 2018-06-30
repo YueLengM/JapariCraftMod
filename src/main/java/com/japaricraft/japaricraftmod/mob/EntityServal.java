@@ -2,7 +2,9 @@ package com.japaricraft.japaricraftmod.mob;
 
 import com.google.common.collect.Sets;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
-import com.japaricraft.japaricraftmod.mob.ai.*;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIAttackSweep;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
+import com.japaricraft.japaricraftmod.mob.ai.EntityAIServalBeg;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -24,7 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Set;
 
 
-public class EntityServal extends EntityPlayFriend {
+public class EntityServal extends EntityFriend {
     private static final DataParameter<Boolean> BEGGING = EntityDataManager.createKey(EntityServal.class, DataSerializers.BOOLEAN);
 
     public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
@@ -50,14 +52,13 @@ public class EntityServal extends EntityPlayFriend {
         this.tasks.addTask(1, this.aiSit);
         this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.15D, true));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIStopPlayFollowOwner(this, 1.1D, 11.0F, 2.0F));
+        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.1D, 11.0F, 2.0F));
         this.tasks.addTask(5, new EntityAIFriendCollectItem(this, 1.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIPlayWithFriend(this, 1.05D));
-        this.tasks.addTask(8, new EntityAIServalBeg(this, 8.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.tasks.addTask(10, new EntityAILookIdle(this));
+        this.tasks.addTask(7, new EntityAIServalBeg(this, 8.0F));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
@@ -112,10 +113,10 @@ public class EntityServal extends EntityPlayFriend {
             this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
         }
 
-        if (!world.isRemote && !this.isInWater() && !this.isStretching() && (!this.isTamed() || this.isTamed() && this.isSitting()) && this.onGround && this.getAttackTarget() == null && this.getRNG().nextInt(300) == 0) {
+        if (!world.isRemote && !this.isInWater() && !this.isStretching() && this.getRNG().nextInt(450) == 0 && !this.isRiding() && !this.isTamed() && (this.onGround && this.getAttackTarget() == null)) {
             setStretching(true);
         }
-        if (!world.isRemote && this.isStretching() && ((!this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null) && this.getRNG().nextInt(300) == 0)) {
+        if (!world.isRemote && this.isStretching() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null || this.getRNG().nextInt(100) == 0)) {
             setStretching(false);
         }
     }
