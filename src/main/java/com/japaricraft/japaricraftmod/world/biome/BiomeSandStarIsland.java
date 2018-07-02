@@ -38,7 +38,7 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 1, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 40, 1, 1));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;
