@@ -9,7 +9,6 @@ import com.japaricraft.japaricraftmod.item.armor.ItemServalEarCostume;
 import com.japaricraft.japaricraftmod.item.summon.DarkSandStar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
@@ -34,7 +33,6 @@ public class JapariItems {
 
     public static final ItemArmor.ArmorMaterial animalCostumeMaterial = EnumHelper.addArmorMaterial("animalcostume", MODID + ":" + "textures/models/armor/kabanhat_layer_1.png", 8, new int[]{0, 0, 0, 0}, 12, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
     public static final ItemArmor.ArmorMaterial KabanHatMaterial = EnumHelper.addArmorMaterial("kabanhatmaterial", MODID + ":" + "textures/models/armor/kabanhat_layer_1.png", 8, new int[]{2, 0, 0, 2}, 30, net.minecraft.init.SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0);
-    public static final ItemArmor.ArmorMaterial SandStarArmorMaterial = EnumHelper.addArmorMaterial("sandstarmaterial", MODID + ":" + "textures/models/armor/sandstar_layer_1.png", 20, new int[]{2, 6, 5, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 
 
     public static final Item japariman = new Japariman();
