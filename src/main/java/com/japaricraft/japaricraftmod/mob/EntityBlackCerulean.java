@@ -300,4 +300,8 @@ public class EntityBlackCerulean extends EntityMob {
             return (double) (15.0F + attackTarget.width);
         }
     }
+
+    public boolean isNonBoss() {
+        return false;
+    }
 }

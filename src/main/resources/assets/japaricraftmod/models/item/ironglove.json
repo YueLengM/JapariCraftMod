@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "japaricraftmod:items/irongrove"
+    "layer0": "japaricraftmod:items/ironglove"
   }
 }

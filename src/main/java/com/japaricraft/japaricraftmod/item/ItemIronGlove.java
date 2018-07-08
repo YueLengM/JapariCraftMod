@@ -10,17 +10,17 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemIronGrove extends Item {
+public class ItemIronGlove extends Item {
     protected float attackDamage;
     protected float attackSpeed;
 
-    public ItemIronGrove() {
+    public ItemIronGlove() {
         this.attackDamage = 2.0F;
         this.attackSpeed = -2.8F;
         this.setMaxDamage(160);
         this.setMaxStackSize(1);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
-        this.setUnlocalizedName("IronGrove");
+        this.setUnlocalizedName("IronGlove");
 
     }
 

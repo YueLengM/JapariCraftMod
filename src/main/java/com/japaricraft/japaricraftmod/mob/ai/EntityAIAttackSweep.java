@@ -173,7 +173,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
             float f3 = 0.6F * (float) attacker.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
             //他の敵対mobへの範囲攻撃
             for (EntityMob entitymob : this.world.getEntitiesWithinAABB(EntityMob.class, attacker.getAttackTarget().getEntityBoundingBox().grow(1.0D, 0.25D, 1.0D))) {
-                if (attacker.getHeldItemMainhand() == new ItemStack(JapariItems.itemIronGrove)) {
+                if (attacker.getHeldItemMainhand() == new ItemStack(JapariItems.itemIronGlove)) {
                     if (entitymob != attacker && entitymob != attacker.getAttackTarget() && !entitymob.isOnSameTeam(entitymob) && entitymob.getDistanceSq(entitymob) < 9.0D) {
                         entitymob.knockBack(attacker, 0.5F, (double) MathHelper.sin(attacker.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(attacker.rotationYaw * 0.017453292F)));
                         entitymob.attackEntityFrom(DamageSource.causeMobDamage(attacker), ((Float) f3));

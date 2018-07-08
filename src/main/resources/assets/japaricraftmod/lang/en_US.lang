@@ -41,7 +41,7 @@ item.SandStarIronChestPlate.name=SandStarChestPlate
 item.SandStarIronLeggings.name=SandStarLeggings
 item.SandStarIronBoot.name=SandStarBoot
 item.ServalEarCostume.name=ServalEarCostume
-item.IronGrove.name=IronGrove
+item.IronGlove.name=IronGlove
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -104,8 +104,6 @@ entity.Villager.raretreader=Treasure Trader
 entity.Villager.armorcrafter=Armor Craftsmen
 entity.Villager.foodcrafter=Farmer
 
-fluid.sandstar=SandStarWater
-
 item.WildLiberationSource.tooltip=It is not much to eat
 item.WildLiberationPotion.tooltip=Raising Health when used for Friends
 item.SandStarCake115.tooltip=It is surprisingly delicious
@@ -121,30 +119,3 @@ japaricraftmod.config.structure=Structure Setting
 japaricraftmod.config.animalvillage=Enable Generate AnimalVillage
 
 entity.whiteowl.friend=Thank you for making delicious food for me
-
-page.0.name= Study: Day 1
-page.0.desc=I got a mysterious shining jewel from the villagers, but I don’t know anything about it. I will have to investigate in the village book. 
-page.1.name=Study: Day 2
-page.1.desc=According to the book, this gem can turn Humans to ”Animal Girls”. Half Human and half animal hybrids…
-page.2.name=Study: Day 3
-page.2.desc=I saw a pretty girl in the forest resembling an owl. She said in a bossy tone that she was an Animal Girl. I asked if she knew
-page.3.name=
-page.3.desc=anything about the Sandstar. She said it made Ceruleans, and that Sandstar Low makes Ceruleans grow in size and power
-page.4.name=
-page.4.desc=Ceruleans eat the Sandstar located within Animal Girls, but why don’t they eat the Sandstar found naturally?
-page.5.name=Study: Day 4
-page.5.desc=From the library she learned at. I found out that it also warps physical laws and makes a perfectly divided environment.
-page.6.name=
-page.6.desc=A dimension? I expected a new dimension, but I decided not to see it for myself because the risk is too great.
-page.7.name=
-page.7.desc=
-page.8.name=
-page.8.desc=
-
-cafe.0.desc=Welcome!
-cafe.1.desc=Make yourself at cafe :)
-
-entity.cerulean.text1=The Queen said
-entity.cerulean.text2=All glows will eventually disappear, but Cerulean will reproduce and remember forever
-entity.cerulean.text3=But they did not understand
-entity.cerulean.text4=For the queen who was not understood ... kill you!

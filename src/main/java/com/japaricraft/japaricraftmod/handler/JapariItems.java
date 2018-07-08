@@ -53,7 +53,7 @@ public class JapariItems {
     public static final Item kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item servalEarCostume = new ItemServalEarCostume(animalCostumeMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
-    public static final Item itemIronGrove = new ItemIronGrove();
+    public static final Item itemIronGlove = new ItemIronGlove();
 
     public static List<Item> getItems() {
         return Collections.unmodifiableList(ITEMS);
@@ -105,7 +105,7 @@ public class JapariItems {
         register(registry, kabanhat.setRegistryName("kabanhat"));
         register(registry, servalEarCostume.setRegistryName("serval_earcostume"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
-        register(registry, itemIronGrove.setRegistryName("irongrove"));
+        register(registry, itemIronGlove.setRegistryName("ironglove"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
 
@@ -129,7 +129,7 @@ public class JapariItems {
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
         registerModel(sandstarnecklace, "sandstarnecklace");
-        registerModel(itemIronGrove, "irongrove");
+        registerModel(itemIronGlove, "ironglove");
     }
 
     @SideOnly(Side.CLIENT)

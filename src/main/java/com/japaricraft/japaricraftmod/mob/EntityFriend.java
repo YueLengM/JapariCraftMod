@@ -7,7 +7,7 @@ import com.japaricraft.japaricraftmod.gui.FriendMobNBTs;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
-import com.japaricraft.japaricraftmod.item.ItemIronGrove;
+import com.japaricraft.japaricraftmod.item.ItemIronGlove;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -251,7 +251,7 @@ public class EntityFriend extends EntityTameable {
     }
 
     private void damageGrove() {
-        if (inventoryFriendEquipment.getHandItem() != null && inventoryFriendEquipment.getHandItem().getItem() instanceof ItemIronGrove) {
+        if (inventoryFriendEquipment.getHandItem() != null && inventoryFriendEquipment.getHandItem().getItem() instanceof ItemIronGlove) {
             inventoryFriendEquipment.getHandItem().damageItem(1, this);
         }
     }

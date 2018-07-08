@@ -397,6 +397,10 @@ public class EntityEnderCerulean extends EntityMob implements IRangedAttackMob {
 
     }
 
+    public boolean isNonBoss() {
+        return false;
+    }
+
     public boolean canDespawn() {
         return false;
     }
