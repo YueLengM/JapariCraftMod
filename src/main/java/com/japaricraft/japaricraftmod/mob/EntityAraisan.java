@@ -41,6 +41,7 @@ public class EntityAraisan extends EntityPlayFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
+        this.tasks.addTask(2, new EntityAIPanic(this, 1.4D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityCerulean.class, 6.5F, 1.1D, 1.1D));
         this.tasks.addTask(2, new EntityAIAvoidEntity<>(this, EntityBlackCerulean.class, 8.0F, 1.1D, 1.1D));
         this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
