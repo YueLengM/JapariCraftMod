@@ -75,7 +75,7 @@ public class EntityFriend extends EntityTameable {
 
         compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
 
-        compound.setFloat(JapariCraftMod.MODID + ":FRIEND_EXP", experienceValue);
+        compound.setFloat(JapariCraftMod.MODID + ":FRIEND_EXP", friendPoint);
     }
 
     @Override
@@ -110,7 +110,7 @@ public class EntityFriend extends EntityTameable {
      */
     public void addExperience(float value) {
         friendPoint += value;
-        if (friendPoint >= 140) {
+        if (friendPoint >= 260) {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
             this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
             this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
@@ -239,7 +239,7 @@ public class EntityFriend extends EntityTameable {
 
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
-        addExperience(1 + rand.nextInt(2));
+        addExperience(1 + rand.nextInt(3));
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
         this.damageGrove();
 

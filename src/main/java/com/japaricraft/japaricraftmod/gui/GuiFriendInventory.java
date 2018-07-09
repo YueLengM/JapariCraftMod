@@ -67,7 +67,7 @@ public class GuiFriendInventory extends GuiContainer
 
         if (this.isPointInRegion(102, 22, 64, 14, mouseX, mouseY))
         {
-            this.drawHoveringText(Lists.newArrayList(this.entityFriends.getHealth() + " / " + this.entityFriends.getMaxHealth() + " : " + entityFriends.friendPoint + "exp"), mouseX, mouseY);
+            this.drawHoveringText(Lists.newArrayList(this.entityFriends.getHealth() + " / " + this.entityFriends.getMaxHealth() + " : " + entityFriends.friendPoint + "exp" + "/240exp"), mouseX, mouseY);
         }
         this.renderHoveredToolTip(mouseX, mouseY);
     }
