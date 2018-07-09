@@ -7,15 +7,13 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.BlockFaceShape;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockJaparimanBowl extends Block {
     protected static final AxisAlignedBB Statue_AABB = new AxisAlignedBB(0.2D, 0.0D, 0.2D, 0.8D, 0.4D, 0.8D);
@@ -29,22 +27,6 @@ public class BlockJaparimanBowl extends Block {
         setSoundType(SoundType.SNOW);
     }
 
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-        if (worldIn.isRemote) {
-            return true;
-        } else {
-            if (playerIn.isSneaking()) {
-                this.dropBlock(worldIn, pos);
-                worldIn.destroyBlock(pos, false);
-            }
-            return true;
-        }
-    }
-
-    private void dropBlock(World worldIn, BlockPos pos) {
-        Block.spawnAsEntity(worldIn, new BlockPos(pos), new ItemStack(Items.BOWL));
-        Block.spawnAsEntity(worldIn, new BlockPos(pos), new ItemStack(JapariItems.japariman, 3));
-    }
 
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
         return Statue_AABB;
@@ -58,6 +40,15 @@ public class BlockJaparimanBowl extends Block {
         return BlockFaceShape.UNDEFINED;
     }
 
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+        return JapariItems.japariman;
+    }
+
+    @Override
+    public int quantityDropped(Random random) {
+        return 3;
+    }
     /**
      * Used to determine ambient occlusion and culling when rebuilding chunks for render
      */
