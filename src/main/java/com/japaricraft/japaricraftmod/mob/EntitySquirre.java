@@ -127,7 +127,7 @@ public class EntitySquirre extends EntityFriend {
         if (!world.isRemote && !this.isInWater() && !this.isSleeping() && this.getRNG().nextInt(250) == 0 && !this.isRiding() && (!this.isTamed() && this.getAttackTarget() == null || this.isTamed() && this.isSitting()) || this.onGround && this.getAttackTarget() == null && !this.world.isDaytime()) {
             setSleeping(true);
         }
-        if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.canBlockSeeSky(new BlockPos(this)) && this.world.isDaytime()) || this.getAttackTarget() != null)) {
+        if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.canBlockSeeSky(new BlockPos(this)) && this.world.isDaytime()) || this.getAttackTarget() != null || this.getRNG().nextInt(120) == 0 && !this.isTamed() || this.getRNG().nextInt(120) == 0 && this.isTamed())) {
             setSleeping(false);
         }
     }
