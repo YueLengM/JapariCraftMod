@@ -8,6 +8,7 @@ import com.japaricraft.japaricraftmod.gui.InventoryFriendEquipment;
 import com.japaricraft.japaricraftmod.gui.InventoryFriendMain;
 import com.japaricraft.japaricraftmod.handler.JapariItems;
 import com.japaricraft.japaricraftmod.item.ItemIronGlove;
+import com.japaricraft.japaricraftmod.mob.particle.ParticleSandStarCloud;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -34,6 +35,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.client.FMLClientHandler;
 
 import javax.annotation.Nullable;
 import java.util.Set;
@@ -110,9 +112,13 @@ public class EntityFriend extends EntityTameable {
      */
     public void addExperience(float value) {
         friendPoint += value;
-        if (friendPoint >= 260) {
+        if (friendPoint >= 160) {
             this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
             this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
+            for (int i = 0; i < 5; ++i) {
+                ParticleSandStarCloud effect = new ParticleSandStarCloud(world, this.posX + rand.nextFloat(), this.posY + 0.5F + rand.nextFloat(), this.posZ + rand.nextFloat(), 0.0D, 0.0D);
+                FMLClientHandler.instance().getClient().effectRenderer.addEffect(effect);
+            }
             this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
             friendPoint = 0;
         }
