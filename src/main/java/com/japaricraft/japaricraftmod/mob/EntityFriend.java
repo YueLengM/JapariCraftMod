@@ -158,65 +158,87 @@ public class EntityFriend extends EntityTameable {
     @Override
     public boolean processInteract(EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
+        boolean flag = !stack.isEmpty();
 
+        if (flag) {
+            return this.processInteractFood(player, hand, stack);
+        }
         if (this.isTamed()) {
-            if (player.isSneaking() && !this.isSitting()) {
-                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+            return this.processInteractTamed(player, hand, stack);
+        }
+        return super.processInteract(player, hand);
+    }
+
+    private boolean processInteractTamed(EntityPlayer player, EnumHand hand, ItemStack stack) {
+        if (player.isSneaking() && !this.isSitting()) {
+            player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+        }
+
+        if (!stack.isEmpty()) {
+            //デバッグ用
+            if (this.isOwner(player) && stack.getItem() == Items.STICK) {
+                float i = friendPoint;
+                String s = String.valueOf(i);
+                player.sendStatusMessage(new TextComponentTranslation(s + "exp"), true);
             }
-            if (!stack.isEmpty()) {
-                //デバッグ用
-                if (this.isOwner(player) && stack.getItem() == Items.STICK) {
-                    float i = friendPoint;
-                    String s = String.valueOf(i);
-                    player.sendStatusMessage(new TextComponentTranslation(s + "exp"), true);
-                }
-                if (this.isOwner(player) && Heal_ITEMS.contains(stack.getItem())) {
-                    ItemFood itemfood = (ItemFood) stack.getItem();
-                    if (this.getHealth() < this.getMaxHealth()) {
-                        if (!player.capabilities.isCreativeMode) {
-                            stack.shrink(1);
-                        }
-
-                        this.heal((float) itemfood.getHealAmount(stack));
-                        this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
-
-                        for (int i = 0; i < 7; ++i) {
-                            double d0 = this.rand.nextGaussian() * 0.02D;
-                            double d1 = this.rand.nextGaussian() * 0.02D;
-                            double d2 = this.rand.nextGaussian() * 0.02D;
-                            this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
-                        }
-                        return true;
-                    }
-                }
-                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
-
+            if (this.isOwner(player) && Heal_ITEMS.contains(stack.getItem())) {
+                ItemFood itemfood = (ItemFood) stack.getItem();
+                if (this.getHealth() < this.getMaxHealth()) {
                     if (!player.capabilities.isCreativeMode) {
                         stack.shrink(1);
                     }
-                    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 4.0D);
-                    this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
+
+                    this.heal((float) itemfood.getHealAmount(stack));
+                    this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
 
                     for (int i = 0; i < 7; ++i) {
                         double d0 = this.rand.nextGaussian() * 0.02D;
                         double d1 = this.rand.nextGaussian() * 0.02D;
                         double d2 = this.rand.nextGaussian() * 0.02D;
-                        this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                        this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
                     }
                     return true;
                 }
             }
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
-                this.aiSit.setSitting(!this.isSitting());
+            if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
+
+                if (!player.capabilities.isCreativeMode) {
+                    stack.shrink(1);
+                }
+                this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 4.0D);
+                this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
+
+                for (int i = 0; i < 7; ++i) {
+                    double d0 = this.rand.nextGaussian() * 0.02D;
+                    double d1 = this.rand.nextGaussian() * 0.02D;
+                    double d2 = this.rand.nextGaussian() * 0.02D;
+                    this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
+                }
                 return true;
             }
-        } else if (!this.isTamed() && Heal_ITEMS.contains(stack.getItem())) {
-            if (!player.capabilities.isCreativeMode) {
-                stack.setCount(stack.getCount() - 1);
-            }
+        }
+        if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+            this.aiSit.setSitting(!this.isSitting());
+            return true;
+        }
+        return true;
+    }
 
-            if (!this.world.isRemote) {
-                if (this.rand.nextInt(3) == 0) {
+    public boolean processInteractFood(EntityPlayer player, EnumHand hand, ItemStack stack) {
+        if (this.isTamed()) {
+            return false;
+        }
+
+        if (!player.capabilities.isCreativeMode) {
+            stack.shrink(1);
+        }
+
+        if (!this.world.isRemote) {
+            if (Heal_ITEMS.contains(stack.getItem())) {
+                if (!player.capabilities.isCreativeMode) {
+                    stack.shrink(1);
+                }
+                if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
                     this.playTameEffect(true);
@@ -227,14 +249,9 @@ public class EntityFriend extends EntityTameable {
                     this.playTameEffect(false);
                     this.world.setEntityState(this, (byte) 6);
                 }
-
-
             }
-
-            return true;
         }
-
-        return super.processInteract(player, hand);
+        return true;
     }
 
     @Override
