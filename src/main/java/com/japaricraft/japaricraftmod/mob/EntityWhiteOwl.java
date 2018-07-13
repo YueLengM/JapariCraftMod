@@ -26,7 +26,7 @@ import java.util.Set;
 
 
 public class EntityWhiteOwl extends EntityFriend {
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry, Items.RABBIT_STEW, Items.MUSHROOM_STEW);
+    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry, Items.RABBIT_STEW, Items.MUSHROOM_STEW, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
     private EntityPlayerSP player;
     public float wingRotation;
     public float destPos;
