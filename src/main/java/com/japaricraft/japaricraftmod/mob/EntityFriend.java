@@ -217,6 +217,7 @@ public class EntityFriend extends EntityTameable {
                 return true;
             }
         }
+
         if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
             this.aiSit.setSitting(!this.isSitting());
             return true;
