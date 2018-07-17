@@ -236,9 +236,6 @@ public class EntityFriend extends EntityTameable {
 
         if (!this.world.isRemote) {
             if (Heal_ITEMS.contains(stack.getItem())) {
-                if (!player.capabilities.isCreativeMode) {
-                    stack.shrink(1);
-                }
                 if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
