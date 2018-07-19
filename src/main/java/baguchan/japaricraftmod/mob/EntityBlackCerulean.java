@@ -1,0 +1,307 @@
+package baguchan.japaricraftmod.mob;
+
+import baguchan.japaricraftmod.JapariCraftMod;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityFallingBlock;
+import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.pathfinding.PathNodeType;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class EntityBlackCerulean extends EntityMob {
+    private static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/blackcerulean");
+
+    private static final DataParameter<Boolean> IS_STANDING = EntityDataManager.<Boolean>createKey(EntityBlackCerulean.class, DataSerializers.BOOLEAN);
+    private float clientSideStandAnimation0;
+    private float clientSideStandAnimation;
+    private int warningSoundTicks;
+
+    private final BossInfoServer bossInfo = (BossInfoServer) (new BossInfoServer(this.getDisplayName(), BossInfo.Color.BLUE, BossInfo.Overlay.PROGRESS));
+
+    public EntityBlackCerulean(World worldIn) {
+        super(worldIn);
+        this.setSize(3.9F, 3.8F);
+        this.experienceValue = 20;
+        this.setPathPriority(PathNodeType.WATER, -1.0F);
+    }
+
+    @Override
+    protected void initEntityAI() {
+        super.initEntityAI();
+        this.tasks.addTask(1, new EntityBlackCerulean.AIMeleeAndStompAttack(this));
+        this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+        this.tasks.addTask(5, new EntityAILookIdle(this));
+        this.tasks.addTask(6, new EntityAIMoveThroughVillage(this, 1.0D, false));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityVillager.class, false));
+        this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityAnimal.class, true));
+    }
+
+    @Override
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(160.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(28.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(0.5D);
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENTITY_MAGMACUBE_SQUISH;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundEvents.ENTITY_MAGMACUBE_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.ENTITY_MAGMACUBE_DEATH;
+    }
+
+    @Override
+    protected void playStepSound(BlockPos pos, Block blockIn) {
+        this.playSound(SoundEvents.ENTITY_ZOMBIE_STEP, 0.50F, 1.0F);
+    }
+
+    protected void playWarningSound() {
+        if (this.warningSoundTicks <= 0) {
+            this.playSound(SoundEvents.ENTITY_IRONGOLEM_ATTACK, 1.1F, 1.0F);
+            this.warningSoundTicks = 40;
+        }
+    }
+
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable() {
+        return LOOT_TABLE;
+    }
+
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+        this.dataManager.register(IS_STANDING, Boolean.FALSE);
+    }
+
+    @Override
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.world.canSeeSky(new BlockPos(this));
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+
+        if (this.world.isRemote) {
+            this.clientSideStandAnimation0 = this.clientSideStandAnimation;
+
+            if (this.isStanding()) {
+                this.clientSideStandAnimation = MathHelper.clamp(this.clientSideStandAnimation + 1.0F, 0.0F, 6.0F);
+            } else {
+                this.clientSideStandAnimation = MathHelper.clamp(this.clientSideStandAnimation - 1.0F, 0.0F, 6.0F);
+            }
+        }
+
+        if (this.warningSoundTicks > 0) {
+            --this.warningSoundTicks;
+        }
+    }
+
+    @Override
+    public void damageEntity(DamageSource source, float amount) {
+        super.damageEntity(source, amount);
+        this.bossInfo.setPercent(getHealth() / getMaxHealth());
+    }
+
+    private boolean isStanding() {
+        return (Boolean) this.dataManager.get(IS_STANDING);
+    }
+
+    private void setStanding(boolean standing) {
+        this.dataManager.set(IS_STANDING, standing);
+    }
+
+    @Override
+    protected void updateAITasks() {
+        if (this.isWet()) {
+            this.attackEntityFrom(DamageSource.DROWN, 8.0F);
+        }
+
+        super.updateAITasks();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getStandingAnimationScale(float p_189795_1_) {
+        return (this.clientSideStandAnimation0 + (this.clientSideStandAnimation - this.clientSideStandAnimation0) * p_189795_1_) / 6.0F;
+    }
+
+    @Override
+    public float getEyeHeight() {
+        return this.height * 0.6F;
+    }
+
+    @Override
+    public void addTrackingPlayer(EntityPlayerMP player) {
+        super.addTrackingPlayer(player);
+        this.bossInfo.addPlayer(player);
+    }
+
+    //敵（プレイヤー）の登録解除
+    @Override
+    public void removeTrackingPlayer(EntityPlayerMP player) {
+        super.removeTrackingPlayer(player);
+        this.bossInfo.removePlayer(player);
+    }
+
+    public class AIMeleeAndStompAttack extends EntityAIAttackMelee {
+        public EntityBlackCerulean cerulean;
+
+        public AIMeleeAndStompAttack(EntityBlackCerulean blackCerulean) {
+            super(blackCerulean, 1.05D, true);
+            this.cerulean = blackCerulean;
+        }
+
+        protected void checkAndPerformAttack(EntityLivingBase p_190102_1_, double p_190102_2_) {
+            double d0 = this.getAttackReachSqr(p_190102_1_);
+
+            if (p_190102_2_ <= d0 && this.attackTick <= 0) {
+                this.attackTick = 40;
+                if (rand.nextInt(8) == 0) {
+                    int hitY = MathHelper.floor(cerulean.getEntityBoundingBox().minY - 0.5);
+                    final int maxDistance = 6;
+                    WorldServer world = (WorldServer) cerulean.world;
+                    cerulean.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 2, 1F + cerulean.getRNG().nextFloat() * 0.1F);
+                    int distance = 10 / 2 - 2;
+                    double spread = Math.PI * 2;
+                    int arcLen = MathHelper.ceil(distance * spread);
+                    double minY = cerulean.getEntityBoundingBox().minY;
+                    double maxY = cerulean.getEntityBoundingBox().maxY;
+                    for (int i = 0; i < arcLen; i++) {
+                        double theta = (i / (arcLen - 1.0) - 0.5) * spread;
+                        double vx = Math.cos(theta);
+                        double vz = Math.sin(theta);
+                        double px = cerulean.posX + vx * distance;
+                        double pz = cerulean.posZ + vz * distance;
+                        float factor = 1 - distance / (float) maxDistance;
+                        AxisAlignedBB selection = new AxisAlignedBB(px - 1.5, minY, pz - 1.5, px + 1.5, maxY, pz + 1.5);
+                        List<Entity> hit = world.getEntitiesWithinAABB(Entity.class, selection);
+                        for (Entity entity : hit) {
+                            if (entity == cerulean || entity instanceof EntityFallingBlock) {
+                                continue;
+                            }
+                            if (entity instanceof EntityLivingBase) {
+                                entity.attackEntityFrom(DamageSource.FALLING_BLOCK, factor * 5 + 1);
+                            }
+                            double magnitude = world.rand.nextDouble() * 0.15 + 0.1;
+                            entity.motionX += vx * factor * magnitude;
+                            if (entity.onGround) {
+                                entity.motionY += 0.1 + factor * 0.15;
+                            }
+                            entity.motionZ += vz * factor * magnitude;
+                        }
+                        if (world.rand.nextBoolean()) {
+                            int hitX = MathHelper.floor(px);
+                            int hitZ = MathHelper.floor(pz);
+                            BlockPos pos = new BlockPos(hitX, hitY, hitZ);
+                            if (world.isAirBlock(pos.up())) {
+                                IBlockState block = world.getBlockState(pos);
+                                if (block.getMaterial() != Material.AIR && block.isBlockNormalCube() && block != Blocks.BEDROCK) {
+                                    EntityFallingBlock fallingBlock = new EntityFallingBlock(world, hitX + 0.5, hitY + 0.5, hitZ + 0.5, block);
+                                    fallingBlock.motionX = 0;
+                                    fallingBlock.motionY = 0.4 + factor * 0.2;
+                                    fallingBlock.motionZ = 0;
+                                    fallingBlock.fallTime = 2;
+                                    world.spawnEntity(fallingBlock);
+                                    world.setBlockToAir(pos);
+                                    int amount = 6 + world.rand.nextInt(10);
+                                    int stateId = Block.getStateId(block);
+                                    while (amount-- > 0) {
+                                        double cx = px + world.rand.nextFloat() * 2 - 1;
+                                        double cy = cerulean.getEntityBoundingBox().minY + 0.1 + world.rand.nextFloat() * 0.3;
+                                        double cz = pz + world.rand.nextFloat() * 2 - 1;
+                                        world.spawnParticle(EnumParticleTypes.BLOCK_CRACK, cx, cy, cz, 0, vx, 0.4 + world.rand.nextFloat() * 0.2F, vz, 1, stateId);
+                                    }
+                                }
+                            }
+                        }
+                        if (world.rand.nextBoolean()) {
+                            int amount = world.rand.nextInt(5);
+                            while (amount-- > 0) {
+                                double velX = vx * 0.075;
+                                double velY = factor * 0.3 + 0.025;
+                                double velZ = vz * 0.075;
+                                world.spawnParticle(EnumParticleTypes.CLOUD, px + world.rand.nextFloat() * 2 - 1, cerulean.getEntityBoundingBox().minY + 0.1 + world.rand.nextFloat() * 1.5, pz + world.rand.nextFloat() * 2 - 1, 0, velX, velY, velZ, 1);
+                            }
+                        }
+                    }
+                }
+                this.attacker.attackEntityAsMob(p_190102_1_);
+                EntityBlackCerulean.this.setStanding(false);
+            } else if (p_190102_2_ <= d0 * 2.0D) {
+                if (this.attackTick <= 0) {
+                    EntityBlackCerulean.this.setStanding(false);
+                    this.attackTick = 40;
+                }
+
+                if (this.attackTick <= 10) {
+                    EntityBlackCerulean.this.setStanding(true);
+                    EntityBlackCerulean.this.playWarningSound();
+                }
+            } else {
+                this.attackTick = 40;
+                EntityBlackCerulean.this.setStanding(false);
+            }
+        }
+
+        /**
+         * Reset the task's internal state. Called when this task is interrupted by another one
+         */
+        public void resetTask() {
+            EntityBlackCerulean.this.setStanding(false);
+            super.resetTask();
+        }
+
+        protected double getAttackReachSqr(EntityLivingBase attackTarget) {
+            return (double) (15.0F + attackTarget.width);
+        }
+    }
+
+    public boolean isNonBoss() {
+        return false;
+    }
+}

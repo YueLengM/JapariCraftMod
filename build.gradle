@@ -16,7 +16,7 @@ tasks.withType(Jar) {
 }
 
 version = "1.12.2-4.4.5"
-group= "com.japaricraft.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "baguchan.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "japaricraftmod"
 
 sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
