@@ -133,7 +133,7 @@ public class EntityBrownOwl extends EntityFriend {
 
         this.wingRotDelta = (float) ((double) this.wingRotDelta * 0.9D);
 
-        if (!this.onGround && this.motionY < 0.0D) {
+        if (!this.onGround && this.motionY < -0.3D) {
             this.motionY *= 0.6D;
         }
 
