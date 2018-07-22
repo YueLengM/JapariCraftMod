@@ -84,12 +84,12 @@ public class EntityWhiteOwl extends EntityFriend {
             return false;
         }
 
-        if (!player.capabilities.isCreativeMode) {
-            stack.shrink(1);
-        }
-
         if (!this.world.isRemote) {
             if (TAME_ITEMS.contains(stack.getItem())) {
+                if (!player.capabilities.isCreativeMode) {
+                    stack.shrink(1);
+                }
+
                 if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
