@@ -121,6 +121,7 @@ public class ModelSquirre extends ModelBase {
         }
 
         this.handR.rotateAngleY = 0.0F;
+        this.handL.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;
 
         if (this.swingProgress > 0.0F) {
