@@ -1,7 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.advancements.AchievementsJapari;
-import baguchan.japaricraftmod.gui.FriendMobNBTs;
 import baguchan.japaricraftmod.handler.JapariItems;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
@@ -14,7 +13,6 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -54,27 +52,6 @@ public class EntityKouteiPenguin extends EntityFriend {
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
     }
-
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound) {
-        super.writeEntityToNBT(compound);
-
-        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, this.getInventoryFriendMain().writeInventoryToNBT());
-
-        compound.setTag(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, this.getInventoryFriendEquipment().writeInventoryToNBT());
-
-    }
-
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound) {
-        super.readEntityFromNBT(compound);
-
-        this.getInventoryFriendMain().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_INVENTORY, 10));
-
-        this.getInventoryFriendEquipment().readInventoryFromNBT(compound.getTagList(FriendMobNBTs.ENTITY_FRIEND_EQUIPMENT, 10));
-
-    }
-
 
     @Override
     protected SoundEvent getDeathSound() {

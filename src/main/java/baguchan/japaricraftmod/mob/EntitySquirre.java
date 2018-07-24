@@ -1,6 +1,7 @@
 package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.handler.JapariItems;
+import baguchan.japaricraftmod.handler.JapariSounds;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -89,6 +90,14 @@ public class EntitySquirre extends EntityFriend {
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
+    protected SoundEvent getAmbientSound() {
+        if (this.isSleeping()) {
+            return JapariSounds.SQUIRRE_SLEEP;
+        } else {
+            return null;
+        }
+    }
+
     @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_PLAYER_DEATH;
@@ -126,7 +135,7 @@ public class EntitySquirre extends EntityFriend {
         if (!world.isRemote && !this.isInWater() && !this.isSleeping() && this.getRNG().nextInt(300) == 0 && !this.isRiding() && (!this.isTamed() && this.getAttackTarget() == null && !this.world.isDaytime() || this.isTamed() && this.isSitting() && !this.world.isDaytime()) || this.onGround && this.getAttackTarget() == null && !this.world.isDaytime()) {
             setSleeping(true);
         }
-        if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.isDaytime()) || this.getAttackTarget() != null || this.getRNG().nextInt(115) == 0 && !this.isTamed() || this.getRNG().nextInt(115) == 0 && this.isTamed())) {
+        if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.isDaytime()) || this.getAttackTarget() != null)) {
             setSleeping(false);
         }
     }

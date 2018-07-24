@@ -1,0 +1,8 @@
+{
+  "mob.squirre.sleep": {
+    "category": "neutral",
+    "sounds": [
+      "japaricraftmod:mob/squirre/sleep"
+    ]
+  }
+}
