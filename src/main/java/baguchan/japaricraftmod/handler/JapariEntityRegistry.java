@@ -75,7 +75,7 @@ public class JapariEntityRegistry {
         List<Biome> forest_biomes = Lists.newArrayList();
         for (Biome biome : Biome.REGISTRY) {
             Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
-            if (types.contains(FOREST) && !types.contains(SNOWY) && !types.contains(NETHER) && !biome.getSpawnableList(EnumCreatureType.CREATURE).isEmpty()) {
+            if (types.contains(FOREST) && !types.contains(SNOWY) && !types.contains(NETHER) && !types.contains(SPOOKY) && !biome.getSpawnableList(EnumCreatureType.CREATURE).isEmpty()) {
                 forest_biomes.add(biome);
             }
         }
