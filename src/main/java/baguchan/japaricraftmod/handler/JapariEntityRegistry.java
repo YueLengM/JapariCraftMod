@@ -38,7 +38,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "royalpenguin"), RoyalPenguinEntity.class, "RoyalPenguin", 16, JapariCraftMod.instance, 65, 1, false, 2243405, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "alpaca"), EntityAlpaca.class, "Alpaca", 17, JapariCraftMod.instance, 65, 1, false, 0xf0f5f0, 0xf5f5dc);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "squirre"), EntitySquirre.class, "Squirre", 18, JapariCraftMod.instance, 65, 1, false, 0xf0f5f0, 0x993300);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "tutinoko"), EntityTutinoko.class, "Tutinoko", 19, JapariCraftMod.instance, 65, 1, false);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "tutinoko"), EntityTutinoko.class, "Tutinoko", 19, JapariCraftMod.instance, 65, 1, false, 0x5C2A2C, 0xC92C2C);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "otter"), EntityOtter.class, "Otter", 20, JapariCraftMod.instance, 70, 1, false, 0xADADAD, 0x949494);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "ceruleaneye"), EntityCeruleanEye.class, "CeruleanEye", 21, JapariCraftMod.instance, 70, 1, false, 0x333333, 0x339966);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "endercerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, JapariCraftMod.instance, 70, 1, false, 0x333333, 0x808080);
@@ -93,6 +93,13 @@ public class JapariEntityRegistry {
                 jungle_biomes.add(biome);
             }
         }
+        List<Biome> spooky_biomes = Lists.newArrayList();
+        for (Biome biome : Biome.REGISTRY) {
+            Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(biome);
+            if (types.contains(SPOOKY) && !types.contains(NETHER) && !biome.getSpawnableList(EnumCreatureType.CREATURE).isEmpty()) {
+                spooky_biomes.add(biome);
+            }
+        }
         EntityRegistry.addSpawn(EntityFennec.class, 3, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(EntitySandCat.class, 2, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
         EntityRegistry.addSpawn(EntityKouteiPenguin.class, 3, 1, 2, EnumCreatureType.CREATURE, snow_biomes.toArray(new Biome[snow_biomes.size()]));
@@ -108,5 +115,6 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(PoisonEntityCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(EntityAlpaca.class, 6, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
         EntityRegistry.addSpawn(EntityBlackCerulean.class, JapariConfig.blackcerulean_wight, 1, 1, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
+        EntityRegistry.addSpawn(EntityTutinoko.class, 6, 1, 2, EnumCreatureType.CREATURE, spooky_biomes.toArray(new Biome[spooky_biomes.size()]));
     }
 }
