@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelTutinoko extends ModelBase {
     public ModelRenderer body;
@@ -26,21 +27,6 @@ public class ModelTutinoko extends ModelBase {
     public ModelTutinoko() {
         this.textureWidth = 128;
         this.textureHeight = 64;
-        this.legR = new ModelRenderer(this, 8, 17);
-        this.legR.setRotationPoint(-2.0F, 12.0F, 0.0F);
-        this.legR.addBox(-1.0F, 0.0F, -1.0F, 2, 9, 2, 0.0F);
-        this.handR = new ModelRenderer(this, 0, 17);
-        this.handR.setRotationPoint(-4.4F, 0.3F, 0.0F);
-        this.handR.addBox(-1.0F, 0.0F, -1.0F, 2, 10, 2, 0.0F);
-        this.hood4 = new ModelRenderer(this, 77, 12);
-        this.hood4.setRotationPoint(3.5F, -2.0F, -4.5F);
-        this.hood4.addBox(0.0F, 0.0F, 0.0F, 1, 6, 9, 0.0F);
-        this.body = new ModelRenderer(this, 0, 0);
-        this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.body.addBox(-3.5F, 0.0F, -2.5F, 7, 12, 5, 0.0F);
-        this.head = new ModelRenderer(this, 24, 0);
-        this.head.setRotationPoint(0.0F, -4.0F, 0.0F);
-        this.head.addBox(-4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F);
         this.tail2 = new ModelRenderer(this, 16, 24);
         this.tail2.setRotationPoint(0.0F, 0.0F, 3.3F);
         this.tail2.addBox(-1.0F, -1.0F, 0.0F, 2, 2, 4, 0.0F);
@@ -48,33 +34,48 @@ public class ModelTutinoko extends ModelBase {
         this.hood3 = new ModelRenderer(this, 77, 27);
         this.hood3.setRotationPoint(-4.5F, -2.0F, 3.5F);
         this.hood3.addBox(0.0F, 0.0F, 0.0F, 9, 6, 1, 0.0F);
-        this.legL = new ModelRenderer(this, 8, 17);
-        this.legL.setRotationPoint(2.0F, 12.0F, 0.0F);
-        this.legL.addBox(-1.0F, 0.0F, -1.0F, 2, 9, 2, 0.0F);
+        this.handR = new ModelRenderer(this, 0, 17);
+        this.handR.setRotationPoint(-4.4F, 0.3F, 0.0F);
+        this.handR.addBox(-1.0F, 0.0F, -1.0F, 2, 10, 2, 0.0F);
         this.hood1 = new ModelRenderer(this, 56, 0);
         this.hood1.setRotationPoint(-4.5F, -5.0F, -4.5F);
         this.hood1.addBox(0.0F, 0.0F, 0.0F, 9, 3, 9, 0.0F);
+        this.legR = new ModelRenderer(this, 8, 17);
+        this.legR.setRotationPoint(-2.0F, 12.0F, 0.0F);
+        this.legR.addBox(-1.0F, 0.0F, -1.0F, 2, 9, 2, 0.0F);
         this.hood2 = new ModelRenderer(this, 56, 12);
         this.hood2.setRotationPoint(-4.5F, -2.0F, -4.5F);
         this.hood2.addBox(0.0F, 0.0F, 0.0F, 1, 6, 9, 0.0F);
+        this.handL = new ModelRenderer(this, 0, 17);
+        this.handL.setRotationPoint(4.6F, 0.3F, 0.0F);
+        this.handL.addBox(-1.0F, 0.0F, -1.0F, 2, 10, 2, 0.0F);
         this.tail = new ModelRenderer(this, 16, 17);
         this.tail.setRotationPoint(0.0F, 9.0F, 2.0F);
         this.tail.addBox(-1.5F, -1.5F, 0.0F, 3, 3, 4, 0.0F);
         this.setRotateAngle(tail, -0.40980330836826856F, 0.0F, 0.0F);
-        this.handL = new ModelRenderer(this, 0, 17);
-        this.handL.setRotationPoint(4.6F, 0.3F, 0.0F);
-        this.handL.addBox(-1.0F, 0.0F, -1.0F, 2, 10, 2, 0.0F);
-        this.body.addChild(this.legR);
-        this.body.addChild(this.handR);
-        this.head.addChild(this.hood4);
-        this.body.addChild(this.head);
+        this.hood4 = new ModelRenderer(this, 77, 12);
+        this.hood4.setRotationPoint(3.5F, -2.0F, -4.5F);
+        this.hood4.addBox(0.0F, 0.0F, 0.0F, 1, 6, 9, 0.0F);
+        this.head = new ModelRenderer(this, 24, 0);
+        this.head.setRotationPoint(0.0F, -4.0F, 0.0F);
+        this.head.addBox(-4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F);
+        this.body = new ModelRenderer(this, 0, 0);
+        this.body.setRotationPoint(0.0F, 3.0F, 0.0F);
+        this.body.addBox(-3.5F, 0.0F, -2.5F, 7, 12, 5, 0.0F);
+        this.legL = new ModelRenderer(this, 8, 17);
+        this.legL.setRotationPoint(2.0F, 12.0F, 0.0F);
+        this.legL.addBox(-1.0F, 0.0F, -1.0F, 2, 9, 2, 0.0F);
         this.tail.addChild(this.tail2);
         this.head.addChild(this.hood3);
-        this.body.addChild(this.legL);
+        this.body.addChild(this.handR);
         this.head.addChild(this.hood1);
+        this.body.addChild(this.legR);
         this.head.addChild(this.hood2);
-        this.body.addChild(this.tail);
         this.body.addChild(this.handL);
+        this.body.addChild(this.tail);
+        this.head.addChild(this.hood4);
+        this.body.addChild(this.head);
+        this.body.addChild(this.legL);
     }
 
     @Override
@@ -124,13 +125,7 @@ public class ModelTutinoko extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-        } else {
-            this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-            this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
-            this.legR.rotateAngleY = 0.0F;
-            this.legL.rotateAngleY = 0.0F;
-            this.legR.rotateAngleZ = 0.0F;
-            this.legL.rotateAngleZ = 0.0F;
+            GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
         this.handR.rotateAngleY = 0.0F;

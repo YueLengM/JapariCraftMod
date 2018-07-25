@@ -2,7 +2,6 @@ package baguchan.japaricraftmod.model.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.mob.EntityTutinoko;
-import baguchan.japaricraftmod.model.ModelFennec;
 import baguchan.japaricraftmod.model.ModelTutinoko;
 import baguchan.japaricraftmod.model.render.layer.LayerFriendHeldItem;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -28,7 +27,7 @@ public class TutinokoRender extends RenderLiving<EntityTutinoko> {
         this.addLayer(new LayerFriendHeldItem(this) {
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelFennec) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
+                ((ModelTutinoko) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
             }
         });
     }
