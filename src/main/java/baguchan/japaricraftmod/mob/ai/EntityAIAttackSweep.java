@@ -162,6 +162,17 @@ public class EntityAIAttackSweep extends EntityAIBase {
             }
         }
 
+        //shift氏のやつを参考にしてみた（近づきすぎないようにする）
+        if (entitylivingbase != null) {
+
+            if (d0 <= 4.0d) {
+
+                this.attacker.getNavigator().clearPath();
+
+            }
+
+        }
+
         this.attackTick = Math.max(this.attackTick - 1, 0);
         this.checkAndPerformAttack(entitylivingbase, d0);
     }
@@ -205,6 +216,6 @@ public class EntityAIAttackSweep extends EntityAIBase {
     }
 
     protected double getAttackReachSqr(EntityLivingBase attackTarget) {
-        return (double) (this.attacker.width * 2.5F * this.attacker.width * 2.5F + attackTarget.width);
+        return (double) (this.attacker.width * 2.7F * this.attacker.width * 2.7F + attackTarget.width);
     }
 }
