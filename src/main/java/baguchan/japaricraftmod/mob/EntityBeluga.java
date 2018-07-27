@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import baguchan.japaricraftmod.mob.ai.EntityAIWaterFollowOwner;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityCreature;
@@ -32,7 +33,7 @@ public class EntityBeluga extends EntityFriend {
         this.wander = new EntityAIWander(this, 1.0D, 80);
 
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.05D, true));
+        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.05D, true));
         this.tasks.addTask(4, new EntityAIWaterFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(5, this.wander);
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F, 1.0F));

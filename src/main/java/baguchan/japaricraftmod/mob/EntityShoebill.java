@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import baguchan.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -29,7 +30,7 @@ public class EntityShoebill extends EntityFriend {
 
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.1D, true));
+        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.1D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));

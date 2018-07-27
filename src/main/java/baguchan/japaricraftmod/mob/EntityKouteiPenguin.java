@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.advancements.AchievementsJapari;
 import baguchan.japaricraftmod.handler.JapariItems;
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -37,7 +38,7 @@ public class EntityKouteiPenguin extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.05D, true));
+        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.05D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));

@@ -1,7 +1,9 @@
 package baguchan.japaricraftmod.mob;
 
+import baguchan.japaricraftmod.advancements.AchievementsJapari;
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.handler.JapariSounds;
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -11,18 +13,20 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 import java.util.Set;
 
 public class EntitySquirre extends EntityFriend {
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.APPLE, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
+    private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit, Items.APPLE);
 
     private static final DataParameter<Boolean> SLEEPING = EntityDataManager.createKey(EntitySquirre.class, DataSerializers.BOOLEAN);
 
@@ -42,7 +46,7 @@ public class EntitySquirre extends EntityFriend {
 
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackMelee(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.0D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
@@ -148,6 +152,32 @@ public class EntitySquirre extends EntityFriend {
         }
     }
 
+
+    public boolean processInteractFood(EntityPlayer player, EnumHand hand, ItemStack stack) {
+        if (this.isTamed()) {
+            return false;
+        }
+
+        if (!this.world.isRemote) {
+            if (Heal_ITEMS.contains(stack.getItem())) {
+                if (!player.capabilities.isCreativeMode) {
+                    stack.shrink(1);
+                }
+                if (this.rand.nextInt(2) == 0) {
+                    this.setTamed(true);
+                    this.setOwnerId(player.getUniqueID());
+                    this.playTameEffect(true);
+                    this.world.setEntityState(this, (byte) 7);
+                    //ここで実績を解除させる
+                    AchievementsJapari.grantAdvancement(player, "tame_friends");
+                } else {
+                    this.playTameEffect(false);
+                    this.world.setEntityState(this, (byte) 6);
+                }
+            }
+        }
+        return true;
+    }
 
     @Override
     public boolean canDespawn() {
