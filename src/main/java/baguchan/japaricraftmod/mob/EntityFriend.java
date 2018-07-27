@@ -170,17 +170,13 @@ public class EntityFriend extends EntityTameable {
     }
 
     private boolean processInteractTamed(EntityPlayer player, EnumHand hand, ItemStack stack) {
-        if (player.isSneaking() && !this.isSitting()) {
-            player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
-        }
         if (!stack.isEmpty()) {
             //デバッグ用
             if (this.isOwner(player) && stack.getItem() == Items.STICK) {
                 float i = friendPoint;
                 String s = String.valueOf(i);
                 player.sendStatusMessage(new TextComponentTranslation(s + "exp"), true);
-            }
-            if (this.isOwner(player) && Heal_ITEMS.contains(stack.getItem())) {
+            } else if (this.isOwner(player) && Heal_ITEMS.contains(stack.getItem())) {
                 ItemFood itemfood = (ItemFood) stack.getItem();
                 if (this.getHealth() < this.getMaxHealth()) {
                     if (!player.capabilities.isCreativeMode) {
@@ -196,10 +192,9 @@ public class EntityFriend extends EntityTameable {
                         double d2 = this.rand.nextGaussian() * 0.02D;
                         this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
                     }
-                    return true;
                 }
-            }
-            if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
+                return true;
+            } else if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
 
                 if (!player.capabilities.isCreativeMode) {
                     stack.shrink(1);
@@ -216,9 +211,12 @@ public class EntityFriend extends EntityTameable {
                 return true;
             }
         }
-        if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+        if (player.isSneaking() && !this.isSitting() && !isHealItem(stack)) {
+            player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+        }
+
+        if (!this.world.isRemote && this.isOwner(player) && !isHealItem(stack)) {
             this.aiSit.setSitting(!this.isSitting());
-            return true;
         }
         return true;
     }
@@ -236,6 +234,8 @@ public class EntityFriend extends EntityTameable {
                 if (this.rand.nextInt(2) == 0) {
                     this.setTamed(true);
                     this.setOwnerId(player.getUniqueID());
+                    this.navigator.clearPath();
+                    this.setAttackTarget((EntityLivingBase) null);
                     this.playTameEffect(true);
                     this.world.setEntityState(this, (byte) 7);
                     //ここで実績を解除させる
@@ -247,6 +247,10 @@ public class EntityFriend extends EntityTameable {
             }
         }
         return true;
+    }
+
+    public boolean isHealItem(ItemStack stack) {
+        return Heal_ITEMS.contains(stack.getItem());
     }
 
     @Override
