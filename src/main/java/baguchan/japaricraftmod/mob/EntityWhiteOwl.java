@@ -1,7 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
 
-import baguchan.japaricraftmod.advancements.AchievementsJapari;
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import com.google.common.collect.Sets;
@@ -18,7 +17,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -80,31 +78,8 @@ public class EntityWhiteOwl extends EntityFriend {
     }
 
     @Override
-    public boolean processInteractFood(EntityPlayer player, EnumHand hand, ItemStack stack) {
-        if (this.isTamed()) {
-            return false;
-        }
-
-        if (!this.world.isRemote) {
-            if (TAME_ITEMS.contains(stack.getItem())) {
-                if (!player.capabilities.isCreativeMode) {
-                    stack.shrink(1);
-                }
-
-                if (this.rand.nextInt(2) == 0) {
-                    this.setTamed(true);
-                    this.setOwnerId(player.getUniqueID());
-                    this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte) 7);
-                    //ここで実績を解除させる
-                    AchievementsJapari.grantAdvancement(player, "tame_friends");
-                } else {
-                    this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte) 6);
-                }
-            }
-        }
-        return true;
+    public boolean isHealItem(ItemStack stack) {
+        return TAME_ITEMS.contains(stack.getItem());
     }
 
     @Override

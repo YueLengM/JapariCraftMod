@@ -1,6 +1,5 @@
 package baguchan.japaricraftmod.mob;
 
-import baguchan.japaricraftmod.advancements.AchievementsJapari;
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.handler.JapariSounds;
 import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
@@ -19,7 +18,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -153,30 +151,9 @@ public class EntitySquirre extends EntityFriend {
     }
 
 
-    public boolean processInteractFood(EntityPlayer player, EnumHand hand, ItemStack stack) {
-        if (this.isTamed()) {
-            return false;
-        }
-
-        if (!this.world.isRemote) {
-            if (Heal_ITEMS.contains(stack.getItem())) {
-                if (!player.capabilities.isCreativeMode) {
-                    stack.shrink(1);
-                }
-                if (this.rand.nextInt(2) == 0) {
-                    this.setTamed(true);
-                    this.setOwnerId(player.getUniqueID());
-                    this.playTameEffect(true);
-                    this.world.setEntityState(this, (byte) 7);
-                    //ここで実績を解除させる
-                    AchievementsJapari.grantAdvancement(player, "tame_friends");
-                } else {
-                    this.playTameEffect(false);
-                    this.world.setEntityState(this, (byte) 6);
-                }
-            }
-        }
-        return true;
+    @Override
+    public boolean isHealItem(ItemStack stack) {
+        return Heal_ITEMS.contains(stack.getItem());
     }
 
     @Override
