@@ -30,6 +30,11 @@ public class JapariGuiHandler implements IGuiHandler {
                 return new GuiFriendInventory((EntityFriend) entity, player);
             }
         }
+        if (ID == JapariCraftMod.ID_Tutorial_Gui) {
+
+            return new GuiTutorialPaper(player);
+
+        }
         return null;
     }
 }

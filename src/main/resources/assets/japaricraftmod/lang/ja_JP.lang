@@ -42,6 +42,7 @@ item.SandStarIronLeggings.name=サンドスターレギンス
 item.SandStarIronBoot.name=サンドスターブーツ
 item.ServalEarCostume.name=サーバルコスチューム(耳)
 item.IronGlove.name=鉄のグローブ
+item.tutorialpaper.name=フレンズのマニュアルの紙
 
 entity.AncientSkeleton.name=古代スケルトン
 entity.KouteiPenguin.name=皇帝ペンギン
@@ -113,3 +114,13 @@ japaricraftmod.config.blackcerulean_wight=Bossの湧き率 (ブラックセル�
 japaricraftmod.config.delphinus_wight=マイルカの湧き率
 japaricraftmod.config.structure=構成物
 japaricraftmod.config.animalvillage=アニマルビレッジを生成します
+
+page.0.name=フレンズの触れ合い方
+page.0.desc=
+page.1.desc=フレンズは森、草原、雪の地など、様々な生態系がいます。彼女らは普段は中立的（一部除く）な立場ですが、好みの食べ物を与え続けると仲間になってくれます。
+page.2.desc=ほとんどのフレンズはじゃぱりまんという食べ物で手なずけることができます。ほかにも好きな食べ物があるフレンズもあるそうです
+page.3.name=自然回復と装備
+page.4.desc=通常の場合、フレンズは自然回復をしますが、もしものためにじゃぱりまんをもたせるのがいいでしょう。装備もつけることもできます。
+page.5.desc=じゃぱりまんをもたせると体力が少ないときにじゃぱりまんを食べるようになります
+page.6.name=
+page.6.desc=レベルアップもすることもできます

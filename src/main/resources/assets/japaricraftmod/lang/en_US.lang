@@ -42,6 +42,7 @@ item.SandStarIronLeggings.name=SandStarLeggings
 item.SandStarIronBoot.name=SandStarBoot
 item.ServalEarCostume.name=ServalEarCostume
 item.IronGlove.name=IronGlove
+item.tutorialpaper.name=Friend's ManualPaper(JapariCraft)
 
 entity.AncientSkeleton.name=Ancient Skeleton
 entity.KouteiPenguin.name=Emperor Penguins
@@ -119,3 +120,18 @@ japaricraftmod.config.structure=Structure Setting
 japaricraftmod.config.animalvillage=Enable Generate AnimalVillage
 
 entity.whiteowl.friend=Thank you for making delicious food for me
+
+page.0.name=How to Make Friends
+page.0.desc=
+page.1.name=
+page.1.desc=Friends have various ecosystems such as forests, grasslands, snowy grounds. They are usually neutral (some are excluded), but if you continue to give your favorite foods they will become friends.
+page.2.name=
+page.2.desc=Most friends will be friends with food called Japariman. There are other Friends which have other favorite foods
+page.3.name=Natural recovery and equipment
+page.3.desc=
+page.4.name=
+page.4.desc=In a normal case, Friends will recover naturally, but it would be a good idea to have Japariman for if. Equipment can also be attached.
+page.5.name=
+page.5.desc=If you bring Japariman to Friends, she will eat Japariman when the physical strength of Friends is low
+page.6.name=Tip
+page.6.desc=and her can also level up

@@ -79,16 +79,17 @@ entity.Villager.japaricraftmod.zookeeper=Tierpfleger
 
 fluid.sandstar=Sandstern Wasser
 
-page.0.name=Über das Buch
-page.0.desc=Ich nutze dieses Buch für meine Nachforschungen
-page.1.name=Über sandstern I
-page.1.desc=Es ist dafür geschaffen eine eigene umgebung zu erstellen und auf ewig zu erhalten
-page.2.name=Über sandstern II
-page.2.desc=Sandstern ist nur als substanz zur herstellung von schwarzen Cerulean's
-page.3.name=Über Menschen
-page.3.desc=Cerulean wurde aktiv und die Menschen standen kurz vor der Ausrotting
-page.4.name=Autor
-page.4.desc=Steve
+//Changed content Please Change This
+page.0.name=
+page.0.desc=
+page.1.name=
+page.1.desc=
+page.2.name=
+page.2.desc=
+page.3.name=
+page.3.desc=
+page.4.name=
+page.4.desc=
 
 #Not sure if this needs translation, if it does change to: /sandstarlocate Sandstern Festung
 commands.sandstarlocate.usage=/sandstarlocate SandStarDungeon

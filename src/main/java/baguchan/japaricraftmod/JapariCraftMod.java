@@ -50,6 +50,7 @@ public class JapariCraftMod {
 
     @Mod.Instance(MODID)
     public static JapariCraftMod instance;
+    public static final int ID_Tutorial_Gui = 0;
     public static final int ID_JAPARI_INVENTORY = 1;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
 
