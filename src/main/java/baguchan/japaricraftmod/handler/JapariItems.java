@@ -8,16 +8,13 @@ import baguchan.japaricraftmod.item.armor.ItemSandStarNeckLace;
 import baguchan.japaricraftmod.item.armor.ItemServalEarCostume;
 import baguchan.japaricraftmod.item.summon.DarkSandStar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
@@ -58,22 +55,6 @@ public class JapariItems {
         return Collections.unmodifiableList(ITEMS);
     }
 
-    public static Item registerItem(Item item, String name) {
-        return registerItem(item, name, JapariCraftMod.tabJapariCraft);
-    }
-
-    public static Item registerItem(Item item, String name, CreativeTabs tab) {
-        item.setUnlocalizedName(name);
-        if (tab != null) {
-            item.setCreativeTab(JapariCraftMod.tabJapariCraft);
-        }
-
-        item.setRegistryName(new ResourceLocation(JapariCraftMod.MODID, name));
-        ForgeRegistries.ITEMS.register(item);
-        JapariCraftMod.proxy.registerItemSided(item);
-
-        return item;
-    }
 
     public static void register(IForgeRegistry<Item> registry, Item item) {
         ITEMS.add(item);
