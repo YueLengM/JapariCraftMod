@@ -163,12 +163,6 @@ public class EntityFriend extends EntityTameable {
 
         if (this.isTamed()) {
 
-            if (player.isSneaking() && !this.isSitting()) {
-
-                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
-
-            }
-
             if (!stack.isEmpty()) {
 
                 //デバッグ用
@@ -251,7 +245,13 @@ public class EntityFriend extends EntityTameable {
 
             }
 
-            if (this.isOwner(player) && !this.world.isRemote && !this.isBreedingItem(stack)) {
+            if (player.isSneaking() && !this.isSitting()) {
+
+                player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+
+            }
+
+            if (this.isOwner(player) && !this.world.isRemote) {
 
                 this.aiSit.setSitting(!this.isSitting());
 

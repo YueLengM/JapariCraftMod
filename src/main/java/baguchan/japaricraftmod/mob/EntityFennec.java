@@ -1,8 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
-import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.mob.ai.EntityAIAttackSweep;
-import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,12 +13,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-import java.util.Set;
-
 
 public class EntityFennec extends EntityFriend {
 
-    private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     public EntityFennec(World worldIn) {
         super(worldIn);
