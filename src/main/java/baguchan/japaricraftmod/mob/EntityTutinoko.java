@@ -208,24 +208,23 @@ public class EntityTutinoko extends EntityFriend {
 
             EntityLivingBase entitylivingbase = this.guardian.getAttackTarget();
 
-            if (!this.guardian.canEntityBeSeen(entitylivingbase)) {
-                this.guardian.setAttackTarget((EntityLivingBase) null);
-            } else {
-                ++this.tickCounter;
+            if (this.guardian.canEntityBeSeen(entitylivingbase)) {
+                {
+                    ++this.tickCounter;
 
-                if (this.tickCounter == 0) {
-                    this.guardian.setTargetedEntity(entitylivingbase.getEntityId());
-                } else if (this.tickCounter >= this.guardian.getAttackDuration()) {
-                    float f = 2.0F;
+                    if (this.tickCounter == 0) {
+                        this.guardian.setTargetedEntity(entitylivingbase.getEntityId());
+                    } else if (this.tickCounter >= this.guardian.getAttackDuration()) {
+                        float f = 2.0F;
 
-                    entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this.guardian, this.guardian), f);
-                    entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage(this.guardian), (float) this.guardian.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
-                    this.tickCounter = -15;
+                        entitylivingbase.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this.guardian, this.guardian), f);
+                        entitylivingbase.attackEntityFrom(DamageSource.causeMobDamage(this.guardian), (float) this.guardian.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue());
+                        this.tickCounter = -15;
+                    }
                 }
-            }
 
-            super.updateTask();
+                super.updateTask();
+            }
         }
     }
-
 }
