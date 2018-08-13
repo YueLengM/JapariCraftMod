@@ -30,6 +30,13 @@ public class JapariConfig {
     @Config.Comment("Changes spawn rate of BlackCerulean. Increase value to spawn more BlackCerulean.")
     public static int blackcerulean_wight = 1;
 
+    @Config.LangKey(config + "plain_friends_wight")
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 20)
+    @Config.Comment("Changes spawn rate of PlainAndForests'Friend. Increase value to spawn more Friends.")
+    public static int plainsfriends_wight = 6;
+
+
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
         if (event.getModID().equals(JapariCraftMod.MODID)) {

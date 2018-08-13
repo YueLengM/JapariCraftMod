@@ -114,6 +114,7 @@ japaricraftmod.config.blackcerulean_wight=Bossの湧き率 (ブラックセル�
 japaricraftmod.config.delphinus_wight=マイルカの湧き率
 japaricraftmod.config.structure=構成物
 japaricraftmod.config.animalvillage=アニマルビレッジを生成します
+japaricraftmod.config.plain_friends_wight=森や草原のフレンズの沸き率
 
 page.0.name=フレンズの触れ合い方
 page.0.desc=

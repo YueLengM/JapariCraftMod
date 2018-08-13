@@ -118,6 +118,7 @@ japaricraftmod.config.blackcerulean_wight=Boss Wight(BlackCerulean)
 japaricraftmod.config.delphinus_wight=Delphinus Wight
 japaricraftmod.config.structure=Structure Setting
 japaricraftmod.config.animalvillage=Enable Generate AnimalVillage
+japaricraftmod.config.plain_friends_wight=Forests Friend's Weight
 
 entity.whiteowl.friend=Thank you for making delicious food for me
 
