@@ -68,16 +68,13 @@ public class EntitySandCat extends EntityFriend {
     public boolean attackEntityFrom(DamageSource source, float damage) {
 
         if (source == DamageSource.FALL)
-
         {
 
             damage *= 0.4F;
 
         }
 
-
         return super.attackEntityFrom(source, damage);
-
     }
 
     public Item getDropItem() {
