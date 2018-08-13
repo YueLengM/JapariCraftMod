@@ -134,7 +134,7 @@ public class EntitySquirre extends EntityFriend {
     @Override
     public void onUpdate() {
         super.onUpdate();
-        if (!world.isRemote && !this.isInWater() && !this.world.isDaytime() && !this.isSleeping() && this.getRNG().nextInt(360) == 0 && this.getAttackTarget() == null && !this.isRiding() && this.onGround && (!this.isTamed() || this.isTamed() && this.isSitting())) {
+        if (!world.isRemote && !this.isInWater() && !this.world.isDaytime() && !this.isSleeping() && this.getRNG().nextInt(330) == 0 && this.getAttackTarget() == null && !this.isRiding() && this.onGround && (!this.isTamed() || this.isTamed() && this.isSitting())) {
             setSleeping(true);
         }
         if (!world.isRemote && this.isSleeping() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || (this.world.isDaytime()) || this.getAttackTarget() != null)) {
