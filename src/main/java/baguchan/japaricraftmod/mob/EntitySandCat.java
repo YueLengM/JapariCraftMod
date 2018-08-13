@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
@@ -63,6 +64,21 @@ public class EntitySandCat extends EntityFriend {
         return EnumCreatureAttribute.UNDEFINED;
     }
 
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float damage) {
+
+        if (source == DamageSource.FALL)
+
+        {
+
+            damage *= 0.4F;
+
+        }
+
+
+        return super.attackEntityFrom(source, damage);
+
+    }
 
     public Item getDropItem() {
 

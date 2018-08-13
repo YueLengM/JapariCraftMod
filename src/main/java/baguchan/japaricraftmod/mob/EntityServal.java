@@ -174,6 +174,22 @@ public class EntityServal extends EntityFriend {
         return null;//なにも落とさない
     }
 
+    @Override
+    public boolean attackEntityFrom(DamageSource source, float damage) {
+
+        if (source == DamageSource.FALL)
+
+        {
+
+            damage *= 0.4F;
+
+        }
+
+
+        return super.attackEntityFrom(source, damage);
+
+    }
+
 
     public boolean isBegging() {
         return this.dataManager.get(BEGGING);
