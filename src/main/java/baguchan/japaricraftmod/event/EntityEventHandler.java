@@ -38,7 +38,7 @@ public class EntityEventHandler {
         }
         if (event.getEntity() instanceof EntityZombie) {
             EntityZombie zombie = (EntityZombie) event.getEntity();
-            if (zombie.getRNG().nextInt(24) == 0) {
+            if (zombie.getRNG().nextInt(30) == 0) {
                 zombie.setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(JapariItems.kabanhat));
 
             }
