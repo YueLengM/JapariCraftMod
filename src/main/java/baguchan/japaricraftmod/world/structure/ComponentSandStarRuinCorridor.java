@@ -1,14 +1,15 @@
 package baguchan.japaricraftmod.world.structure;
 
 import baguchan.japaricraftmod.handler.JapariBlocks;
-import baguchan.japaricraftmod.mob.EntityCeruleanEye;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityList;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.monster.EntityZombieVillager;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
@@ -22,6 +23,7 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
     //入り口とはまた別のやつで通路的なやつ
     protected int averageGroundLvl = -1;
     private EnumFacing facing;
+    private boolean hasZombie;
 
     // 構成パーツリストを記憶するためのリスト
 
@@ -30,12 +32,12 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
 
     @Override
     protected void writeStructureToNBT(NBTTagCompound tagCompound) {
-
+        tagCompound.setBoolean("Zombie", this.hasZombie);
     }
 
     @Override
     protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_) {
-
+        this.hasZombie = tagCompound.getBoolean("Zombie");
     }
 
     public ComponentSandStarRuinCorridor(int height, Random par2Random, int par3, int par4, int par5) {
@@ -68,27 +70,26 @@ public class ComponentSandStarRuinCorridor extends StructureComponent {
         this.fillWithBlocks(world, structureboundingbox, 5, 1, 0, 5, 3, 0, lamp, lamp, false);
         this.fillWithBlocks(world, structureboundingbox, 1, 1, 7, 1, 3, 7, lamp, lamp, false);
         this.fillWithBlocks(world, structureboundingbox, 5, 1, 7, 5, 3, 7, lamp, lamp, false);
-        if (random.nextBoolean()) {
-            this.setBlockState(world, JapariBlocks.SANDSTAR_Lamp.getDefaultState(), 3, 0, 4, structureboundingbox);
-        } else {
-            this.generateSpawner(world, structureboundingbox, random, 3, 0, 4);
-        }
 
+        this.setBlockState(world, JapariBlocks.SANDSTAR_Lamp.getDefaultState(), 3, 0, 4, structureboundingbox);
+
+        if (!this.hasZombie) {
+            int l = this.getXWithOffset(2, 5);
+            int i1 = this.getYWithOffset(2);
+            int k = this.getZWithOffset(2, 5);
+
+            if (structureboundingbox.isVecInside(new BlockPos(l, i1, k))) {
+                this.hasZombie = true;
+                EntityZombieVillager entityZombieVillager = new EntityZombieVillager(world);
+                entityZombieVillager.enablePersistence();
+                entityZombieVillager.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.WOODEN_SWORD));
+                entityZombieVillager.setLocationAndAngles((double) l + 0.5D, (double) i1, (double) k + 0.5D, 0.0F, 0.0F);
+                entityZombieVillager.onInitialSpawn(world.getDifficultyForLocation(new BlockPos(l, i1, k)), (IEntityLivingData) null);
+                world.spawnEntity(entityZombieVillager);
+            }
+        }
         return true;
     }
 
-    protected void generateSpawner(World worldIn, StructureBoundingBox sbb, Random rand, int x, int y, int z) {
-        BlockPos blockpos =
-                new BlockPos(this.getXWithOffset(x, z), this.getYWithOffset(y), this.getZWithOffset(x, z));
-
-        if (sbb.isVecInside(blockpos) && worldIn.getBlockState(blockpos).getBlock() != Blocks.MOB_SPAWNER) {
-            this.setBlockState(worldIn, Blocks.MOB_SPAWNER.getDefaultState(), x, y, z, sbb);
-            TileEntity tileentity = worldIn.getTileEntity(blockpos);
-
-            if (tileentity instanceof TileEntityMobSpawner) {
-                ((TileEntityMobSpawner) tileentity).getSpawnerBaseLogic().setEntityId(EntityList.getKey(EntityCeruleanEye.class));
-            }
-        }
-    }
 
 }
