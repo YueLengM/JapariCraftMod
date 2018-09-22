@@ -3,4 +3,5 @@
 ===========
 License
 
-Minecraft Mod Public License Japanese Transration
+・Redistribution prohibited
+・Please inform the author when remaking
