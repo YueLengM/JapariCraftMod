@@ -277,6 +277,11 @@ public class ModelServal extends ModelBase {
         this.leg_r.rotateAngleZ = 0.0F;
         this.leg_l.rotateAngleZ = 0.0F;
 
+        if (entityServal.getEatingTick() > 1) {
+            this.hand_r.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.hand_r.rotateAngleX = -0.9F;
+        }
+
         if (entityServal.isSitting() || this.isRiding) {
             this.leg_r.rotateAngleX = -1.4137167F;
             this.leg_r.rotateAngleY = ((float) Math.PI / 10F);

@@ -16,7 +16,7 @@ public class SugarStar extends Item {
     public SugarStar()
     {
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
-        this.setUnlocalizedName("SugarStar");
+        this.setUnlocalizedName("SandStarPowder");
 
     }
     public boolean hasEffect(ItemStack stack) {

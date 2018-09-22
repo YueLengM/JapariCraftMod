@@ -248,6 +248,11 @@ public class ModelBeluga extends ModelBase {
             GL11.glTranslatef(0F, 0.2F, 0F);
         }
 
+        if (entityBeluga.getEatingTick() > 1) {
+            this.hand_r.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.hand_r.rotateAngleX = -0.9F;
+        }
+
         if (this.swingProgress > 0.0F) {
             EnumHandSide enumhandside = this.getMainHand(entityIn);
             ModelRenderer modelrenderer = this.getArmForSide(enumhandside);

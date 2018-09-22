@@ -272,6 +272,10 @@ public class ModelAraisan extends ModelBase {
         this.hand_r.rotateAngleY = 0.0F;
         this.hand_r.rotateAngleZ = 0.0F;
 
+        if (entityarai.getEatingTick() > 1) {
+            this.hand_r.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.hand_r.rotateAngleX = -0.9F;
+        }
 
         this.hand_r.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.hand_l.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;

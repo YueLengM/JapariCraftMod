@@ -25,7 +25,7 @@ public class ContainerFriendInventory extends Container {
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 5; ++index) {
+        for (index = 0; index < 4; ++index) {
 
             final EntityEquipmentSlot slotType;
             int x = 0, y = 0;
@@ -49,11 +49,6 @@ public class ContainerFriendInventory extends Container {
                     slotType = EntityEquipmentSlot.LEGS;
                     x = 80;
                     y = 18;
-                    break;
-                case 4:
-                    slotType = EntityEquipmentSlot.MAINHAND;
-                    x = 98;
-                    y = 36;
                     break;
                 default:
                     slotType = null;

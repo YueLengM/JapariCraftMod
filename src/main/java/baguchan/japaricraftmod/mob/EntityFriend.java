@@ -6,7 +6,6 @@ import baguchan.japaricraftmod.gui.FriendMobNBTs;
 import baguchan.japaricraftmod.gui.InventoryFriendEquipment;
 import baguchan.japaricraftmod.gui.InventoryFriendMain;
 import baguchan.japaricraftmod.handler.JapariItems;
-import baguchan.japaricraftmod.item.ItemIronGlove;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
@@ -34,6 +33,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 import java.util.Set;
@@ -46,6 +47,7 @@ public class EntityFriend extends EntityTameable {
     private InventoryFriendMain inventoryFriendMain;
     private InventoryFriendEquipment inventoryFriendEquipment;
     public float friendPoint = 0;
+    private int eattick = 0;
 
     protected EntityFriend(World worldIn) {
         super(worldIn);
@@ -53,6 +55,12 @@ public class EntityFriend extends EntityTameable {
 
     public boolean isBreedingItem(ItemStack stack) {
         return false;
+    }
+
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(3D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(20D);
     }
 
     @Nullable
@@ -110,12 +118,6 @@ public class EntityFriend extends EntityTameable {
      */
     public void addExperience(float value) {
         friendPoint += value;
-        if (friendPoint >= 160) {
-            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 2.0D);
-            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 1.0D);
-            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
-            friendPoint = 0;
-        }
         dataManager.set(EntityFriend.dataEXPValue, friendPoint);
     }
 
@@ -137,8 +139,14 @@ public class EntityFriend extends EntityTameable {
         }
     }
 
+
     @Override
     public void onLivingUpdate() {
+        if (this.world.isRemote) {
+            if (this.eattick > 0) {
+                --this.eattick;
+            }
+        }
         super.onLivingUpdate();
         this.updateArmSwingProgress();
         if (!world.isRemote) {
@@ -149,6 +157,13 @@ public class EntityFriend extends EntityTameable {
             if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
                 eatJapariman();
             }
+        }
+
+        if (friendPoint >= 180) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(3));
+            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.5D);
+            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
+            friendPoint = 0;
         }
     }
 
@@ -193,7 +208,7 @@ public class EntityFriend extends EntityTameable {
                         this.heal((float) itemfood.getHealAmount(stack));
 
                         this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
-
+                        eattick = 20;
 
                         for (int i = 0; i < 7; ++i) {
 
@@ -210,36 +225,6 @@ public class EntityFriend extends EntityTameable {
                         return true;
 
                     }
-
-                }
-
-                if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
-
-
-                    if (!player.capabilities.isCreativeMode) {
-
-                        stack.shrink(1);
-
-                    }
-
-                    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 4.0D);
-
-                    this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
-
-
-                    for (int i = 0; i < 7; ++i) {
-
-                        double d0 = this.rand.nextGaussian() * 0.02D;
-
-                        double d1 = this.rand.nextGaussian() * 0.02D;
-
-                        double d2 = this.rand.nextGaussian() * 0.02D;
-
-                        this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.8D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
-
-                    }
-
-                    return true;
 
                 }
 
@@ -310,8 +295,6 @@ public class EntityFriend extends EntityTameable {
     public boolean attackEntityAsMob(Entity entityIn) {
         addExperience(1 + rand.nextInt(3));
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
-        this.damageGrove();
-
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }
@@ -319,11 +302,6 @@ public class EntityFriend extends EntityTameable {
         return flag;
     }
 
-    private void damageGrove() {
-        if (inventoryFriendEquipment.getHandItem() != null && inventoryFriendEquipment.getHandItem().getItem() instanceof ItemIronGlove) {
-            inventoryFriendEquipment.getHandItem().damageItem(1, this);
-        }
-    }
 
 
     //インベントリにじゃぱりまんがあるか確認する処理
@@ -333,7 +311,7 @@ public class EntityFriend extends EntityTameable {
 
         if (!itemstack.isEmpty()) {
             //じゃぱりまんがあるか確認
-
+            eattick = 20;
             ItemFood itemfood = (ItemFood) itemstack.getItem();
             this.heal((float) itemfood.getHealAmount(itemstack));
             itemstack.shrink(1);
@@ -432,11 +410,6 @@ public class EntityFriend extends EntityTameable {
 
                 itemStack = this.getInventoryFriendEquipment().getLegItem();
                 break;
-            case MAINHAND:
-
-                itemStack = this.getInventoryFriendEquipment().getHandItem();
-                break;
-
             default:
 
                 itemStack = ItemStack.EMPTY;
@@ -465,10 +438,6 @@ public class EntityFriend extends EntityTameable {
             case LEGS:
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(3, stack);
-                break;
-            case MAINHAND:
-
-                this.getInventoryFriendEquipment().setInventorySlotContents(4, stack);
                 break;
         }
     }
@@ -535,6 +504,13 @@ public class EntityFriend extends EntityTameable {
         if (this.ticksExisted % 5 == 0) {
             this.heal(0.06F);
         }
+        this.eattick = this.getEatingTick();
+        super.updateAITasks();
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getEatingTick() {
+        return eattick;
     }
 
 

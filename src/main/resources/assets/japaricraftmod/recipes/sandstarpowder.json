@@ -2,17 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "item": "minecraft:water_bucket"
+      "item": "minecraft:flint"
     },
     {
       "item": "japaricraftmod:sandstar_fragment"
-    },
-    {
-      "item": "minecraft:sugar"
     }
   ],
   "result": {
-    "item": "japaricraftmod:sugarstar",
-    "count": 3
+    "item": "japaricraftmod:sandstar_powder"
   }
 }

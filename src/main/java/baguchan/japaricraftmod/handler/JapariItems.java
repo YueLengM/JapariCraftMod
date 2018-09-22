@@ -4,7 +4,6 @@ package baguchan.japaricraftmod.handler;
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.item.*;
 import baguchan.japaricraftmod.item.armor.ItemKabanHat;
-import baguchan.japaricraftmod.item.armor.ItemSandStarNeckLace;
 import baguchan.japaricraftmod.item.armor.ItemServalEarCostume;
 import baguchan.japaricraftmod.item.summon.DarkSandStar;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -38,9 +37,8 @@ public class JapariItems {
     public static final Item curry = new Curry();
     public static final Item starjapariman = new StarJapariman();
     public static final Item sandstarfragment = new ItemSandStarFragment();
-    public static final Item sandstarnecklace = new ItemSandStarNeckLace();
     public static final Item darksandstar = new DarkSandStar();
-    public static final Item sugarstar = new SugarStar();
+    public static final Item sandstar_powder = new SugarStar();
     public static final Item sandstarcake_115 = new SandStarCake115();
     public static final Item starcaramel = new StarCaramel();
     public static final Item wildliberationsource = new WildLiberationSource();
@@ -48,7 +46,6 @@ public class JapariItems {
     public static final Item kabanhat = new ItemKabanHat(KabanHatMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item servalEarCostume = new ItemServalEarCostume(animalCostumeMaterial, 0, EntityEquipmentSlot.HEAD);
     public static final Item japaricoin = new ItemJapariCoin();
-    public static final Item itemIronGlove = new ItemIronGlove();
     public static final Item itemTutorialPaper = new ItemTutorialPaper();
 
     public static List<Item> getItems() {
@@ -77,15 +74,13 @@ public class JapariItems {
         register(registry, darksandstar.setRegistryName("darksandstar"));
         register(registry, starcaramel.setRegistryName("starcaramel"));
         register(registry, sandstarcake_115.setRegistryName("sandstarcake_115"));
-        register(registry, sugarstar.setRegistryName("sugarstar"));
+        register(registry, sandstar_powder.setRegistryName("sandstar_powder"));
         register(registry, sandstarfragment.setRegistryName("sandstar_fragment"));
-        register(registry, sandstarnecklace.setRegistryName("sandstarnecklace"));
         register(registry, wildliberationpotion.setRegistryName("wildliberationpotion"));
         register(registry, wildliberationsource.setRegistryName("wildliberationsource"));
         register(registry, kabanhat.setRegistryName("kabanhat"));
         register(registry, servalEarCostume.setRegistryName("serval_earcostume"));
         register(registry, japaricoin.setRegistryName("japaricoin"));
-        register(registry, itemIronGlove.setRegistryName("ironglove"));
         register(registry, itemTutorialPaper.setRegistryName("tutorialpaper"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
     }
@@ -101,7 +96,7 @@ public class JapariItems {
         registerModel(starjapariman, "star_japariman");
         registerModel(darksandstar, "darksandstar");
         registerModel(starcaramel, "star_caramel");
-        registerModel(sugarstar, "sugarstar");
+        registerModel(sandstar_powder, "sandstar_powder");
         registerModel(wildliberationpotion, "wildliberation_potion");
         registerModel(wildliberationsource, "wildliberation_source");
         registerModel(kabanhat, "kabanhat");
@@ -109,8 +104,6 @@ public class JapariItems {
         registerModel(sandstarfragment, "sandstar_fragment");
         registerModel(japaricoin, "japaricoin");
         registerModel(sandstarcake_115, "sandstarcake_115");
-        registerModel(sandstarnecklace, "sandstarnecklace");
-        registerModel(itemIronGlove, "ironglove");
         registerModel(itemTutorialPaper, "tutorialpaper");
     }
 

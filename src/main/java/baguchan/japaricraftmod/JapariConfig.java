@@ -24,12 +24,6 @@ public class JapariConfig {
     @Config.Comment("Changes spawn rate of PoisonCerulean. Increase value to spawn more PoisonCerulean.")
     public static int poisoncerulean_wight = 30;
 
-    @Config.LangKey(config + "blackcerulean_wight")
-    @Config.RequiresMcRestart
-    @Config.RangeInt(min = 0, max = 30)
-    @Config.Comment("Changes spawn rate of BlackCerulean. Increase value to spawn more BlackCerulean.")
-    public static int blackcerulean_wight = 1;
-
     @Config.LangKey(config + "plain_friends_wight")
     @Config.RequiresMcRestart
     @Config.RangeInt(min = 0, max = 20)

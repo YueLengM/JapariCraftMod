@@ -250,6 +250,11 @@ public class ModelSandCat extends ModelBase {
             GL11.glTranslatef(0F, 0.4F, 0F);
         }
 
+        if (entitySandcat.getEatingTick() > 1) {
+            this.handR.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.handR.rotateAngleX = -0.9F;
+        }
+
         if (this.swingProgress > 0.0F) {
             EnumHandSide enumhandside = this.getMainHand(entityIn);
             ModelRenderer modelrenderer = this.getArmForSide(enumhandside);

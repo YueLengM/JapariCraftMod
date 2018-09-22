@@ -210,6 +210,11 @@ public class ModelShoebill extends ModelBase {
         this.leftH.rotateAngleY = 0.0F;
         this.rightH.rotateAngleZ = 0.0F;
 
+        if (entityshoebill.getEatingTick() > 1) {
+            this.rightH.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.rightH.rotateAngleX = -0.9F;
+        }
+
         if (this.swingProgress > 0.0F) {
             EnumHandSide enumhandside = this.getMainHand(entityIn);
             ModelRenderer modelrenderer = this.getArmForSide(enumhandside);

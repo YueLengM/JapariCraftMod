@@ -29,7 +29,6 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "whiteOwl"), EntityWhiteOwl.class, "WhiteOwl", 6, JapariCraftMod.instance, 70, 3, false, 7375001, 7375001);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "brownOwl"), EntityBrownOwl.class, "BrownOwl", 7, JapariCraftMod.instance, 70, 3, false, 5243410, 5243405);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "sandstarslime"), EntitySandStarSlime.class, "SandStarSlime", 8, JapariCraftMod.instance, 70, 3, false, 0x45FFE0, 0x39D4BA);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "blackcerulean"), EntityBlackCerulean.class, "BlackCerulean", 10, JapariCraftMod.instance, 120, 3, false, 0x000000, 0x333333);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "guide"), EntityGuide.class, "Guide", 11, JapariCraftMod.instance, 60, 1, false);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "araisan"), EntityAraisan.class, "Araisan", 12, JapariCraftMod.instance, 60, 3, false, 0x666699, 0x969696);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "poisoncerulean"), PoisonEntityCerulean.class, "PoisonCerulean", 13, JapariCraftMod.instance, 70, 3, false, 0x87CFFF, 0x7AC6FF);
@@ -114,7 +113,6 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(EntityCerulean.class, JapariConfig.cerulean_wight, 2, 4, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(PoisonEntityCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(EntityAlpaca.class, 6, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
-        EntityRegistry.addSpawn(EntityBlackCerulean.class, JapariConfig.blackcerulean_wight, 1, 1, EnumCreatureType.MONSTER, biomes.toArray(new Biome[biomes.size()]));
         EntityRegistry.addSpawn(EntityTutinoko.class, 6, 1, 2, EnumCreatureType.CREATURE, spooky_biomes.toArray(new Biome[spooky_biomes.size()]));
     }
 }

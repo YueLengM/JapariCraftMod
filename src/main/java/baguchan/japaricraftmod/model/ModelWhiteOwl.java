@@ -191,6 +191,13 @@ public class ModelWhiteOwl extends ModelBase {
         this.handA_L.rotateAngleY = 0.0F;
         this.handR.rotateAngleZ = 0.0F;
 
+        if (entityowl.getEatingTick() > 1) {
+            this.handR.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.handR.rotateAngleX = -0.9F;
+            this.handA_R.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
+            this.handA_R.rotateAngleX = -0.9F;
+        }
+
         if (this.swingProgress > 0.0F) {
             EnumHandSide enumhandside = this.getMainHand(entityIn);
             ModelRenderer modelrenderer = this.getArmForSide(enumhandside);

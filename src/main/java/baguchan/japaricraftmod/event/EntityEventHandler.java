@@ -1,7 +1,6 @@
 package baguchan.japaricraftmod.event;
 
 import baguchan.japaricraftmod.handler.JapariItems;
-import baguchan.japaricraftmod.mob.EntityBlackCerulean;
 import baguchan.japaricraftmod.mob.EntityCerulean;
 import baguchan.japaricraftmod.mob.EntityServal;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
@@ -23,7 +22,6 @@ public class EntityEventHandler {
             EntityVillager villager = (EntityVillager) event.getEntity();
 
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityCerulean.class, 12.0F, 0.8D, 0.8D));
-            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityBlackCerulean.class, 12.0F, 0.8D, 0.8D));
         }
         if (event.getEntity() instanceof EntityCreeper) {
             EntityCreeper creeper = (EntityCreeper) event.getEntity();
@@ -34,7 +32,6 @@ public class EntityEventHandler {
             EntityVindicator vindicator = (EntityVindicator) event.getEntity();
 
             vindicator.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(vindicator, EntityCerulean.class, true));
-            vindicator.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(vindicator, EntityBlackCerulean.class, true));
         }
         if (event.getEntity() instanceof EntityZombie) {
             EntityZombie zombie = (EntityZombie) event.getEntity();
