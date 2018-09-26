@@ -17,7 +17,7 @@ item.SandStarShovel.name=砂之星铲
 item.SandStarAxe.name=砂之星斧
 item.SandStarPickaxe.name=砂之星镐
 item.StarJapariman.name=星之加帕里馒头
-item.SugarStar.name=星之砂糖
+item.SandStarPowder.name=星之砂粉
 item.WildLiberationSource.name=野性解放之源
 item.PumpkinSoup.name=南瓜汤
 item.WildLiberationPotion.name=野性解放药水
@@ -114,6 +114,7 @@ japaricraftmod.config.blackcerulean_wight=Boss 生成率（黑细胞怪）
 japaricraftmod.config.delphinus_wight=海豚生成率
 japaricraftmod.config.structure=建筑设置
 japaricraftmod.config.animalvillage=启动生成动物村民
+japaricraftmod.config.plain_friends_wight=森林friends生成率
 
 page.0.name=与friends交朋友的方法
 page.0.desc=
