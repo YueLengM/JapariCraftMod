@@ -49,7 +49,7 @@ public class EntityFriend extends EntityTameable {
     public float friendPoint = 0;
     private int eattick = 0;
 
-    protected EntityFriend(World worldIn) {
+    public EntityFriend(World worldIn) {
         super(worldIn);
     }
 

@@ -20,13 +20,13 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 
 import java.util.Random;
 
-public class BiomeSandStarIsland extends Biome {
+public class BiomeSandStarJungle extends Biome {
     private static final IBlockState JUNGLE_LOG = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
     private static final IBlockState JUNGLE_LEAF = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
     private static final IBlockState OAK_LEAF = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.OAK).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 
-    public BiomeSandStarIsland() {
-        super(new Biome.BiomeProperties("SandStarIsland").setTemperature(0.85F).setRainfall(0.9F).setBaseHeight(0.0F).setHeightVariation(0.35F));
+    public BiomeSandStarJungle() {
+        super(new Biome.BiomeProperties("SandStarJungle").setTemperature(0.85F).setRainfall(0.9F).setBaseHeight(0.0F).setHeightVariation(0.35F));
         this.spawnableCreatureList.clear();
 
         this.spawnableCreatureList.add(new SpawnListEntry(EntityShoebill.class, 2, 2, 3));
@@ -38,7 +38,7 @@ public class BiomeSandStarIsland extends Biome {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 40, 1, 1));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 50, 1, 2));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;

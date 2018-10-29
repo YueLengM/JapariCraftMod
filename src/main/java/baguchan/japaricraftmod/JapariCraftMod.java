@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod;
 
+import baguchan.japaricraftmod.compat.JapariCompat;
 import baguchan.japaricraftmod.event.EntityEventHandler;
 import baguchan.japaricraftmod.event.StructureEventHandler;
 import baguchan.japaricraftmod.gui.JapariGuiHandler;
@@ -16,6 +17,7 @@ import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.ModMetadata;
@@ -31,13 +33,15 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
-@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true, updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json", dependencies = "required:forge@[14.23.4.2705,);")
+@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true, updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json", dependencies = "required:forge@[14.23.4.2705,);after:twilightforest@[3.8.689,);")
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "4.6.0";
+    public static final String VERSION = "5.0.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -48,12 +52,14 @@ public class JapariCraftMod {
     @SidedProxy(clientSide = "baguchan.japaricraftmod.ClientProxy", serverSide = "baguchan.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
+    public static boolean twilightForestLoaded = false;
+
     @Mod.Instance(MODID)
     public static JapariCraftMod instance;
     public static final int ID_Tutorial_Gui = 0;
     public static final int ID_JAPARI_INVENTORY = 1;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
-
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {
@@ -95,8 +101,6 @@ public class JapariCraftMod {
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-
-
         GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 0);
         if (event.getSide().isClient()) {
             JapariRenderingRegistry.registerRenderers();
@@ -110,6 +114,16 @@ public class JapariCraftMod {
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
+        twilightForestLoaded = Loader.isModLoaded("twilightforest");
+        if (twilightForestLoaded) {
+            JapariCompat.twilightCompat();
+
+        } else {
+
+            JapariCraftMod.LOGGER.warn(MODID + " is skipping! compatibility!");
+
+        }
+
         JapariBiomes.registerBiomeTypes();
         JapariEntityRegistry.addSpawns();
 

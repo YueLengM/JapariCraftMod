@@ -63,7 +63,6 @@ entity.whiteowl.friend=料理をここまで持ってくるとはなかなかや
 entity.lucky.friend=マカセテ
 entity.arai.friend=ありがとうなのだ！
 entity.Fennec.name=フェネック
-entity.SandStarHandler.name=サンドスターハンドラー(未使用)
 entity.RoyalPenguin.name=ロイヤルペンギン
 entity.Alpaca.name=アルパカ・スリ
 entity.Squirre.name=りす
@@ -76,6 +75,7 @@ entity.EnderCerulean.name=エンダーセルリアン
 entity.SandStarSlime.name=サンドスタースライム
 entity.Otter.name=コツメカワウソ
 entity.Beluga.name=シロイルカ[WIP]
+entity.twilightkobolt.name=黄昏の森のコボルト
 
 
 advancements.japaricraftmod.root.title=始まりのじゃぱりくらふと
