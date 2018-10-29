@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.mob;
 
 
 import baguchan.japaricraftmod.JapariCraftMod;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
@@ -32,7 +33,11 @@ public class EntityCerulean extends EntityMob {
     protected void initEntityAI(){
 
 
-        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, false));
+        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, false) {
+            protected double getAttackReachSqr(EntityLivingBase attackTarget) {
+                return (double) (this.attacker.width * 1.6F * this.attacker.width * 1.6F + attackTarget.width);
+            }
+        });
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
