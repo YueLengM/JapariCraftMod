@@ -43,7 +43,7 @@ public class EntitySandStarSlime extends EntitySlime {
             if (this.world.getDifficulty() != EnumDifficulty.PEACEFUL) {
                 Biome biome = this.world.getBiome(blockpos);
 
-                if (biome == JapariBiomes.SAND_STAR_JUNGLE && this.posY > 50.0D && this.posY < 80.0D && this.rand.nextFloat() < 0.5F && this.world.getLightFromNeighbors(new BlockPos(this)) <= this.rand.nextInt(8)) {
+                if (biome == JapariBiomes.SAND_STAR_JUNGLE && this.posY > 50.0D && this.posY < 80.0D && this.rand.nextFloat() < 0.6F && this.world.getLightFromNeighbors(new BlockPos(this)) <= this.rand.nextInt(8)) {
                     return super.getCanSpawnHere();
                 }
             }

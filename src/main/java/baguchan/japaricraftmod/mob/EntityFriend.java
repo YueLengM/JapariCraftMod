@@ -139,34 +139,6 @@ public class EntityFriend extends EntityTameable {
         }
     }
 
-
-    @Override
-    public void onLivingUpdate() {
-        if (this.world.isRemote) {
-            if (this.eattick > 0) {
-                --this.eattick;
-            }
-        }
-        super.onLivingUpdate();
-        this.updateArmSwingProgress();
-        if (!world.isRemote) {
-            if (this.isTamed() && this.isEntityAlive()) {
-                pickupItem();
-            }
-            //やばい時はじゃぱりまんを食べる
-            if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
-                eatJapariman();
-            }
-        }
-
-        if (friendPoint >= 180) {
-            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(3));
-            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.5D);
-            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
-            friendPoint = 0;
-        }
-    }
-
     /*
      * 右クリック時の処理
      */
@@ -181,7 +153,6 @@ public class EntityFriend extends EntityTameable {
             if (!stack.isEmpty()) {
 
                 //デバッグ用
-
                 if (this.isOwner(player) && stack.getItem() == Items.STICK) {
 
                     float i = friendPoint;
@@ -197,13 +168,11 @@ public class EntityFriend extends EntityTameable {
                     ItemFood itemfood = (ItemFood) stack.getItem();
 
                     if (this.getHealth() < this.getMaxHealth()) {
-
                         if (!player.capabilities.isCreativeMode) {
 
                             stack.shrink(1);
 
                         }
-
 
                         this.heal((float) itemfood.getHealAmount(stack));
 
@@ -213,9 +182,7 @@ public class EntityFriend extends EntityTameable {
                         for (int i = 0; i < 7; ++i) {
 
                             double d0 = this.rand.nextGaussian() * 0.02D;
-
                             double d1 = this.rand.nextGaussian() * 0.02D;
-
                             double d2 = this.rand.nextGaussian() * 0.02D;
 
                             this.world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, this.posX + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, this.posY + 0.5D + (double) (this.rand.nextFloat() * this.height), this.posZ + (double) (this.rand.nextFloat() * this.width * 2.0F) - (double) this.width, d0, d1, d2);
@@ -225,11 +192,8 @@ public class EntityFriend extends EntityTameable {
                         return true;
 
                     }
-
                 }
-
             }
-
             if (player.isSneaking() && !this.isSitting()) {
 
                 player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
@@ -277,9 +241,7 @@ public class EntityFriend extends EntityTameable {
 
                 }
 
-
             }
-
 
             return true;
 
@@ -302,10 +264,35 @@ public class EntityFriend extends EntityTameable {
         return flag;
     }
 
+    @Override
+    public void onLivingUpdate() {
+        if (this.world.isRemote) {
+            if (this.eattick > 0) {
+                --this.eattick;
+            }
+        }
+        super.onLivingUpdate();
+        this.updateArmSwingProgress();
+        if (!world.isRemote) {
+            if (this.isTamed() && this.isEntityAlive()) {
+                pickupItem();
+            }
+            //やばい時はじゃぱりまんを食べる
+            if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
+                eatJapariman();
+            }
+        }
 
+
+        if (friendPoint >= 180) {
+            this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(3));
+            this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.5D);
+            this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
+            friendPoint = 0;
+        }
+    }
 
     //インベントリにじゃぱりまんがあるか確認する処理
-
     private void eatJapariman() {
         ItemStack itemstack = findFood();
 
@@ -315,6 +302,8 @@ public class EntityFriend extends EntityTameable {
             ItemFood itemfood = (ItemFood) itemstack.getItem();
             this.heal((float) itemfood.getHealAmount(itemstack));
             itemstack.shrink(1);
+
+            this.setHeldItem(EnumHand.MAIN_HAND, itemstack);
             this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
         }
     }
@@ -335,6 +324,7 @@ public class EntityFriend extends EntityTameable {
         return ItemStack.EMPTY;
     }
 
+    //フレンズを回復できるアイテムをここで指定
     public boolean isHealItem(ItemStack stack) {
         return Heal_ITEMS.contains(stack.getItem());
     }

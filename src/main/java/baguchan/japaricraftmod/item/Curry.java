@@ -15,6 +15,7 @@ public class Curry extends ItemFood {
         this.setUnlocalizedName("Curry");
         this.setMaxStackSize(8);
     }
+
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
     {
         super.onItemUseFinish(stack, worldIn, entityLiving);
