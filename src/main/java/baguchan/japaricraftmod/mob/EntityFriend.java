@@ -277,11 +277,12 @@ public class EntityFriend extends EntityTameable {
             if (this.isTamed() && this.isEntityAlive()) {
                 pickupItem();
             }
+        }
             //やばい時はじゃぱりまんを食べる
             if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
                 eatJapariman();
             }
-        }
+
 
 
         if (friendPoint >= 180) {
@@ -298,13 +299,11 @@ public class EntityFriend extends EntityTameable {
 
         if (!itemstack.isEmpty()) {
             //じゃぱりまんがあるか確認
-            eattick = 20;
             ItemFood itemfood = (ItemFood) itemstack.getItem();
             this.heal((float) itemfood.getHealAmount(itemstack));
             itemstack.shrink(1);
-
-            this.setHeldItem(EnumHand.MAIN_HAND, itemstack);
             this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+            this.eattick = 20;
         }
     }
 
