@@ -43,7 +43,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "endercerulean"), EntityEnderCerulean.class, "EnderCerulean", 22, JapariCraftMod.instance, 70, 3, false, 0x333333, 0x808080);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "darksandstarball"), EntityDarkSandStarball.class, "DarkSandStarBall", 23, JapariCraftMod.instance, 120, 3, true);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "beluga"), EntityBeluga.class, "Beluga", 24, JapariCraftMod.instance, 80, 3, false, 0xF2FFFF, 0xB8FAFF);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "twilightkobolt"), EntityTwilightKobolt.class, "TwilightKobolt", 25, JapariCraftMod.instance, 80, 3, false, 0x372096, 0x895d1b);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "twilightkobold"), EntityTwilightKobold.class, "TwilightKobold", 25, JapariCraftMod.instance, 80, 3, false, 0x372096, 0x895d1b);
     }
 
     public static void addSpawns() {

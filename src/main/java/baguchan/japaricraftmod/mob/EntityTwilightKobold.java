@@ -23,13 +23,13 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class EntityTwilightKobolt extends EntityFriend {
+public class EntityTwilightKobold extends EntityFriend {
 
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(Items.APPLE, Items.WHEAT, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
-    private static final DataParameter<Boolean> SCARED = EntityDataManager.createKey(EntityTwilightKobolt.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> SCARED = EntityDataManager.createKey(EntityTwilightKobold.class, DataSerializers.BOOLEAN);
 
-    public EntityTwilightKobolt(World worldIn) {
+    public EntityTwilightKobold(World worldIn) {
         super(worldIn);
         this.setSize(0.59F, 1.6F);
         this.setTamed(false);
@@ -40,7 +40,7 @@ public class EntityTwilightKobolt extends EntityFriend {
         this.aiSit = new EntityAISit(this);
 
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityTwilightKobolt.AIScared(this));
+        this.tasks.addTask(1, new EntityTwilightKobold.AIScared(this));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.12D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
@@ -119,7 +119,7 @@ public class EntityTwilightKobolt extends EntityFriend {
     }
 
     private class AIScared extends EntityAIBase {
-        private final EntityTwilightKobolt scaredEntity;
+        private final EntityTwilightKobold scaredEntity;
         private final World world;
         /**
          * player's pitch
@@ -131,7 +131,7 @@ public class EntityTwilightKobolt extends EntityFriend {
         private double yaw;
         private EntityPlayer player;
 
-        public AIScared(EntityTwilightKobolt scaredEntity) {
+        public AIScared(EntityTwilightKobold scaredEntity) {
             this.setMutexBits(7);
             this.scaredEntity = scaredEntity;
             this.world = scaredEntity.world;

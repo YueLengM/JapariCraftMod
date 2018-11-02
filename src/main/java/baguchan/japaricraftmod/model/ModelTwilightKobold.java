@@ -1,6 +1,6 @@
 package baguchan.japaricraftmod.model;
 
-import baguchan.japaricraftmod.mob.EntityTwilightKobolt;
+import baguchan.japaricraftmod.mob.EntityTwilightKobold;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -14,7 +14,7 @@ import org.lwjgl.opengl.GL11;
  * TwilightKobolt - bagu
  * Created using Tabula 7.0.0
  */
-public class ModelTwilightKobolt extends ModelBase {
+public class ModelTwilightKobold extends ModelBase {
     public ModelRenderer body;
     public ModelRenderer legR;
     public ModelRenderer legL;
@@ -28,7 +28,7 @@ public class ModelTwilightKobolt extends ModelBase {
     public ModelRenderer earL;
     public ModelRenderer bihind;
 
-    public ModelTwilightKobolt() {
+    public ModelTwilightKobold() {
         this.textureWidth = 128;
         this.textureHeight = 64;
         this.head = new ModelRenderer(this, 12, 8);
@@ -91,11 +91,11 @@ public class ModelTwilightKobolt extends ModelBase {
 
     //下は特殊なモデルを動かすのに必須
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
-        if (!(entityIn instanceof EntityTwilightKobolt)) {
+        if (!(entityIn instanceof EntityTwilightKobold)) {
             return;
         }
 
-        EntityTwilightKobolt entityKobold = (EntityTwilightKobolt) entityIn;
+        EntityTwilightKobold entityKobold = (EntityTwilightKobold) entityIn;
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
