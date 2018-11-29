@@ -196,7 +196,12 @@ public class EntityFriend extends EntityTameable {
             if (player.isSneaking() && !this.isSitting()) {
 
                 player.openGui(JapariCraftMod.instance, JapariCraftMod.ID_JAPARI_INVENTORY, this.getEntityWorld(), this.getEntityId(), 0, 0);
+                if (!this.world.isRemote) {
 
+                    this.aiSit.setSitting(!this.isSitting());
+                }
+                
+                return true;
             }
 
             if (this.isOwner(player) && !this.world.isRemote) {
