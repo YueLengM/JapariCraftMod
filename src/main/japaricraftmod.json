@@ -1,13 +1,14 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod",
   "1.12.2": {
+    "5.0.2": "update zh_cn.lang(YueLengM!)",
     "5.0.1": "update zh_cn.lang(thank you YueLengM!) and ean animation full work. and name and id change twilightkobold. and bugfix",
     "5.0.0": "ADDED:add TwilightCompat mob! TwilightKobolt! and add eat amimation! REMOVE:IronGrove and MainHandSlot"
   },
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.0.1",
-    "1.12.2-latest": "5.0.1"
+    "1.12.2-recommended": "5.0.2",
+    "1.12.2-latest": "5.0.2"
   }
 }
