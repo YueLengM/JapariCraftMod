@@ -1,7 +1,7 @@
 package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.handler.JapariItems;
-import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
+import baguchan.japaricraftmod.mob.ai.EntityAIFlyFriendAttackMelee;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class EntityBrownOwl extends EntityFriend {
+public class EntityBrownOwl extends EntityFlyFriend {
 
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry, Items.RABBIT_STEW, Items.MUSHROOM_STEW, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
     public float wingRotation;
@@ -43,10 +43,7 @@ public class EntityBrownOwl extends EntityFriend {
 
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.1D, true));
-        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
-        this.tasks.addTask(6, new EntityAIMoveIndoors(this));
+        this.tasks.addTask(3, new EntityAIFlyFriendAttackMelee(this, 1.08D, true));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
@@ -105,7 +102,7 @@ public class EntityBrownOwl extends EntityFriend {
 
         this.wingRotDelta = (float) ((double) this.wingRotDelta * 0.9D);
 
-        if (!this.onGround && this.motionY < -0.3D) {
+        if (!this.onGround && this.isFlying() && this.motionY < -0.3D) {
             this.motionY *= 0.6D;
         }
 

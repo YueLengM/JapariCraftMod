@@ -137,7 +137,7 @@ public class ModelBrownOwl extends ModelBase {
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
-        if (flag) {
+        if (flag || entityowl.isFlying()) {
             this.head.rotateAngleX = -((float) Math.PI / 4F);
         } else {
             this.head.rotateAngleX = headPitch * 0.017453292F;
@@ -146,6 +146,10 @@ public class ModelBrownOwl extends ModelBase {
         this.body.rotateAngleX = 0.0F;
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
+
+        if (entityowl.isFlying()) {
+            this.body.rotateAngleX = ((float) Math.PI / 4F);
+        }
 
         if (flag) {
             f = (float) (entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);

@@ -149,7 +149,6 @@ public class EntityFriend extends EntityTameable {
 
 
         if (this.isTamed()) {
-
             if (!stack.isEmpty()) {
 
                 //デバッグ用
@@ -264,7 +263,6 @@ public class EntityFriend extends EntityTameable {
         return flag;
     }
 
-    @Override
     public void onLivingUpdate() {
         if (this.world.isRemote) {
             if (this.eattick > 0) {
@@ -278,11 +276,10 @@ public class EntityFriend extends EntityTameable {
                 pickupItem();
             }
         }
-            //やばい時はじゃぱりまんを食べる
-            if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
-                eatJapariman();
-            }
-
+        //やばい時はじゃぱりまんを食べる
+        if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
+            eatJapariman();
+        }
 
 
         if (friendPoint >= 180) {
