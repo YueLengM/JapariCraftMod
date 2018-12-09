@@ -1,7 +1,7 @@
 package baguchan.japaricraftmod.item.armor;
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.model.ModelKabanHat;
+import baguchan.japaricraftmod.client.model.ModelKabanHat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;

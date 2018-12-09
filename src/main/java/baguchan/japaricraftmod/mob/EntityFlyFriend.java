@@ -71,7 +71,6 @@ public class EntityFlyFriend extends EntityFriend {
             this.navigator = new PathNavigateFlying(this, world);
 
             this.isLandNavigator = false;
-
         }
 
     }

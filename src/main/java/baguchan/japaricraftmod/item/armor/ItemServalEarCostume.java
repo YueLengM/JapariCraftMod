@@ -1,7 +1,7 @@
 package baguchan.japaricraftmod.item.armor;
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.model.ModelServalEar;
+import baguchan.japaricraftmod.client.model.ModelServalEar;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
