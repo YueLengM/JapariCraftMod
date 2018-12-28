@@ -19,7 +19,7 @@ public class ServalEntityRender extends RenderLiving<EntityServal>
     private static final ResourceLocation BEG_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/serval/serval_beg.png");
     public ServalEntityRender(RenderManager renderManager)
     {
-            super(renderManager, new ModelServal(), 0.5F);
+        super(renderManager, new ModelServal(), 0.5F);
         this.addLayer(new LayerFriendHeldItem(this) {
 
             protected void translateToHand(EnumHandSide p_191361_1_) {

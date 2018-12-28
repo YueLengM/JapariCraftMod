@@ -61,7 +61,7 @@ public class EntityFlyFriend extends EntityFriend {
             this.moveHelper = new EntityMoveHelper(this);
 
             this.navigator = new PathNavigateGround(this, world);
-
+            ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
             this.isLandNavigator = true;
 
         } else {
@@ -69,6 +69,7 @@ public class EntityFlyFriend extends EntityFriend {
             this.moveHelper = new EntityFlyFriend.FlyFriendMoveHelper(this);
 
             this.navigator = new PathNavigateFlying(this, world);
+            ((PathNavigateFlying) this.getNavigator()).setCanOpenDoors(true);
 
             this.isLandNavigator = false;
         }

@@ -41,6 +41,8 @@ public class FennecRender extends RenderLiving<EntityFennec> {
                         p_188359_1_.bipedRightLeg.showModel = false;
                         p_188359_1_.bipedLeftLeg.showModel = false;
                 }
+
+
             }
         });
 
