@@ -39,7 +39,7 @@ import org.apache.logging.log4j.Logger;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "5.0.2";
+    public static final String VERSION = "5.1.0";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -47,7 +47,7 @@ public class JapariCraftMod {
     @Mod.Metadata
     public static ModMetadata metadata;
 
-    @SidedProxy(clientSide = "baguchan.japaricraftmod.ClientProxy", serverSide = "baguchan.japaricraftmod.ServerProxy")
+    @SidedProxy(clientSide = "baguchan.japaricraftmod.client.ClientProxy", serverSide = "baguchan.japaricraftmod.ServerProxy")
     public static CommonProxy proxy;
 
     public static boolean twilightForestLoaded = false;
