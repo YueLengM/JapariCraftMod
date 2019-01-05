@@ -8,12 +8,19 @@ import net.minecraft.world.World;
 public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     World world;
     protected EntityFlyFriend attacker;
+    private int flytick;
 
     public EntityAIFlyFriendAttackMelee(EntityFlyFriend creature, double speedIn, boolean useLongMemory) {
         super(creature, speedIn, useLongMemory);
         this.setMutexBits(3);
         this.attacker = creature;
         this.world = creature.world;
+    }
+
+    public void startExecuting() {
+        super.startExecuting();
+        this.flytick = 0;
+
     }
 
     @Override
@@ -26,14 +33,18 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     public void updateTask() {
         super.updateTask();
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
-        if (!this.attacker.isInWater() && entitylivingbase.posY - 8 > this.attacker.posY && this.world.rand.nextInt(4) == 0) {
+        if (entitylivingbase.posY - 8 > this.attacker.posY && this.flytick == 0 && this.world.rand.nextInt(40) == 0) {
             this.attacker.setFlying(true);
-        } else if (this.attacker.isInWater()) {
-            this.attacker.setFlying(false);
         }
 
-        if (entitylivingbase.posY > this.attacker.posY + 3 && this.world.rand.nextInt(30) == 0) {
+        if (this.attacker.isFlying()) {
+            ++this.flytick;
+        }
+
+        if (entitylivingbase.posY > this.attacker.posY + 3 && this.flytick >= 80 && this.world.rand.nextInt(60) == 0) {
             this.attacker.setFlying(false);
+
+            this.flytick = 0;
         }
 
         this.attacker.getLookHelper().setLookPositionWithEntity(entitylivingbase, (float) this.attacker.getHorizontalFaceSpeed(), (float) this.attacker.getVerticalFaceSpeed());

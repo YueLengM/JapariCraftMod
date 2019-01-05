@@ -2,6 +2,8 @@ package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.mob.ai.EntityAIFlyFriendAttackMelee;
+import baguchan.japaricraftmod.mob.ai.EntityAIFlyOpenDoor;
+import baguchan.japaricraftmod.mob.ai.EntityAIFollowOwnerFlyFriend;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -13,7 +15,6 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
@@ -34,7 +35,6 @@ public class EntityBrownOwl extends EntityFlyFriend {
         super(worldIn);
         this.setSize(0.6F, 1.8F);
         this.setTamed(false);
-        ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
     @Override
@@ -44,6 +44,8 @@ public class EntityBrownOwl extends EntityFlyFriend {
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
         this.tasks.addTask(3, new EntityAIFlyFriendAttackMelee(this, 1.08D, true));
+        this.tasks.addTask(4, new EntityAIFlyOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIFollowOwnerFlyFriend(this, 1.05D, 10.0F, 2.0F));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
@@ -102,7 +104,7 @@ public class EntityBrownOwl extends EntityFlyFriend {
 
         this.wingRotDelta = (float) ((double) this.wingRotDelta * 0.9D);
 
-        if (!this.onGround && this.isFlying() && this.motionY < -0.3D) {
+        if (!this.onGround && !this.isFlying() && this.motionY < -0.1D) {
             this.motionY *= 0.6D;
         }
 

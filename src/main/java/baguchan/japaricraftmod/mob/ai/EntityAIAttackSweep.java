@@ -82,9 +82,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
         }
     }
 
-    /**
-     * Returns whether an in-progress EntityAIBase should continue executing
-     */
+
     @Override
     public boolean shouldContinueExecuting() {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -102,18 +100,14 @@ public class EntityAIAttackSweep extends EntityAIBase {
         }
     }
 
-    /**
-     * Execute a one shot task or start executing a continuous task
-     */
+
     @Override
     public void startExecuting() {
         this.attacker.getNavigator().setPath(this.path, this.speedTowardsTarget);
         this.delayCounter = 0;
     }
 
-    /**
-     * Reset the task's internal state. Called when this task is interrupted by another one
-     */
+
     @Override
     public void resetTask() {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -125,9 +119,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
         this.attacker.getNavigator().clearPath();
     }
 
-    /**
-     * Keep ticking a continuous task that has already been started
-     */
+
     @Override
     public void updateTask() {
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
@@ -165,7 +157,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
             }
         }
 
-        //shift氏のやつを参考にしてみた（近づきすぎないようにする）
+        //Prevents Friends getting too close and getting damaged
         if (entitylivingbase != null) {
 
             if (d0 <= this.getAttackReachSqr(entitylivingbase)) {
@@ -185,7 +177,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
 
         if (p_190102_2_ <= d0 && this.attackTick <= 0) {
             float f3 = 0.6F * (float) attacker.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue();
-            //他の敵対mobへの範囲攻撃
+            //Range attack on other enemy mobs
             for (EntityMob entitymob : this.world.getEntitiesWithinAABB(EntityMob.class, attacker.getAttackTarget().getEntityBoundingBox().grow(1.0D, 0.25D, 1.0D))) {
                 if (entitymob != attacker && entitymob != attacker.getAttackTarget() && !entitymob.isOnSameTeam(entitymob) && entitymob.getDistanceSq(entitymob) < 9.0D) {
                     entitymob.knockBack(attacker, 0.4F, (double) MathHelper.sin(attacker.rotationYaw * 0.017453292F), (double) (-MathHelper.cos(attacker.rotationYaw * 0.017453292F)));
@@ -193,7 +185,7 @@ public class EntityAIAttackSweep extends EntityAIBase {
                 }
             }
             this.world.playSound((EntityPlayer) null, attacker.posX, attacker.posY, attacker.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, attacker.getSoundCategory(), 1.0F, 1.0F);
-            //パーティクル
+
             this.spawnSweepParticles();
             this.attackTick = 16;
             this.attacker.swingArm(EnumHand.MAIN_HAND);

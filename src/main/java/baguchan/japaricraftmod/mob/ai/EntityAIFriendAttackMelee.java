@@ -21,7 +21,7 @@ public class EntityAIFriendAttackMelee extends EntityAIAttackMelee {
         //shift氏のやつを参考にしてみた（近づきすぎないようにする）
         if (entitylivingbase != null) {
 
-            if (d0 <= 4.0d) {
+            if (d0 <= 3.4d) {
 
                 this.attacker.getNavigator().clearPath();
 

@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityLookHelper;
@@ -134,6 +135,15 @@ public class EntityFlyFriend extends EntityFriend {
     @Override
     public boolean isOnLadder() {
         return false;
+    }
+
+    @Override
+    public void fall(float distance, float damageMultiplier) {
+    }
+
+
+    @Override
+    protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
     }
 
     static class FlyFriendMoveHelper extends EntityMoveHelper {
