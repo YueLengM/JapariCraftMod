@@ -20,6 +20,8 @@ import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Set;
 
@@ -116,6 +118,15 @@ public class EntityTwilightKobold extends EntityFriend {
 
     public boolean canDespawn() {
         return false;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public EntityFriend.ArmPose getArmPose() {
+        if (this.isAttacking() && (this.motionX > -0.1D || this.motionZ > -0.1D)) {
+            return EntityFriend.ArmPose.ATTACKING;
+        } else {
+            return EntityFriend.ArmPose.NORMAL;
+        }
     }
 
     private class AIScared extends EntityAIBase {

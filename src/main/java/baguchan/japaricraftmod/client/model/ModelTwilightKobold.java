@@ -99,11 +99,6 @@ public class ModelTwilightKobold extends ModelBase {
         boolean flag = entityIn instanceof EntityLivingBase && ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
-        if (flag) {
-            this.head.rotateAngleX = -((float) Math.PI / 4F);
-        } else {
-            this.head.rotateAngleX = headPitch * 0.017453292F;
-        }
 
         this.body.rotateAngleY = 0.0F;
         float f = 1.0F;
@@ -134,6 +129,19 @@ public class ModelTwilightKobold extends ModelBase {
             this.handL.rotateAngleX = -1.95F;
             this.handR.rotateAngleZ = -0.8F;
             this.handL.rotateAngleZ = 0.8F;
+        }
+
+        if (entityKobold.getArmPose() == EntityTwilightKobold.ArmPose.ATTACKING) {
+            this.head.rotateAngleX = -0.2F + (headPitch * 0.017453292F);
+            this.body.rotateAngleX = 0.2F;
+            this.legR.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+            this.legL.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
+            this.handR.rotateAngleX = 1.0F;
+            this.handL.rotateAngleX = 1.0F;
+        } else if (flag) {
+            this.head.rotateAngleX = -((float) Math.PI / 4F);
+        } else {
+            this.head.rotateAngleX = headPitch * 0.017453292F;
         }
 
         if (entityKobold.isSitting() || this.isRiding) {

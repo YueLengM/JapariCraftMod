@@ -31,7 +31,7 @@ public class EntityFennec extends EntityFriend {
 
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(3, new EntityAIAttackSweep(this, 1.15D, true));
+        this.tasks.addTask(3, new EntityAIAttackSweep(this, 1.1D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));

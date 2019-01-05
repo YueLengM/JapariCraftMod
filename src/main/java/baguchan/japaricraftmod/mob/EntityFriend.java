@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
 import java.util.Set;
 
 public class EntityFriend extends EntityTameable {
+    private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityFriend.class, DataSerializers.BOOLEAN);
     private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     protected static final DataParameter<Float> dataEXPValue = EntityDataManager.createKey(EntityFriend.class, DataSerializers.FLOAT);
@@ -72,7 +73,8 @@ public class EntityFriend extends EntityTameable {
     @Override
     protected void entityInit() {
         super.entityInit();
-        dataManager.register(EntityFriend.dataEXPValue, Float.valueOf(0));
+        this.dataManager.register(EntityFriend.dataEXPValue, Float.valueOf(0));
+        this.dataManager.register(ATTACKING, Boolean.FALSE);
     }
 
     @Override
@@ -497,6 +499,17 @@ public class EntityFriend extends EntityTameable {
         }
         this.eattick = this.getEatingTick();
         super.updateAITasks();
+
+        this.setAttacking(this.getAttackTarget() != null);
+    }
+
+    @SideOnly(Side.CLIENT)
+    protected boolean isAttacking() {
+        return this.dataManager.get(ATTACKING);
+    }
+
+    public void setAttacking(boolean attacking) {
+        this.dataManager.set(ATTACKING, attacking);
     }
 
     @SideOnly(Side.CLIENT)
@@ -514,5 +527,22 @@ public class EntityFriend extends EntityTameable {
         HURT,
         DYING,
 
+    }
+
+    @SideOnly(Side.CLIENT)
+    public EntityFriend.ArmPose getArmPose() {
+        if (this.isAttacking()) {
+            return EntityFriend.ArmPose.ATTACKING;
+        } else {
+            return EntityFriend.ArmPose.NORMAL;
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public static enum ArmPose {
+        NORMAL,
+        ATTACKING,
+        EATING,
+        BOW_AND_ARROW;
     }
 }

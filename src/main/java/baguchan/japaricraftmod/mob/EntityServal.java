@@ -202,4 +202,13 @@ public class EntityServal extends EntityFriend {
     }
 
 
+    @SideOnly(Side.CLIENT)
+    public EntityFriend.ArmPose getArmPose() {
+        if (this.isAttacking() && (this.motionX > -0.1D || this.motionZ > -0.1D)) {
+            return EntityFriend.ArmPose.ATTACKING;
+        } else {
+            return EntityFriend.ArmPose.NORMAL;
+        }
+    }
+
 }

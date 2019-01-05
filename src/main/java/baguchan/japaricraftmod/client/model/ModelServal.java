@@ -236,31 +236,15 @@ public class ModelServal extends ModelBase {
         }
 
         EntityServal entityServal = (EntityServal) entityIn;
-        boolean flag = ((EntityLivingBase) entityIn).getTicksElytraFlying() > 4;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
-        if (flag) {
-            this.head.rotateAngleX = -((float) Math.PI / 4F);
-        } else {
-            this.head.rotateAngleX = headPitch * 0.017453292F;
-        }
 
+        float f = 1.0F;
 
         this.body.rotateAngleY = 0.0F;
         this.body.rotateAngleX = 0.0F;
         this.skirt_1.rotationPointY = 5.6F;
         this.skirt_1.rotateAngleX = 0.0F;
-        float f = 1.0F;
-
-        if (flag) {
-            f = (float) (entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
-            f = f / 0.2F;
-            f = f * f * f;
-        }
-
-        if (f < 1.0F) {
-            f = 1.0F;
-        }
 
 
         this.hand_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
@@ -280,6 +264,17 @@ public class ModelServal extends ModelBase {
         if (entityServal.getEatingTick() > 1) {
             this.hand_r.rotateAngleZ = -0.6F + MathHelper.cos(ageInTicks * 0.5F) * 0.6F;
             this.hand_r.rotateAngleX = -0.9F;
+        }
+
+        if (entityServal.getArmPose() == EntityServal.ArmPose.ATTACKING) {
+            this.head.rotateAngleX = -0.2F + (headPitch * 0.017453292F);
+            this.body.rotateAngleX = 0.2F;
+            this.leg_r.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
+            this.leg_l.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
+            this.hand_r.rotateAngleX = 1.0F;
+            this.hand_l.rotateAngleX = 1.0F;
+        } else {
+            this.head.rotateAngleX = headPitch * 0.017453292F;
         }
 
         if (entityServal.isSitting() || this.isRiding) {
@@ -312,6 +307,8 @@ public class ModelServal extends ModelBase {
             if (enumhandside == EnumHandSide.LEFT) {
                 this.body.rotateAngleY *= -1.0F;
             }
+            this.hand_r.rotateAngleX = 0.0F;
+            this.hand_l.rotateAngleX = 0.0F;
             this.hand_r.rotateAngleY += this.body.rotateAngleY;
             this.hand_l.rotateAngleY += this.body.rotateAngleY;
             float f2 = MathHelper.sin(f1 * (float) Math.PI);
