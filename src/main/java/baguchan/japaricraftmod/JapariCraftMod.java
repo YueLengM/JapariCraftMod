@@ -35,7 +35,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true, updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json", dependencies = "required:forge@[14.23.4.2705,);after:twilightforest@[3.8.689,);")
+@Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true, updateJSON = "https://github.com/pentantan/JapariCraftMod/blob/master/src/main/japaricraftmod.json", dependencies = "required:forge@[14.23.5.2768,);after:twilightforest@[3.8.689,);")
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";

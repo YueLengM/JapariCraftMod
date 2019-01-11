@@ -238,6 +238,8 @@ public class ModelServal extends ModelBase {
         EntityServal entityServal = (EntityServal) entityIn;
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
+        this.head.rotateAngleX = headPitch * 0.017453292F;
+
 
         float f = 1.0F;
 
@@ -266,18 +268,14 @@ public class ModelServal extends ModelBase {
             this.hand_r.rotateAngleX = -0.9F;
         }
 
-        if (entityServal.getArmPose() == EntityServal.ArmPose.ATTACKING) {
+        if (!entityServal.isSitting() && entityServal.getArmPose() == EntityServal.ArmPose.ATTACKING) {
             this.head.rotateAngleX = -0.2F + (headPitch * 0.017453292F);
             this.body.rotateAngleX = 0.2F;
             this.leg_r.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
             this.leg_l.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
             this.hand_r.rotateAngleX = 1.0F;
             this.hand_l.rotateAngleX = 1.0F;
-        } else {
-            this.head.rotateAngleX = headPitch * 0.017453292F;
-        }
-
-        if (entityServal.isSitting() || this.isRiding) {
+        } else if (entityServal.isSitting() || this.isRiding) {
             this.leg_r.rotateAngleX = -1.4137167F;
             this.leg_r.rotateAngleY = ((float) Math.PI / 10F);
             this.leg_r.rotateAngleZ = 0.07853982F;
@@ -323,9 +321,9 @@ public class ModelServal extends ModelBase {
         this.hand_r.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.hand_l.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
-        this.tail_1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.8F * limbSwingAmount - 0.3F;
-        this.tail_1_n.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.9F * limbSwingAmount - 0.4F;
-        this.tail_1_n_2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.0F * limbSwingAmount - 0.26F;
+        this.tail_1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.3F * limbSwingAmount - 0.3F;
+        this.tail_1_n.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.4F * limbSwingAmount - 0.4F;
+        this.tail_1_n_2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.4F * limbSwingAmount - 0.26F;
 
         GL11.glTranslatef(0F, 0.4F, 0F);
     }

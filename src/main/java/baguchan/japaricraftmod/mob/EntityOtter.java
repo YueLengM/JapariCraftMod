@@ -70,7 +70,6 @@ public class EntityOtter extends EntityFriend {
         return null;//なにも落とさない
     }
 
-
     public boolean canDespawn() {
         return false;
     }
