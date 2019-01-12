@@ -13,7 +13,7 @@ public class JapariBiomes {
     }
 
     public static void registerBiomeTypes() {
-        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAND_STAR_JUNGLE, 6));
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(SAND_STAR_JUNGLE, 5));
         BiomeManager.addSpawnBiome(SAND_STAR_JUNGLE);
         BiomeManager.addVillageBiome(SAND_STAR_JUNGLE, true);
         BiomeDictionary.addTypes(SAND_STAR_JUNGLE, BiomeDictionary.Type.HOT, BiomeDictionary.Type.WET, BiomeDictionary.Type.JUNGLE, BiomeDictionary.Type.MAGICAL);

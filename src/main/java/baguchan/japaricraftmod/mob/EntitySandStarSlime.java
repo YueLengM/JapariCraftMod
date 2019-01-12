@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.world.biome.JapariBiomes;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -44,7 +45,8 @@ public class EntitySandStarSlime extends EntitySlime {
                 Biome biome = this.world.getBiome(blockpos);
 
                 if (biome == JapariBiomes.SAND_STAR_JUNGLE && this.posY > 50.0D && this.posY < 80.0D && this.rand.nextFloat() < 0.6F && this.world.getLightFromNeighbors(new BlockPos(this)) <= this.rand.nextInt(8)) {
-                    return super.getCanSpawnHere();
+                    IBlockState iblockstate = this.world.getBlockState((new BlockPos(this)).down());
+                    return iblockstate.canEntitySpawn(this);
                 }
             }
 
