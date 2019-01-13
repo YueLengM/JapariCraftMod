@@ -7,6 +7,7 @@ tile.Campfire.name=Campfire
 tile.SandStarLamp.name=SandStarLamp
 tile.JaparimanBowl.name=JaparimanBowl
 tile.sandstar_apple.name=Apple
+tile.redstar_flower.name=Redstar Flower
 
 item.Japariman.name=Japariman
 item.JaparimanCocoa.name=Cocoa Japariman

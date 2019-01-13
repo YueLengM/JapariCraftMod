@@ -3,10 +3,7 @@ package baguchan.japaricraftmod.world.biome;
 import baguchan.japaricraftmod.handler.JapariBlocks;
 import baguchan.japaricraftmod.mob.*;
 import baguchan.japaricraftmod.world.biome.gen.WorldGenAppleTree;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.BlockOldLeaf;
-import net.minecraft.block.BlockOldLog;
-import net.minecraft.block.BlockPlanks;
+import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
@@ -14,9 +11,7 @@ import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenShrub;
-import net.minecraft.world.gen.feature.WorldGenTrees;
+import net.minecraft.world.gen.feature.*;
 
 import java.util.Random;
 
@@ -38,7 +33,7 @@ public class BiomeSandStarJungle extends Biome {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityChicken.class, 4, 2, 3));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPig.class, 4, 2, 3));
 
-        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 50, 1, 2));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntitySandStarSlime.class, 40, 1, 2));
 
         this.decorator.treesPerChunk = 4;
         this.decorator.grassPerChunk = 8;
@@ -53,10 +48,17 @@ public class BiomeSandStarJungle extends Biome {
         } else if (rand.nextInt(2) == 0) {
             return new WorldGenShrub(JUNGLE_LOG, OAK_LEAF);
         } else {
-            return (WorldGenAbstractTree) (new WorldGenTrees(false, 4 + rand.nextInt(3), JUNGLE_LOG, JUNGLE_LEAF, true));
+            return new WorldGenTrees(false, 4 + rand.nextInt(3), JUNGLE_LOG, JUNGLE_LEAF, true);
         }
     }
 
+    public WorldGenerator getRandomWorldGenForGrass(Random rand) {
+        if (rand.nextInt(5) == 0) {
+            return new WorldGenBush(JapariBlocks.REDSTAR_FLOWER);
+        } else {
+            return new WorldGenTallGrass(BlockTallGrass.EnumType.GRASS);
+        }
+    }
 
     @Override
     public int getGrassColorAtPos(BlockPos pos) {

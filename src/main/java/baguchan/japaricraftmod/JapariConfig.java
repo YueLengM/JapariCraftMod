@@ -28,7 +28,7 @@ public class JapariConfig {
     @Config.RequiresMcRestart
     @Config.RangeInt(min = 0, max = 20)
     @Config.Comment("Changes spawn rate of PlainAndForests'Friend. Increase value to spawn more Friends.")
-    public static int plainsfriends_wight = 6;
+    public static int plainsfriends_wight = 5;
 
 
     @SubscribeEvent
