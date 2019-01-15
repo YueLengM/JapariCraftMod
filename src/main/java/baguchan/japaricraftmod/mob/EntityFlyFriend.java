@@ -9,7 +9,6 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateFlying;
-import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -17,12 +16,14 @@ import net.minecraft.world.World;
 
 public class EntityFlyFriend extends EntityFriend {
     private static final DataParameter<Boolean> FLYING = EntityDataManager.createKey(EntityFlyFriend.class, DataSerializers.BOOLEAN);
-    private int flyTick = 0;
     private boolean isLandNavigator;
 
     public EntityFlyFriend(World worldIn) {
         super(worldIn);
         this.switchNavigator(true);
+
+        this.navigator = new PathNavigateFlying(this, world);
+        ((PathNavigateFlying) this.getNavigator()).setCanOpenDoors(true);
     }
 
     @Override
@@ -61,16 +62,13 @@ public class EntityFlyFriend extends EntityFriend {
 
             this.moveHelper = new EntityMoveHelper(this);
 
-            this.navigator = new PathNavigateGround(this, world);
-            ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
             this.isLandNavigator = true;
 
         } else {
 
             this.moveHelper = new EntityFlyFriend.FlyFriendMoveHelper(this);
 
-            this.navigator = new PathNavigateFlying(this, world);
-            ((PathNavigateFlying) this.getNavigator()).setCanOpenDoors(true);
+
 
             this.isLandNavigator = false;
         }
@@ -185,7 +183,17 @@ public class EntityFlyFriend extends EntityFriend {
                         f2 = (float) (this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
                     } else {
                         f2 = (float) (this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue());
-                        ;
+
+                    }
+
+                    if (this.parentEntity.getAttackTarget() == null) {
+                        this.parentEntity.rotationYaw = -((float) MathHelper.atan2(this.parentEntity.motionX, this.parentEntity.motionZ)) * (180F / (float) Math.PI);
+                        this.parentEntity.renderYawOffset = this.parentEntity.rotationYaw;
+                    } else {
+                        double d4 = this.parentEntity.getAttackTarget().posX - this.parentEntity.posX;
+                        double d5 = this.parentEntity.getAttackTarget().posZ - this.parentEntity.posZ;
+                        this.parentEntity.rotationYaw = -((float) MathHelper.atan2(d4, d5)) * (180F / (float) Math.PI);
+                        this.parentEntity.renderYawOffset = this.parentEntity.rotationYaw;
                     }
 
                     this.entity.setAIMoveSpeed(f2);

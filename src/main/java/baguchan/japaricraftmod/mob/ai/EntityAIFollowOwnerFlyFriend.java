@@ -90,7 +90,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
     public void updateTask() {
         this.tameable.getLookHelper().setLookPositionWithEntity(this.owner, 10.0F, (float) this.tameable.getVerticalFaceSpeed());
 
-        if (owner.posY - 6 > this.tameable.posY && this.flytick == 0 && this.world.rand.nextInt(40) == 0) {
+        if (owner.posY - 6 > this.tameable.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
             this.tameable.setFlying(true);
         }
 
