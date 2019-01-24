@@ -98,7 +98,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
             ++this.flytick;
         }
 
-        if (owner.posY > this.tameable.posY + 3 && this.flytick >= 80 && this.world.rand.nextInt(60) == 0) {
+        if (owner.posY > this.tameable.posY + 4 && this.flytick >= 80 && this.world.rand.nextInt(80) == 0) {
             this.tameable.setFlying(false);
 
             this.flytick = 0;

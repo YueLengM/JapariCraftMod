@@ -25,7 +25,7 @@ public class ContainerFriendInventory extends Container {
         entityFriend.getInventoryFriendEquipment().openInventory(entityPlayer);
 
         //フレンズの装備スロットを追加する
-        for (index = 0; index < 4; ++index) {
+        for (index = 0; index < 5; ++index) {
 
             final EntityEquipmentSlot slotType;
             int x = 0, y = 0;
@@ -50,12 +50,21 @@ public class ContainerFriendInventory extends Container {
                     x = 80;
                     y = 18;
                     break;
+                case 4:
+                    slotType = EntityEquipmentSlot.OFFHAND;
+                    x = 80;
+                    y = 54;
+                    break;
                 default:
                     slotType = null;
             }
             this.addSlotToContainer(new Slot(entityFriend.getInventoryFriendEquipment(), index, x, y) {
                 public int getSlotStackLimit() {
-                    return 1;
+                    if (this.getSlotIndex() == 4) {
+                        return 64;
+                    } else {
+                        return 1;
+                    }
                 }
 
                 @Override
@@ -69,12 +78,14 @@ public class ContainerFriendInventory extends Container {
                     if (item instanceof ItemTool) {
                         return false;
                     }
-                    if (item.isValidArmor(stack, slotType, entityFriend))
+                    if (item.isValidArmor(stack, slotType, entityFriend) && this.getSlotIndex() < 4)
                         return true;
+                    if (this.getSlotIndex() == 4) {
+                        return true;
+                    }
                     if (item instanceof FriendsEquipment) {
                         FriendsEquipment equip = (FriendsEquipment) item;
-                        if (equip.getEquipmentType() == slotType)
-                            return true;
+                        return equip.getEquipmentType() == slotType;
                     }
                     return false;
 

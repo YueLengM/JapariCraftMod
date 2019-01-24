@@ -9,6 +9,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateFlying;
+import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -21,9 +22,6 @@ public class EntityFlyFriend extends EntityFriend {
     public EntityFlyFriend(World worldIn) {
         super(worldIn);
         this.switchNavigator(true);
-
-        this.navigator = new PathNavigateFlying(this, world);
-        ((PathNavigateFlying) this.getNavigator()).setCanOpenDoors(true);
     }
 
     @Override
@@ -60,14 +58,15 @@ public class EntityFlyFriend extends EntityFriend {
 
         if (onLand) {
 
+            this.navigator = new PathNavigateGround(this, world);
             this.moveHelper = new EntityMoveHelper(this);
 
             this.isLandNavigator = true;
 
         } else {
 
+            this.navigator = new PathNavigateFlying(this, world);
             this.moveHelper = new EntityFlyFriend.FlyFriendMoveHelper(this);
-
 
 
             this.isLandNavigator = false;

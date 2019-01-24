@@ -41,7 +41,7 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
             ++this.flytick;
         }
 
-        if (entitylivingbase.posY > this.attacker.posY + 3 && this.flytick >= 80 && this.world.rand.nextInt(90) == 0) {
+        if (entitylivingbase.posY > this.attacker.posY + 3 && this.flytick >= 80 && this.world.rand.nextInt(120) == 0) {
             this.attacker.setFlying(false);
 
             this.flytick = 0;

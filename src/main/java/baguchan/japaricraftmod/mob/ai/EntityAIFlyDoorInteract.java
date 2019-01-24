@@ -7,7 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.pathfinding.Path;
-import net.minecraft.pathfinding.PathNavigateFlying;
+import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathPoint;
 import net.minecraft.util.math.BlockPos;
 
@@ -37,7 +37,7 @@ public abstract class EntityAIFlyDoorInteract extends EntityAIBase {
         if (!this.entity.collidedHorizontally) {
             return false;
         } else {
-            PathNavigateFlying pathnavigateground = (PathNavigateFlying) this.entity.getNavigator();
+            PathNavigate pathnavigateground = this.entity.getNavigator();
             Path path = pathnavigateground.getPath();
 
             if (path != null && !path.isFinished()) {
