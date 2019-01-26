@@ -52,7 +52,7 @@ public class EntityBrownOwl extends EntityFlyFriend {
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
     }
 
