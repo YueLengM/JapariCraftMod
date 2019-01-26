@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.2.1": "fixed target ai",
     "5.2.0": "add offslot,fixed DoorInteract crash, new FlyingAI",
     "5.1.1": "Fixing loottable and spawn sandstar slime, change otter model!",
     "5.1.0": "Fixing and adding AI of flying friends, Added animation when serval and twilight cobolt go attacking",
@@ -11,7 +12,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.2.0",
-    "1.12.2-latest": "5.2.0"
+    "1.12.2-recommended": "5.2.1",
+    "1.12.2-latest": "5.2.1"
   }
 }
