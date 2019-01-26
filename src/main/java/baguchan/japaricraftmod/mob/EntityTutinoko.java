@@ -175,11 +175,8 @@ public class EntityTutinoko extends EntityFriend {
 
             if (this.guardian.getAttackTarget() == null) {
                 return false;
-            } else if (!entitylivingbase.isEntityAlive()) {
-                return false;
-            }
+            } else return entitylivingbase.isEntityAlive();
 
-            return true;
         }
 
         public boolean shouldContinueExecuting() {

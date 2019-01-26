@@ -66,8 +66,7 @@ public class EntitySandCat extends EntityFriend {
     @Override
     public boolean attackEntityFrom(DamageSource source, float damage) {
 
-        if (source == DamageSource.FALL)
-        {
+        if (source == DamageSource.FALL) {
 
             damage *= 0.4F;
 
