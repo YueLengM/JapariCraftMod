@@ -114,6 +114,8 @@ japaricraftmod.config.delphinus_wight=Delphinus Wight
 japaricraftmod.config.structure=Structure Setting
 japaricraftmod.config.animalvillage=Enable Generate AnimalVillage
 japaricraftmod.config.plain_friends_wight=Forests Friend's Weight
+japaricraftmod.config.sand_friends_wight=SandyBiome's Friend Weight
+japaricraftmod.config.snow_friends_wight=SnowBiome's Friend Weight
 
 entity.whiteowl.friend=Thank you for making delicious food for me
 

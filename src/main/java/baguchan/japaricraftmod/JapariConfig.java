@@ -29,6 +29,16 @@ public class JapariConfig {
     @Config.RangeInt(min = 0, max = 20)
     @Config.Comment("Changes spawn rate of PlainAndForests'Friend. Increase value to spawn more Friends.")
     public static int plainsfriends_wight = 5;
+    @Config.LangKey(config + "sand_friends_wight")
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 20)
+    @Config.Comment("Changes spawn rate of SandyBiome's Friend. Increase value to spawn more Friends.")
+    public static int sandfriends_wight = 2;
+    @Config.LangKey(config + "snow_friends_wight")
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 0, max = 20)
+    @Config.Comment("Changes spawn rate of SnownyBiome's Friend. Increase value to spawn more Friends.")
+    public static int snowfriends_wight = 2;
 
 
     @SubscribeEvent
