@@ -33,7 +33,8 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     public void updateTask() {
         super.updateTask();
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
-        if (entitylivingbase.posY - 8 > this.attacker.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
+        //If she judge that can not cross a cliff, she will fly to this side
+        if (this.attacker.getNavigator().noPath() || this.attacker.getNavigator().noPath() && entitylivingbase.posY - 8 > this.attacker.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
             this.attacker.setFlying(true);
         }
 
@@ -41,7 +42,7 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
             ++this.flytick;
         }
 
-        if (entitylivingbase.posY > this.attacker.posY + 3 && this.flytick >= 80 && this.world.rand.nextInt(120) == 0) {
+        if (this.flytick >= 80 && this.world.rand.nextInt(120) == 0) {
             this.attacker.setFlying(false);
 
             this.flytick = 0;

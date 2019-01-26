@@ -138,7 +138,7 @@ public class ModelBrownOwl extends ModelBase {
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
         if (flag || entityowl.isFlying()) {
-            this.head.rotateAngleX = -((float) Math.PI / 4F);
+            this.head.rotateAngleX = -0.413716F;
         } else {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
@@ -148,7 +148,7 @@ public class ModelBrownOwl extends ModelBase {
         float f = 1.0F;
 
         if (entityowl.isFlying()) {
-            this.body.rotateAngleX = ((float) Math.PI / 4F);
+            this.body.rotateAngleX = 0.413716F;
         }
 
         if (flag) {
@@ -177,6 +177,14 @@ public class ModelBrownOwl extends ModelBase {
         this.legL.rotateAngleZ = 0.0F;
         this.skirt1.rotateAngleX = 0F;
 
+        if (entityowl.isFlying()) {
+            this.handR.rotateAngleX = 0.0F;
+            this.handL.rotateAngleX = 0.0F;
+            this.handA_R.rotateAngleX = 0.0F;
+            this.handA_L.rotateAngleX = 0.0F;
+            this.legR.rotateAngleX = 0.0F;
+            this.legL.rotateAngleX = 0.0F;
+        }
 
         if (entityowl.isSitting() || this.isRiding) {
             this.skirt1.rotateAngleX = -1.4137167F;

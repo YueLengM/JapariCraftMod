@@ -168,9 +168,9 @@ public class EntityFlyFriend extends EntityFriend {
                         d3 = (double) MathHelper.sqrt(d3);
 
                         if (this.isNotColliding(this.posX, this.posY, this.posZ, d3)) {
-                            this.parentEntity.motionX += d0 / d3 * this.entity.getAIMoveSpeed();
-                            this.parentEntity.motionY += d1 / d3 * this.entity.getAIMoveSpeed();
-                            this.parentEntity.motionZ += d2 / d3 * this.entity.getAIMoveSpeed();
+                            this.parentEntity.motionX += d0 / d3 * this.entity.getAIMoveSpeed() * 0.7F;
+                            this.parentEntity.motionY += d1 / d3 * this.entity.getAIMoveSpeed() * 0.7F;
+                            this.parentEntity.motionZ += d2 / d3 * this.entity.getAIMoveSpeed() * 0.7F;
                         } else {
                             this.action = EntityMoveHelper.Action.WAIT;
                         }

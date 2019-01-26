@@ -141,7 +141,7 @@ public class ModelWhiteOwl extends ModelBase {
         this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 
         if (flag || entityowl.isFlying()) {
-            this.head.rotateAngleX = -((float) Math.PI / 4F);
+            this.head.rotateAngleX = -0.413716F;
         } else {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
@@ -151,39 +151,45 @@ public class ModelWhiteOwl extends ModelBase {
         float f = 1.0F;
 
         if (entityowl.isFlying()) {
-            this.body.rotateAngleX = ((float) Math.PI / 4F);
+            this.body.rotateAngleX = 0.413716F;
         }
 
-        if (flag)
-        {
-            f = (float)(entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
+        if (flag) {
+            f = (float) (entityIn.motionX * entityIn.motionX + entityIn.motionY * entityIn.motionY + entityIn.motionZ * entityIn.motionZ);
             f = f / 0.2F;
             f = f * f * f;
         }
 
-        if (f < 1.0F)
-        {
+        if (f < 1.0F) {
             f = 1.0F;
         }
 
-        this.handR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
         this.handL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.handR.rotateAngleZ = 0.0F;
         this.handL.rotateAngleZ = 0.0F;
-        this.handA_R.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handA_R.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
         this.handA_L.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.handA_R.rotateAngleZ = 0.0F;
         this.handA_L.rotateAngleZ = 0.0F;
         this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f;
+        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
         this.legR.rotateAngleY = 0.0F;
         this.legL.rotateAngleY = 0.0F;
         this.legR.rotateAngleZ = 0.0F;
         this.legL.rotateAngleZ = 0.0F;
         this.skirt1.rotateAngleX = 0F;
 
-        if (entityowl.isSitting()||this.isRiding)
-        {
+        if (entityowl.isFlying()) {
+            this.handR.rotateAngleX = 0.0F;
+            this.handL.rotateAngleX = 0.0F;
+            this.handA_R.rotateAngleX = 0.0F;
+            this.handA_L.rotateAngleX = 0.0F;
+            this.legR.rotateAngleX = 0.0F;
+            this.legL.rotateAngleX = 0.0F;
+        }
+
+        if (entityowl.isSitting() || this.isRiding) {
             this.skirt1.rotateAngleX = -1.4137167F;
             GL11.glTranslatef(0F, 0.5F, 0F);
         }
@@ -228,11 +234,9 @@ public class ModelWhiteOwl extends ModelBase {
         this.handA_L.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handA_R.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handA_L.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-
         GL11.glTranslatef(0F, 0.3F, 0F);
         this.wing1.rotateAngleZ = -ageInTicks;
         this.wing2.rotateAngleZ = ageInTicks;
-
     }
 
     public void postRenderArm(float scale, EnumHandSide side) {

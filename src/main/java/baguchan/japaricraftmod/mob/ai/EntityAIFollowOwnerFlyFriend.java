@@ -29,6 +29,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
         this.tameable = tameableIn;
         this.world = tameableIn.world;
         this.followSpeed = followSpeedIn;
+        this.path = tameableIn.getNavigator().getPath();
         this.minDist = minDistIn;
         this.maxDist = maxDistIn;
         this.setMutexBits(3);
@@ -89,8 +90,8 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
      */
     public void updateTask() {
         this.tameable.getLookHelper().setLookPositionWithEntity(this.owner, 10.0F, (float) this.tameable.getVerticalFaceSpeed());
-
-        if (owner.posY - 6 > this.tameable.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
+        //If she judge that can not cross a cliff, she will fly to this side
+        if (this.tameable.getNavigator().noPath() || this.tameable.getNavigator().noPath() && owner.posY - 8 > this.tameable.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
             this.tameable.setFlying(true);
         }
 
@@ -98,30 +99,32 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
             ++this.flytick;
         }
 
-        if (owner.posY > this.tameable.posY + 4 && this.flytick >= 80 && this.world.rand.nextInt(80) == 0) {
+        if (this.flytick >= 80 && this.world.rand.nextInt(120) == 0) {
             this.tameable.setFlying(false);
 
             this.flytick = 0;
         }
 
+
         if (!this.tameable.isSitting()) {
             if (--this.timeToRecalcPath <= 0) {
                 this.timeToRecalcPath = 10;
 
-                if (!this.tameable.getNavigator().tryMoveToEntityLiving(this.owner, this.followSpeed)) {
-                    if (!this.tameable.getLeashed() && !this.tameable.isRiding()) {
-                        if (this.tameable.getDistanceSq(this.owner) >= 160.0D) {
-                            int i = MathHelper.floor(this.owner.posX) - 2;
-                            int j = MathHelper.floor(this.owner.posZ) - 2;
-                            int k = MathHelper.floor(this.owner.getEntityBoundingBox().minY);
+            }
 
-                            for (int l = 0; l <= 4; ++l) {
-                                for (int i1 = 0; i1 <= 4; ++i1) {
-                                    if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.isTeleportFriendlyBlock(i, j, k, l, i1)) {
-                                        this.tameable.setLocationAndAngles((double) ((float) (i + l) + 0.5F), (double) k, (double) ((float) (j + i1) + 0.5F), this.tameable.rotationYaw, this.tameable.rotationPitch);
-                                        this.tameable.getNavigator().clearPath();
-                                        return;
-                                    }
+            if (!this.tameable.getNavigator().tryMoveToEntityLiving(this.owner, this.followSpeed)) {
+                if (!this.tameable.getLeashed() && !this.tameable.isRiding()) {
+                    if (this.tameable.getDistanceSq(this.owner) >= 160.0D) {
+                        int i = MathHelper.floor(this.owner.posX) - 2;
+                        int j = MathHelper.floor(this.owner.posZ) - 2;
+                        int k = MathHelper.floor(this.owner.getEntityBoundingBox().minY);
+
+                        for (int l = 0; l <= 4; ++l) {
+                            for (int i1 = 0; i1 <= 4; ++i1) {
+                                if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.isTeleportFriendlyBlock(i, j, k, l, i1)) {
+                                    this.tameable.setLocationAndAngles((double) ((float) (i + l) + 0.5F), (double) k, (double) ((float) (j + i1) + 0.5F), this.tameable.rotationYaw, this.tameable.rotationPitch);
+                                    this.tameable.getNavigator().clearPath();
+                                    return;
                                 }
                             }
                         }
