@@ -1,23 +1,26 @@
-package baguchan.japaricraftmod.client.model.render;
-
+package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.client.model.ModelFennec;
-import baguchan.japaricraftmod.client.model.render.layer.LayerFriendHeldItem;
-import baguchan.japaricraftmod.mob.EntityFennec;
+import baguchan.japaricraftmod.client.model.ModelAraisan;
+import baguchan.japaricraftmod.mob.EntityAraisan;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class FennecRender extends RenderLiving<EntityFennec> {
-    private static final ResourceLocation Fennec_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/fennec.png");
-
-    public FennecRender(RenderManager renderManager) {
-        super(renderManager, new ModelFennec(), 0.5F);
+@SideOnly(Side.CLIENT)
+public class AraisanRender extends RenderLiving<EntityAraisan>
+{
+    private static final ResourceLocation Arai_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/araisan/araisan.png");
+    public AraisanRender(RenderManager renderManager)
+    {
+        super(renderManager, new ModelAraisan(), 0.5F);
         this.addLayer(new LayerBipedArmor(this) {
             protected void setModelSlotVisible(ModelBiped p_188359_1_, EntityEquipmentSlot slotIn) {
                 this.setModelVisible(p_188359_1_);
@@ -41,22 +44,25 @@ public class FennecRender extends RenderLiving<EntityFennec> {
                         p_188359_1_.bipedRightLeg.showModel = false;
                         p_188359_1_.bipedLeftLeg.showModel = false;
                 }
+            }
 
+            @Override
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                p_188359_1_();
+            }
 
+            void p_188359_1_() {
+                GlStateManager.translate(0.0F, 0.1F, 0.0F);
             }
         });
 
-        this.addLayer(new LayerFriendHeldItem(this) {
-
-            protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelFennec) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
-            }
-        });
     }
 
 
     @Override
-    protected ResourceLocation getEntityTexture(EntityFennec entity) {
-        return Fennec_TEXTURES;
+    protected ResourceLocation getEntityTexture(EntityAraisan entity)
+    {
+        return Arai_TEXTURES;
     }
 }

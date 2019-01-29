@@ -1,8 +1,8 @@
-package baguchan.japaricraftmod.client.model.render;
+package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelTwilightKobold;
-import baguchan.japaricraftmod.client.model.render.layer.LayerFriendHeldItem;
+import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityTwilightKobold;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

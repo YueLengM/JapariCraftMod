@@ -1,4 +1,4 @@
-package baguchan.japaricraftmod.client.model.render.layer;
+package baguchan.japaricraftmod.client.render.layer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

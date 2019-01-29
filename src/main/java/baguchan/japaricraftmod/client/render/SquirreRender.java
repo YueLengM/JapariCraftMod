@@ -1,9 +1,8 @@
-package baguchan.japaricraftmod.client.model.render;
+package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.client.model.ModelKouteiPengin;
-import baguchan.japaricraftmod.client.model.render.layer.LayerFriendHeldItem;
-import baguchan.japaricraftmod.mob.EntityKouteiPenguin;
+import baguchan.japaricraftmod.client.model.ModelSquirre;
+import baguchan.japaricraftmod.mob.EntitySquirre;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -11,18 +10,14 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
-public class KouteiPenginEntityRender extends RenderLiving<EntityKouteiPenguin>
-{
-    private static final ResourceLocation Pengin_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/ppp1.png");
-    public KouteiPenginEntityRender(RenderManager renderManager)
-    {
-        super(renderManager, new ModelKouteiPengin(), 0.5F);
+public class SquirreRender extends RenderLiving<EntitySquirre> {
+    private static final ResourceLocation SLEEPING_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/squirre_sleep.png");
+    private static final ResourceLocation TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/squirre.png");
+
+    public SquirreRender(RenderManager renderManager) {
+        super(renderManager, new ModelSquirre(), 0.5F);
         this.addLayer(new LayerBipedArmor(this) {
             protected void setModelSlotVisible(ModelBiped p_188359_1_, EntityEquipmentSlot slotIn) {
                 this.setModelVisible(p_188359_1_);
@@ -54,22 +49,24 @@ public class KouteiPenginEntityRender extends RenderLiving<EntityKouteiPenguin>
                 p_188359_1_();
             }
 
+            /**
+             * 黄昏の森のコードを参考にしている
+             * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
+             */
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
             }
         });
-        this.addLayer(new LayerFriendHeldItem(this) {
 
-            protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelKouteiPengin) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
-            }
-        });
     }
 
-
+    //寝るときと寝ない時のテクスチャ
     @Override
-    protected ResourceLocation getEntityTexture(EntityKouteiPenguin entity)
-    {
-        return Pengin_TEXTURES;
+    protected ResourceLocation getEntityTexture(EntitySquirre entity) {
+        if (entity.isSleeping()) {
+            return SLEEPING_TEXTURES;
+        } else {
+            return TEXTURES;
+        }
     }
 }

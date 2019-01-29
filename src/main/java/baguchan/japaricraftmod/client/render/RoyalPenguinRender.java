@@ -1,8 +1,8 @@
-package baguchan.japaricraftmod.client.model.render;
+package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.client.model.ModelSquirre;
-import baguchan.japaricraftmod.mob.EntitySquirre;
+import baguchan.japaricraftmod.client.model.ModelRoyalPenguin;
+import baguchan.japaricraftmod.mob.RoyalPenguinEntity;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
@@ -11,13 +11,15 @@ import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class SquirreRender extends RenderLiving<EntitySquirre> {
-    private static final ResourceLocation SLEEPING_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/squirre_sleep.png");
-    private static final ResourceLocation TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/squirre.png");
+@SideOnly(Side.CLIENT)
+public class RoyalPenguinRender extends RenderLiving<RoyalPenguinEntity> {
+    private static final ResourceLocation Pengin_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/ppp2.png");
 
-    public SquirreRender(RenderManager renderManager) {
-        super(renderManager, new ModelSquirre(), 0.5F);
+    public RoyalPenguinRender(RenderManager renderManager) {
+        super(renderManager, new ModelRoyalPenguin(), 0.5F);
         this.addLayer(new LayerBipedArmor(this) {
             protected void setModelSlotVisible(ModelBiped p_188359_1_, EntityEquipmentSlot slotIn) {
                 this.setModelVisible(p_188359_1_);
@@ -49,24 +51,15 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
                 p_188359_1_();
             }
 
-            /**
-             * 黄昏の森のコードを参考にしている
-             * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
-             */
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
             }
         });
-
     }
 
-    //寝るときと寝ない時のテクスチャ
+
     @Override
-    protected ResourceLocation getEntityTexture(EntitySquirre entity) {
-        if (entity.isSleeping()) {
-            return SLEEPING_TEXTURES;
-        } else {
-            return TEXTURES;
-        }
+    protected ResourceLocation getEntityTexture(RoyalPenguinEntity entity) {
+        return Pengin_TEXTURES;
     }
 }

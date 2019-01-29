@@ -1,4 +1,4 @@
-package baguchan.japaricraftmod.client.model.render;
+package baguchan.japaricraftmod.client.render;
 
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderSlime;

@@ -1,6 +1,6 @@
 package baguchan.japaricraftmod.handler;
 
-import baguchan.japaricraftmod.client.model.render.*;
+import baguchan.japaricraftmod.client.render.*;
 import baguchan.japaricraftmod.mob.*;
 import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
 import net.minecraft.client.Minecraft;

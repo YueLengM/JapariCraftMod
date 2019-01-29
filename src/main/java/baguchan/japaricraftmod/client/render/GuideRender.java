@@ -1,4 +1,4 @@
-package baguchan.japaricraftmod.client.model.render;
+package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelGuide;
