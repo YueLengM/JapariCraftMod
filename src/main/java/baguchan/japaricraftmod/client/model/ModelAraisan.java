@@ -5,6 +5,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
@@ -283,6 +285,24 @@ public class ModelAraisan extends ModelBase {
         this.hand_l.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
         GL11.glTranslatef(0F, 0.4F, 0F);
+    }
+
+    public void postRenderArm(float scale, EnumHandSide side) {
+        this.getArmForSide(side).postRender(scale);
+    }
+
+    public ModelRenderer getArmForSide(EnumHandSide side) {
+        return side == EnumHandSide.LEFT ? this.hand_l : this.hand_r;
+    }
+
+    protected EnumHandSide getMainHand(Entity entityIn) {
+        if (entityIn instanceof EntityLivingBase) {
+            EntityLivingBase entitylivingbase = (EntityLivingBase) entityIn;
+            EnumHandSide enumhandside = entitylivingbase.getPrimaryHand();
+            return entitylivingbase.swingingHand == EnumHand.MAIN_HAND ? enumhandside : enumhandside.opposite();
+        } else {
+            return EnumHandSide.RIGHT;
+        }
     }
 
     /**
