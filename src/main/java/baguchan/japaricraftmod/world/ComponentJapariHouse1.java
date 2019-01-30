@@ -3,16 +3,23 @@ package baguchan.japaricraftmod.world;
 import baguchan.japaricraftmod.handler.JapariBlocks;
 import baguchan.japaricraftmod.handler.JapariTreasure;
 import baguchan.japaricraftmod.handler.ModVillagers;
+import baguchan.japaricraftmod.mob.EntityBrownOwl;
+import baguchan.japaricraftmod.mob.EntityShoebill;
+import baguchan.japaricraftmod.mob.EntitySquirre;
+import baguchan.japaricraftmod.mob.EntityWhiteOwl;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 
 import java.util.List;
@@ -20,6 +27,8 @@ import java.util.Random;
 
 
 public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
+
+    private int friendsSpawned;
 
     public ComponentJapariHouse1() {
 
@@ -31,7 +40,16 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         this.boundingBox = p_i2106_4_;
     }
 
+    protected void writeStructureToNBT(NBTTagCompound tagCompound) {
+        tagCompound.setInteger("FCount", this.friendsSpawned);
+    }
 
+    /**
+     * (abstract) Helper method to read subclass data from NBT
+     */
+    protected void readStructureFromNBT(NBTTagCompound tagCompound, TemplateManager p_143011_2_) {
+        this.friendsSpawned = tagCompound.getInteger("FCount");
+    }
 
     public static Object  buildComponent(StructureVillagePieces.Start start, List<StructureComponent> p_175857_1_, Random rand, int p_175857_3_, int p_175857_4_, int p_175857_5_, EnumFacing facing, int p_175857_7_)
     {
@@ -139,9 +157,53 @@ public class ComponentJapariHouse1 extends StructureVillagePieces.Village {
         }
 
         this.spawnVillagers(worldIn, structureBoundingBoxIn, 4, 1, 2, 2);
+        this.spawnFriends(worldIn, structureBoundingBoxIn, 4, 1, 2, 2);
         this.generateChest(worldIn, structureBoundingBoxIn, randomIn, 7, 1, 1, JapariTreasure.humanhouse);
         return true;
     }
+
+    private void spawnFriends(World worldIn, StructureBoundingBox structureBoundingBoxIn, int x, int y, int z, int count) {
+        if (this.friendsSpawned < count) {
+            for (int i = this.friendsSpawned; i < count; ++i) {
+                int j = this.getXWithOffset(x + i, z);
+                int k = this.getYWithOffset(y);
+                int l = this.getZWithOffset(x + i, z);
+
+                if (!structureBoundingBoxIn.isVecInside(new BlockPos(j, k, l))) {
+                    break;
+                }
+
+                ++this.friendsSpawned;
+
+                if (worldIn.rand.nextInt(4) == 0) {
+                    EntityWhiteOwl entityWhiteOwl = new EntityWhiteOwl(worldIn);
+                    entityWhiteOwl.setLocationAndAngles((double) j + 0.5D, (double) k, (double) l + 0.5D, 0.0F, 0.0F);
+                    entityWhiteOwl.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityWhiteOwl)), null);
+                    entityWhiteOwl.enablePersistence();
+                    worldIn.spawnEntity(entityWhiteOwl);
+                } else if (worldIn.rand.nextInt(4) == 0) {
+                    EntityBrownOwl entityBrownOwl = new EntityBrownOwl(worldIn);
+                    entityBrownOwl.setLocationAndAngles((double) j + 0.5D, (double) k, (double) l + 0.5D, 0.0F, 0.0F);
+                    entityBrownOwl.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityBrownOwl)), null);
+                    entityBrownOwl.enablePersistence();
+                    worldIn.spawnEntity(entityBrownOwl);
+                } else if (worldIn.rand.nextInt(4) == 0) {
+                    EntityShoebill entityfriends = new EntityShoebill(worldIn);
+                    entityfriends.setLocationAndAngles((double) j + 0.5D, (double) k, (double) l + 0.5D, 0.0F, 0.0F);
+                    entityfriends.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityfriends)), null);
+                    entityfriends.enablePersistence();
+                    worldIn.spawnEntity(entityfriends);
+                } else {
+                    EntitySquirre entityfriends = new EntitySquirre(worldIn);
+                    entityfriends.setLocationAndAngles((double) j + 0.5D, (double) k, (double) l + 0.5D, 0.0F, 0.0F);
+                    entityfriends.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityfriends)), null);
+                    entityfriends.enablePersistence();
+                    worldIn.spawnEntity(entityfriends);
+                }
+            }
+        }
+    }
+
     @Override
     protected VillagerRegistry.VillagerProfession chooseForgeProfession(int count, net.minecraftforge.fml.common.registry.VillagerRegistry.VillagerProfession prof)
     {

@@ -24,6 +24,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
     private float oldWaterCost;
     Path path;
     private int flytick;
+    private int noPathtick;
 
     public EntityAIFollowOwnerFlyFriend(EntityFlyFriend tameableIn, double followSpeedIn, float minDistIn, float maxDistIn) {
         this.tameable = tameableIn;
@@ -91,7 +92,11 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
     public void updateTask() {
         this.tameable.getLookHelper().setLookPositionWithEntity(this.owner, 10.0F, (float) this.tameable.getVerticalFaceSpeed());
         //If she judge that can not cross a cliff, she will fly to this side
-        if (this.tameable.getNavigator().noPath() || this.tameable.getNavigator().noPath() && owner.posY - 8 > this.tameable.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
+        if (this.tameable.getNavigator().noPath()) {
+            ++this.noPathtick;
+        }
+
+        if (this.noPathtick >= 40 && this.world.rand.nextInt(20) == 0) {
             this.tameable.setFlying(true);
         }
 
@@ -99,7 +104,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
             ++this.flytick;
         }
 
-        if (this.flytick >= 80 && this.world.rand.nextInt(120) == 0) {
+        if (this.flytick >= 200 && this.world.rand.nextInt(200) == 0) {
             this.tameable.setFlying(false);
 
             this.flytick = 0;

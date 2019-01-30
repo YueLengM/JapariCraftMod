@@ -57,15 +57,22 @@ public class EntityFlyFriend extends EntityFriend {
     private void switchNavigator(boolean onLand) {
 
         if (onLand) {
+            PathNavigateGround pathnavigate = new PathNavigateGround(this, world);
+            pathnavigate.setBreakDoors(true);
 
-            this.navigator = new PathNavigateGround(this, world);
+            this.navigator = pathnavigate;
             this.moveHelper = new EntityMoveHelper(this);
 
             this.isLandNavigator = true;
 
         } else {
 
-            this.navigator = new PathNavigateFlying(this, world);
+            PathNavigateFlying pathnavigateflying = new PathNavigateFlying(this, world);
+            pathnavigateflying.setCanOpenDoors(true);
+            pathnavigateflying.setCanFloat(true);
+            pathnavigateflying.setCanEnterDoors(true);
+
+            this.navigator = pathnavigateflying;
             this.moveHelper = new EntityFlyFriend.FlyFriendMoveHelper(this);
 
 

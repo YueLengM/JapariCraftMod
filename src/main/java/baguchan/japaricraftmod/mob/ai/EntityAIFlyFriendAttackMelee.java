@@ -9,6 +9,7 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     World world;
     protected EntityFlyFriend attacker;
     private int flytick;
+    private int noPathtick;
 
     public EntityAIFlyFriendAttackMelee(EntityFlyFriend creature, double speedIn, boolean useLongMemory) {
         super(creature, speedIn, useLongMemory);
@@ -33,8 +34,13 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     public void updateTask() {
         super.updateTask();
         EntityLivingBase entitylivingbase = this.attacker.getAttackTarget();
+
+        if (this.attacker.getNavigator().noPath()) {
+            ++this.noPathtick;
+        }
+
         //If she judge that can not cross a cliff, she will fly to this side
-        if (this.attacker.getNavigator().noPath() || this.attacker.getNavigator().noPath() && entitylivingbase.posY - 8 > this.attacker.posY && this.flytick == 0 && this.world.rand.nextInt(20) == 0) {
+        if (this.noPathtick >= 40 && this.world.rand.nextInt(20) == 0) {
             this.attacker.setFlying(true);
         }
 

@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.2.3": "Corresponds to render when friends wear a helmet, Fixed owl can't open door,",
     "5.2.2": "remove SandStarJungle biome",
     "5.2.1": "fixed target ai",
     "5.2.0": "add offslot,fixed DoorInteract crash, new FlyingAI",
@@ -13,7 +14,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.2.2",
-    "1.12.2-latest": "5.2.2"
+    "1.12.2-recommended": "5.2.3",
+    "1.12.2-latest": "5.2.3"
   }
 }
