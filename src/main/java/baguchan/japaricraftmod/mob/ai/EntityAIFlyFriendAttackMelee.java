@@ -21,6 +21,7 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
     public void startExecuting() {
         super.startExecuting();
         this.flytick = 0;
+        this.noPathtick = 0;
 
     }
 
@@ -42,6 +43,7 @@ public class EntityAIFlyFriendAttackMelee extends EntityAIAttackMelee {
         //If she judge that can not cross a cliff, she will fly to this side
         if (this.noPathtick >= 40 && this.world.rand.nextInt(20) == 0) {
             this.attacker.setFlying(true);
+            this.noPathtick = 0;
         }
 
         if (this.attacker.isFlying()) {

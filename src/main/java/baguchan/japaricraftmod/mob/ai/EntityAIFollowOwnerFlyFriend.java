@@ -69,6 +69,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
      */
     public void startExecuting() {
         this.flytick = 0;
+        this.noPathtick = 0;
         this.timeToRecalcPath = 0;
         this.oldWaterCost = this.tameable.getPathPriority(PathNodeType.WATER);
         this.tameable.getNavigator().setPath(this.path, this.followSpeed);
@@ -98,6 +99,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
 
         if (this.noPathtick >= 40 && this.world.rand.nextInt(20) == 0) {
             this.tameable.setFlying(true);
+            this.noPathtick = 0;
         }
 
         if (this.tameable.isFlying()) {
