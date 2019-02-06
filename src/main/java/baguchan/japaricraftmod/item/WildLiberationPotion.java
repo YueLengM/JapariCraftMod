@@ -22,7 +22,7 @@ public class WildLiberationPotion extends ItemFood
 {
 
     public WildLiberationPotion (){
-        super(0,1,false);
+        super(0, 0.1F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("WildLiberationPotion");
         this.setMaxStackSize(1);

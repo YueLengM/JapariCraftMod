@@ -17,7 +17,7 @@ import java.util.List;
 
 public class WildLiberationSource extends ItemFood {
     public WildLiberationSource() {
-        super(1, 1, false);
+        super(1, 0.1F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("WildLiberationSource");
         this.setAlwaysEdible();

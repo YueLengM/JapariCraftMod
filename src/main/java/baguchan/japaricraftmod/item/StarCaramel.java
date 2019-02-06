@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class StarCaramel extends ItemFood {
 
     public StarCaramel() {
-        super(2, 1, false);
+        super(2, 0.62F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("StarCaramel");
         this.setAlwaysEdible();

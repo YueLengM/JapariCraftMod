@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class StarJapariman extends ItemFood {
 
     public StarJapariman() {
-        super(4, 3, false);
+        super(4, 0.62F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("StarJapariman");
         this.setAlwaysEdible();

@@ -6,7 +6,7 @@ import net.minecraft.item.ItemFood;
 
 public class JaparimanFruit extends ItemFood {
     public JaparimanFruit() {
-        super(7, 5, false);
+        super(7, 0.72F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("JaparimanFruit");
     }

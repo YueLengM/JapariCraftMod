@@ -18,7 +18,7 @@ import java.util.List;
 public class SandStarCake115 extends ItemFood {
 
     public SandStarCake115() {
-        super(4, 1F, false);
+        super(4, 0.65F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("SandStarCake115");
         this.setAlwaysEdible();

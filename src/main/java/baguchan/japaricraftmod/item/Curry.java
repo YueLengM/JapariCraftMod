@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 public class Curry extends ItemFood {
     public Curry (){
-        super(9,4,false);
+        super(9, 0.8F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("Curry");
         this.setMaxStackSize(8);

@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 public class GoldenJapariman extends ItemFood {
 
     public GoldenJapariman() {
-        super(5, 7, false);
+        super(5, 0.62F, false);
         this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("GoldenJapariman");
         this.setAlwaysEdible();
