@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.2.4.01": "fixed over saturation food",
     "5.2.4": "fixed FlyAI",
     "5.2.3": "Corresponds to render when friends wear a helmet, Fixed owl can't open door,",
     "5.2.2": "remove SandStarJungle biome",
