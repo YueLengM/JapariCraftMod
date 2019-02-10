@@ -284,7 +284,7 @@ public class EntityFriend extends EntityTameable {
             }
         }
         //やばい時はじゃぱりまんを食べる
-        if (getHealth() < getMaxHealth() / 1.8 && this.rand.nextInt(20) == 0) {
+        if (getHealth() < getMaxHealth() / 1.4 && ticksExisted % 20 == 0) {
             eatJapariman();
         }
 
@@ -539,10 +539,10 @@ public class EntityFriend extends EntityTameable {
     }
 
     @SideOnly(Side.CLIENT)
-    public static enum ArmPose {
+    public enum ArmPose {
         NORMAL,
         ATTACKING,
         EATING,
-        BOW_AND_ARROW;
+        BOW_AND_ARROW
     }
 }

@@ -21,26 +21,25 @@ public class BlockWoodenBox extends Block {
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         if (rand.nextInt(5) == 0){
-            return Items.APPLE;
+            return Items.SUGAR;
         }
         else if (rand.nextInt(7) == 0){
             return Items.IRON_NUGGET;
         }
         else if (rand.nextInt(10) == 0){
             return Items.GOLD_NUGGET;
-        }
-        else if (rand.nextInt(18) == 0){
-            return Items.GOLDEN_APPLE;
-        }
-        else if (rand.nextInt(25) == 0){
+        } else if (rand.nextInt(10) == 0) {
+            return JapariItems.japariman;
+        } else if (rand.nextInt(12) == 0) {
+            return JapariItems.japarimanapple;
+        } else if (rand.nextInt(25) == 0){
             return JapariItems.sandstarfragment;
-        }
-        else{
-            return Items.STICK;
+        } else{
+            return Items.BONE;
         }
     }
     public int quantityDropped(Random random)
     {
-        return 4;
+        return 1 + random.nextInt(4);
     }
 }

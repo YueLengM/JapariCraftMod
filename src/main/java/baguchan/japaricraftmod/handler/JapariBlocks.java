@@ -15,6 +15,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class JapariBlocks {
     public static final BlockSandStar SANDSTAR_BLOCK = new BlockSandStar();
+    public static final BlockCrackedSandStar CRACKED_SANDSTAR_BLOCK = new BlockCrackedSandStar();
     public static final BlockSandStarOre SANDSTAR_ORE = new BlockSandStarOre();
     public static final BlockSandStarLamp SANDSTAR_Lamp = new BlockSandStarLamp();
     public static final BlockWoodenBox BLOCK_WOODEN_BOX = new BlockWoodenBox();
@@ -27,6 +28,7 @@ public class JapariBlocks {
     {
         registry.register(SANDSTAR_ORE.setRegistryName("sandstar_ore"));
         registry.register(SANDSTAR_BLOCK.setRegistryName("sandstar_block"));
+        registry.register(CRACKED_SANDSTAR_BLOCK.setRegistryName("cracked_sandstar"));
         registry.register(SANDSTAR_Lamp.setRegistryName("sandstar_lamp"));
         registry.register(BLOCK_WOODEN_BOX.setRegistryName("woodenbox"));
         registry.register(Japariman_Bowl.setRegistryName("japarimanbowl"));
@@ -40,6 +42,7 @@ public class JapariBlocks {
     {
         JapariItems.register(registry, new ItemBlock(SANDSTAR_ORE));
         JapariItems.register(registry, new ItemBlock(SANDSTAR_BLOCK));
+        JapariItems.register(registry, new ItemBlock(CRACKED_SANDSTAR_BLOCK));
         JapariItems.register(registry, new ItemBlock(SANDSTAR_Lamp));
         JapariItems.register(registry, new ItemBlock(Japariman_Bowl));
         JapariItems.register(registry, new ItemBlock(BLOCK_WOODEN_BOX));
@@ -60,6 +63,7 @@ public class JapariBlocks {
     {
         registerModel(SANDSTAR_ORE);
         registerModel(SANDSTAR_BLOCK);
+        registerModel(CRACKED_SANDSTAR_BLOCK);
         registerModel(SANDSTAR_Lamp);
         registerModel(Japariman_Bowl);
         registerModel(BLOCK_WOODEN_BOX);
