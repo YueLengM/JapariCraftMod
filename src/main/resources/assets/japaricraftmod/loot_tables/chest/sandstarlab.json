@@ -3,8 +3,8 @@
     {
       "name": "main",
       "rolls": {
-        "min": 3,
-        "max": 5
+        "min": 2,
+        "max": 4
       },
       "entries": [
         {
@@ -15,7 +15,7 @@
         {
           "type": "item",
           "name": "japaricraftmod:starjapariman",
-          "weight": 4,
+          "weight": 5,
           "functions": [
             {
               "function": "set_count",
@@ -28,22 +28,22 @@
         },
         {
           "type": "item",
-          "name": "minecraft:gold_ingot",
-          "weight": 10,
-          "functions": [
-            {
-              "function": "set_count",
-              "count": {
-                "min": 1,
-                "max": 2
-              }
-            }
-          ]
-        },
-        {
-          "type": "item",
-          "name": "minecraft:iron_ingot",
+          "name": "japaricraftmod:japarimanapple",
           "weight": 15,
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "japaricraftmod:japariman",
+          "weight": 20,
           "functions": [
             {
               "function": "set_count",
@@ -59,29 +59,14 @@
     {
       "rolls": {
         "min": 0,
-        "max": 2
+        "max": 1
       },
-      "name": "armor",
+      "name": "sword",
       "entries": [
         {
           "type": "item",
-          "name": "minecraft:iron_boots",
+          "name": "minecraft:iron_sword",
           "weight": 3,
-          "functions": [
-            {
-              "function": "enchant_with_levels",
-              "treasure": true,
-              "levels": {
-                "min": 2,
-                "max": 5
-              }
-            }
-          ]
-        },
-        {
-          "type": "item",
-          "name": "japaricraftmod:kabanhat",
-          "weight": 6,
           "functions": [
             {
               "function": "enchant_with_levels",
@@ -126,6 +111,36 @@
             }
           ],
           "weight": 10
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "golden_apple",
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "weight": 1,
+          "count": {
+            "min": 1,
+            "max": 2
+          }
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "name": "sandstar",
+      "entries": [
+        {
+          "type": "item",
+          "name": "japaricraftmod:sandstar_fragment",
+          "weight": 1,
+          "count": {
+            "min": 1,
+            "max": 2
+          }
         }
       ]
     }

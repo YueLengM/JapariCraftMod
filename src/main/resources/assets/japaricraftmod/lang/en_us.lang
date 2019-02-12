@@ -1,6 +1,7 @@
 #
 tile.BlockWoodenFrame.name=Wooden Frame
 tile.SandStarBlock.name=Sandstar Block
+tile.cracked_sandstar.name=Craked Sandstar
 tile.sandstar_ore.name=Sandstar Ore
 tile.sandstarwater.name=Sandstar Water
 tile.Campfire.name=Campfire

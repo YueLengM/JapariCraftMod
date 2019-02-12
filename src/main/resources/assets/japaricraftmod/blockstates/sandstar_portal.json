@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "variants": {
+    "normal": {
+      "model": "japaricraftmod:sandstar_portal_block"
+    },
+    "inventory": {
+      "model": "japaricraftmod:sandstar_portal"
+    }
+  }
+}
