@@ -2,7 +2,6 @@ package baguchan.japaricraftmod.handler;
 
 
 import baguchan.japaricraftmod.JapariCraftMod;
-import baguchan.japaricraftmod.Log;
 import baguchan.japaricraftmod.item.*;
 import baguchan.japaricraftmod.item.armor.ItemKabanHat;
 import baguchan.japaricraftmod.item.armor.ItemServalEarCostume;
@@ -84,8 +83,6 @@ public class JapariItems {
         register(registry, japaricoin.setRegistryName("japaricoin"));
         register(registry, itemTutorialPaper.setRegistryName("tutorialpaper"));
         OreDictionary.registerOre("sandstar", sandstarfragment);
-
-        Log.log.info(sandstarfragment.getRegistryName());
     }
 
     @SideOnly(Side.CLIENT)
