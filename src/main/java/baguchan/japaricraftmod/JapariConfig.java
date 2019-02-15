@@ -40,6 +40,12 @@ public class JapariConfig {
     @Config.Comment("Changes spawn rate of SnownyBiome's Friend. Increase value to spawn more Friends.")
     public static int snowfriends_wight = 2;
 
+    @Config.LangKey(config + "sandstarlab_gen")
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 440, max = 800)
+    @Config.Comment("SandStar Lab Rarity Given this value as X, 1 ship will spawn in X plain biome and wasteland biome chunks")
+    public static int sandstarlabGen = 460;
+
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

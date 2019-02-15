@@ -2,13 +2,12 @@ package baguchan.japaricraftmod;
 
 import baguchan.japaricraftmod.compat.JapariCompat;
 import baguchan.japaricraftmod.event.EntityEventHandler;
-import baguchan.japaricraftmod.event.StructureEventHandler;
 import baguchan.japaricraftmod.gui.JapariGuiHandler;
 import baguchan.japaricraftmod.handler.*;
 import baguchan.japaricraftmod.world.ComponentJapariHouse1;
 import baguchan.japaricraftmod.world.SandStarOreGenerator;
 import baguchan.japaricraftmod.world.biome.JapariBiomes;
-import baguchan.japaricraftmod.world.gen.structure.sandstarlab.SandStarLabPieces;
+import baguchan.japaricraftmod.world.gen.SandStarLabGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -41,7 +40,7 @@ import org.apache.logging.log4j.Logger;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "5.2.4.01";
+    public static final String VERSION = "5.2.5";
     public static final String MODNAME = "JapariCraftMod";
 
 
@@ -102,6 +101,7 @@ public class JapariCraftMod {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new SandStarOreGenerator(), 0);
+        GameRegistry.registerWorldGenerator(new SandStarLabGenerator(), 0);
         if (event.getSide().isClient()) {
             JapariRenderingRegistry.registerRenderers();
         }
@@ -127,8 +127,8 @@ public class JapariCraftMod {
         JapariBiomes.registerBiomeTypes();
         JapariEntityRegistry.addSpawns();
 
-        MinecraftForge.EVENT_BUS.register(new StructureEventHandler());
-        SandStarLabPieces.registerSandStarLab();
+        //MinecraftForge.EVENT_BUS.register(new StructureEventHandler());
+        //SandStarLabPieces.registerSandStarLab();
 
         // チャンク生成時に追加構造物の生成が行われるようにフック
         VillagerRegistry villageRegistry = VillagerRegistry.instance();
