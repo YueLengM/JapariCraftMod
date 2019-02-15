@@ -25,7 +25,7 @@ public class ModelSquirre extends ModelBase {
         this.textureWidth = 64;
         this.textureHeight = 32;
         this.body = new ModelRenderer(this, 32, 0);
-        this.body.setRotationPoint(0.0F, 0.0F, 0.0F);
+        this.body.setRotationPoint(0.0F, 12.0F, 0.0F);
         this.body.addBox(-2.5F, 0.0F, -2.5F, 5, 8, 5, 0.0F);
         this.head = new ModelRenderer(this, 0, 0);
         this.head.setRotationPoint(0.0F, 1.0F, 0.0F);
@@ -117,7 +117,7 @@ public class ModelSquirre extends ModelBase {
             this.legL.rotateAngleX = -1.4137167F;
             this.legL.rotateAngleY = -((float) Math.PI / 10F);
             this.legL.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.4F, 0F);
+            GL11.glTranslatef(0F, 0.2F, 0F);
         }
 
         this.handR.rotateAngleY = 0.0F;
@@ -152,8 +152,6 @@ public class ModelSquirre extends ModelBase {
         this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
         this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
 
-
-        GL11.glTranslatef(0F, 0.6F, 0F);
     }
 
     public void postRenderArm(float scale, EnumHandSide side) {

@@ -9,9 +9,11 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class FennecRender extends RenderLiving<EntityFennec> {
     private static final ResourceLocation Fennec_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/fennec.png");
@@ -43,6 +45,21 @@ public class FennecRender extends RenderLiving<EntityFennec> {
                 }
 
 
+            }
+
+            @Override
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                p_188359_1_();
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+
+            }
+
+            /**
+             * 黄昏の森のコードを参考にしている
+             * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
+             */
+            void p_188359_1_() {
+                GL11.glTranslatef(0.0F, 0.4F, 0.0F);
             }
         });
 

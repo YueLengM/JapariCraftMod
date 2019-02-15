@@ -4,13 +4,13 @@ import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelSquirre;
 import baguchan.japaricraftmod.mob.EntitySquirre;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 public class SquirreRender extends RenderLiving<EntitySquirre> {
     private static final ResourceLocation SLEEPING_TEXTURES = new ResourceLocation(JapariCraftMod.MODID, "textures/entity/squirre_sleep.png");
@@ -45,8 +45,8 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
 
             @Override
             public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
                 p_188359_1_();
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
             }
 
             /**
@@ -54,7 +54,7 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
              * ここでは装備のメゾットを使って、フレンズの高さに合わせてy軸をいじってる
              */
             void p_188359_1_() {
-                GlStateManager.translate(0.0F, 0.01F, 0.0F);
+                GL11.glTranslatef(0.0F, 0.6F, 0.0F);
             }
         });
 

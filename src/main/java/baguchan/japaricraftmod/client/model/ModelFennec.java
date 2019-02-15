@@ -155,7 +155,7 @@ public class ModelFennec extends ModelBase {
         this.tail_1.addBox(-1.0F, -1.0F, 0.0F, 2, 2, 6, 0.0F);
         this.setRotateAngle(tail_1, -0.6373942428283291F, 0.0F, 0.0F);
         this.body = new ModelRenderer(this, 108, 16);
-        this.body.setRotationPoint(0.0F, 10.0F, 0.0F);
+        this.body.setRotationPoint(0.0F, 15.0F, 0.0F);
         this.body.addBox(-2.5F, -8.0F, -2.5F, 5, 8, 5, 0.0F);
         this.leg_l = new ModelRenderer(this, 57, 0);
         this.leg_l.setRotationPoint(1.5F, 2.0F, 0.0F);
@@ -329,7 +329,6 @@ public class ModelFennec extends ModelBase {
 
         this.tail_1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 0.8F * limbSwingAmount - 0.63F;
 
-        GL11.glTranslatef(0F, 0.4F, 0F);
     }
 
     public void postRenderArm(float scale, EnumHandSide side) {
