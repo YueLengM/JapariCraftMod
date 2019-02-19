@@ -59,6 +59,8 @@ entity.japaricraftmod.SandStarSlime.name=サンドスタースライム
 entity.japaricraftmod.Otter.name=コツメカワウソ
 entity.japaricraftmod.Beluga.name=シロイルカ[WIP]
 entity.japaricraftmod.TwilightKobold.name=黄昏の森のコボルト
+entity.japaricraftmod.StarSorcerger.name=邪悪なサンドスターの使い手
+entity.japaricraftmod.Scocel.name=スコセル
 
 
 advancements.japaricraftmod.root.title=始まりのじゃぱりくらふと
@@ -79,6 +81,8 @@ advancements.japaricraftmod.friends.title=友達作り
 advancements.japaricraftmod.friends.description=フレンズにじゃぱりまんをあげる
 advancements.japaricraftmod.endercerulean.title=不安定なもの
 advancements.japaricraftmod.endercerulean.description=エンダーセルリアンを倒す
+advancements.japaricraftmod.starsorcerger.title=隠れたillagerの陰謀
+advancements.japaricraftmod.starsorcerger.description=StarSorcergerを倒す
 
 entity.Villager.zookeeper=飼育員
 
@@ -100,6 +104,8 @@ japaricraftmod.config.plain_friends_wight=森や草原のフレンズの沸き�
 japaricraftmod.config.sand_friends_wight=砂漠のフレンズの沸き率
 japaricraftmod.config.snow_friends_wight=寒いバイオームに住むフレンズの沸き率
 japaricraftmod.config.sandstarlab_gen=この値が高いほどサンドスターラボの生成率は低くなります
+
+death.attack.sandstarlow.player=%1$sは、%2$sのサンドスターロウの弾に当たってしまった
 
 itemGroup.JapariCraftTab=ジャパリクラフト
 

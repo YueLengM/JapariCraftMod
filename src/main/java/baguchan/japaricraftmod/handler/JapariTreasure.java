@@ -1,25 +1,23 @@
 package baguchan.japaricraftmod.handler;
 
 
-import baguchan.japaricraftmod.JapariCraftMod;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
+import baguchan.japaricraftmod.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.world.*;
 import net.minecraft.world.storage.loot.*;
-import net.minecraft.world.storage.loot.properties.EntityProperty;
-import net.minecraft.world.storage.loot.properties.EntityPropertyManager;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import net.minecraft.world.storage.loot.properties.*;
+import net.minecraftforge.fml.relauncher.*;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.lang.reflect.*;
+import java.util.*;
 
 public class JapariTreasure {
     public static final ResourceLocation humanhouse = register("chest/humanhouse");
     public static final ResourceLocation cafe = register("chest/cafe");
     public static final ResourceLocation lab = register("chest/sandstarlab");
+    public static final ResourceLocation starsorcerger = register("entitys/starsorcerger");
+    public static final ResourceLocation scocel = register("entitys/scocel");
     private ResourceLocation lootTable;
 
     private static ResourceLocation register(String id) {

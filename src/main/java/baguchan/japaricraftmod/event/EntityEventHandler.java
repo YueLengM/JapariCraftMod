@@ -1,18 +1,14 @@
 package baguchan.japaricraftmod.event;
 
-import baguchan.japaricraftmod.handler.JapariItems;
-import baguchan.japaricraftmod.mob.EntityCerulean;
-import baguchan.japaricraftmod.mob.EntityServal;
-import net.minecraft.entity.ai.EntityAIAvoidEntity;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityVindicator;
-import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import baguchan.japaricraftmod.handler.*;
+import baguchan.japaricraftmod.mob.*;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.*;
+import net.minecraft.entity.passive.*;
+import net.minecraft.inventory.*;
+import net.minecraft.item.*;
+import net.minecraftforge.event.entity.*;
+import net.minecraftforge.fml.common.eventhandler.*;
 
 public class EntityEventHandler {
     //エンティティのAI関係
@@ -22,16 +18,14 @@ public class EntityEventHandler {
             EntityVillager villager = (EntityVillager) event.getEntity();
 
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityCerulean.class, 12.0F, 0.8D, 0.8D));
+            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityScocel.class, 12.0F, 0.8D, 0.8D));
+            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityCeruleanEye.class, 12.0F, 0.8D, 0.8D));
+            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityStarSorcerger.class, 12.0F, 0.8D, 0.8D));
         }
         if (event.getEntity() instanceof EntityCreeper) {
             EntityCreeper creeper = (EntityCreeper) event.getEntity();
 
             creeper.tasks.addTask(1, new EntityAIAvoidEntity<>(creeper, EntityServal.class, 12.0F, 1.1D, 1.1D));
-        }
-        if (event.getEntity() instanceof EntityVindicator) {
-            EntityVindicator vindicator = (EntityVindicator) event.getEntity();
-
-            vindicator.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(vindicator, EntityCerulean.class, true));
         }
         if (event.getEntity() instanceof EntityZombie) {
             EntityZombie zombie = (EntityZombie) event.getEntity();

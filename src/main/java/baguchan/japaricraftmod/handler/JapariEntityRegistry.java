@@ -1,22 +1,18 @@
 package baguchan.japaricraftmod.handler;
 
 
-import baguchan.japaricraftmod.JapariConfig;
-import baguchan.japaricraftmod.JapariCraftMod;
+import baguchan.japaricraftmod.*;
 import baguchan.japaricraftmod.mob.*;
-import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
-import com.google.common.collect.Lists;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Biomes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import baguchan.japaricraftmod.mob.projectile.*;
+import com.google.common.collect.*;
+import net.minecraft.entity.*;
+import net.minecraft.init.*;
+import net.minecraft.util.*;
+import net.minecraft.world.biome.*;
+import net.minecraftforge.common.*;
+import net.minecraftforge.fml.common.registry.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static net.minecraftforge.common.BiomeDictionary.Type.*;
 
@@ -41,9 +37,12 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "otter"), EntityOtter.class, prefix("Otter"), 20, JapariCraftMod.instance, 70, 3, false, 0xADADAD, 0x949494);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "ceruleaneye"), EntityCeruleanEye.class, prefix("CeruleanEye"), 21, JapariCraftMod.instance, 70, 3, false, 0x333333, 0x339966);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "endercerulean"), EntityEnderCerulean.class, prefix("EnderCerulean"), 22, JapariCraftMod.instance, 70, 3, false, 0x333333, 0x808080);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "darksandstarball"), EntityDarkSandStarball.class, prefix("DarkSandStarBall"), 23, JapariCraftMod.instance, 120, 3, true);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "darksandstarball"), EntityDarkSandStarball.class, prefix("DarkSandStarBall"), 23, JapariCraftMod.instance, 120, 2, true);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "beluga"), EntityBeluga.class, prefix("Beluga"), 24, JapariCraftMod.instance, 80, 3, false, 0xF2FFFF, 0xB8FAFF);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "twilightkobold"), EntityTwilightKobold.class, prefix("TwilightKobold"), 25, JapariCraftMod.instance, 80, 3, false, 0x372096, 0x895d1b);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "starsorcerger"), EntityStarSorcerger.class, prefix("StarSorcerger"), 26, JapariCraftMod.instance, 100, 3, false, 0x85EBFF, 0xD2D665);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "scocel"), EntityScocel.class, prefix("Scocel"), 27, JapariCraftMod.instance, 100, 3, false, 0x599474, 0xC94747);
+        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "poisonball"), EntityPoisonBall.class, prefix("PoisonBall"), 28, JapariCraftMod.instance, 120, 2, true);
     }
 
     private static String prefix(String path) {
@@ -121,6 +120,7 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(PoisonEntityCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(EntityAlpaca.class, 5, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
         EntityRegistry.addSpawn(EntityTutinoko.class, 5, 1, 2, EnumCreatureType.CREATURE, spooky_biomes.toArray(new Biome[spooky_biomes.size()]));
+        EntityRegistry.addSpawn(EntityScocel.class, 40, 1, 2, EnumCreatureType.CREATURE, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
 
     }
 }

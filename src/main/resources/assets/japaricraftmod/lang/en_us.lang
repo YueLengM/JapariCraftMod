@@ -67,6 +67,8 @@ entity.japaricraftmod.SandStarSlime.name=SandStarSlime
 entity.japaricraftmod.Otter.name=Otter
 entity.japaricraftmod.Beluga.name=Beluga[WIP]
 entity.japaricraftmod.TwilightKobold.name=TwilightKobold
+entity.japaricraftmod.StarSorcerger.name=Star Sorcerger
+entity.japaricraftmod.Scocel.name=Scocel
 
 itemGroup.JapariCraftTab=JapariCraft
 
@@ -91,7 +93,9 @@ advancements.japaricraftmod.sandstarminer.description=Get Sandstar
 advancements.japaricraftmod.friends.title=Make Friends
 advancements.japaricraftmod.friends.description=Give Japariman to Friends
 advancements.japaricraftmod.endercerulean.title=The unstable one
-advancements.japaricraftmod.endercerulean.description=Kill EnderCerulean
+advancements.japaricraftmod.endercerulean.description=Killed EnderCerulean
+advancements.japaricraftmod.starsorcerger.title=Hidden illager's conspiracy
+advancements.japaricraftmod.starsorcerger.description=Killed StarSorcerger
 
 entity.Villager.zookeeper=ZooKeeper
 entity.Villager.raretreader=Treasure Trader
@@ -116,7 +120,7 @@ japaricraftmod.config.sand_friends_wight=SandyBiome's Friend Weight
 japaricraftmod.config.snow_friends_wight=SnowBiome's Friend Weight
 japaricraftmod.config.sandstarlab_gen=SandStarLabGen Rarity
 
-entity.whiteowl.friend=Thank you for making delicious food for me
+death.attack.sandstarlow.player=%1$s was shot by %2$s's sandstarlow
 
 page.0.name=How to Make Friends
 page.0.desc=

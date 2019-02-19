@@ -2,12 +2,11 @@ package baguchan.japaricraftmod.handler;
 
 import baguchan.japaricraftmod.client.render.*;
 import baguchan.japaricraftmod.mob.*;
-import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import baguchan.japaricraftmod.mob.projectile.*;
+import net.minecraft.client.*;
+import net.minecraft.client.renderer.entity.*;
+import net.minecraftforge.fml.client.registry.*;
+import net.minecraftforge.fml.relauncher.*;
 
 @SideOnly(Side.CLIENT)
 public class JapariRenderingRegistry {
@@ -34,5 +33,8 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityOtter.class, OtterRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBeluga.class, BelugaRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTwilightKobold.class, TwilightKoboldRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityStarSorcerger.class, StarSorcergerRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityScocel.class, ScocelRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityPoisonBall.class, PoisonBallRender::new);
     }
 }

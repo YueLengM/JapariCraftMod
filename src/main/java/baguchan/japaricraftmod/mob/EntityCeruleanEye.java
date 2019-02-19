@@ -1,18 +1,18 @@
 package baguchan.japaricraftmod.mob;
 
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.pathfinding.PathNodeType;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
+import net.minecraft.entity.monster.*;
+import net.minecraft.entity.player.*;
+import net.minecraft.init.*;
+import net.minecraft.pathfinding.*;
+import net.minecraft.util.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
 
 public class EntityCeruleanEye extends EntityMob {
+    private EntityLiving owner;
+
     public EntityCeruleanEye(World worldIn) {
         super(worldIn);
         this.experienceValue = 8;
@@ -28,8 +28,10 @@ public class EntityCeruleanEye extends EntityMob {
         this.tasks.addTask(7, new EntityAIWatchClosest2(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget<>(this, EntityFriend.class, false));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityCeruleanEye.class));
+        this.targetTasks.addTask(2, new EntityCeruleanEye.AICopyOwnerTarget(this));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityFriend.class, false));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, false));
     }
 
     protected float getSoundVolume() {
@@ -86,6 +88,14 @@ public class EntityCeruleanEye extends EntityMob {
         }
     }
 
+    public EntityLiving getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(EntityLiving ownerIn) {
+        this.owner = ownerIn;
+    }
+
     protected void updateAITasks() {
         if (this.isWet()) {
             this.attackEntityFrom(DamageSource.DROWN, 3.0F);
@@ -96,6 +106,27 @@ public class EntityCeruleanEye extends EntityMob {
 
 
     public void fall(float distance, float damageMultiplier) {
+    }
+
+    class AICopyOwnerTarget extends EntityAITarget {
+        public AICopyOwnerTarget(EntityCreature creature) {
+            super(creature, false);
+        }
+
+        /**
+         * Returns whether the EntityAIBase should begin execution.
+         */
+        public boolean shouldExecute() {
+            return EntityCeruleanEye.this.owner != null && EntityCeruleanEye.this.owner.getAttackTarget() != null && this.isSuitableTarget(EntityCeruleanEye.this.owner.getAttackTarget(), false);
+        }
+
+        /**
+         * Execute a one shot task or start executing a continuous task
+         */
+        public void startExecuting() {
+            EntityCeruleanEye.this.setAttackTarget(EntityCeruleanEye.this.owner.getAttackTarget());
+            super.startExecuting();
+        }
     }
 
 }

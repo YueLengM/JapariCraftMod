@@ -1,39 +1,32 @@
 package baguchan.japaricraftmod;
 
-import baguchan.japaricraftmod.compat.JapariCompat;
-import baguchan.japaricraftmod.event.EntityEventHandler;
-import baguchan.japaricraftmod.gui.JapariGuiHandler;
+import baguchan.japaricraftmod.compat.*;
+import baguchan.japaricraftmod.event.*;
+import baguchan.japaricraftmod.gui.*;
 import baguchan.japaricraftmod.handler.*;
-import baguchan.japaricraftmod.world.ComponentJapariHouse1;
-import baguchan.japaricraftmod.world.SandStarOreGenerator;
-import baguchan.japaricraftmod.world.biome.JapariBiomes;
-import baguchan.japaricraftmod.world.gen.SandStarLabGenerator;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.ModMetadata;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLConstructionEvent;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.EntityEntry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import baguchan.japaricraftmod.world.*;
+import baguchan.japaricraftmod.world.biome.*;
+import baguchan.japaricraftmod.world.gen.*;
+import net.minecraft.block.*;
+import net.minecraft.creativetab.*;
+import net.minecraft.entity.*;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
+import net.minecraft.util.text.*;
+import net.minecraft.world.biome.*;
+import net.minecraft.world.gen.structure.*;
+import net.minecraftforge.client.event.*;
+import net.minecraftforge.common.*;
+import net.minecraftforge.event.*;
+import net.minecraftforge.fml.common.*;
+import net.minecraftforge.fml.common.Mod.*;
+import net.minecraftforge.fml.common.event.*;
+import net.minecraftforge.fml.common.eventhandler.*;
+import net.minecraftforge.fml.common.network.*;
+import net.minecraftforge.fml.common.registry.*;
+import net.minecraftforge.fml.relauncher.*;
+import net.minecraftforge.registries.*;
+import org.apache.logging.log4j.*;
 
 
 @Mod(modid = JapariCraftMod.MODID, name = JapariCraftMod.MODNAME, version = JapariCraftMod.VERSION, useMetadata = true, updateJSON = "https://raw.githubusercontent.com/pentantan/JapariCraftMod/master/src/main/japaricraftmod.json", dependencies = "required:forge@[14.23.5.2768,);after:twilightforest@[3.8.689,);")
@@ -59,6 +52,8 @@ public class JapariCraftMod {
     public static final int ID_JAPARI_INVENTORY = 1;
     public static final CreativeTabs tabJapariCraft = new TabJapariCraft("JapariCraftTab");
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+
+    public static DamageSource sandstarLow;
 
     @EventHandler
     public void construct(FMLConstructionEvent event) {
@@ -137,6 +132,15 @@ public class JapariCraftMod {
 
         //Villagerのレンダー
         ModVillagers.INSTANCE.init();
+
+        sandstarLow = new DamageSource("sandstarlow") {
+            @Override
+            public ITextComponent getDeathMessage(EntityLivingBase entityLivingBaseIn) {
+                String s = "death.attack.sandstarlow";
+                String s1 = s + ".player";
+                return new TextComponentString(entityLivingBaseIn.getDisplayName().getFormattedText() + " ").appendSibling(new TextComponentTranslation(s1, entityLivingBaseIn.getDisplayName()));
+            }
+        }.setMagicDamage();
     }
 
     private void loadMeta() {

@@ -1,38 +1,35 @@
 package baguchan.japaricraftmod.mob.projectile;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityFireball;
-import net.minecraft.init.MobEffects;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.datafix.DataFixer;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.EnumDifficulty;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import baguchan.japaricraftmod.*;
+import net.minecraft.entity.*;
+import net.minecraft.entity.projectile.*;
+import net.minecraft.init.*;
+import net.minecraft.nbt.*;
+import net.minecraft.potion.*;
+import net.minecraft.util.datafix.*;
+import net.minecraft.util.math.*;
+import net.minecraft.world.*;
+import net.minecraftforge.fml.relauncher.*;
 
-import javax.annotation.Nonnull;
+import javax.annotation.*;
 
 public class EntityDarkSandStarball extends EntityFireball {
-    public int explosionPower = 1;
+    public float explosionPower = 0.8F;
 
     public EntityDarkSandStarball(World worldIn) {
         super(worldIn);
-        this.setSize(0.4F, 0.4F);
+        this.setSize(0.3F, 0.3F);
     }
 
     @SideOnly(Side.CLIENT)
     public EntityDarkSandStarball(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ) {
         super(worldIn, x, y, z, accelX, accelY, accelZ);
-        this.setSize(0.4F, 0.4F);
+        this.setSize(0.3F, 0.3F);
     }
 
     public EntityDarkSandStarball(World worldIn, EntityLivingBase shooter, double accelX, double accelY, double accelZ) {
         super(worldIn, shooter, accelX, accelY, accelZ);
-        this.setSize(0.4F, 0.4F);
+        this.setSize(0.3F, 0.3F);
     }
 
     /**
@@ -41,31 +38,35 @@ public class EntityDarkSandStarball extends EntityFireball {
     @Override
     protected void onImpact(@Nonnull RayTraceResult result) {
         if (!this.world.isRemote) {
-            if (result.entityHit != null) {
-                result.entityHit.attackEntityFrom(DamageSource.causeFireballDamage(this, this.shootingEntity), 4.0F);
+            Entity entity = result.entityHit;
+
+            if (entity != null && !(entity instanceof EntityDarkSandStarball)) {
+                result.entityHit.attackEntityFrom(JapariCraftMod.sandstarLow, 4.0F);
                 this.applyEnchantments(this.shootingEntity, result.entityHit);
-            }
 
-            if (result.entityHit instanceof EntityLivingBase) {
-                int i = 0;
 
-                if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
-                    i = 6;
-                } else if (this.world.getDifficulty() == EnumDifficulty.HARD) {
-                    i = 8;
-                }
+                if (result.entityHit instanceof EntityLivingBase) {
+                    int i = 0;
 
-                if (i > 0) {
-                    ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * i, 0));
-                    ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 10 * i, 1));
+                    if (this.world.getDifficulty() == EnumDifficulty.NORMAL) {
+                        i = 6;
+                    } else if (this.world.getDifficulty() == EnumDifficulty.HARD) {
+                        i = 8;
+                    }
+
+                    if (i > 0) {
+                        ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * i, 0));
+                        ((EntityLivingBase) result.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 10 * i, 1));
+                    }
                 }
             }
 
             boolean flag = net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.world, this.shootingEntity);
-            this.world.newExplosion((Entity) null, this.posX, this.posY, this.posZ, (float) this.explosionPower, false, flag);
+            this.world.newExplosion(null, this.posX, this.posY, this.posZ, this.explosionPower, false, flag);
             this.setDead();
         }
     }
+
 
     @Override
     protected boolean isFireballFiery() {
@@ -86,7 +87,7 @@ public class EntityDarkSandStarball extends EntityFireball {
      */
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
-        compound.setInteger("ExplosionPower", this.explosionPower);
+        compound.setFloat("ExplosionPower", this.explosionPower);
     }
 
     /**
