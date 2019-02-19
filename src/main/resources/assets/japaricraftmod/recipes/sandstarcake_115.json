@@ -1,11 +1,17 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "twilightforest"
+    }
+  ],
   "ingredients": [
     {
-      "item": "japaricraftmod:sugarstar"
+      "item": "japaricraftmod:sandstar_powder"
     },
     {
-      "item": "twilightforest:experiment_115"
+      "item": "japaricraftmod:sandstar_powder"
     },
     {
       "item": "twilightforest:experiment_115"
@@ -16,6 +22,6 @@
   ],
   "result": {
     "item": "japaricraftmod:sandstarcake_115",
-    "count": 3
+    "count": 2
   }
 }

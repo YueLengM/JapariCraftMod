@@ -10,7 +10,7 @@
       "translate": "advancements.japaricraftmod.wildpotion.description"
     }
   },
-  "parent": "japaricraftmod:japaricraftmod/cerulean",
+  "parent": "japaricraftmod:japaricraftmod/tame_friends",
   "criteria": {
     "wild": {
       "trigger": "minecraft:inventory_changed",

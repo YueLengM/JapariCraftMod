@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "japaricraftmod:sandstar_fragment"
+    }
+  ],
+  "result": {
+    "item": "japaricraftmod:sandstar_powder"
+  }
+}
