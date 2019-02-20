@@ -33,7 +33,7 @@ import org.apache.logging.log4j.*;
 public class JapariCraftMod {
 
     public static final String MODID = "japaricraftmod";
-    public static final String VERSION = "5.2.5";
+    public static final String VERSION = "5.2.6";
     public static final String MODNAME = "JapariCraftMod";
 
 

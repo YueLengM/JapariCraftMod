@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.2.6": "fix Ticking entity server crash",
     "5.2.5": "sandstarlab and cerulean update",
     "5.2.4.01": "fixed over saturation food",
     "5.2.4": "fixed FlyAI",
@@ -17,7 +18,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.2.5",
-    "1.12.2-latest": "5.2.5"
+    "1.12.2-recommended": "5.2.6",
+    "1.12.2-latest": "5.2.6"
   }
 }
