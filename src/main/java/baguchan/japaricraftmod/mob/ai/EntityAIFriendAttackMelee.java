@@ -1,8 +1,7 @@
 package baguchan.japaricraftmod.mob.ai;
 
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.*;
 
 public class EntityAIFriendAttackMelee extends EntityAIAttackMelee {
     public EntityAIFriendAttackMelee(EntityCreature creature, double speedIn, boolean useLongMemory) {
@@ -21,7 +20,7 @@ public class EntityAIFriendAttackMelee extends EntityAIAttackMelee {
         //shift氏のやつを参考にしてみた（近づきすぎないようにする）
         if (entitylivingbase != null) {
 
-            if (d0 <= 3.4d) {
+            if (d0 <= 3.0d) {
 
                 this.attacker.getNavigator().clearPath();
 

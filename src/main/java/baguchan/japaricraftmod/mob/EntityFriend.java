@@ -418,6 +418,23 @@ public class EntityFriend extends EntityTameable {
         return condition;
     }
 
+    @Override
+    public boolean attackEntityAsMob(Entity entityIn) {
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue()));
+
+        if (flag) {
+            this.applyEnchantments(this, entityIn);
+
+            if (!entityIn.isNonBoss()) {
+                addExperience(3 + this.rand.nextInt(5));
+            } else {
+                addExperience(1 + this.rand.nextInt(3));
+            }
+        }
+
+        return flag;
+    }
+
     /**
      * バニラから引用、事故がないように
      */
