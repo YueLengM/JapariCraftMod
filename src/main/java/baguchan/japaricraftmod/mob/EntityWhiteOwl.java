@@ -16,7 +16,12 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -25,12 +30,15 @@ import java.util.Set;
 
 
 public class EntityWhiteOwl extends EntityFlyFriend {
+    private static final DataParameter<Boolean> READING = EntityDataManager.createKey(EntityBrownOwl.class, DataSerializers.BOOLEAN);
+
     private static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.curry, Items.RABBIT_STEW, Items.MUSHROOM_STEW, JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
     public float wingRotation;
     public float destPos;
     public float oFlapSpeed;
     public float oFlap;
     private float wingRotDelta = 1.0F;
+    private boolean isReading;
 
     public EntityWhiteOwl(World worldIn) {
         super(worldIn);
@@ -55,7 +63,7 @@ public class EntityWhiteOwl extends EntityFlyFriend {
 
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
@@ -76,6 +84,24 @@ public class EntityWhiteOwl extends EntityFlyFriend {
     @Override
     public boolean isHealItem(ItemStack stack) {
         return TAME_ITEMS.contains(stack.getItem());
+    }
+
+
+    protected void entityInit() {
+        super.entityInit();
+        this.dataManager.register(READING, Boolean.FALSE);
+    }
+
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setBoolean("Reading", this.isReading());
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        this.setReading(compound.getBoolean("Reading"));
     }
 
     @Override
@@ -128,6 +154,29 @@ public class EntityWhiteOwl extends EntityFlyFriend {
 
         }
 
+        if (!world.isRemote && this.getHeldItem(EnumHand.OFF_HAND).getItem() == Items.BOOK && !this.isInWater() && !this.isReading() && this.getRNG().nextInt(540) == 0 && !this.isRiding() && (this.onGround && this.getAttackTarget() == null) && this.isSitting()) {
+            setReading(true);
+        }
+        if (!world.isRemote && this.isReading() && (this.isRiding() || !this.isSitting() && this.isTamed() || this.isInWater() || this.getAttackTarget() != null || this.getRNG().nextInt(400) == 0 && !this.isTamed() || this.getRNG().nextInt(400) == 0 && this.isTamed())) {
+            setReading(false);
+        }
+
+    }
+
+    public boolean isReading() {
+        if (world.isRemote) {
+            boolean isReading = this.dataManager.get(READING);
+            this.isReading = isReading;
+            return isReading;
+        }
+        return isReading;
+    }
+
+    public void setReading(boolean reading) {
+        this.dataManager.set(READING, reading);
+        if (!world.isRemote) {
+            this.isReading = reading;
+        }
     }
 
     @Override

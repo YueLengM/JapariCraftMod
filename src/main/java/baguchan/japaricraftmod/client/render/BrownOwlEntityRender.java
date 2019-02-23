@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelBrownOwl;
+import baguchan.japaricraftmod.client.render.layer.LayerBrownOwlBook;
 import baguchan.japaricraftmod.mob.EntityBrownOwl;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -66,11 +67,18 @@ public class BrownOwlEntityRender extends RenderLiving<EntityBrownOwl>
             }
         });
         this.addLayer(new LayerHeldItem(this) {
+            @Override
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                if (!((EntityBrownOwl) entitylivingbaseIn).isReading()) {
+                    super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                }
+            }
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
                 ((ModelBrownOwl) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
+        this.addLayer(new LayerBrownOwlBook(this));
     }
 
     @Override

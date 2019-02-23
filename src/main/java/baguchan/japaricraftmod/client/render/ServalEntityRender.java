@@ -52,9 +52,10 @@ public class ServalEntityRender extends RenderLiving<EntityServal>
 
             @Override
             public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-                p_188359_1_();
-                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
-
+                if (!((EntityServal) entitylivingbaseIn).isStretching()) {
+                    p_188359_1_();
+                    super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                }
             }
 
             /**
@@ -68,8 +69,10 @@ public class ServalEntityRender extends RenderLiving<EntityServal>
         this.addLayer(new LayerHeldItem(this) {
 
             public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-                GlStateManager.translate(0.0F, 0.4F, 0.0F);
-                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                if (!((EntityServal) entitylivingbaseIn).isStretching()) {
+                    GlStateManager.translate(0.0F, 0.4F, 0.0F);
+                    super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                }
             }
 
             protected void translateToHand(EnumHandSide p_191361_1_) {

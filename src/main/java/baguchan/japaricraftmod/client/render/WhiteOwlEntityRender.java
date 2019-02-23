@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelWhiteOwl;
+import baguchan.japaricraftmod.client.render.layer.LayerWhiteOwlBook;
 import baguchan.japaricraftmod.mob.EntityWhiteOwl;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -65,11 +66,18 @@ public class WhiteOwlEntityRender extends RenderLiving<EntityWhiteOwl> {
             }
         });
         this.addLayer(new LayerHeldItem(this) {
+            @Override
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                if (!((EntityWhiteOwl) entitylivingbaseIn).isReading()) {
+                    super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+                }
+            }
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
                 ((ModelWhiteOwl) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
+        this.addLayer(new LayerWhiteOwlBook(this));
     }
 
 
