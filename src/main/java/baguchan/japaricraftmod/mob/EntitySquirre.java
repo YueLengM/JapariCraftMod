@@ -6,6 +6,7 @@ import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,9 +19,12 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
 import java.util.Set;
 
 public class EntitySquirre extends EntityFriend {
@@ -48,13 +52,40 @@ public class EntitySquirre extends EntityFriend {
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F) {
+                    public boolean shouldExecute() {
+                        if (isSleeping()) {
+                            return false;
+                        } else {
+                            return super.shouldExecute();
+                        }
+                    }
+                }
+        );
+        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F) {
+                    public boolean shouldExecute() {
+                        if (isSleeping()) {
+                            return false;
+                        } else {
+                            return super.shouldExecute();
+                        }
+                    }
+                }
+        );
+        this.tasks.addTask(8, new EntityAILookIdle(this) {
+                    public boolean shouldExecute() {
+                        if (isSleeping()) {
+                            return false;
+                        } else {
+                            return super.shouldExecute();
+                        }
+                    }
+                }
+        );
 
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
@@ -149,6 +180,13 @@ public class EntitySquirre extends EntityFriend {
         }
     }
 
+    @Nullable
+    public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
+        if (rand.nextInt(3) == 0) {
+            this.setHeldItem(EnumHand.OFF_HAND, new ItemStack(Items.APPLE, 3));
+        }
+        return super.onInitialSpawn(difficulty, livingdata);
+    }
 
     @Override
     public boolean isHealItem(ItemStack stack) {
