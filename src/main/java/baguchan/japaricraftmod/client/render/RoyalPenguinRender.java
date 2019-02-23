@@ -8,8 +8,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -53,6 +55,17 @@ public class RoyalPenguinRender extends RenderLiving<RoyalPenguinEntity> {
 
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
+            }
+        });
+        this.addLayer(new LayerHeldItem(this) {
+
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                GlStateManager.translate(0.0F, 0.16F, 0.0F);
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+            }
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelRoyalPenguin) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
     }

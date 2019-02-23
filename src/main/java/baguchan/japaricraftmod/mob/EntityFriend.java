@@ -1,27 +1,43 @@
 package baguchan.japaricraftmod.mob;
 
-import baguchan.japaricraftmod.*;
-import baguchan.japaricraftmod.advancements.*;
-import baguchan.japaricraftmod.gui.*;
-import baguchan.japaricraftmod.handler.*;
-import com.google.common.collect.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.item.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
-import net.minecraft.inventory.*;
-import net.minecraft.item.*;
-import net.minecraft.nbt.*;
-import net.minecraft.network.datasync.*;
-import net.minecraft.util.*;
-import net.minecraft.util.text.*;
-import net.minecraft.world.*;
-import net.minecraftforge.fml.relauncher.*;
+import baguchan.japaricraftmod.JapariCraftMod;
+import baguchan.japaricraftmod.advancements.AchievementsJapari;
+import baguchan.japaricraftmod.gui.FriendMobNBTs;
+import baguchan.japaricraftmod.gui.InventoryFriendEquipment;
+import baguchan.japaricraftmod.gui.InventoryFriendMain;
+import baguchan.japaricraftmod.handler.JapariItems;
+import com.google.common.collect.Sets;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityGhast;
+import net.minecraft.entity.passive.AbstractHorse;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-import javax.annotation.*;
-import java.util.*;
+import javax.annotation.Nullable;
+import java.util.Set;
 
 public class EntityFriend extends EntityTameable {
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityFriend.class, DataSerializers.BOOLEAN);
@@ -268,11 +284,16 @@ public class EntityFriend extends EntityTameable {
     private ItemStack findFood() {
         ItemStack friendsstack;
 
+        ItemStack friendsOffHandStack;
+        friendsOffHandStack = getInventoryFriendEquipment().getOffhandItem();
+
         for (int i = 0; i < this.getInventoryFriendMain().getSizeInventory(); ++i) {
             friendsstack = getInventoryFriendMain().getStackInSlot(i);
 
             if (isHealItem(friendsstack)) {
                 return friendsstack;
+            } else if (isHealItem(friendsOffHandStack)) {
+                return friendsOffHandStack;
             }
         }
         return ItemStack.EMPTY;
@@ -354,6 +375,10 @@ public class EntityFriend extends EntityTameable {
 
                 itemStack = this.getInventoryFriendEquipment().getLegItem();
                 break;
+            case OFFHAND:
+
+                itemStack = this.getInventoryFriendEquipment().getOffhandItem();
+                break;
             default:
 
                 itemStack = ItemStack.EMPTY;
@@ -382,6 +407,10 @@ public class EntityFriend extends EntityTameable {
             case LEGS:
 
                 this.getInventoryFriendEquipment().setInventorySlotContents(3, stack);
+                break;
+            case OFFHAND:
+
+                this.getInventoryFriendEquipment().setInventorySlotContents(4, stack);
                 break;
         }
     }

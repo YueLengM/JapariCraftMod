@@ -2,7 +2,6 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelTutinoko;
-import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityTutinoko;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -13,6 +12,7 @@ import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -70,10 +70,10 @@ public class TutinokoRender extends RenderLiving<EntityTutinoko> {
                 GlStateManager.scale(f, f, f);
             }
         });
-        this.addLayer(new LayerFriendHeldItem(this) {
+        this.addLayer(new LayerHeldItem(this) {
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelTutinoko) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
+                ((ModelTutinoko) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
     }

@@ -8,8 +8,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -61,6 +63,12 @@ public class BrownOwlEntityRender extends RenderLiving<EntityBrownOwl>
             void p_188359_1_() {
                 float f = 1.05F;
                 GlStateManager.scale(f, f, f);
+            }
+        });
+        this.addLayer(new LayerHeldItem(this) {
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelBrownOwl) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
     }

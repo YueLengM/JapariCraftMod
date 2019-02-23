@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelAlpaca;
+import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityAlpaca;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 
 public class AlpacaRender extends RenderLiving<EntityAlpaca> {
@@ -54,6 +56,12 @@ public class AlpacaRender extends RenderLiving<EntityAlpaca> {
              */
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.01F, 0.0F);
+            }
+        });
+        this.addLayer(new LayerFriendHeldItem(this) {
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelAlpaca) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
             }
         });
     }

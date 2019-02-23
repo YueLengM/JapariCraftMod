@@ -7,8 +7,10 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
@@ -55,6 +57,12 @@ public class SquirreRender extends RenderLiving<EntitySquirre> {
              */
             void p_188359_1_() {
                 GL11.glTranslatef(0.0F, 0.6F, 0.0F);
+            }
+        });
+        this.addLayer(new LayerHeldItem(this) {
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelSquirre) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
 

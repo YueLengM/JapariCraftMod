@@ -2,12 +2,12 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelOtter;
-import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityOtter;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.EnumHandSide;
@@ -59,10 +59,10 @@ public class OtterRender extends RenderLiving<EntityOtter> {
                 GL11.glTranslatef(0.0F, 0.2F, 0.0F);
             }
         });
-        this.addLayer(new LayerFriendHeldItem(this) {
+        this.addLayer(new LayerHeldItem(this) {
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelOtter) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
+                ((ModelOtter) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
     }

@@ -2,13 +2,13 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelTwilightKobold;
-import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityTwilightKobold;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
+import net.minecraft.client.renderer.entity.layers.LayerHeldItem;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.util.EnumHandSide;
@@ -66,10 +66,15 @@ public class TwilightKoboldRender extends RenderLiving<EntityTwilightKobold> {
                 GlStateManager.scale(f, f, f);
             }
         });
-        this.addLayer(new LayerFriendHeldItem(this) {
+        this.addLayer(new LayerHeldItem(this) {
+
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                GlStateManager.translate(0.0F, 0.3F, 0.0F);
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+            }
 
             protected void translateToHand(EnumHandSide p_191361_1_) {
-                ((ModelTwilightKobold) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
+                ((ModelTwilightKobold) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }
         });
     }

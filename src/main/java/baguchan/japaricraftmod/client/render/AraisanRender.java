@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.client.render;
 
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.client.model.ModelAraisan;
+import baguchan.japaricraftmod.client.render.layer.LayerFriendHeldItem;
 import baguchan.japaricraftmod.mob.EntityAraisan;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.util.EnumHandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -54,6 +56,12 @@ public class AraisanRender extends RenderLiving<EntityAraisan>
 
             void p_188359_1_() {
                 GlStateManager.translate(0.0F, 0.1F, 0.0F);
+            }
+        });
+        this.addLayer(new LayerFriendHeldItem(this) {
+
+            protected void translateToHand(EnumHandSide p_191361_1_) {
+                ((ModelAraisan) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0625F);
             }
         });
 
