@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.2.8": "fixed friends helditem can't render,and You give a book t... shhh...",
     "5.2.7": "fixed friends can't attack",
     "5.2.6": "fix Ticking entity server crash",
     "5.2.5": "sandstarlab and cerulean update",
@@ -19,7 +20,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.2.6",
-    "1.12.2-latest": "5.2.6"
+    "1.12.2-recommended": "5.2.8",
+    "1.12.2-latest": "5.2.8"
   }
 }
