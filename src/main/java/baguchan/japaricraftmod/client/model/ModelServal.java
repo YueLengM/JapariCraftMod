@@ -287,9 +287,12 @@ public class ModelServal extends ModelBase {
 
 
         if (entityServal.isStretching()) {
-            this.body.rotateAngleX = 1.5481070465189704F;
-            this.skirt_1.rotationPointY = 9.6F;
-            this.skirt_1.rotateAngleX = 1.5481070465189704F;
+            this.leg_r.rotateAngleX = 0.0F;
+            this.leg_r.rotateAngleY = 0.0F;
+            this.leg_r.rotateAngleZ = 0.0F;
+            this.leg_l.rotateAngleX = 0.0F;
+            this.leg_l.rotateAngleY = 0.0F;
+            this.leg_l.rotateAngleZ = 0.0F;
             this.head.rotateAngleX = -1.0927506446736497F;
             this.hand_r.rotateAngleX = -3.141592653589793F;
             this.hand_l.rotateAngleX = -3.141592653589793F;

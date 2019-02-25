@@ -491,8 +491,8 @@ public class EntityFriend extends EntityTameable {
 
     @Override
     protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
-            this.heal(0.04F);
+        if (this.ticksExisted % 10 == 0) {
+            this.heal(0.08F);
         }
         super.updateAITasks();
 
