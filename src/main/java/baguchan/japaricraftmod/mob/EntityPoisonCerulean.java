@@ -4,7 +4,6 @@ import baguchan.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
@@ -14,14 +13,13 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class PoisonEntityCerulean extends EntityCerulean {
+public class EntityPoisonCerulean extends EntityCerulean {
     public static final ResourceLocation LOOT_TABLE = new ResourceLocation(JapariCraftMod.MODID, "entitys/cerulean");
 
 
-    public PoisonEntityCerulean(World worldIn)
+    public EntityPoisonCerulean(World worldIn)
     {
         super(worldIn);
-        this.setSize(0.95F, 0.95F);
     }
 
     public boolean attackEntityAsMob(Entity entityIn)
@@ -86,13 +84,4 @@ public class PoisonEntityCerulean extends EntityCerulean {
         return LOOT_TABLE;
     }
 
-
-    protected void applyEntityAttributes(){
-        super.applyEntityAttributes();
-        getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(3D);
-        getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(25D);
-        getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(16);
-        getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.23D);
-        getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(1);
-    }
 }

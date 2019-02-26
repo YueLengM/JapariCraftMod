@@ -55,7 +55,7 @@ public class EntitySandStarSlime extends EntitySlime {
 
     @Override
     protected void updateAITasks() {
-        if (this.ticksExisted % 5 == 0) {
+        if (this.ticksExisted % 10 == 0) {
             this.heal(0.04F);
         }
     }

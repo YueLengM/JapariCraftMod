@@ -2,11 +2,13 @@ package baguchan.japaricraftmod.handler;
 
 import baguchan.japaricraftmod.client.render.*;
 import baguchan.japaricraftmod.mob.*;
-import baguchan.japaricraftmod.mob.projectile.*;
-import net.minecraft.client.*;
-import net.minecraft.client.renderer.entity.*;
-import net.minecraftforge.fml.client.registry.*;
-import net.minecraftforge.fml.relauncher.*;
+import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
+import baguchan.japaricraftmod.mob.projectile.EntityPoisonBall;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class JapariRenderingRegistry {
@@ -16,7 +18,7 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityBrownOwl.class, BrownOwlEntityRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityAraisan.class, AraisanRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityCerulean.class, CeruleanRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(PoisonEntityCerulean.class, PoisonCeruleanRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityPoisonCerulean.class, PoisonCeruleanRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityShoebill.class, ShoebillEntityRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityGuide.class, GuideRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityKouteiPenguin.class, KouteiPenginEntityRender::new);
