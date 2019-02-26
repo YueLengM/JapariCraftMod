@@ -39,7 +39,10 @@ public class LootTableEventHandler {
         if (event.getName().equals(LootTableList.CHESTS_ABANDONED_MINESHAFT)) {
             LootPool main = event.getTable().getPool("main");
             if (main != null) {
-                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 3, new LootFunction[0], new LootCondition[0], "japaricraftmod:sandstarfragment"));
+                main.addEntry(new LootEntryItem(JapariItems.sandstarfragment, 7, 3, new LootFunction[]{
+                        new SetCount(new LootCondition[0], new RandomValueRange(1, 2))
+                }, new LootCondition[0], "japaricraftmod:sandstarfragment"));
+
             }
         }
 
