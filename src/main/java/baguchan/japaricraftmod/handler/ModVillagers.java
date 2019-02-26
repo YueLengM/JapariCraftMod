@@ -28,7 +28,7 @@ public class ModVillagers {
         career_zookeeper.addTrade(2,
                 new EntityVillager.ListItemForEmeralds(JapariItems.japariman, new EntityVillager.PriceInfo(-12, -8)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.japarimanapple, new EntityVillager.PriceInfo(-12, -8)),
-                new EntityVillager.ListItemForEmeralds(JapariItems.kabanhat, new EntityVillager.PriceInfo(1, 2)),
+                new EntityVillager.EmeraldForItems(JapariItems.cerulean_cube, new EntityVillager.PriceInfo(26, 32)),
                 new EntityVillager.ListItemForEmeralds(JapariItems.japarimancocoa, new EntityVillager.PriceInfo(-12, -8))
         );
         career_zookeeper.addTrade(3,

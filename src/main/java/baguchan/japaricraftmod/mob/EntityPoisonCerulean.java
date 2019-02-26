@@ -33,15 +33,15 @@ public class EntityPoisonCerulean extends EntityCerulean {
 
                 if (this.world.getDifficulty() == EnumDifficulty.EASY)
                 {
-                    i = 4;
+                    i = 3;
                 }
                 else if (this.world.getDifficulty() == EnumDifficulty.NORMAL)
                 {
-                    i = 7;
+                    i = (int) (4 + getCeruleanSize() * 0.4);
                 }
                 else if (this.world.getDifficulty() == EnumDifficulty.HARD)
                 {
-                    i = 10;
+                    i = (int) (6 + getCeruleanSize() * 0.8);
                 }
 
                 if (i > 0)

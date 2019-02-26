@@ -1,6 +1,5 @@
 package baguchan.japaricraftmod.item;
 
-import baguchan.japaricraftmod.JapariCraftMod;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemFood;
@@ -13,7 +12,6 @@ public class StarCaramel extends ItemFood {
 
     public StarCaramel() {
         super(2, 0.62F, false);
-        this.setCreativeTab(JapariCraftMod.tabJapariCraft);
         this.setUnlocalizedName("StarCaramel");
         this.setAlwaysEdible();
     }
