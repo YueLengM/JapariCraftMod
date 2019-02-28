@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.3.1": "fixed optifine shader error and few cerulean change",
     "5.3.0": "Cerulean and PoisonCerulean Texture and Model remade",
     "5.2.8": "fixed friends helditem can't render,and You give a book t... shhh...",
     "5.2.7": "fixed friends can't attack",
@@ -21,7 +22,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.3.0",
-    "1.12.2-latest": "5.3.0"
+    "1.12.2-recommended": "5.3.1",
+    "1.12.2-latest": "5.3.1"
   }
 }
