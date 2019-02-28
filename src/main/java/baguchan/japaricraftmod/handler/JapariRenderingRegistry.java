@@ -35,7 +35,7 @@ public class JapariRenderingRegistry {
         RenderingRegistry.registerEntityRenderingHandler(EntityOtter.class, OtterRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityBeluga.class, BelugaRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTwilightKobold.class, TwilightKoboldRender::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityStarSorcerger.class, StarSorcergerRender::new);
+        //RenderingRegistry.registerEntityRenderingHandler(EntityStarSorcerger.class, StarSorcergerRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityScocel.class, ScocelRender::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityPoisonBall.class, PoisonBallRender::new);
     }

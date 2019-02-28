@@ -45,7 +45,7 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "darksandstarball"), EntityDarkSandStarball.class, prefix("DarkSandStarBall"), 23, JapariCraftMod.instance, 120, 2, true);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "beluga"), EntityBeluga.class, prefix("Beluga"), 24, JapariCraftMod.instance, 80, 3, false, 0xF2FFFF, 0xB8FAFF);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "twilightkobold"), EntityTwilightKobold.class, prefix("TwilightKobold"), 25, JapariCraftMod.instance, 80, 3, false, 0x372096, 0x895d1b);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "starsorcerger"), EntityStarSorcerger.class, prefix("StarSorcerger"), 26, JapariCraftMod.instance, 100, 3, false, 0x85EBFF, 0xD2D665);
+        //EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "starsorcerger"), EntityStarSorcerger.class, prefix("StarSorcerger"), 26, JapariCraftMod.instance, 100, 3, false, 0x85EBFF, 0xD2D665);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "scocel"), EntityScocel.class, prefix("Scocel"), 27, JapariCraftMod.instance, 100, 3, false, 0x599474, 0xC94747);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "poisonball"), EntityPoisonBall.class, prefix("PoisonBall"), 28, JapariCraftMod.instance, 120, 2, true);
     }

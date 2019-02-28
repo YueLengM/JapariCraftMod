@@ -1,11 +1,12 @@
 package baguchan.japaricraftmod.client.model;
 
-import baguchan.japaricraftmod.mob.*;
-import net.minecraft.client.model.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
+import baguchan.japaricraftmod.mob.EntityStarSorcerger;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.util.EnumHandSide;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * ModelStarSorcerger - Undefined
@@ -96,7 +97,7 @@ public class ModelStarSorcerger extends ModelBase {
 
         EntityStarSorcerger.IllagerArmPose abstractillager$illagerarmpose = ((EntityStarSorcerger) entityIn).getArmPose();
 
-        if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.ATTACKING) {
+        if (abstractillager$illagerarmpose == EntityStarSorcerger.IllagerArmPose.ATTACKING) {
             float f = MathHelper.sin(this.swingProgress * (float) Math.PI);
             float f1 = MathHelper.sin((1.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float) Math.PI);
             this.RightArm.rotateAngleZ = 0.0F;
@@ -120,7 +121,7 @@ public class ModelStarSorcerger extends ModelBase {
             this.LeftArm.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
             this.RightArm.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
             this.LeftArm.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
-        } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.SPELLCASTING) {
+        } else if (abstractillager$illagerarmpose == EntityStarSorcerger.IllagerArmPose.SPELLCASTING) {
             this.RightArm.rotationPointZ = 0.0F;
             this.RightArm.rotationPointX = -5.0F;
             this.LeftArm.rotationPointZ = 0.0F;
@@ -131,7 +132,7 @@ public class ModelStarSorcerger extends ModelBase {
             this.LeftArm.rotateAngleZ = -2.3561945F;
             this.RightArm.rotateAngleY = 0.0F;
             this.LeftArm.rotateAngleY = 0.0F;
-        } else if (abstractillager$illagerarmpose == AbstractIllager.IllagerArmPose.BOW_AND_ARROW) {
+        } else if (abstractillager$illagerarmpose == EntityStarSorcerger.IllagerArmPose.BOW_AND_ARROW) {
             this.RightArm.rotateAngleY = -0.1F + this.Head.rotateAngleY;
             this.RightArm.rotateAngleX = -((float) Math.PI / 2F) + this.Head.rotateAngleX;
             this.LeftArm.rotateAngleX = -0.9424779F + this.Head.rotateAngleX;
