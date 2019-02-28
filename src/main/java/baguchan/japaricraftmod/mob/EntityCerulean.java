@@ -38,7 +38,8 @@ public class EntityCerulean extends EntityMob {
 
     protected void initEntityAI(){
 
-        this.tasks.addTask(1, new EntityAIAttackMelee(this, 1.0D, false) {
+        this.tasks.addTask(1, new EntityAILeapAtTarget(this, 0.45F));
+        this.tasks.addTask(2, new EntityAIAttackMelee(this, 1.0D, false) {
             protected double getAttackReachSqr(EntityLivingBase attackTarget) {
                 return (double) (this.attacker.width * 1.2F * this.attacker.width * 1.2F + attackTarget.width);
             }
