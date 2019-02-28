@@ -65,7 +65,7 @@ public class EntityCerulean extends EntityMob {
         this.setPosition(this.posX, this.posY, this.posZ);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((1.0D + (2.1F * size) - (0.85F * size)));
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) (0.18F + 0.005F * (float) size));
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getAttackStrength() * 0.5F);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue((this.getAttackStrength() - 1) * 0.5);
 
         if (size > 1) {
             this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(size * 0.5F);

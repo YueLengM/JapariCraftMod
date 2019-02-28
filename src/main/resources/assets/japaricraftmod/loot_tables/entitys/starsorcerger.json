@@ -41,7 +41,7 @@
             },
             {
               "condition": "random_chance_with_looting",
-              "chance": 0.062,
+              "chance": 0.054,
               "looting_multiplier": 0.01
             }
           ]
