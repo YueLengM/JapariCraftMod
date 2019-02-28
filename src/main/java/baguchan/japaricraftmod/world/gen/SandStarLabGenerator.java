@@ -69,7 +69,7 @@ public class SandStarLabGenerator implements IWorldGenerator {
     public static void generateLabAt(WorldServer world, Random random, BlockPos pos) {
         MinecraftServer server = world.getMinecraftServer();
         Template template = world.getStructureTemplateManager().getTemplate(server, SANDSTARLAB);
-        PlacementSettings settings = new PlacementSettings();
+        PlacementSettings settings = new PlacementSettings().setIgnoreEntities(true);
         settings.setRotation(Rotation.values()[random.nextInt(Rotation.values().length)]);
 
         BlockPos size = template.getSize();
