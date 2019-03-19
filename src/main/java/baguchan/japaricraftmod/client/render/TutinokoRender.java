@@ -26,6 +26,12 @@ public class TutinokoRender extends RenderLiving<EntityTutinoko> {
         super(renderManager, new ModelTutinoko(), 0.5F);
         this.addLayer(new LayerHeldItem(this) {
 
+            @Override
+            public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+                GlStateManager.translate(0.0F, 0.17F, 0.0F);
+                super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
+            }
+
             protected void translateToHand(EnumHandSide p_191361_1_) {
                 ((ModelTutinoko) this.livingEntityRenderer.getMainModel()).getArmForSide(p_191361_1_).postRender(0.0425F);
             }

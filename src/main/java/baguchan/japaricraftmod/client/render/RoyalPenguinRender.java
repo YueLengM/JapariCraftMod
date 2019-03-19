@@ -60,7 +60,7 @@ public class RoyalPenguinRender extends RenderLiving<RoyalPenguinEntity> {
         this.addLayer(new LayerHeldItem(this) {
 
             public void doRenderLayer(EntityLivingBase entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
-                GlStateManager.translate(0.0F, 0.16F, 0.0F);
+                GlStateManager.translate(0.0F, 0.14F, 0.0F);
                 super.doRenderLayer(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch, scale);
             }
 
