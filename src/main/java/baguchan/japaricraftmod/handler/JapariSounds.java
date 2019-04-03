@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid = JapariCraftMod.MODID)
 public final class JapariSounds {
     public static final SoundEvent SQUIRRE_SLEEP = createEvent("mob.squirre.sleep");
+    public static final SoundEvent SANDSTAR_ACTIVE = createEvent("sandstar.active");
 
     private static SoundEvent createEvent(String sound) {
 
@@ -25,6 +26,7 @@ public final class JapariSounds {
     public static void registerSounds(RegistryEvent.Register<SoundEvent> evt) {
 
         evt.getRegistry().register(SQUIRRE_SLEEP);
+        evt.getRegistry().register(SANDSTAR_ACTIVE);
     }
 
     private JapariSounds() {

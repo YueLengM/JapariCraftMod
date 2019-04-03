@@ -4,5 +4,12 @@
     "sounds": [
       "japaricraftmod:mob/squirre/sleep"
     ]
+  },
+  "sandstar.active": {
+    "category": "neutral",
+    "sounds": [
+      "japaricraftmod:sandstar/sandstar1",
+      "japaricraftmod:sandstar/sandstar2"
+    ]
   }
 }

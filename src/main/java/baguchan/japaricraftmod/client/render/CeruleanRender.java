@@ -21,7 +21,7 @@ public class CeruleanRender extends RenderLiving<EntityCerulean>
 
 
     public void doRender(EntityCerulean entity, double x, double y, double z, float entityYaw, float partialTicks) {
-        this.shadowSize = 0.2F * (float) entity.getCeruleanSize();
+        this.shadowSize = 0.15F * (float) entity.getCeruleanSize();
         if (!entity.isInvisible()) {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             GlStateManager.enableNormalize();

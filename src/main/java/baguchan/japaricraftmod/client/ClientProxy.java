@@ -3,16 +3,21 @@ package baguchan.japaricraftmod.client;
 
 import baguchan.japaricraftmod.CommonProxy;
 import baguchan.japaricraftmod.JapariCraftMod;
+import baguchan.japaricraftmod.client.particle.EntityParticleSandStar;
 import baguchan.japaricraftmod.handler.IColoredItem;
 import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -21,6 +26,7 @@ import java.util.List;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
+    public static ResourceLocation sandstarTexture = new ResourceLocation(JapariCraftMod.MODID, "textures/particles/sandstar_particles.png");
     private static List<Item> itemsToColor = Lists.newArrayList();
 
     @Override
@@ -42,7 +48,7 @@ public class ClientProxy extends CommonProxy {
 
         //Register colour handlers
         if (item instanceof IColoredItem && ((IColoredItem) item).getItemColor() != null) {
-            this.itemsToColor.add(item);
+            itemsToColor.add(item);
         }
     }
 
@@ -58,6 +64,27 @@ public class ClientProxy extends CommonProxy {
             }
         });
     }
+
+    @Override
+    public void spawnParticle(JapariParticleTypes type, World parWorld, double x, double y, double z, Object... info) {
+        Minecraft minecraft = Minecraft.getMinecraft();
+
+        Particle entityparticle = null;
+
+        switch (type) {
+            case SANDSTAR:
+                entityparticle = new EntityParticleSandStar(parWorld, x, y, z, MathHelper.nextDouble(parWorld.rand, -0.03, 0.03), -0.02D, MathHelper.nextDouble(parWorld.rand, -0.03, 0.03));
+                break;
+
+            default:
+                break;
+        }
+
+        if (entityparticle != null) {
+            minecraft.effectRenderer.addEffect(entityparticle);
+        }
+    }
+
     public void init(){
     }
 
