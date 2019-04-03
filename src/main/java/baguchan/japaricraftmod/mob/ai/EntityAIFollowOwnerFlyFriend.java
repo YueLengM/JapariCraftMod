@@ -74,7 +74,6 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
         this.oldWaterCost = this.tameable.getPathPriority(PathNodeType.WATER);
         this.tameable.getNavigator().setPath(this.path, this.followSpeed);
         this.tameable.setPathPriority(PathNodeType.WATER, 0.0F);
-        this.tameable.setFlying(false);
     }
 
     /**
@@ -106,7 +105,7 @@ public class EntityAIFollowOwnerFlyFriend extends EntityAIBase {
             ++this.flytick;
         }
 
-        if (this.flytick >= 200 && this.world.rand.nextInt(200) == 0) {
+        if (this.flytick >= 240 && this.world.rand.nextInt(200) == 0) {
             this.tameable.setFlying(false);
 
             this.flytick = 0;

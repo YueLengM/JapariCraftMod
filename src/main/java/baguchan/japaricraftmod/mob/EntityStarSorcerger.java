@@ -1,23 +1,31 @@
 package baguchan.japaricraftmod.mob;
 
-import baguchan.japaricraftmod.handler.*;
-import baguchan.japaricraftmod.mob.projectile.*;
-import com.google.common.base.*;
+import baguchan.japaricraftmod.handler.JapariSounds;
+import baguchan.japaricraftmod.handler.JapariTreasure;
+import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
+import com.google.common.base.Predicate;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
-import net.minecraft.nbt.*;
-import net.minecraft.potion.*;
-import net.minecraft.util.*;
-import net.minecraft.util.math.*;
-import net.minecraft.world.*;
+import net.minecraft.entity.monster.AbstractIllager;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.entity.monster.EntitySpellcasterIllager;
+import net.minecraft.entity.monster.EntityVex;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 public class EntityStarSorcerger extends EntitySpellcasterIllager {
-    private EntitySheep wololoTarget;
 
     public EntityStarSorcerger(World worldIn) {
         super(worldIn);
@@ -37,10 +45,11 @@ public class EntityStarSorcerger extends EntitySpellcasterIllager {
         this.tasks.addTask(8, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F, 1.0F));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, EntityStarSorcerger.class));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, AbstractIllager.class));
         this.targetTasks.addTask(2, (new EntityAINearestAttackableTarget(this, EntityPlayer.class, true)).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, (new EntityAINearestAttackableTarget(this, EntityVillager.class, false)).setUnseenMemoryTicks(300));
-        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, false));
+        this.targetTasks.addTask(2, (new EntityAINearestAttackableTarget(this, EntityFriend.class, true)).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, (new EntityAINearestAttackableTarget(this, EntityVillager.class, true)).setUnseenMemoryTicks(300));
+        this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
     }
 
     @Override
@@ -275,13 +284,13 @@ public class EntityStarSorcerger extends EntitySpellcasterIllager {
         }
 
         protected void castSpell() {
-            EntityStarSorcerger.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1));
-            EntityStarSorcerger.this.heal(3.0F);
+            EntityStarSorcerger.this.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+            EntityStarSorcerger.this.heal(4.0F);
         }
 
 
         protected int getCastingTime() {
-            return 60;
+            return 80;
         }
 
         protected int getCastingInterval() {
@@ -289,7 +298,7 @@ public class EntityStarSorcerger extends EntitySpellcasterIllager {
         }
 
         protected SoundEvent getSpellPrepareSound() {
-            return SoundEvents.ENTITY_ZOMBIE_VILLAGER_CONVERTED;
+            return JapariSounds.SANDSTAR_ACTIVE;
         }
 
         protected EntitySpellcasterIllager.SpellType getSpellType() {
