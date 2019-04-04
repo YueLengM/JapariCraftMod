@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.3.3": "fixed WildLiberationPotion can not be used as friends, and add sandstar sound and particle,and some bug fix",
     "5.3.2": "fixed helditem postion render",
     "5.3.1": "fixed optifine shader error and few cerulean change",
     "5.3.0": "Cerulean and PoisonCerulean Texture and Model remade",
@@ -23,7 +24,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.3.2",
-    "1.12.2-latest": "5.3.2"
+    "1.12.2-recommended": "5.3.3",
+    "1.12.2-latest": "5.3.3"
   }
 }
