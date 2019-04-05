@@ -35,7 +35,7 @@ public class SandStarLabGenerator implements IWorldGenerator {
         BlockPos pos = getHeight(world, new BlockPos(x, 0, z));
         if (world.provider.getDimensionType() == DimensionType.OVERWORLD) {
             if (BiomeDictionary.hasType(world.getBiome(pos), BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(world.getBiome(pos), BiomeDictionary.Type.WASTELAND)) {
-                if (JapariConfig.sandstarlabGen == 0) {
+                if (random.nextInt(JapariConfig.sandstarlabGen) == 0) {
 
                     IBlockState state = world.getBlockState(pos.down());
 
