@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tofucraft"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "tofucraft:tofu_food",
+      "data": 1
+    }
+  ],
+  "result": {
+    "item": "japaricraftmod:japariman"
+  }
+}
