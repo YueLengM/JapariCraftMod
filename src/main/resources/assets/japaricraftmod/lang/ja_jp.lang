@@ -104,7 +104,7 @@ japaricraftmod.config.structure=構成物
 japaricraftmod.config.plain_friends_wight=森や草原のフレンズの沸き率
 japaricraftmod.config.sand_friends_wight=砂漠のフレンズの沸き率
 japaricraftmod.config.snow_friends_wight=寒いバイオームに住むフレンズの沸き率
-japaricraftmod.config.sandstarlab_gen=この値が高いほどサンドスターラボの生成率は低くなります
+japaricraftmod.config.sandstarlab_gen=サンドスターラボの生成のレア度
 
 death.attack.sandstarlow.player=%1$sは、%2$sのサンドスターロウの弾に当たってしまった
 
