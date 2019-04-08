@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,13 +38,14 @@ public class EntityTutinoko extends EntityFriend {
         this.tasks.addTask(3, new EntityTutinoko.AIBeamAttack(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
-        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
+        this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
         this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
@@ -175,11 +177,8 @@ public class EntityTutinoko extends EntityFriend {
 
             if (this.guardian.getAttackTarget() == null) {
                 return false;
-            } else if (!entitylivingbase.isEntityAlive()) {
-                return false;
-            }
+            } else return entitylivingbase.isEntityAlive();
 
-            return true;
         }
 
         public boolean shouldContinueExecuting() {

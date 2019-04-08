@@ -3,6 +3,7 @@ package baguchan.japaricraftmod.mob;
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.handler.JapariSounds;
 import baguchan.japaricraftmod.mob.ai.EntityAIFriendAttackMelee;
+import baguchan.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -51,8 +52,9 @@ public class EntitySquirre extends EntityFriend {
         this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.0D, true));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
-        this.tasks.addTask(6, new EntityAIWanderAvoidWater(this, 1.0D));
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F) {
+        this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F) {
                     public boolean shouldExecute() {
                         if (isSleeping()) {
                             return false;
@@ -62,7 +64,7 @@ public class EntitySquirre extends EntityFriend {
                     }
                 }
         );
-        this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F) {
+        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityCreature.class, 8.0F) {
                     public boolean shouldExecute() {
                         if (isSleeping()) {
                             return false;
@@ -72,7 +74,7 @@ public class EntitySquirre extends EntityFriend {
                     }
                 }
         );
-        this.tasks.addTask(8, new EntityAILookIdle(this) {
+        this.tasks.addTask(9, new EntityAILookIdle(this) {
                     public boolean shouldExecute() {
                         if (isSleeping()) {
                             return false;
