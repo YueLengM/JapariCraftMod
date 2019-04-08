@@ -3,13 +3,15 @@
     "category": "neutral",
     "sounds": [
       "japaricraftmod:mob/squirre/sleep"
-    ]
+    ],
+    "subtitle": "japaricraftmod.subtitles.sleep"
   },
   "sandstar.active": {
     "category": "neutral",
     "sounds": [
       "japaricraftmod:sandstar/sandstar1",
       "japaricraftmod:sandstar/sandstar2"
-    ]
+    ],
+    "subtitle": "japaricraftmod.subtitles.sandstar.active"
   }
 }

@@ -87,6 +87,9 @@ advancements.japaricraftmod.starsorcerger.description=StarSorcergerを倒す
 
 entity.Villager.zookeeper=飼育員
 
+japaricraftmod.subtitles.sleep=寝息
+japaricraftmod.subtitles.sandstar.active=サンドスターが鳴り響く
+
 friends.limit=これ以上フレンズを強化することができません
 
 fluid.sandstar=サンドスターの水

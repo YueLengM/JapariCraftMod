@@ -101,6 +101,9 @@ entity.Villager.raretreader=Treasure Trader
 entity.Villager.armorcrafter=Armor Craftsmen
 entity.Villager.foodcrafter=Farmer
 
+japaricraftmod.subtitles.sleep=Sleep Breathing
+japaricraftmod.subtitles.sandstar.active=SandStar rings
+
 item.WildLiberationSource.tooltip=It is not much to eat
 item.WildLiberationPotion.tooltip=Raising Health when used for Friends
 item.SandStarCake115.tooltip=It is surprisingly delicious
