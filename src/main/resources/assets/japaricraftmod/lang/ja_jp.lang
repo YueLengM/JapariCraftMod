@@ -87,6 +87,8 @@ advancements.japaricraftmod.starsorcerger.description=StarSorcergerを倒す
 
 entity.Villager.zookeeper=飼育員
 
+friends.limit=これ以上フレンズを強化することができません
+
 fluid.sandstar=サンドスターの水
 
 

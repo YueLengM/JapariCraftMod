@@ -73,9 +73,7 @@ entity.japaricraftmod.Scocel.name=Scocel
 
 itemGroup.JapariCraftTab=JapariCraft
 
-entity.arai.friend=Thank`s!!
-entity.weitting=Weitting
-entity.active=Active
+friends.limit=cannot strengthen your friends anymore
 
 advancements.japaricraftmod.root.title=Beginning JapariCraftMod
 advancements.japaricraftmod.root.description=Make Japariman

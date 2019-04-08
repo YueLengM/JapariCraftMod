@@ -32,6 +32,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -42,6 +43,7 @@ import java.util.Set;
 
 public class EntityFriend extends EntityTameable {
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityFriend.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Integer> LIMITLEVEL = EntityDataManager.createKey(EntityFriend.class, DataSerializers.VARINT);
     private static final Set<Item> Heal_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
 
     protected static final DataParameter<Float> dataEXPValue = EntityDataManager.createKey(EntityFriend.class, DataSerializers.FLOAT);
@@ -76,6 +78,7 @@ public class EntityFriend extends EntityTameable {
         super.entityInit();
         this.dataManager.register(EntityFriend.dataEXPValue, Float.valueOf(0));
         this.dataManager.register(ATTACKING, Boolean.FALSE);
+        this.dataManager.register(LIMITLEVEL, Integer.valueOf(0));
     }
 
     @Override
@@ -121,8 +124,18 @@ public class EntityFriend extends EntityTameable {
      * フレンズの経験値関係
      */
     public void addExperience(float value) {
-        friendPoint += value;
+        if (this.getLimit() < 16) {
+            friendPoint += value;
+        }
         dataManager.set(EntityFriend.dataEXPValue, friendPoint);
+    }
+
+    public int getLimit() {
+        return MathHelper.clamp(this.dataManager.get(LIMITLEVEL).intValue(), 0, 16);
+    }
+
+    public void setLimit(int p_191997_1_) {
+        this.dataManager.set(LIMITLEVEL, Integer.valueOf(p_191997_1_));
     }
 
     @Override
@@ -186,27 +199,35 @@ public class EntityFriend extends EntityTameable {
                         return true;
                     }
                 } else if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
-                    ItemFood itemfood = (ItemFood) stack.getItem();
 
-                    if (!player.capabilities.isCreativeMode) {
-                        stack.shrink(1);
-                        player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
-                    }
+                    if (this.getLimit() < 16) {
+                        ItemFood itemfood = (ItemFood) stack.getItem();
 
-                    this.heal((float) itemfood.getHealAmount(stack));
-                    this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(2));
-                    this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.2D);
+                        if (!player.capabilities.isCreativeMode) {
+                            stack.shrink(1);
+                            player.setHeldItem(hand, new ItemStack(Items.GLASS_BOTTLE));
+                        }
 
-                    this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
-                    eattick = 20;
+                        this.heal((float) itemfood.getHealAmount(stack));
+                        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(2));
+                        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.2D);
 
-                    for (int i = 0; i < 7; ++i) {
+                        this.playSound(SoundEvents.ENTITY_GENERIC_DRINK, this.getSoundVolume(), this.getSoundPitch());
+                        eattick = 20;
 
-                        double d0 = this.rand.nextGaussian() * 0.02D;
-                        double d1 = this.rand.nextGaussian() * 0.02D;
-                        double d2 = this.rand.nextGaussian() * 0.02D;
+                        this.setLimit(this.getLimit() + 1);
 
-                        JapariCraftMod.proxy.spawnParticle(JapariParticleTypes.SANDSTAR, world, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, d0, d1, d2);
+                        for (int i = 0; i < 7; ++i) {
+
+                            double d0 = this.rand.nextGaussian() * 0.02D;
+                            double d1 = this.rand.nextGaussian() * 0.02D;
+                            double d2 = this.rand.nextGaussian() * 0.02D;
+
+                            JapariCraftMod.proxy.spawnParticle(JapariParticleTypes.SANDSTAR, world, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width, d0, d1, d2);
+                        }
+                    } else {
+                        player.sendStatusMessage(new TextComponentTranslation("friends.limit"), true);
+                        this.playSound(SoundEvents.ITEM_FIRECHARGE_USE, this.getSoundVolume(), this.getSoundPitch());
                     }
 
 
@@ -283,14 +304,19 @@ public class EntityFriend extends EntityTameable {
 
 
         if (friendPoint >= 160) {
-            for (int i = 0; i < 7; ++i) {
-
+            if (this.getLimit() < 16) {
                 this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(3));
-                this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.5D);
+                this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.2D);
                 this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);
                 friendPoint = 0;
                 dataManager.set(EntityFriend.dataEXPValue, friendPoint);
-                JapariCraftMod.proxy.spawnParticle(JapariParticleTypes.SANDSTAR, world, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width);
+
+                this.setLimit(this.getLimit() + 1);
+
+                for (int i = 0; i < 7; ++i) {
+
+                    JapariCraftMod.proxy.spawnParticle(JapariParticleTypes.SANDSTAR, world, this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width, this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width);
+                }
             }
         }
     }
