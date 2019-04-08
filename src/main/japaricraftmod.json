@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.3.6": "add PowerUpLimit",
     "5.3.5": "support AnotherMod foods japariman(peachy,tofucraft)",
     "5.3.4": "fixed SandStarRuin Generate",
     "5.3.3": "fixed WildLiberationPotion can not be used as friends, and add sandstar sound and particle,and some bug fix",
@@ -26,7 +27,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.3.4",
-    "1.12.2-latest": "5.3.4"
+    "1.12.2-recommended": "5.3.6",
+    "1.12.2-latest": "5.3.6"
   }
 }
