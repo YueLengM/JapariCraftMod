@@ -1,6 +1,7 @@
 package baguchan.japaricraftmod.mob.ai;
 
 import baguchan.japaricraftmod.mob.EntityFriend;
+import baguchan.japaricraftmod.mob.EntitySquirre;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
@@ -30,6 +31,11 @@ public class EntityAIFriendCollectItem extends EntityAIBase {
     @Override
     public boolean shouldExecute() {
         if (!friend.isTamed()) return false;
+        if (friend instanceof EntitySquirre) {
+            if (((EntitySquirre) friend).isSleeping()) {
+                return false;
+            }
+        }
         if (friend.isSitting()) return false;
         if (findItem()) {
             List llist = friend.world.getEntitiesWithinAABB(EntityItem.class, friend.getEntityBoundingBox().grow(8F, 2D, 8F));

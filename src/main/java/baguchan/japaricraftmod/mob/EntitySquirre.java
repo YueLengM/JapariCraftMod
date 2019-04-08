@@ -53,7 +53,16 @@ public class EntitySquirre extends EntityFriend {
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));
-        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D) {
+                    public boolean shouldExecute() {
+                        if (isSleeping()) {
+                            return false;
+                        } else {
+                            return super.shouldExecute();
+                        }
+                    }
+                }
+        );
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F, 1.0F) {
                     public boolean shouldExecute() {
                         if (isSleeping()) {
