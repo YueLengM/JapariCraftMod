@@ -18,6 +18,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -205,17 +206,20 @@ public class EntityServal extends EntityFriend {
         }
     }
 
-    @Override
-    public boolean attackEntityFrom(DamageSource source, float damage) {
+    public void fall(float distance, float damageMultiplier) {
 
-        if (source == DamageSource.FALL)
-        {
+        int i = MathHelper.ceil((distance * 0.5F - 4.0F) * damageMultiplier);
+        int i2 = MathHelper.ceil((distance * 0.5F - 8.0F) * damageMultiplier);
+        if (!this.isJumpAttack()) {
+            if (i > 0) {
+                this.attackEntityFrom(DamageSource.FALL, (float) i);
+            }
 
-            damage *= 0.4F;
-
+        } else {
+            if (i2 > 0) {
+                this.attackEntityFrom(DamageSource.FALL, (float) i2);
+            }
         }
-
-        return super.attackEntityFrom(source, damage);
     }
 
 
