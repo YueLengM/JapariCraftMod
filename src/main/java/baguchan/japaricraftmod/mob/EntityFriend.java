@@ -1,5 +1,6 @@
 package baguchan.japaricraftmod.mob;
 
+import baguchan.japaricraftmod.JapariConfig;
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.advancements.AchievementsJapari;
 import baguchan.japaricraftmod.client.JapariParticleTypes;
@@ -124,7 +125,7 @@ public class EntityFriend extends EntityTameable {
      * フレンズの経験値関係
      */
     public void addExperience(float value) {
-        if (this.getLimit() < 16) {
+        if (this.getLimit() < this.maxLimit()) {
             friendPoint += value;
         }
         dataManager.set(EntityFriend.dataEXPValue, friendPoint);
@@ -136,6 +137,10 @@ public class EntityFriend extends EntityTameable {
 
     public void setLimit(int p_191997_1_) {
         this.dataManager.set(LIMITLEVEL, Integer.valueOf(p_191997_1_));
+    }
+
+    private int maxLimit() {
+        return JapariConfig.levelLimit;
     }
 
     @Override
@@ -200,7 +205,7 @@ public class EntityFriend extends EntityTameable {
                     }
                 } else if (this.isOwner(player) && stack.getItem() == JapariItems.wildliberationpotion) {
 
-                    if (this.getLimit() < 16) {
+                    if (this.getLimit() < this.maxLimit()) {
                         ItemFood itemfood = (ItemFood) stack.getItem();
 
                         if (!player.capabilities.isCreativeMode) {
@@ -304,7 +309,7 @@ public class EntityFriend extends EntityTameable {
 
 
         if (friendPoint >= 160) {
-            if (this.getLimit() < 16) {
+            if (this.getLimit() < this.maxLimit()) {
                 this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(getMaxHealth() + 1.0D + rand.nextInt(3));
                 this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getBaseValue() + 0.2D);
                 this.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, this.getSoundVolume(), 1.2F);

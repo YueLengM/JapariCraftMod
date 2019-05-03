@@ -38,9 +38,17 @@ public class ServalEntityRender extends RenderLiving<EntityServal>
 
     @Override
     protected void applyRotations(EntityServal entityLiving, float ageInTicks, float rotationYaw, float partialTicks) {
-        super.applyRotations(entityLiving, ageInTicks, rotationYaw, partialTicks);
         if (entityLiving.isStretching()) {
             GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
+        } else if (entityLiving.isJumpAttack()) {
+
+            GlStateManager.rotate((float) (entityLiving.motionY * 20D + 90F), -1F, 0.0F, 0.0F);
+
+
+        } else {
+
+            super.applyRotations(entityLiving, ageInTicks, rotationYaw, partialTicks);
+
         }
     }
 

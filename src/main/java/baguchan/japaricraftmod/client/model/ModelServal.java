@@ -268,7 +268,13 @@ public class ModelServal extends ModelBase {
             this.hand_r.rotateAngleX = -0.9F;
         }
 
-        if (!entityServal.isSitting() && entityServal.getArmPose() == EntityServal.ArmPose.ATTACKING) {
+        if (entityServal.isJumpAttack()) {
+            this.head.rotateAngleX = -((float) Math.PI / 2F);
+            this.head.rotateAngleY = 0.0F;
+
+            this.hand_r.rotateAngleX = -3.141592653589793F;
+            this.hand_l.rotateAngleX = -3.141592653589793F;
+        } else if (!entityServal.isSitting() && entityServal.getArmPose() == EntityServal.ArmPose.ATTACKING) {
             this.head.rotateAngleX = -0.2F + (headPitch * 0.017453292F);
             this.body.rotateAngleX = 0.2F;
             this.leg_r.rotateAngleX = -0.2F + MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
@@ -287,15 +293,13 @@ public class ModelServal extends ModelBase {
 
 
         if (entityServal.isStretching()) {
-            this.leg_r.rotateAngleX = 0.0F;
-            this.leg_r.rotateAngleY = 0.0F;
-            this.leg_r.rotateAngleZ = 0.0F;
-            this.leg_l.rotateAngleX = 0.0F;
-            this.leg_l.rotateAngleY = 0.0F;
-            this.leg_l.rotateAngleZ = 0.0F;
+            this.body.rotateAngleX = 1.5481070465189704F;
+            this.skirt_1.rotationPointY = 9.6F;
+            this.skirt_1.rotateAngleX = 1.5481070465189704F;
             this.head.rotateAngleX = -1.0927506446736497F;
             this.hand_r.rotateAngleX = -3.141592653589793F;
             this.hand_l.rotateAngleX = -3.141592653589793F;
+
             GL11.glTranslatef(0F, 0.2F, 0F);
         }
 

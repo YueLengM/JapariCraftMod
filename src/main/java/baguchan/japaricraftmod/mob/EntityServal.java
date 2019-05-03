@@ -2,12 +2,11 @@ package baguchan.japaricraftmod.mob;
 
 import baguchan.japaricraftmod.handler.JapariItems;
 import baguchan.japaricraftmod.mob.ai.EntityAIAttackSweep;
+import baguchan.japaricraftmod.mob.ai.EntityAIDirectAttack;
 import baguchan.japaricraftmod.mob.ai.EntityAIFriendCollectItem;
 import baguchan.japaricraftmod.mob.ai.EntityAIServalBeg;
 import com.google.common.collect.Sets;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -31,6 +30,7 @@ public class EntityServal extends EntityFriend {
 
     public static final Set<Item> TAME_ITEMS = Sets.newHashSet(JapariItems.japariman, JapariItems.japarimanapple, JapariItems.japarimancocoa, JapariItems.japarimanfruit);
     private static final DataParameter<Boolean> STRETCHING = EntityDataManager.createKey(EntityServal.class, DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> JUMPATTACK = EntityDataManager.createKey(EntityServal.class, DataSerializers.BOOLEAN);
 
     private float headRotationCourse;
     private float headRotationCourseOld;
@@ -50,10 +50,10 @@ public class EntityServal extends EntityFriend {
 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackSweep(this, 1.16D, true));
-        this.tasks.addTask(3, new EntityAIOpenDoor(this, true));
-        this.tasks.addTask(4, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
-        this.tasks.addTask(5, new EntityAIFriendCollectItem(this, 1.0F));
+        this.tasks.addTask(2, new EntityAIDirectAttack(this, 0.65F));
+        this.tasks.addTask(3, new EntityAIAttackSweep(this, 1.16D, true));
+        this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.1D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIFriendCollectItem(this, 1.0F));
         this.tasks.addTask(7, new EntityAIWanderAvoidWater(this, 1.0D));
         this.tasks.addTask(8, new EntityAIServalBeg(this, 8.0F));
@@ -73,6 +73,7 @@ public class EntityServal extends EntityFriend {
         super.entityInit();
         this.dataManager.register(BEGGING, Boolean.FALSE);
         this.dataManager.register(STRETCHING, Boolean.FALSE);
+        this.dataManager.register(JUMPATTACK, Boolean.FALSE);
     }
 
 
@@ -145,6 +146,14 @@ public class EntityServal extends EntityFriend {
         }
     }
 
+    public boolean isJumpAttack() {
+        return this.dataManager.get(JUMPATTACK);
+    }
+
+    public void setJumpAttack(boolean jumpattack) {
+        this.dataManager.set(JUMPATTACK, jumpattack);
+    }
+
     @SideOnly(Side.CLIENT)
     public float getInterestedAngle(float p_70917_1_) {
         return (this.headRotationCourseOld + (this.headRotationCourse - this.headRotationCourseOld) * p_70917_1_) * 0.15F * (float) Math.PI;
@@ -172,6 +181,28 @@ public class EntityServal extends EntityFriend {
     public Item getDropItem() {
 
         return null;//なにも落とさない
+    }
+
+    public void applyEntityCollision(Entity entityIn) {
+        super.applyEntityCollision(entityIn);
+
+        EntityLivingBase entityLivingBase = this.getAttackTarget();
+        if (entityLivingBase != null) {
+            if (this.isJumpAttack() && entityLivingBase == entityIn) {
+                this.dealDamage((EntityLivingBase) entityIn);
+            }
+        }
+    }
+
+    protected void dealDamage(EntityLivingBase entityIn) {
+
+        if (entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) (this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getAttributeValue() * 1.6F))) {
+
+            this.playSound(SoundEvents.ENTITY_PLAYER_ATTACK_KNOCKBACK, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+
+            this.applyEnchantments(this, entityIn);
+
+        }
     }
 
     @Override

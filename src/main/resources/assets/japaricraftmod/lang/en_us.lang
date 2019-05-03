@@ -121,6 +121,7 @@ japaricraftmod.config.plain_friends_wight=Forests Friend's Weight
 japaricraftmod.config.sand_friends_wight=SandyBiome's Friend Weight
 japaricraftmod.config.snow_friends_wight=SnowBiome's Friend Weight
 japaricraftmod.config.sandstarlab_gen=SandStarLabGen Rarity
+japaricraftmod.config.levellimit=Friends LevelLimit
 
 death.attack.sandstarlow.player=%1$s was shot by %2$s's sandstarlow
 

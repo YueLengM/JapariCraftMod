@@ -46,6 +46,12 @@ public class JapariConfig {
     @Config.Comment("SandStar Lab Rarity Given this value as X, 1 lab will spawn in X plain biome and wasteland biome chunks")
     public static int sandstarlabGen = 900;
 
+    @Config.LangKey(config + "levellimit")
+    @Config.RequiresMcRestart
+    @Config.RangeInt(min = 20, max = 10000)
+    @Config.Comment("This can change the number of times that friends can level up")
+    public static int levelLimit = 900;
+
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
