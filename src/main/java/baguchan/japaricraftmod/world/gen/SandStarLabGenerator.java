@@ -33,7 +33,7 @@ public class SandStarLabGenerator implements IWorldGenerator {
         int z = chunkZ * 16 + random.nextInt(16);
 
         BlockPos pos = getHeight(world, new BlockPos(x, 0, z));
-        if (world.provider.getDimensionType() == DimensionType.OVERWORLD) {
+        if (JapariConfig.canSandStarLabGen && world.provider.getDimensionType() == DimensionType.OVERWORLD) {
             if (BiomeDictionary.hasType(world.getBiome(pos), BiomeDictionary.Type.PLAINS) || BiomeDictionary.hasType(world.getBiome(pos), BiomeDictionary.Type.WASTELAND)) {
                 if (random.nextInt(JapariConfig.sandstarlabGen) == 0) {
 

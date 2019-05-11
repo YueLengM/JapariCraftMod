@@ -46,6 +46,11 @@ public class JapariConfig {
     @Config.Comment("SandStar Lab Rarity Given this value as X, 1 lab will spawn in X plain biome and wasteland biome chunks")
     public static int sandstarlabGen = 900;
 
+    @Config.LangKey(config + "can_sandstarlab_gen")
+    @Config.RequiresMcRestart
+    @Config.Comment("When false,SandStar Lab dosen't generate")
+    public static boolean canSandStarLabGen = false;
+
     @Config.LangKey(config + "levellimit")
     @Config.RequiresMcRestart
     @Config.RangeInt(min = 20, max = 10000)

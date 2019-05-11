@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.4.2": "add CanSandstarGen config",
     "5.4.1": "fixed serval's model rotation matrix is wrong.",
     "5.4.0": "add serval's direct attack and configurble levellimit",
     "5.3.6": "add PowerUpLimit",
