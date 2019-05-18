@@ -1,7 +1,10 @@
 package baguchan.japaricraftmod.event;
 
 import baguchan.japaricraftmod.handler.JapariItems;
-import baguchan.japaricraftmod.mob.*;
+import baguchan.japaricraftmod.mob.EntityCerulean;
+import baguchan.japaricraftmod.mob.EntityCeruleanEye;
+import baguchan.japaricraftmod.mob.EntityServal;
+import baguchan.japaricraftmod.mob.EntityStarSorcerger;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityZombie;
@@ -19,7 +22,6 @@ public class EntityEventHandler {
             EntityVillager villager = (EntityVillager) event.getEntity();
 
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityCerulean.class, 12.0F, 0.8D, 0.8D));
-            villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityScocel.class, 12.0F, 0.8D, 0.8D));
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityCeruleanEye.class, 12.0F, 0.8D, 0.8D));
             villager.tasks.addTask(1, new EntityAIAvoidEntity<>(villager, EntityStarSorcerger.class, 12.0F, 0.8D, 0.8D));
         }

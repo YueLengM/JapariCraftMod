@@ -5,7 +5,6 @@ import baguchan.japaricraftmod.JapariConfig;
 import baguchan.japaricraftmod.JapariCraftMod;
 import baguchan.japaricraftmod.mob.*;
 import baguchan.japaricraftmod.mob.projectile.EntityDarkSandStarball;
-import baguchan.japaricraftmod.mob.projectile.EntityPoisonBall;
 import com.google.common.collect.Lists;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -46,8 +45,6 @@ public class JapariEntityRegistry {
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "beluga"), EntityBeluga.class, prefix("Beluga"), 24, JapariCraftMod.instance, 80, 3, false, 0xF2FFFF, 0xB8FAFF);
         EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "twilightkobold"), EntityTwilightKobold.class, prefix("TwilightKobold"), 25, JapariCraftMod.instance, 80, 3, false, 0x372096, 0x895d1b);
         //EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "starsorcerger"), EntityStarSorcerger.class, prefix("StarSorcerger"), 26, JapariCraftMod.instance, 100, 3, false, 0x85EBFF, 0xD2D665);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "scocel"), EntityScocel.class, prefix("Scocel"), 27, JapariCraftMod.instance, 100, 3, false, 0x599474, 0xC94747);
-        EntityRegistry.registerModEntity(new ResourceLocation(JapariCraftMod.MODID, "poisonball"), EntityPoisonBall.class, prefix("PoisonBall"), 28, JapariCraftMod.instance, 120, 2, true);
     }
 
     private static String prefix(String path) {
@@ -125,7 +122,5 @@ public class JapariEntityRegistry {
         EntityRegistry.addSpawn(EntityPoisonCerulean.class, JapariConfig.poisoncerulean_wight, 2, 4, EnumCreatureType.MONSTER, Biomes.SWAMPLAND);
         EntityRegistry.addSpawn(EntityAlpaca.class, 5, 2, 3, EnumCreatureType.CREATURE, Biomes.EXTREME_HILLS, Biomes.EXTREME_HILLS_WITH_TREES, Biomes.MUTATED_EXTREME_HILLS_WITH_TREES);
         EntityRegistry.addSpawn(EntityTutinoko.class, 5, 1, 2, EnumCreatureType.CREATURE, spooky_biomes.toArray(new Biome[spooky_biomes.size()]));
-        EntityRegistry.addSpawn(EntityScocel.class, 40, 1, 2, EnumCreatureType.MONSTER, sandy_biomes.toArray(new Biome[sandy_biomes.size()]));
-
     }
 }
