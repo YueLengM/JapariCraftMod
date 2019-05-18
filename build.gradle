@@ -14,7 +14,7 @@ tasks.withType(Jar) {
     compileJava.options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
-version = "1.12.2-5.4.3"
+version = "1.12.2-5.4.4"
 group = "baguchan.japaricraftmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "japaricraftmod"
 
