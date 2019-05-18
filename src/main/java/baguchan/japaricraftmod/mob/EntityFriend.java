@@ -83,6 +83,12 @@ public class EntityFriend extends EntityTameable {
     }
 
     @Override
+    public void setTamed(boolean tamed) {
+        super.setTamed(tamed);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(24D);
+    }
+
+    @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
         super.writeEntityToNBT(compound);
 
