@@ -31,7 +31,7 @@ item.SandStarCake115.name=砂之星蛋糕 115
 item.ServalEarCostume.name=薮猫耳装饰
 item.IronGlove.name=铁手套
 item.tutorialpaper.name=Friends的手册
-item.cerulean_cube.name=天蓝怪立方
+item.cerulean_cube.name=天蓝怪小块
 
 entity.japaricraftmod.KouteiPenguin.name=帝企鹅
 entity.japaricraftmod.Cerulean.name=天蓝怪
@@ -111,6 +111,7 @@ japaricraftmod.config.plain_friends_wight=森林Friends生成率
 japaricraftmod.config.sand_friends_wight=沙漠Friends生成率
 japaricraftmod.config.snow_friends_wight=寒地Friends生成率
 japaricraftmod.config.sandstarlab_gen=该值越高生成砂之星实验室的几率就越低
+japaricraftmod.config.can_sandstarlab_gen=允许砂之星实验室生成
 japaricraftmod.config.levellimit=Friends的等级上限
 
 death.attack.sandstarlow.player=%1$s被%2$s的砂之星·Raw射杀
