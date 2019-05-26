@@ -43,7 +43,6 @@ public class EntityTwilightKobold extends EntityFriend implements IRangedAttackM
         super(worldIn);
         this.setSize(0.59F, 1.6F);
         this.setTamed(false);
-        this.moveHelper = new SniperMoveHelper(this);
         ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
     }
 
@@ -80,8 +79,8 @@ public class EntityTwilightKobold extends EntityFriend implements IRangedAttackM
 
     protected void entityInit() {
         super.entityInit();
-        this.dataManager.register(SCARED, Boolean.FALSE);
         this.dataManager.register(SWINGING_ARMS, false);
+        this.dataManager.register(SCARED, Boolean.FALSE);
     }
 
     public boolean isScared() {

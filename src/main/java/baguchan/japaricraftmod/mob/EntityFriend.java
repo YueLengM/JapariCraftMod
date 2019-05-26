@@ -338,11 +338,13 @@ public class EntityFriend extends EntityTameable {
 
         if (!itemstack.isEmpty()) {
             //じゃぱりまんがあるか確認
-            ItemFood itemfood = (ItemFood) itemstack.getItem();
-            this.heal((float) itemfood.getHealAmount(itemstack));
-            itemstack.shrink(1);
-            this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
-            eattick = 20;
+            if (itemstack.getItem() instanceof ItemFood) {
+                ItemFood itemfood = (ItemFood) itemstack.getItem();
+                this.heal((float) itemfood.getHealAmount(itemstack));
+                itemstack.shrink(1);
+                this.playSound(SoundEvents.ENTITY_GENERIC_EAT, this.getSoundVolume(), this.getSoundPitch());
+                eattick = 20;
+            }
         }
     }
 
