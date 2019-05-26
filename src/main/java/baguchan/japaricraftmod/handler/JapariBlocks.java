@@ -24,9 +24,7 @@ public class JapariBlocks {
     public static final BlockSandStarLamp SANDSTAR_Lamp = new BlockSandStarLamp();
     public static final BlockWoodenBox BLOCK_WOODEN_BOX = new BlockWoodenBox();
     public static final BlockJaparimanBowl Japariman_Bowl = new BlockJaparimanBowl();
-    public static final BlockCeruleanStatue Cerulean_STATUE = new BlockCeruleanStatue();
-    public static final BlockSandStarTreeApple TREE_APPLE = new BlockSandStarTreeApple();
-    public static final BlockRedStarFlower REDSTAR_FLOWER = new BlockRedStarFlower();
+
     public static void registerBlocks(IForgeRegistry<Block> registry)
     {
         registry.register(SANDSTAR_ORE.setRegistryName("sandstar_ore"));
@@ -36,9 +34,6 @@ public class JapariBlocks {
         registry.register(SANDSTAR_Lamp.setRegistryName("sandstar_lamp"));
         registry.register(BLOCK_WOODEN_BOX.setRegistryName("woodenbox"));
         registry.register(Japariman_Bowl.setRegistryName("japarimanbowl"));
-        registry.register(Cerulean_STATUE.setRegistryName("ceruleanstatue"));
-        registry.register(TREE_APPLE.setRegistryName("sandstar_apple"));
-        registry.register(REDSTAR_FLOWER.setRegistryName("redstar_flower"));
         GameRegistry.registerTileEntity(TileEntitySandStarPortal.class, JapariCraftMod.MODID + ":tileEntitySandStarPortal");
     }
 
@@ -51,7 +46,6 @@ public class JapariBlocks {
         JapariItems.register(registry, new ItemBlock(SANDSTAR_Lamp));
         JapariItems.register(registry, new ItemBlock(Japariman_Bowl));
         JapariItems.register(registry, new ItemBlock(BLOCK_WOODEN_BOX));
-        JapariItems.register(registry, new ItemBlock(REDSTAR_FLOWER));
     }
 
 
@@ -71,9 +65,6 @@ public class JapariBlocks {
         registerModel(SANDSTAR_Lamp);
         registerModel(Japariman_Bowl);
         registerModel(BLOCK_WOODEN_BOX);
-        registerModel(Cerulean_STATUE);
-        registerModel(TREE_APPLE);
-        registerModel(REDSTAR_FLOWER);
         SANDSTAR_PORTAL.initModel();
     }
 

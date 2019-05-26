@@ -44,8 +44,8 @@ public class EntityShoebill extends EntityFriend implements IRangedAttackMob {
 
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, this.aiSit);
-        this.tasks.addTask(2, new EntityAIAttackRangedFriendsBow<>(this, 1.0D, 20, 17.5F));
-        this.tasks.addTask(2, new EntityAIFriendAttackMelee(this, 1.2D, false) {
+        this.tasks.addTask(3, new EntityAIAttackRangedFriendsBow<>(this, 1.0D, 20, 17.5F));
+        this.tasks.addTask(3, new EntityAIFriendAttackMelee(this, 1.2D, false) {
 
             @Override
 
@@ -67,8 +67,6 @@ public class EntityShoebill extends EntityFriend implements IRangedAttackMob {
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(4, new EntityAINearestAttackableTarget<>(this, EntityCerulean.class, false));
-        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityCeruleanEye.class, false));
-        this.targetTasks.addTask(5, new EntityAINearestAttackableTarget<>(this, EntityEnderCerulean.class, false));
     }
 
     @Override
@@ -125,12 +123,12 @@ public class EntityShoebill extends EntityFriend implements IRangedAttackMob {
             EntityArrow entityarrow = itemarrow.createArrow(world, itemstack, this);
             entityarrow.setEnchantmentEffectsFromEntity(this, distanceFactor);
             double d0 = target.posX - this.posX;
-            double d1 = target.posY + 0.2F - entityarrow.posY;
+            double d1 = target.posY - entityarrow.posY;
             double d2 = target.posZ - this.posZ;
 
             double d3 = (double) MathHelper.sqrt(d0 * d0 + d2 * d2);
 
-            entityarrow.shoot(d0, d1 + d3 * (double) 0.2F, d2, 1.4F + distanceFactor, 4.0F);
+            entityarrow.shoot(d0, d1 + d3 * (double) 0.2F, d2, 1.2F + distanceFactor, 4.0F);
             this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
             this.world.spawnEntity(entityarrow);
             this.getHeldItemOffhand().damageItem(1, this);

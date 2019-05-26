@@ -180,6 +180,23 @@ public class ModelTwilightKobold extends ModelBase {
             modelrenderer.rotateAngleZ += MathHelper.sin(this.swingProgress * (float) Math.PI) * -0.4F;
         }
 
+        if (entityKobold.isSwingingArms()) {
+            float f2 = MathHelper.sin(this.swingProgress * (float) Math.PI);
+            float f1 = MathHelper.sin((1.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float) Math.PI);
+            this.handR.rotateAngleZ = 0.0F;
+            this.handL.rotateAngleZ = 0.0F;
+            this.handR.rotateAngleY = -(0.1F - f2 * 0.6F);
+            this.handL.rotateAngleY = 0.1F - f2 * 0.6F;
+            this.handR.rotateAngleX = (-(float) Math.PI / 2F);
+            this.handL.rotateAngleX = (-(float) Math.PI / 2F);
+            this.handR.rotateAngleX -= f2 * 1.2F - f1 * 0.4F;
+            this.handL.rotateAngleX -= f2 * 1.2F - f1 * 0.4F;
+            this.handR.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+            this.handL.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
+            this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+            this.handL.rotateAngleX -= MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
+        }
+
         this.handR.rotateAngleZ += MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handL.rotateAngleZ -= MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F;
         this.handR.rotateAngleX += MathHelper.sin(ageInTicks * 0.067F) * 0.05F;
