@@ -22,6 +22,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 
@@ -172,6 +173,12 @@ public class EntitySquirre extends EntityFriend {
 
     @Override
     public void onUpdate() {
+        if (world.isRemote) {
+            this.clientSideSitAnimation0 = this.clientSideSitAnimation;
+            if (this.isSleeping()) {
+                this.clientSideSitAnimation = MathHelper.clamp(this.clientSideSitAnimation + 1.0F, 0.0F, 6.0F);
+            }
+        }
         super.onUpdate();
         if (!world.isRemote && !this.isInWater() && !this.world.isDaytime() && !this.isSleeping() && this.getRNG().nextInt(330) == 0 && this.getAttackTarget() == null && !this.isRiding() && this.onGround && (!this.isTamed() || this.isTamed() && this.isSitting())) {
             setSleeping(true);

@@ -54,6 +54,9 @@ public class EntityFriend extends EntityTameable {
     public float friendPoint = 0;
     protected int eattick = 0;
 
+    protected float clientSideSitAnimation0;
+    protected float clientSideSitAnimation;
+
     public EntityFriend(World worldIn) {
         super(worldIn);
     }
@@ -121,6 +124,26 @@ public class EntityFriend extends EntityTameable {
             }
         }
         super.onUpdate();
+        if (world.isRemote) {
+            this.clientSideSitAnimation0 = this.clientSideSitAnimation;
+
+            if (this.isSitting() || this.isRiding()) {
+
+                this.clientSideSitAnimation = MathHelper.clamp(this.clientSideSitAnimation + 1.0F, 0.0F, 6.0F);
+
+            } else {
+
+                this.clientSideSitAnimation = MathHelper.clamp(this.clientSideSitAnimation - 1.0F, 0.0F, 6.0F);
+
+            }
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    public float getSittingAnimationScale(float p_189795_1_) {
+
+        return (this.clientSideSitAnimation0 + (this.clientSideSitAnimation - this.clientSideSitAnimation0) * p_189795_1_) / 6.0F;
+
     }
 
     public float getExp() {

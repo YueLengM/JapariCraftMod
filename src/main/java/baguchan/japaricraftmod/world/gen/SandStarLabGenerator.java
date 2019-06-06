@@ -2,6 +2,7 @@ package baguchan.japaricraftmod.world.gen;
 
 import baguchan.japaricraftmod.JapariConfig;
 import baguchan.japaricraftmod.JapariCraftMod;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
@@ -41,11 +42,25 @@ public class SandStarLabGenerator implements IWorldGenerator {
 
                     pos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
 
-                    generateLabAt(sWorld, random, pos);
+                    if (checkSafe(world, pos)) {
+                        generateLabAt(sWorld, random, pos);
+                    }
                 }
             }
         }
 
+    }
+
+    private boolean checkSafe(World world, BlockPos pos) {
+        for (int x = 0; x < 18; x++) {
+            for (int z = 0; z < 18; z++) {
+
+                if (world.getBlockState(new BlockPos(pos.getX() + x, pos.getY(), pos.getZ() + z)).getMaterial() == Material.AIR && world.getBlockState(new BlockPos(pos.getX() + x, pos.getY(), pos.getZ() + z)).getMaterial() == Material.WATER) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static BlockPos getHeight(World world, BlockPos pos) {
@@ -76,7 +91,6 @@ public class SandStarLabGenerator implements IWorldGenerator {
         for (int x = 0; x < size.getX(); x++)
             for (int y = 0; y < size.getY(); y++)
                 for (int z = 0; z < size.getZ(); z++) {
-
                     template.addBlocksToWorld(world, pos, settings);
                 }
     }

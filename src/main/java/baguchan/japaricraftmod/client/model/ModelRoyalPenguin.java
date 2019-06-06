@@ -185,26 +185,20 @@ public class ModelRoyalPenguin extends ModelBase {
             f = 1.0F;
         }
 
+        float f4 = entity.getSittingAnimationScale(f);
+
         this.hand_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
         this.hand_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
         this.hand_r.rotateAngleZ = 0.0F;
         this.hand_l.rotateAngleZ = 0.0F;
-        this.leg_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-        this.leg_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
-        this.leg_r.rotateAngleY = 0.0F;
-        this.leg_l.rotateAngleY = 0.0F;
-        this.leg_r.rotateAngleZ = 0.0F;
-        this.leg_l.rotateAngleZ = 0.0F;
+        this.leg_r.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f - 1.4137167F * f4;
+        this.leg_l.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f - 1.4137167F * f4;
+        this.leg_r.rotateAngleY = ((float) Math.PI / 10F) * f4;
+        this.leg_l.rotateAngleY = -((float) Math.PI / 10F) * f4;
+        this.leg_r.rotateAngleZ = 0.07853982F * f4;
+        this.leg_l.rotateAngleZ = -0.07853982F * f4;
 
-        if (entity.isSitting() || this.isRiding) {
-            this.leg_r.rotateAngleX = -1.4137167F;
-            this.leg_r.rotateAngleY = ((float) Math.PI / 10F);
-            this.leg_r.rotateAngleZ = 0.07853982F;
-            this.leg_l.rotateAngleX = -1.4137167F;
-            this.leg_l.rotateAngleY = -((float) Math.PI / 10F);
-            this.leg_l.rotateAngleZ = -0.07853982F;
-            GL11.glTranslatef(0F, 0.4F, 0F);
-        }
+        GL11.glTranslatef(0F, 0.4F * f4, 0F);
 
         this.hand_r.rotateAngleY = 0.0F;
         this.hand_r.rotateAngleZ = 0.0F;

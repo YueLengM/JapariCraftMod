@@ -177,6 +177,13 @@ public class ModelBrownOwl extends ModelBase {
         this.legL.rotateAngleZ = 0.0F;
         this.skirt1.rotateAngleX = 0F;
 
+        float f4 = entityowl.getSittingAnimationScale(f);
+
+        this.skirt1.rotateAngleX = -1.4137167F * f4;
+
+        GL11.glTranslatef(0F, 0.5F * f4, 0F);
+
+
         if (entityowl.isFlying()) {
             this.handR.rotateAngleX = 0.0F;
             this.handL.rotateAngleX = 0.0F;
@@ -186,17 +193,6 @@ public class ModelBrownOwl extends ModelBase {
             this.legL.rotateAngleX = 0.0F;
         }
 
-        if (entityowl.isSitting() || this.isRiding) {
-            this.skirt1.rotateAngleX = -1.4137167F;
-
-            if (entityowl.isReading()) {
-                this.handR.rotateAngleX = -0.4F;
-                this.handL.rotateAngleX = -0.4F;
-                this.handA_R.rotateAngleX = -0.4F;
-                this.handA_L.rotateAngleX = -0.4F;
-            }
-            GL11.glTranslatef(0F, 0.5F, 0F);
-        }
         this.handR.rotateAngleY = 0.0F;
         this.handL.rotateAngleY = 0.0F;
         this.handA_R.rotateAngleY = 0.0F;

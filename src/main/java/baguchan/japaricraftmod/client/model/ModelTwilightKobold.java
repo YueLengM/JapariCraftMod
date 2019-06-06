@@ -114,16 +114,20 @@ public class ModelTwilightKobold extends ModelBase {
             f = 1.0F;
         }
 
-        this.handR.rotateAngleX = (MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f);
-        this.handL.rotateAngleX = (MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f);
-        this.handR.rotateAngleZ = 0.106659280431156F;
-        this.handL.rotateAngleZ = -0.106659280431156F;
-        this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f;
-        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f;
-        this.legR.rotateAngleY = 0.0F;
-        this.legL.rotateAngleY = 0.0F;
-        this.legR.rotateAngleZ = 0.0F;
-        this.legL.rotateAngleZ = 0.0F;
+        float f4 = entityKobold.getSittingAnimationScale(f);
+
+        this.handR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f;
+        this.handR.rotateAngleZ = 0.0F;
+        this.handL.rotateAngleZ = 0.0F;
+        this.legR.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f - 1.4137167F * f4;
+        this.legL.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount / f - 1.4137167F * f4;
+        this.legR.rotateAngleY = ((float) Math.PI / 10F) * f4;
+        this.legL.rotateAngleY = -((float) Math.PI / 10F) * f4;
+        this.legR.rotateAngleZ = 0.07853982F * f4;
+        this.legL.rotateAngleZ = -0.07853982F * f4;
+
+        GL11.glTranslatef(0F, 0.4F * f4, 0F);
 
         if (entityKobold.isScared()) {
             this.handR.rotateAngleX = -1.95F;
@@ -138,20 +142,6 @@ public class ModelTwilightKobold extends ModelBase {
             this.head.rotateAngleX = headPitch * 0.017453292F;
         }
 
-        if (entityKobold.isSitting() || this.isRiding) {
-            this.legR.rotateAngleX = -1.4137167F;
-            this.legR.rotateAngleY = ((float) Math.PI / 10F);
-            this.legR.rotateAngleZ = 0.05853982F;
-            this.legL.rotateAngleX = -1.4137167F;
-            this.legL.rotateAngleY = -((float) Math.PI / 10F);
-            this.legL.rotateAngleZ = -0.05853982F;
-
-            this.handR.rotateAngleX = -0.296659280431156F;
-            this.handL.rotateAngleX = -0.296659280431156F;
-            this.handR.rotateAngleZ = -0.186659280431156F;
-            this.handL.rotateAngleZ = 0.186659280431156F;
-            GL11.glTranslatef(0F, 0.5F, 0F);
-        }
 
         this.handR.rotateAngleY = 0.0F;
         this.handL.rotateAngleY = 0.0F;
