@@ -1,6 +1,7 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/japaricraftmod-2",
   "1.12.2": {
+    "5.4.6": "smooth friends sit animation",
     "5.4.5": "add twilight kobold bow skill and delete unuse content",
     "5.4.4": "Don't spawn friends for special dimensions",
     "5.4.3": "shoebill can shoot arrow(when shoebill has arrow and bow)",
@@ -33,7 +34,7 @@
   "promos": {
     "1.11.2-recommended": "2.4.2",
     "1.11.2-latest": "2.4.2",
-    "1.12.2-recommended": "5.4.5",
-    "1.12.2-latest": "5.4.5"
+    "1.12.2-recommended": "5.4.6",
+    "1.12.2-latest": "5.4.6"
   }
 }

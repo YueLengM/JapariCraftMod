@@ -2,12 +2,10 @@ package baguchan.japaricraftmod.world.gen;
 
 import baguchan.japaricraftmod.JapariConfig;
 import baguchan.japaricraftmod.JapariCraftMod;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
@@ -42,25 +40,20 @@ public class SandStarLabGenerator implements IWorldGenerator {
 
                     pos = new BlockPos(pos.getX(), pos.getY(), pos.getZ());
 
-                    if (checkSafe(world, pos)) {
-                        generateLabAt(sWorld, random, pos);
-                    }
+                    generateLabAt(sWorld, random, pos);
+
                 }
             }
         }
 
     }
 
-    private boolean checkSafe(World world, BlockPos pos) {
-        for (int x = 0; x < 18; x++) {
-            for (int z = 0; z < 18; z++) {
-
-                if (world.getBlockState(new BlockPos(pos.getX() + x, pos.getY(), pos.getZ() + z)).getMaterial() == Material.AIR && world.getBlockState(new BlockPos(pos.getX() + x, pos.getY(), pos.getZ() + z)).getMaterial() == Material.WATER) {
-                    return false;
-                }
-            }
+    protected static void replaceAirAndLiquidDownwards(World worldIn, IBlockState blockstateIn, int x, int y, int z) {
+        while ((worldIn.isAirBlock(new BlockPos(x, y, z)) || worldIn.getBlockState(new BlockPos(x, y, z)).getMaterial().isLiquid()) && y > 1) {
+            worldIn.setBlockState(new BlockPos(x, y, z), blockstateIn, 2);
+            --y;
         }
-        return true;
+
     }
 
     public static BlockPos getHeight(World world, BlockPos pos) {
@@ -85,9 +78,14 @@ public class SandStarLabGenerator implements IWorldGenerator {
         MinecraftServer server = world.getMinecraftServer();
         Template template = world.getStructureTemplateManager().getTemplate(server, SANDSTARLAB);
         PlacementSettings settings = new PlacementSettings().setIgnoreEntities(true);
-        settings.setRotation(Rotation.values()[random.nextInt(Rotation.values().length)]);
 
         BlockPos size = template.getSize();
+        for (int x = 0; x < size.getX(); x++) {
+            for (int z = 0; z < size.getZ(); z++) {
+                replaceAirAndLiquidDownwards(world, Blocks.COBBLESTONE.getDefaultState(), pos.getX() + x, pos.getY() - 1, pos.getZ() + z);
+            }
+        }
+
         for (int x = 0; x < size.getX(); x++)
             for (int y = 0; y < size.getY(); y++)
                 for (int z = 0; z < size.getZ(); z++) {
